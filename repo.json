@@ -1,0 +1,21 @@
+[
+  {
+    "$schema": "https://raw.githubusercontent.com/goatcorp/Dalamud/master/Dalamud/Configuration/PluginManifest/pluginmanifest.schema.json",
+    "Author": "DhogGPT",
+    "Name": "Choke-abo",
+    "Punchline": "Chocobo stable feeding and vendor-planning scaffold.",
+    "Description": "Chocobo stable feeding and vendor-planning scaffold.",
+    "InternalName": "ChokeAbo",
+    "AssemblyVersion": "0.0.0.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 14,
+    "Tags": [
+      "ffxiv",
+      "chokeabo",
+      "dhog"
+    ],
+    "CategoryTags": [
+      "utility"
+    ]
+  }
+]

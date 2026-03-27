@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
@@ -17,6 +18,13 @@ public sealed class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         var cfg = plugin.Configuration;
+        if (ImGui.SmallButton("Ko-fi##ChokeAboConfig"))
+            Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
+        ImGui.SameLine();
+        if (ImGui.SmallButton("Discord##ChokeAboConfig"))
+            Process.Start(new ProcessStartInfo { FileName = PluginInfo.DiscordUrl, UseShellExecute = true });
+        ImGui.TextDisabled(PluginInfo.DiscordFeedbackNote);
+        ImGui.Separator();
         var enabled = cfg.PluginEnabled; if (ImGui.Checkbox("Plugin enabled", ref enabled)) { cfg.PluginEnabled = enabled; cfg.Save(); plugin.UpdateDtrBar(); }
         var dtr = cfg.DtrBarEnabled; if (ImGui.Checkbox("Show DTR bar entry", ref dtr)) { cfg.DtrBarEnabled = dtr; cfg.Save(); plugin.UpdateDtrBar(); }
         var mode = cfg.DtrBarMode; if (ImGui.Combo("DTR mode", ref mode, DtrModes, DtrModes.Length)) { cfg.DtrBarMode = mode; cfg.Save(); plugin.UpdateDtrBar(); }

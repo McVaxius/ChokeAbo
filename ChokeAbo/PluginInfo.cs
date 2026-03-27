@@ -6,8 +6,10 @@ internal static class PluginInfo
     public const string InternalName = "ChokeAbo";
     public const string Command = "/chokeabo";
     public const string Visibility = "Public";
-    public const string Summary = "Chocobo stable feeding and vendor-planning scaffold.";
+    public const string Summary = "Race chocobo stat planning with vendor and trainer automation seams.";
     public const string SupportUrl = "https://ko-fi.com/mcvaxius";
+    public const string DiscordUrl = "https://discord.gg/VsXqydsvpu";
+    public const string DiscordFeedbackNote = "Scroll down to \"The Dumpster Fire\" channel to discuss issues / suggestions for specific plugins.";
     public static readonly string[] Concept = new[]
     {
         "Track current stats and feed plans.",
@@ -35,6 +37,7 @@ internal static class PluginInfo
     {
         "Load plugin and open UI",
         "Check DTR toggle",
-        "Check icon and manifest output"
+        "Refresh racing chocobo stats from the main window",
+        "Edit the training plan and confirm projected stats change"
     };
 }
