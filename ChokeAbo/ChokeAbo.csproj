@@ -6,7 +6,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.0.0.5</Version>
+    <Version>0.0.0.6</Version>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
     <RootNamespace>ChokeAbo</RootNamespace>
@@ -23,6 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ChokeAbo.json" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="images\**" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="images\icon.png" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
