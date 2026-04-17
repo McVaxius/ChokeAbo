@@ -9,6 +9,7 @@ public sealed class StableFeedingService
 {
     private const string TrainerName = "Race Chocobo Trainer";
     private const float TrainerStopDistance = 3.0f;
+    private const int MaxTrainerRecoveries = 6;
 
     private static readonly string[] InventoryAddonNames =
     {
@@ -33,6 +34,7 @@ public sealed class StableFeedingService
     private int currentSlot;
     private uint preFeedCount;
     private string lastError = string.Empty;
+    private int consecutiveTrainerRecoveries;
 
     private enum FeedState
     {
@@ -94,6 +96,7 @@ public sealed class StableFeedingService
         remainingFeedsForCurrentEntry = queue.Count > 0 ? queue[0].PlannedQuantity : 0;
         lastError = string.Empty;
         lastInteractionAtUtc = DateTime.MinValue;
+        consecutiveTrainerRecoveries = 0;
 
         if (queue.Count == 0)
         {
@@ -117,6 +120,7 @@ public sealed class StableFeedingService
         preFeedCount = 0;
         lastInteractionAtUtc = DateTime.MinValue;
         lastError = string.Empty;
+        consecutiveTrainerRecoveries = 0;
         state = FeedState.Idle;
         stateEnteredAtUtc = DateTime.MinValue;
     }
@@ -274,7 +278,9 @@ public sealed class StableFeedingService
         }
 
         if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 8)
-            Fail("Trainer feed inventory did not open after selecting the trainer menu entry.");
+        {
+            RecoverTrainerFlow("Trainer feed inventory did not open after selecting the trainer menu entry.");
+        }
     }
 
     private void HandleFindingFeedSlot()
@@ -313,7 +319,7 @@ public sealed class StableFeedingService
         var addonId = GetVisibleInventoryAddonId();
         if (addonId == 0)
         {
-            Fail("No visible inventory window was found for trainer feeding.");
+            RecoverTrainerFlow("No visible inventory window was found while opening the trainer-feed context menu.");
             return;
         }
 
@@ -330,15 +336,24 @@ public sealed class StableFeedingService
             return;
         }
 
+        if (!IsAnyInventoryAddonVisible() && (DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 2.0)
+        {
+            RecoverTrainerFlow("Inventory window disappeared before the trainer-feed context menu became visible.");
+            return;
+        }
+
         if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 6)
-            Fail("Context menu did not appear for the selected feed item.");
+        {
+            log.Warning("[ChokeAbo] Context menu did not appear for the selected feed item. Reopening the item context menu.");
+            SetState(FeedState.OpeningContextMenu);
+        }
     }
 
     private void HandleSelectingFeed()
     {
         if (!GameHelpers.IsAddonVisible("ContextMenu"))
         {
-            Fail("Context menu disappeared before Feed could be selected.");
+            RecoverTrainerFlow("Context menu disappeared before Feed could be selected.");
             return;
         }
 
@@ -358,7 +373,9 @@ public sealed class StableFeedingService
         }
 
         if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 8)
-            Fail("Commence window did not appear after selecting Feed.");
+        {
+            RecoverTrainerFlow("Commence window did not appear after selecting Feed.");
+        }
     }
 
     private void HandleWaitingForCommenceConfirmation()
@@ -372,7 +389,9 @@ public sealed class StableFeedingService
         }
 
         if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 6)
-            Fail("Training confirmation window did not appear after Commence.");
+        {
+            RecoverTrainerFlow("Training confirmation window did not appear after Commence.");
+        }
     }
 
     private void HandleWaitingForFeedResolution()
@@ -390,6 +409,7 @@ public sealed class StableFeedingService
             if (!GameHelpers.IsPlayerAvailable())
                 return;
 
+            consecutiveTrainerRecoveries = 0;
             remainingFeedsForCurrentEntry--;
             log.Information($"[ChokeAbo] Fed {current.FeedName}. Remaining for this feed: {remainingFeedsForCurrentEntry}");
 
@@ -451,6 +471,21 @@ public sealed class StableFeedingService
     {
         GameHelpers.StopMovement();
         SetState(FeedState.Complete);
+    }
+
+    private void RecoverTrainerFlow(string reason)
+    {
+        consecutiveTrainerRecoveries++;
+        if (consecutiveTrainerRecoveries > MaxTrainerRecoveries)
+        {
+            Fail($"Trainer feed flow stayed unstable after {MaxTrainerRecoveries} recovery attempts. Last issue: {reason}");
+            return;
+        }
+
+        GameHelpers.StopMovement();
+        log.Warning($"[ChokeAbo] {reason} Recovery attempt {consecutiveTrainerRecoveries}/{MaxTrainerRecoveries}: reacquiring trainer flow.");
+        lastInteractionAtUtc = DateTime.MinValue;
+        SetState(FeedState.InteractingTrainer);
     }
 
     private void SetState(FeedState newState)
