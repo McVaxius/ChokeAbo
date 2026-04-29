@@ -11,7 +11,7 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using static FFXIVClientStructs.FFXIV.Client.UI.RaptureAtkUnitManager;
 using DalamudObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
-using AtkValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
+using AtkValueType = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType;
 
 namespace ChokeAbo.Services;
 

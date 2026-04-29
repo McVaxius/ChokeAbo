@@ -449,10 +449,10 @@ public sealed class ChocoboStatsService
             {
                 atkValues[index] = args[index] switch
                 {
-                    int intValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.ValueType.Int, Int = intValue },
-                    uint uintValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.ValueType.UInt, UInt = uintValue },
-                    bool boolValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.ValueType.Bool, Byte = (byte)(boolValue ? 1 : 0) },
-                    _ => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.ValueType.Int, Int = Convert.ToInt32(args[index]) },
+                    int intValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Int, Int = intValue },
+                    uint uintValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.UInt, UInt = uintValue },
+                    bool boolValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Bool, Byte = (byte)(boolValue ? 1 : 0) },
+                    _ => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Int, Int = Convert.ToInt32(args[index]) },
                 };
             }
 
