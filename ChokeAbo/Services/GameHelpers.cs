@@ -48,7 +48,7 @@ public static class GameHelpers
     public static IGameObject? FindObjectByName(string name)
     {
         return Plugin.ObjectTable.FirstOrDefault(obj =>
-            obj.ObjectKind is DalamudObjectKind.EventNpc or DalamudObjectKind.BattleNpc or DalamudObjectKind.EventObj or DalamudObjectKind.Housing &&
+            obj.ObjectKind is DalamudObjectKind.EventNpc or DalamudObjectKind.BattleNpc or DalamudObjectKind.EventObj or DalamudObjectKind.HousingEventObject &&
             obj.Name.TextValue.Equals(name, StringComparison.OrdinalIgnoreCase));
     }
 
@@ -315,7 +315,7 @@ public static class GameHelpers
             DalamudObjectKind.EventNpc => 4.0f,
             DalamudObjectKind.BattleNpc => 3.0f,
             DalamudObjectKind.EventObj => 2.0f,
-            DalamudObjectKind.Housing => 2.0f,
+            DalamudObjectKind.HousingEventObject => 2.0f,
             _ => 2.5f,
         };
 
