@@ -6,7 +6,7 @@
     "Punchline": "(Racing Chocobo) Feed your Racing chocobo Grade 1-2-3 Feed. Includes automatic buying and feeding.",
     "Description": "(Racing Chocobo) Feed your Racing chocobo Grade 1-2-3 Feed. Includes automatic buying and feeding.",
     "InternalName": "ChokeAbo",
-    "AssemblyVersion": "1.0.0.4",
+    "AssemblyVersion": "1.0.0.5",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "Tags": [
@@ -18,8 +18,8 @@
       "utility"
     ],
     "RepoUrl": "https://github.com/McVaxius/ChokeAbo",
-    "DownloadLinkInstall": "https://github.com/McVaxius/ChokeAbo/releases/download/v1.0.0.4/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/McVaxius/ChokeAbo/releases/download/v1.0.0.4/latest.zip",
+    "DownloadLinkInstall": "https://github.com/McVaxius/ChokeAbo/releases/download/v1.0.0.5/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/McVaxius/ChokeAbo/releases/download/v1.0.0.5/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/McVaxius/ChokeAbo/main/ChokeAbo/images/icon.png"
   }
 ]
