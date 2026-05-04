@@ -46,7 +46,7 @@ public sealed class Plugin : IDalamudPlugin
         InventoryService = new GameInventoryService(DataManager, Log);
         ChocoboStatsService = new ChocoboStatsService(CommandManager, GameGui, Log, InventoryService);
         VendorPurchaseService = new VendorPurchaseService(InventoryService, Log);
-        StableFeedingService = new StableFeedingService(InventoryService, GameGui, Log);
+        StableFeedingService = new StableFeedingService(InventoryService, GameGui, Log, Configuration);
         mainWindow = new MainWindow(this, ChocoboStatsService);
         configWindow = new ConfigWindow(this);
         WindowSystem.AddWindow(mainWindow);

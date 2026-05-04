@@ -23,6 +23,7 @@ public sealed class StableFeedingService
     private readonly InventoryService inventoryService;
     private readonly IGameGui gameGui;
     private readonly IPluginLog log;
+    private readonly Configuration configuration;
 
     private FeedState state = FeedState.Idle;
     private IReadOnlyList<FeedPurchaseEntry> queue = Array.Empty<FeedPurchaseEntry>();
@@ -54,11 +55,12 @@ public sealed class StableFeedingService
         Failed,
     }
 
-    public StableFeedingService(InventoryService inventoryService, IGameGui gameGui, IPluginLog log)
+    public StableFeedingService(InventoryService inventoryService, IGameGui gameGui, IPluginLog log, Configuration configuration)
     {
         this.inventoryService = inventoryService;
         this.gameGui = gameGui;
         this.log = log;
+        this.configuration = configuration;
     }
 
     public string Summary => "Automates the Race Chocobo Trainer feed flow with travel, staging, and inventory-context feeding.";
@@ -411,6 +413,7 @@ public sealed class StableFeedingService
 
             consecutiveTrainerRecoveries = 0;
             remainingFeedsForCurrentEntry--;
+            DecrementPlannedTraining(current.StatKind);
             log.Information($"[ChokeAbo] Fed {current.FeedName}. Remaining for this feed: {remainingFeedsForCurrentEntry}");
 
             if (remainingFeedsForCurrentEntry > 0)
@@ -471,6 +474,40 @@ public sealed class StableFeedingService
     {
         GameHelpers.StopMovement();
         SetState(FeedState.Complete);
+    }
+
+    private void DecrementPlannedTraining(ChocoboStatKind statKind)
+    {
+        var changed = false;
+        switch (statKind)
+        {
+            case ChocoboStatKind.MaximumSpeed when configuration.PlannedMaximumSpeedTrainings > 0:
+                configuration.PlannedMaximumSpeedTrainings--;
+                changed = true;
+                break;
+            case ChocoboStatKind.Acceleration when configuration.PlannedAccelerationTrainings > 0:
+                configuration.PlannedAccelerationTrainings--;
+                changed = true;
+                break;
+            case ChocoboStatKind.Endurance when configuration.PlannedEnduranceTrainings > 0:
+                configuration.PlannedEnduranceTrainings--;
+                changed = true;
+                break;
+            case ChocoboStatKind.Stamina when configuration.PlannedStaminaTrainings > 0:
+                configuration.PlannedStaminaTrainings--;
+                changed = true;
+                break;
+            case ChocoboStatKind.Cunning when configuration.PlannedCunningTrainings > 0:
+                configuration.PlannedCunningTrainings--;
+                changed = true;
+                break;
+        }
+
+        if (!changed)
+            return;
+
+        configuration.Save();
+        log.Information($"[ChokeAbo] Planned {statKind} trainings decremented after confirmed feed.");
     }
 
     private void RecoverTrainerFlow(string reason)

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using System.Numerics;
 using System.Reflection;
 using Dalamud.Bindings.ImGui;
@@ -317,9 +318,9 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.TableSetColumnIndex(0);
         ImGui.TextUnformatted(label);
         ImGui.TableSetColumnIndex(1);
-        ImGui.TextUnformatted(stat.Current.ToString());
+        ImGui.TextUnformatted(FormatStat(stat.Current));
         ImGui.TableSetColumnIndex(2);
-        ImGui.TextUnformatted(stat.Maximum.ToString());
+        ImGui.TextUnformatted(FormatStat(stat.Maximum));
     }
 
     private static void DrawProjectionRow(string label, ChocoboStatSnapshot current, ChocoboStatSnapshot projected)
@@ -328,16 +329,16 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.TableSetColumnIndex(0);
         ImGui.TextUnformatted(label);
         ImGui.TableSetColumnIndex(1);
-        ImGui.TextUnformatted($"{current.Current}/{current.Maximum}");
+        ImGui.TextUnformatted(FormatStatPair(current));
         ImGui.TableSetColumnIndex(2);
 
         if (projected.Current > current.Current)
         {
-            ImGui.TextColored(new Vector4(0.42f, 1.0f, 0.56f, 1.0f), $"{projected.Current}/{projected.Maximum}");
+            ImGui.TextColored(new Vector4(0.42f, 1.0f, 0.56f, 1.0f), FormatStatPair(projected));
         }
         else
         {
-            ImGui.TextUnformatted($"{projected.Current}/{projected.Maximum}");
+            ImGui.TextUnformatted(FormatStatPair(projected));
         }
     }
 
@@ -397,6 +398,12 @@ public sealed class MainWindow : Window, IDisposable
         if (!snapshot.IsLoaded)
             return $"Chocobo stats unavailable. Planned trainings: {plannedSessions}.";
 
-        return $"Sessions {snapshot.SessionsAvailable}, plan {plannedSessions}, speed {snapshot.MaximumSpeed.Current}/{snapshot.MaximumSpeed.Maximum}, acceleration {snapshot.Acceleration.Current}/{snapshot.Acceleration.Maximum}, endurance {snapshot.Endurance.Current}/{snapshot.Endurance.Maximum}, stamina {snapshot.Stamina.Current}/{snapshot.Stamina.Maximum}, cunning {snapshot.Cunning.Current}/{snapshot.Cunning.Maximum}.";
+        return $"Sessions {snapshot.SessionsAvailable}, plan {plannedSessions}, speed {FormatStatPair(snapshot.MaximumSpeed)}, acceleration {FormatStatPair(snapshot.Acceleration)}, endurance {FormatStatPair(snapshot.Endurance)}, stamina {FormatStatPair(snapshot.Stamina)}, cunning {FormatStatPair(snapshot.Cunning)}.";
     }
+
+    private static string FormatStatPair(ChocoboStatSnapshot stat)
+        => $"{FormatStat(stat.Current)}/{FormatStat(stat.Maximum)}";
+
+    private static string FormatStat(decimal value)
+        => value.ToString("0.#", CultureInfo.InvariantCulture);
 }

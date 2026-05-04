@@ -24,7 +24,7 @@ public enum FeedCurrencyKind
     Mgp,
 }
 
-public readonly record struct ChocoboStatSnapshot(uint Current, uint Maximum);
+public readonly record struct ChocoboStatSnapshot(decimal Current, decimal Maximum);
 
 public sealed record FeedPurchaseEntry(
     ChocoboStatKind StatKind,
@@ -283,14 +283,17 @@ public sealed class ChocoboStatsService
 
     private static ChocoboStatSnapshot BuildProjectedStat(ChocoboStatSnapshot stat, int plannedTrainings, int selectedGrade)
     {
-        var additionalPoints = (uint)(Math.Max(0, plannedTrainings) * GetGradeStrength(selectedGrade));
+        var additionalPoints = Math.Max(0, plannedTrainings) * CalculateFeedGain(stat.Maximum, selectedGrade);
         return stat with
         {
             Current = Math.Min(stat.Maximum, stat.Current + additionalPoints),
         };
     }
 
-    private static int GetGradeStrength(int selectedGrade)
+    public static decimal CalculateFeedGain(decimal statCap, int selectedGrade)
+        => statCap * GetGradePercent(selectedGrade) / 100m;
+
+    private static int GetGradePercent(int selectedGrade)
         => Math.Clamp(selectedGrade, 1, 3);
 
     private void AddPurchaseEntry(
