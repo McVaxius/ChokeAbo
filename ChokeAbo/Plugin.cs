@@ -27,7 +27,11 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static ITargetManager TargetManager { get; private set; } = null!;
     [PluginService] internal static IDtrBar DtrBar { get; private set; } = null!;
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
+    [PluginService] internal static IToastGui ToastGui { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
+
+    private const string DutyMainWindowDeniedMessage = "Choke-abo main window closed because you are in a duty.";
+    private static readonly TimeSpan DutyToastThrottle = TimeSpan.FromSeconds(2);
 
     public Configuration Configuration { get; }
     internal ChocoboStatsService ChocoboStatsService { get; }
@@ -39,6 +43,7 @@ public sealed class Plugin : IDalamudPlugin
     private readonly ConfigWindow configWindow;
     private IDtrBarEntry? dtrEntry;
     private FeedPurchasePlan? pendingFeedPlanAfterBuy;
+    private DateTime lastDutyDeniedToastUtc = DateTime.MinValue;
 
     public Plugin()
     {
@@ -72,10 +77,48 @@ public sealed class Plugin : IDalamudPlugin
         dtrEntry?.Remove();
     }
 
-    public void ToggleMainUi() => mainWindow.Toggle();
+    public void ToggleMainUi()
+    {
+        if (DenyMainWindowInDuty(forceToast: true))
+            return;
+
+        mainWindow.Toggle();
+    }
+
     public void ToggleConfigUi() => configWindow.Toggle();
     public void PrintStatus(string m) => ChatGui.Print($"[{PluginInfo.DisplayName}] {m}");
     public bool IsAutomationRunning => VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || pendingFeedPlanAfterBuy != null;
+
+    private bool IsInDuty()
+        => Condition[ConditionFlag.BoundByDuty] || Condition[ConditionFlag.BoundByDuty56];
+
+    private bool DenyMainWindowInDuty(bool forceToast = false)
+    {
+        if (!IsInDuty())
+            return false;
+
+        mainWindow.IsOpen = false;
+        ShowDutyDeniedToast(forceToast);
+        return true;
+    }
+
+    private void ShowDutyDeniedToast(bool forceToast)
+    {
+        var now = DateTime.UtcNow;
+        if (!forceToast && now - lastDutyDeniedToastUtc < DutyToastThrottle)
+            return;
+
+        lastDutyDeniedToastUtc = now;
+        ToastGui.ShowError(DutyMainWindowDeniedMessage);
+    }
+
+    private void OpenMainUi()
+    {
+        if (DenyMainWindowInDuty(forceToast: true))
+            return;
+
+        mainWindow.IsOpen = true;
+    }
 
     private void OnCommand(string command, string arguments)
     {
@@ -85,7 +128,7 @@ public sealed class Plugin : IDalamudPlugin
     private void SetupDtrBar()
     {
         dtrEntry = DtrBar.Get(PluginInfo.DisplayName);
-        dtrEntry.OnClick = _ => mainWindow.IsOpen = true;
+        dtrEntry.OnClick = _ => OpenMainUi();
     }
 
     public void UpdateDtrBar()
@@ -95,6 +138,9 @@ public sealed class Plugin : IDalamudPlugin
 
     private void OnFrameworkUpdate(IFramework framework)
     {
+        if (mainWindow.IsOpen)
+            DenyMainWindowInDuty();
+
         ChocoboStatsService.Update();
         VendorPurchaseService.Update();
         StableFeedingService.Update();
