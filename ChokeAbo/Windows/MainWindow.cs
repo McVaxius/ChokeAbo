@@ -212,6 +212,13 @@ public sealed class MainWindow : Window, IDisposable
             ImGui.EndTable();
         }
 
+        ImGui.Spacing();
+        if (ImGui.Button("Clear Plan", new Vector2(110f, 26f)))
+        {
+            plugin.ClearPlan();
+            return;
+        }
+
         if (changed)
             cfg.Save();
 

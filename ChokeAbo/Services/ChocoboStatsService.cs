@@ -145,6 +145,10 @@ public sealed class ChocoboStatsService
         _ => Snapshot.StatusText,
     };
 
+    public bool IsRefreshRunning => IsRefreshActive();
+    public bool IsRefreshComplete => state == RefreshState.Complete;
+    public bool IsRefreshFailed => state == RefreshState.Failed;
+
     public ChocoboStatsService(ICommandManager commandManager, IGameGui gameGui, IPluginLog log, InventoryService inventoryService)
     {
         this.commandManager = commandManager;
@@ -167,6 +171,21 @@ public sealed class ChocoboStatsService
         Snapshot = Snapshot with
         {
             StatusText = "Refresh requested; opening Gold Saucer window...",
+        };
+    }
+
+    public void CancelRefresh()
+    {
+        if (!IsRefreshActive())
+            return;
+
+        log.Information("[ChokeAbo] Racing chocobo stat refresh cancelled.");
+        SetState(RefreshState.Idle);
+        Snapshot = Snapshot with
+        {
+            StatusText = Snapshot.IsLoaded
+                ? $"Loaded from {Snapshot.Source} at {Snapshot.CapturedAtUtc.ToLocalTime():HH:mm:ss}."
+                : "Racing chocobo stat refresh cancelled.",
         };
     }
 

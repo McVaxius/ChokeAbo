@@ -65,6 +65,9 @@ public sealed class Plugin : IDalamudPlugin
         Purchasing,
         Feeding,
         WaitingToRetry,
+        WaitingToVerifyCaps,
+        RefreshingChocoboStats,
+        WaitingToRetryRefresh,
     }
 
     public Plugin()
@@ -115,6 +118,9 @@ public sealed class Plugin : IDalamudPlugin
         CleanupPhase.Purchasing => $"Pass {cleanupPassNumber}: buying missing feed ({remainingSessionBudget} sessions remain).",
         CleanupPhase.Feeding => $"Pass {cleanupPassNumber}: feeding ({remainingSessionBudget} sessions remain).",
         CleanupPhase.WaitingToRetry => $"Pass {cleanupPassNumber}: cleanup/retry in {GetRetrySecondsRemaining():0.0}s. {cleanupRetryReason}",
+        CleanupPhase.WaitingToVerifyCaps => $"Pass {cleanupPassNumber}: waiting to verify caps in {GetRetrySecondsRemaining():0.0}s. {cleanupRetryReason}",
+        CleanupPhase.RefreshingChocoboStats => $"Pass {cleanupPassNumber}: refreshing Chocobo stats. {ChocoboStatsService.StatusText}",
+        CleanupPhase.WaitingToRetryRefresh => $"Pass {cleanupPassNumber}: Chocobo stat refresh failed; retrying refresh in {GetRetrySecondsRemaining():0.0}s. {ChocoboStatsService.StatusText}",
         _ => cleanupTerminalStatus,
     };
 
@@ -221,6 +227,10 @@ public sealed class Plugin : IDalamudPlugin
 
     public void StopAutomation(bool printStatus = true)
     {
+        var cancelRecoveryRefresh = cleanupMode != CleanupMode.None &&
+                                    cleanupPhase is CleanupPhase.WaitingToVerifyCaps
+                                        or CleanupPhase.RefreshingChocoboStats
+                                        or CleanupPhase.WaitingToRetryRefresh;
         cleanupMode = CleanupMode.None;
         cleanupPhase = CleanupPhase.Idle;
         cleanupRetryAtUtc = DateTime.MinValue;
@@ -230,9 +240,25 @@ public sealed class Plugin : IDalamudPlugin
         cleanupTerminalStatus = printStatus ? "Stopped manually." : "Idle";
         VendorPurchaseService.Reset();
         StableFeedingService.Reset();
+        if (cancelRecoveryRefresh)
+            ChocoboStatsService.CancelRefresh();
         GameHelpers.StopMovement();
         if (printStatus)
             PrintStatus("Automation stopped.");
+    }
+
+    public void ClearPlan()
+    {
+        StopAutomation(printStatus: false);
+        Configuration.PlannedMaximumSpeedTrainings = 0;
+        Configuration.PlannedAccelerationTrainings = 0;
+        Configuration.PlannedEnduranceTrainings = 0;
+        Configuration.PlannedStaminaTrainings = 0;
+        Configuration.PlannedCunningTrainings = 0;
+        Configuration.Save();
+        cleanupTerminalStatus = "Training plan cleared.";
+        Log.Information("[ChokeAbo] Training plan cleared; feed grades were preserved.");
+        PrintStatus("Training plan cleared.");
     }
 
     public void StartBuyOnly()
@@ -327,11 +353,11 @@ public sealed class Plugin : IDalamudPlugin
                 break;
 
             case CleanupPhase.Feeding when StableFeedingService.IsComplete:
-                FinishFeedingPass("Feeding pass completed.");
+                FinishFeedingPass("Feeding pass completed.", verifyCaps: false);
                 break;
 
             case CleanupPhase.Feeding when StableFeedingService.IsFailed:
-                FinishFeedingPass($"Feeding pass failed: {StableFeedingService.StatusText}");
+                FinishFeedingPass($"Feeding pass failed: {StableFeedingService.StatusText}", verifyCaps: true);
                 break;
 
             case CleanupPhase.WaitingToRetry when DateTime.UtcNow >= cleanupRetryAtUtc:
@@ -339,14 +365,45 @@ public sealed class Plugin : IDalamudPlugin
                 StableFeedingService.Reset();
                 StartCleanupPass();
                 break;
+
+            case CleanupPhase.WaitingToVerifyCaps when DateTime.UtcNow >= cleanupRetryAtUtc:
+                VendorPurchaseService.Reset();
+                StableFeedingService.Reset();
+                cleanupPhase = CleanupPhase.RefreshingChocoboStats;
+                ChocoboStatsService.RequestRefresh();
+                break;
+
+            case CleanupPhase.RefreshingChocoboStats when ChocoboStatsService.IsRefreshComplete:
+                ReconcileSessionBudgetFromRefreshedSnapshot();
+                ReconcileCappedStats();
+                StartCleanupPass();
+                break;
+
+            case CleanupPhase.RefreshingChocoboStats when ChocoboStatsService.IsRefreshFailed:
+                cleanupRetryReason = $"Chocobo stat refresh failed: {ChocoboStatsService.StatusText}";
+                cleanupRetryAtUtc = DateTime.UtcNow + CleanupRetryDelay;
+                cleanupPhase = CleanupPhase.WaitingToRetryRefresh;
+                Log.Warning($"[ChokeAbo] {cleanupRetryReason} Retrying refresh in {CleanupRetryDelay.TotalSeconds:0}s without resuming automation.");
+                break;
+
+            case CleanupPhase.WaitingToRetryRefresh when DateTime.UtcNow >= cleanupRetryAtUtc:
+                cleanupPhase = CleanupPhase.RefreshingChocoboStats;
+                ChocoboStatsService.RequestRefresh();
+                break;
         }
     }
 
-    private void FinishFeedingPass(string retryReason)
+    private void FinishFeedingPass(string retryReason, bool verifyCaps)
     {
         var confirmedFeeds = StableFeedingService.ConfirmedFeedCount;
         remainingSessionBudget = Math.Max(0, remainingSessionBudget - confirmedFeeds);
         var remainingPlan = ChocoboStatsService.GetPlannedTrainingCount(Configuration);
+
+        if (verifyCaps)
+        {
+            ScheduleCapVerification(retryReason, confirmedFeeds);
+            return;
+        }
 
         if (remainingPlan == 0)
         {
@@ -363,6 +420,83 @@ public sealed class Plugin : IDalamudPlugin
         }
 
         ScheduleCleanupRetry(retryReason, confirmedFeeds);
+    }
+
+    private void ScheduleCapVerification(string retryReason, int confirmedFeeds)
+    {
+        var remainingPlan = ChocoboStatsService.GetPlannedTrainingCount(Configuration);
+        cleanupRetryReason = retryReason;
+        cleanupRetryAtUtc = DateTime.UtcNow + CleanupRetryDelay;
+        cleanupPhase = CleanupPhase.WaitingToVerifyCaps;
+        ChocoboStatsService.CancelRefresh();
+        GameHelpers.StopMovement();
+        LogCleanupPass(confirmedFeeds, remainingPlan, $"{retryReason}; waiting to verify caps");
+    }
+
+    private void ReconcileCappedStats()
+    {
+        var snapshot = ChocoboStatsService.Snapshot;
+        var cappedStatsFound = 0;
+
+        cappedStatsFound += ClearCappedPlannedStat(
+            "Maximum Speed",
+            snapshot.MaximumSpeed,
+            Configuration.PlannedMaximumSpeedTrainings,
+            () => Configuration.PlannedMaximumSpeedTrainings = 0);
+        cappedStatsFound += ClearCappedPlannedStat(
+            "Acceleration",
+            snapshot.Acceleration,
+            Configuration.PlannedAccelerationTrainings,
+            () => Configuration.PlannedAccelerationTrainings = 0);
+        cappedStatsFound += ClearCappedPlannedStat(
+            "Endurance",
+            snapshot.Endurance,
+            Configuration.PlannedEnduranceTrainings,
+            () => Configuration.PlannedEnduranceTrainings = 0);
+        cappedStatsFound += ClearCappedPlannedStat(
+            "Stamina",
+            snapshot.Stamina,
+            Configuration.PlannedStaminaTrainings,
+            () => Configuration.PlannedStaminaTrainings = 0);
+        cappedStatsFound += ClearCappedPlannedStat(
+            "Cunning",
+            snapshot.Cunning,
+            Configuration.PlannedCunningTrainings,
+            () => Configuration.PlannedCunningTrainings = 0);
+
+        if (cappedStatsFound > 0)
+        {
+            Configuration.Save();
+            Log.Information($"[ChokeAbo] Reconciled {cappedStatsFound} capped stat(s) from the refreshed snapshot and saved the training plan once.");
+        }
+        else
+        {
+            Log.Information("[ChokeAbo] Refreshed snapshot contained no capped stats; retaining the remaining training plan.");
+        }
+    }
+
+    private void ReconcileSessionBudgetFromRefreshedSnapshot()
+    {
+        var previousSessionBudget = remainingSessionBudget;
+        var refreshedSessionsAvailable = ChocoboStatsService.Snapshot.SessionsAvailable > int.MaxValue
+            ? int.MaxValue
+            : (int)ChocoboStatsService.Snapshot.SessionsAvailable;
+
+        remainingSessionBudget = Math.Min(Math.Max(0, remainingSessionBudget), Math.Max(0, refreshedSessionsAvailable));
+
+        Log.Information(
+            $"[ChokeAbo] Reconciled cleanup session budget after Chocobo stat refresh: previous local budget={previousSessionBudget}, refreshed sessions={refreshedSessionsAvailable}, reconciled budget={remainingSessionBudget}.");
+    }
+
+    private int ClearCappedPlannedStat(string statLabel, ChocoboStatSnapshot stat, int removedQuantity, Action clear)
+    {
+        if (stat.Maximum <= 0 || stat.Current < stat.Maximum)
+            return 0;
+
+        clear();
+        Log.Information(
+            $"[ChokeAbo] Capped stat verified: {statLabel}={stat.Current:0.##}/{stat.Maximum:0.##}; removed planned quantity={Math.Max(0, removedQuantity)}.");
+        return 1;
     }
 
     private void ScheduleCleanupRetry(string retryReason, int confirmedFeeds)
