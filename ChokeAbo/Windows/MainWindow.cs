@@ -29,11 +29,6 @@ public sealed class MainWindow : Window, IDisposable
     {
     }
 
-    public override void OnOpen()
-    {
-        chocoboStatsService.RequestRefresh();
-    }
-
     public override void Draw()
     {
         var cfg = plugin.Configuration;
@@ -126,6 +121,10 @@ public sealed class MainWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableSetColumnIndex(0);
+            ImGui.Text($"Rank: {snapshot.Rank}");
+            ImGui.Text($"Rating: {snapshot.Rating}");
+            ImGui.Text($"Pedigree: {snapshot.PedigreeLevel}");
+            ImGui.Text($"XP: {snapshot.ExperienceCurrent:N0}/{snapshot.ExperienceMax:N0}");
             ImGui.Text($"Sessions: {snapshot.SessionsAvailable}");
             ImGui.Text($"Plan: {plannedSessions}");
 
@@ -148,11 +147,12 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.SameLine();
         ImGui.TextColored(mgpColor, $"Need MGP: {purchasePlan.TotalMgp:N0}");
 
-        if (ImGui.BeginTable("ChokeAboCurrentAndProjected", 3, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV))
+        if (ImGui.BeginTable("ChokeAboCurrentAndProjected", 4, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV))
         {
             ImGui.TableSetupColumn("Stat");
-            ImGui.TableSetupColumn("Now", ImGuiTableColumnFlags.WidthFixed, 80f);
-            ImGui.TableSetupColumn("After", ImGuiTableColumnFlags.WidthFixed, 80f);
+            ImGui.TableSetupColumn("Stars", ImGuiTableColumnFlags.WidthFixed, 56f);
+            ImGui.TableSetupColumn("Now", ImGuiTableColumnFlags.WidthFixed, 88f);
+            ImGui.TableSetupColumn("After", ImGuiTableColumnFlags.WidthFixed, 88f);
             ImGui.TableHeadersRow();
 
             DrawProjectionRow("Maximum Speed", snapshot.MaximumSpeed, projected.MaximumSpeed);
@@ -329,8 +329,10 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.TableSetColumnIndex(0);
         ImGui.TextUnformatted(label);
         ImGui.TableSetColumnIndex(1);
-        ImGui.TextUnformatted(FormatStatPair(current));
+        ImGui.TextUnformatted(FormatStars(current));
         ImGui.TableSetColumnIndex(2);
+        ImGui.TextUnformatted(FormatStatPair(current));
+        ImGui.TableSetColumnIndex(3);
 
         if (projected.Current > current.Current)
         {
@@ -398,11 +400,17 @@ public sealed class MainWindow : Window, IDisposable
         if (!snapshot.IsLoaded)
             return $"Chocobo stats unavailable. Planned trainings: {plannedSessions}.";
 
-        return $"Sessions {snapshot.SessionsAvailable}, plan {plannedSessions}, speed {FormatStatPair(snapshot.MaximumSpeed)}, acceleration {FormatStatPair(snapshot.Acceleration)}, endurance {FormatStatPair(snapshot.Endurance)}, stamina {FormatStatPair(snapshot.Stamina)}, cunning {FormatStatPair(snapshot.Cunning)}.";
+        return $"Rank {snapshot.Rank}, rating {snapshot.Rating}, pedigree {snapshot.PedigreeLevel}, XP {snapshot.ExperienceCurrent}/{snapshot.ExperienceMax}, sessions {snapshot.SessionsAvailable}, plan {plannedSessions}, speed {FormatStatWithStars(snapshot.MaximumSpeed)}, acceleration {FormatStatWithStars(snapshot.Acceleration)}, endurance {FormatStatWithStars(snapshot.Endurance)}, stamina {FormatStatWithStars(snapshot.Stamina)}, cunning {FormatStatWithStars(snapshot.Cunning)}.";
     }
+
+    private static string FormatStatWithStars(ChocoboStatSnapshot stat)
+        => $"{FormatStatPair(stat)} ({FormatStars(stat)})";
 
     private static string FormatStatPair(ChocoboStatSnapshot stat)
         => $"{FormatStat(stat.Current)}/{FormatStat(stat.Maximum)}";
+
+    private static string FormatStars(ChocoboStatSnapshot stat)
+        => stat.Stars == 1 ? "1 star" : $"{stat.Stars} stars";
 
     private static string FormatStat(decimal value)
         => value.ToString("0.#", CultureInfo.InvariantCulture);

@@ -56,14 +56,14 @@ public sealed class Plugin : IDalamudPlugin
         configWindow = new ConfigWindow(this);
         WindowSystem.AddWindow(mainWindow);
         WindowSystem.AddWindow(configWindow);
-        CommandManager.AddHandler(PluginInfo.Command, new CommandInfo(OnCommand) { HelpMessage = $"Open {PluginInfo.DisplayName}. Use {PluginInfo.Command} config for settings." });
+        CommandManager.AddHandler(PluginInfo.Command, new CommandInfo(OnCommand) { HelpMessage = $"Open {PluginInfo.DisplayName}. Use {PluginInfo.Command} refresh to refresh racing chocobo data or {PluginInfo.Command} config for settings." });
         PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi += ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Plugin loaded.");
+        Log.Information("[Choke-abo] Fixed-build marker 2026-07-01: delayed GoldSaucerInfo Chocobo callbacks use payload 130 with payload 131 fallback and 2.0s ready gating.");
     }
 
     public void Dispose()
@@ -112,17 +112,52 @@ public sealed class Plugin : IDalamudPlugin
         ToastGui.ShowError(DutyMainWindowDeniedMessage);
     }
 
-    private void OpenMainUi()
+    private void OpenMainUi(bool requestRefresh = false)
     {
         if (DenyMainWindowInDuty(forceToast: true))
             return;
 
         mainWindow.IsOpen = true;
+        if (requestRefresh)
+            ChocoboStatsService.RequestRefresh();
     }
 
     private void OnCommand(string command, string arguments)
     {
-        var a = arguments.Trim(); if (a.Equals("config", StringComparison.OrdinalIgnoreCase)) { ToggleConfigUi(); return; } if (a.Equals("on", StringComparison.OrdinalIgnoreCase)) { Configuration.PluginEnabled = true; Configuration.Save(); UpdateDtrBar(); return; } if (a.Equals("off", StringComparison.OrdinalIgnoreCase)) { Configuration.PluginEnabled = false; Configuration.Save(); UpdateDtrBar(); return; } ToggleMainUi();
+        var a = arguments.Trim();
+        if (a.Equals("config", StringComparison.OrdinalIgnoreCase))
+        {
+            ToggleConfigUi();
+            return;
+        }
+
+        if (a.Equals("on", StringComparison.OrdinalIgnoreCase))
+        {
+            Configuration.PluginEnabled = true;
+            Configuration.Save();
+            UpdateDtrBar();
+            return;
+        }
+
+        if (a.Equals("off", StringComparison.OrdinalIgnoreCase))
+        {
+            Configuration.PluginEnabled = false;
+            Configuration.Save();
+            UpdateDtrBar();
+            return;
+        }
+
+        if (a.Equals("refresh", StringComparison.OrdinalIgnoreCase))
+        {
+            if (DenyMainWindowInDuty(forceToast: true))
+                return;
+
+            mainWindow.IsOpen = true;
+            ChocoboStatsService.RequestRefresh();
+            return;
+        }
+
+        OpenMainUi(requestRefresh: true);
     }
 
     private void SetupDtrBar()
