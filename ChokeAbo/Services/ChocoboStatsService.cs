@@ -272,12 +272,17 @@ public sealed class ChocoboStatsService
         };
     }
 
-    public FeedPurchasePlan BuildPurchasePlan(Configuration configuration, bool capToSessions = false)
+    public FeedPurchasePlan BuildPurchasePlan(
+        Configuration configuration,
+        bool capToSessions = false,
+        int? sessionCap = null)
     {
         var entries = new List<FeedPurchaseEntry>();
-        var remainingSessions = capToSessions && Snapshot.IsLoaded
-            ? (int)Snapshot.SessionsAvailable
-            : int.MaxValue;
+        var remainingSessions = sessionCap.HasValue
+            ? Math.Max(0, sessionCap.Value)
+            : capToSessions && Snapshot.IsLoaded
+                ? (int)Snapshot.SessionsAvailable
+                : int.MaxValue;
 
         AddPurchaseEntry(entries, ChocoboStatKind.MaximumSpeed, "Maximum Speed", configuration.PlannedMaximumSpeedTrainings, configuration.MaximumSpeedFeedGrade, ref remainingSessions);
         AddPurchaseEntry(entries, ChocoboStatKind.Acceleration, "Acceleration", configuration.PlannedAccelerationTrainings, configuration.AccelerationFeedGrade, ref remainingSessions);

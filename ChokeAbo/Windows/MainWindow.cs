@@ -308,6 +308,7 @@ public sealed class MainWindow : Window, IDisposable
             plugin.StopAutomation();
 
         ImGui.TextDisabled("Automation uses the session-capped plan and subtracts feed already on hand before buying.");
+        ImGui.Text($"Cleanup status: {plugin.CleanupStatusText}");
         ImGui.Text($"Buy status: {plugin.VendorPurchaseService.StatusText}");
         ImGui.Text($"Feed status: {plugin.StableFeedingService.StatusText}");
     }

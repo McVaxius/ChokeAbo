@@ -67,6 +67,7 @@ public sealed class StableFeedingService
     public bool IsRunning => state is not FeedState.Idle and not FeedState.Complete and not FeedState.Failed;
     public bool IsComplete => state == FeedState.Complete;
     public bool IsFailed => state == FeedState.Failed;
+    public int ConfirmedFeedCount { get; private set; }
     public string StatusText => state switch
     {
         FeedState.Idle => "Idle",
@@ -99,6 +100,7 @@ public sealed class StableFeedingService
         lastError = string.Empty;
         lastInteractionAtUtc = DateTime.MinValue;
         consecutiveTrainerRecoveries = 0;
+        ConfirmedFeedCount = 0;
 
         if (queue.Count == 0)
         {
@@ -123,6 +125,7 @@ public sealed class StableFeedingService
         lastInteractionAtUtc = DateTime.MinValue;
         lastError = string.Empty;
         consecutiveTrainerRecoveries = 0;
+        ConfirmedFeedCount = 0;
         state = FeedState.Idle;
         stateEnteredAtUtc = DateTime.MinValue;
     }
@@ -413,6 +416,7 @@ public sealed class StableFeedingService
 
             consecutiveTrainerRecoveries = 0;
             remainingFeedsForCurrentEntry--;
+            ConfirmedFeedCount++;
             DecrementPlannedTraining(current.StatKind);
             log.Information($"[ChokeAbo] Fed {current.FeedName}. Remaining for this feed: {remainingFeedsForCurrentEntry}");
 

@@ -32,6 +32,7 @@ public sealed class Plugin : IDalamudPlugin
 
     private const string DutyMainWindowDeniedMessage = "Choke-abo main window closed because you are in a duty.";
     private static readonly TimeSpan DutyToastThrottle = TimeSpan.FromSeconds(2);
+    private static readonly TimeSpan CleanupRetryDelay = TimeSpan.FromSeconds(2);
 
     public Configuration Configuration { get; }
     internal ChocoboStatsService ChocoboStatsService { get; }
@@ -42,8 +43,29 @@ public sealed class Plugin : IDalamudPlugin
     private readonly MainWindow mainWindow;
     private readonly ConfigWindow configWindow;
     private IDtrBarEntry? dtrEntry;
-    private FeedPurchasePlan? pendingFeedPlanAfterBuy;
     private DateTime lastDutyDeniedToastUtc = DateTime.MinValue;
+    private CleanupMode cleanupMode;
+    private CleanupPhase cleanupPhase;
+    private DateTime cleanupRetryAtUtc = DateTime.MinValue;
+    private int cleanupPassNumber;
+    private int remainingSessionBudget;
+    private string cleanupRetryReason = string.Empty;
+    private string cleanupTerminalStatus = "Idle";
+
+    private enum CleanupMode
+    {
+        None,
+        FeedOnly,
+        FullCycle,
+    }
+
+    private enum CleanupPhase
+    {
+        Idle,
+        Purchasing,
+        Feeding,
+        WaitingToRetry,
+    }
 
     public Plugin()
     {
@@ -87,7 +109,14 @@ public sealed class Plugin : IDalamudPlugin
 
     public void ToggleConfigUi() => configWindow.Toggle();
     public void PrintStatus(string m) => ChatGui.Print($"[{PluginInfo.DisplayName}] {m}");
-    public bool IsAutomationRunning => VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || pendingFeedPlanAfterBuy != null;
+    public bool IsAutomationRunning => VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || cleanupMode != CleanupMode.None;
+    public string CleanupStatusText => cleanupPhase switch
+    {
+        CleanupPhase.Purchasing => $"Pass {cleanupPassNumber}: buying missing feed ({remainingSessionBudget} sessions remain).",
+        CleanupPhase.Feeding => $"Pass {cleanupPassNumber}: feeding ({remainingSessionBudget} sessions remain).",
+        CleanupPhase.WaitingToRetry => $"Pass {cleanupPassNumber}: cleanup/retry in {GetRetrySecondsRemaining():0.0}s. {cleanupRetryReason}",
+        _ => cleanupTerminalStatus,
+    };
 
     private bool IsInDuty()
         => Condition[ConditionFlag.BoundByDuty] || Condition[ConditionFlag.BoundByDuty56];
@@ -179,20 +208,7 @@ public sealed class Plugin : IDalamudPlugin
         ChocoboStatsService.Update();
         VendorPurchaseService.Update();
         StableFeedingService.Update();
-
-        if (pendingFeedPlanAfterBuy != null)
-        {
-            if (VendorPurchaseService.IsComplete)
-            {
-                var pendingPlan = pendingFeedPlanAfterBuy;
-                pendingFeedPlanAfterBuy = null;
-                StableFeedingService.Start(pendingPlan);
-            }
-            else if (VendorPurchaseService.IsFailed)
-            {
-                pendingFeedPlanAfterBuy = null;
-            }
-        }
+        UpdateCleanupAutomation();
 
         UpdateDtrBar();
     }
@@ -200,9 +216,18 @@ public sealed class Plugin : IDalamudPlugin
     public FeedPurchasePlan BuildAutomationPlan()
         => ChocoboStatsService.BuildPurchasePlan(Configuration, capToSessions: true);
 
+    private FeedPurchasePlan BuildCleanupPlan()
+        => ChocoboStatsService.BuildPurchasePlan(Configuration, sessionCap: remainingSessionBudget);
+
     public void StopAutomation(bool printStatus = true)
     {
-        pendingFeedPlanAfterBuy = null;
+        cleanupMode = CleanupMode.None;
+        cleanupPhase = CleanupPhase.Idle;
+        cleanupRetryAtUtc = DateTime.MinValue;
+        cleanupPassNumber = 0;
+        remainingSessionBudget = 0;
+        cleanupRetryReason = string.Empty;
+        cleanupTerminalStatus = printStatus ? "Stopped manually." : "Idle";
         VendorPurchaseService.Reset();
         StableFeedingService.Reset();
         GameHelpers.StopMovement();
@@ -213,30 +238,162 @@ public sealed class Plugin : IDalamudPlugin
     public void StartBuyOnly()
     {
         StopAutomation(printStatus: false);
-        pendingFeedPlanAfterBuy = null;
         VendorPurchaseService.Start(BuildAutomationPlan());
     }
 
     public void StartFeedOnly()
     {
         StopAutomation(printStatus: false);
-        pendingFeedPlanAfterBuy = null;
-        StableFeedingService.Start(BuildAutomationPlan());
+        StartCleanupAutomation(CleanupMode.FeedOnly);
     }
 
     public void StartFullCycle()
     {
         StopAutomation(printStatus: false);
-        var plan = BuildAutomationPlan();
+        StartCleanupAutomation(CleanupMode.FullCycle);
+    }
 
-        if (plan.Entries.Any(entry => entry.QuantityToBuy > 0))
+    private void StartCleanupAutomation(CleanupMode mode)
+    {
+        cleanupMode = mode;
+        cleanupPhase = CleanupPhase.Idle;
+        cleanupPassNumber = 0;
+        remainingSessionBudget = ChocoboStatsService.Snapshot.IsLoaded
+            ? (int)ChocoboStatsService.Snapshot.SessionsAvailable
+            : 0;
+        cleanupRetryReason = string.Empty;
+
+        if (!ChocoboStatsService.Snapshot.IsLoaded)
         {
-            pendingFeedPlanAfterBuy = plan;
+            FinishCleanup("Cleanup did not start: load racing chocobo data first.");
+            return;
+        }
+
+        StartCleanupPass();
+    }
+
+    private void StartCleanupPass()
+    {
+        var remainingPlan = ChocoboStatsService.GetPlannedTrainingCount(Configuration);
+        if (remainingPlan == 0)
+        {
+            FinishCleanup("Cleanup complete: no planned training remains.");
+            return;
+        }
+
+        if (remainingSessionBudget == 0)
+        {
+            FinishCleanup($"Cleanup complete: session budget exhausted with {remainingPlan} planned training deferred.");
+            return;
+        }
+
+        cleanupPassNumber++;
+        cleanupRetryAtUtc = DateTime.MinValue;
+        cleanupRetryReason = string.Empty;
+        var plan = BuildCleanupPlan();
+
+        Log.Information(
+            $"[ChokeAbo] Starting cleanup pass {cleanupPassNumber}: confirmed feeds=0, remaining sessions={remainingSessionBudget}, remaining plan={remainingPlan}, retry reason=none.");
+
+        if (cleanupMode == CleanupMode.FullCycle && plan.Entries.Any(entry => entry.QuantityToBuy > 0))
+        {
+            VendorPurchaseService.Reset();
+            cleanupPhase = CleanupPhase.Purchasing;
             VendorPurchaseService.Start(plan);
             return;
         }
 
-        pendingFeedPlanAfterBuy = null;
+        StableFeedingService.Reset();
+        cleanupPhase = CleanupPhase.Feeding;
         StableFeedingService.Start(plan);
     }
+
+    private void UpdateCleanupAutomation()
+    {
+        if (cleanupMode == CleanupMode.None)
+            return;
+
+        switch (cleanupPhase)
+        {
+            case CleanupPhase.Purchasing when VendorPurchaseService.IsComplete:
+                VendorPurchaseService.Reset();
+                var plan = BuildCleanupPlan();
+                cleanupPhase = CleanupPhase.Feeding;
+                StableFeedingService.Start(plan);
+                break;
+
+            case CleanupPhase.Purchasing when VendorPurchaseService.IsFailed:
+                ScheduleCleanupRetry($"Purchase pass failed: {VendorPurchaseService.StatusText}", confirmedFeeds: 0);
+                break;
+
+            case CleanupPhase.Feeding when StableFeedingService.IsComplete:
+                FinishFeedingPass("Feeding pass completed.");
+                break;
+
+            case CleanupPhase.Feeding when StableFeedingService.IsFailed:
+                FinishFeedingPass($"Feeding pass failed: {StableFeedingService.StatusText}");
+                break;
+
+            case CleanupPhase.WaitingToRetry when DateTime.UtcNow >= cleanupRetryAtUtc:
+                VendorPurchaseService.Reset();
+                StableFeedingService.Reset();
+                StartCleanupPass();
+                break;
+        }
+    }
+
+    private void FinishFeedingPass(string retryReason)
+    {
+        var confirmedFeeds = StableFeedingService.ConfirmedFeedCount;
+        remainingSessionBudget = Math.Max(0, remainingSessionBudget - confirmedFeeds);
+        var remainingPlan = ChocoboStatsService.GetPlannedTrainingCount(Configuration);
+
+        if (remainingPlan == 0)
+        {
+            LogCleanupPass(confirmedFeeds, remainingPlan, "remaining plan reached zero");
+            FinishCleanup("Cleanup complete: no planned training remains.");
+            return;
+        }
+
+        if (remainingSessionBudget == 0)
+        {
+            LogCleanupPass(confirmedFeeds, remainingPlan, "session budget reached zero");
+            FinishCleanup($"Cleanup complete: session budget exhausted with {remainingPlan} planned training deferred.");
+            return;
+        }
+
+        ScheduleCleanupRetry(retryReason, confirmedFeeds);
+    }
+
+    private void ScheduleCleanupRetry(string retryReason, int confirmedFeeds)
+    {
+        var remainingPlan = ChocoboStatsService.GetPlannedTrainingCount(Configuration);
+        cleanupRetryReason = retryReason;
+        cleanupRetryAtUtc = DateTime.UtcNow + CleanupRetryDelay;
+        cleanupPhase = CleanupPhase.WaitingToRetry;
+        GameHelpers.StopMovement();
+        LogCleanupPass(confirmedFeeds, remainingPlan, retryReason);
+    }
+
+    private void LogCleanupPass(int confirmedFeeds, int remainingPlan, string retryReason)
+    {
+        Log.Information(
+            $"[ChokeAbo] Cleanup pass {cleanupPassNumber}: confirmed feeds={confirmedFeeds}, remaining sessions={remainingSessionBudget}, remaining plan={remainingPlan}, retry reason={retryReason}");
+    }
+
+    private void FinishCleanup(string status)
+    {
+        cleanupMode = CleanupMode.None;
+        cleanupPhase = CleanupPhase.Idle;
+        cleanupRetryAtUtc = DateTime.MinValue;
+        cleanupRetryReason = string.Empty;
+        cleanupTerminalStatus = status;
+        VendorPurchaseService.Reset();
+        StableFeedingService.Reset();
+        GameHelpers.StopMovement();
+        Log.Information($"[ChokeAbo] {status}");
+    }
+
+    private double GetRetrySecondsRemaining()
+        => Math.Max(0, (cleanupRetryAtUtc - DateTime.UtcNow).TotalSeconds);
 }
