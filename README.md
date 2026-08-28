@@ -18,27 +18,24 @@ Dalamud plugin workspace for `Choke-abo`.
 
 ## Current Status
 
-Bootstrap scaffold created on 2026-03-25. This repo now has a buildable `Debug x64` shell with command routing, Ko-fi placement, DTR support, icon assets, and repo-ready documentation.
+Stage 1 target-pedigree automation is implemented and builds in `Debug x64`. Inventory decoding, deterministic planning, per-character lifecycle persistence, adaptive feeding, V1/V2 IPC, and the passive dialog recorder are present. Exact retirement, covering, fledgling-selection, and adoption actions remain safely blocked until the four recorder captures provide their real addon mappings; this has not been accepted live in game.
 
 - Solution: `Z:\ChokeAbo\ChokeAbo.sln`
 - Project: `Z:\ChokeAbo\ChokeAbo\ChokeAbo.csproj`
 - Command: `/chokeabo`
+- Capture recorder: `/chokeabo dpopup`
 - Repository target: `Public`
 
-## Plugin Concept
+## Target-pedigree workflow
 
-- Track current stats and feed plans.
-- Reserve stable and vendor automation seams.
-- Bias toward transparent deterministic flows.
+- VERMAXION remains the settings owner and defaults to Always Race. Its optional Target Pedigree mode supplies pedigree G2-G9, retirement rank 40-50, and preferred feed grade 1-3 over strict V2 JSON IPC.
+- Choke-abo selects exact inventory forms by useful pedigree/sex, remaining capacity, container, and slot. It persists action intent before purchases or feeding and yields racing only when the current plan permits it.
+- Target feeding spends one confirmed stable session per adaptive round, consumes stocked preferred-grade feed first, and can fall back to Grade 1 gil feed when higher-grade MGP is exhausted.
+- Covering uses a 24-hour eligibility wait. Legacy covering state is migrated once without changing the configuration version.
 
-## Planned Services
+## Dialog capture handoff
 
-- CharacterStateService
-- RecommendationEngine
-- InventoryService
-- VendorPurchaseService
-- StableFeedingService
-- PlanStorageService
+Run `/chokeabo dpopup` and capture each workflow manually with multiple eligible forms visible. The window permits one active capture and contains Start/Stop buttons for Retirement, Covering Selector, Fledgling Selector, and Adoption plus Open Folder. It appends UTF-8 sessions to `retirement.md`, `cselector.md`, `fselector.md`, and `adoption.md` in Choke-abo's plugin configuration directory. The recorder is passive: it refuses to start while Choke-abo automation is running and never operates or stops the client.
 
 ## Documents
 

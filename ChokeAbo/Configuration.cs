@@ -1,5 +1,7 @@
 using Dalamud.Configuration;
+using ChokeAbo.Services;
 using System;
+using System.Collections.Generic;
 
 namespace ChokeAbo;
 
@@ -23,5 +25,6 @@ public class Configuration : IPluginConfiguration
     public int StaminaFeedGrade { get; set; } = 1;
     public int PlannedCunningTrainings { get; set; }
     public int CunningFeedGrade { get; set; } = 1;
+    public Dictionary<ulong, BreedingCharacterState> BreedingStates { get; set; } = new();
     public void Save() => Plugin.PluginInterface.SavePluginConfig(this);
 }

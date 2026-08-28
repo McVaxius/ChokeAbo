@@ -160,6 +160,70 @@ public sealed class ChocoboStatsService
     public bool ReadAvailableSnapshot()
         => TryCaptureSnapshot();
 
+    public ActiveRacerSnapshot ReadActiveRacerSnapshot()
+    {
+        if (!TryCaptureSnapshot())
+            return new ActiveRacerSnapshot(false, 0, 0, ChocoboSex.Unknown, false);
+
+        return ReadActiveRacerFromManager();
+    }
+
+    public ChocoboStatKind? SelectLowestEligibleStat()
+    {
+        if (!Snapshot.IsLoaded || Snapshot.SessionsAvailable == 0)
+            return null;
+
+        return Enum.GetValues<ChocoboStatKind>()
+            .Select(kind => (Kind: kind, Stat: Snapshot.GetStat(kind)))
+            .Where(entry => entry.Stat.Maximum > 0 && entry.Stat.Current < entry.Stat.Maximum)
+            .OrderBy(entry => entry.Stat.Current / entry.Stat.Maximum)
+            .ThenBy(entry => entry.Kind)
+            .Select(entry => (ChocoboStatKind?)entry.Kind)
+            .FirstOrDefault();
+    }
+
+    public FeedPurchasePlan BuildSingleTargetFeedPlan(ChocoboStatKind statKind, int preferredGrade)
+    {
+        var grade = Math.Clamp(preferredGrade, 1, 3);
+        var preferred = FeedCatalog.Get(statKind, grade);
+        var preferredItemId = inventoryService.ResolveItemId(preferred.FeedName);
+        var preferredOnHand = inventoryService.GetItemCount(preferredItemId);
+        var currentMgp = GetCurrencyBalance(MgpItemId);
+        if (grade > 1 && preferredOnHand == 0 && currentMgp < preferred.UnitCost)
+            grade = 1;
+
+        var definition = FeedCatalog.Get(statKind, grade);
+        var itemId = inventoryService.ResolveItemId(definition.FeedName);
+        var onHand = inventoryService.GetItemCount(itemId);
+        var entry = new FeedPurchaseEntry(
+            statKind,
+            GetStatLabel(statKind),
+            definition.FeedName,
+            itemId,
+            1,
+            onHand,
+            onHand > 0 ? 0 : 1,
+            grade,
+            definition.CurrencyKind,
+            definition.VendorCategoryLabel,
+            definition.VendorCategoryIndex,
+            definition.ExpectedAddonName,
+            definition.VendorCallbackGroup,
+            definition.VendorCallbackIndex,
+            definition.UnitCost);
+        var currentGil = GetCurrencyBalance(GilItemId);
+        currentMgp = GetCurrencyBalance(MgpItemId);
+        return new FeedPurchasePlan(
+            new[] { entry },
+            currentGil,
+            currentMgp,
+            entry.CurrencyKind == FeedCurrencyKind.Gil ? entry.TotalCost : 0,
+            entry.CurrencyKind == FeedCurrencyKind.Mgp ? entry.TotalCost : 0,
+            1,
+            (int)Snapshot.SessionsAvailable,
+            Snapshot.IsLoaded);
+    }
+
     public void RequestRefresh()
     {
         if (IsRefreshActive())
@@ -349,6 +413,17 @@ public sealed class ChocoboStatsService
     private static int GetGradePercent(int selectedGrade)
         => Math.Clamp(selectedGrade, 1, 3);
 
+    private static string GetStatLabel(ChocoboStatKind statKind)
+        => statKind switch
+        {
+            ChocoboStatKind.MaximumSpeed => "Maximum Speed",
+            ChocoboStatKind.Acceleration => "Acceleration",
+            ChocoboStatKind.Endurance => "Endurance",
+            ChocoboStatKind.Stamina => "Stamina",
+            ChocoboStatKind.Cunning => "Cunning",
+            _ => statKind.ToString(),
+        };
+
     private void AddPurchaseEntry(
         ICollection<FeedPurchaseEntry> entries,
         ChocoboStatKind statKind,
@@ -446,6 +521,28 @@ public sealed class ChocoboStatsService
         {
             log.Warning($"[ChokeAbo] Failed to read RaceChocoboManager stats: {ex.Message}");
             return false;
+        }
+    }
+
+    private unsafe ActiveRacerSnapshot ReadActiveRacerFromManager()
+    {
+        try
+        {
+            var manager = RaceChocoboManager.Instance();
+            if (manager == null || manager->State != RaceChocoboManager.RaceChocoboState.Loaded)
+                return new ActiveRacerSnapshot(false, 0, 0, ChocoboSex.Unknown, false);
+
+            return new ActiveRacerSnapshot(
+                true,
+                manager->Rank,
+                manager->GetPedigreeLevel(),
+                manager->IsFemale ? ChocoboSex.Female : ChocoboSex.Male,
+                SelectLowestEligibleStat().HasValue);
+        }
+        catch (Exception ex)
+        {
+            log.Warning($"[ChokeAbo] Failed to read active racer identity: {ex.Message}");
+            return new ActiveRacerSnapshot(false, 0, 0, ChocoboSex.Unknown, false);
         }
     }
 

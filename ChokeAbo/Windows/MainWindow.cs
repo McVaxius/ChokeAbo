@@ -311,6 +311,10 @@ public sealed class MainWindow : Window, IDisposable
             plugin.StartFullCycle();
 
         ImGui.SameLine();
+        if (ImGui.Button("Start / Resume Breeding", new Vector2(170f, 28f)))
+            plugin.StartBreeding();
+
+        ImGui.SameLine();
         if (ImGui.Button("Stop", new Vector2(80f, 28f)))
             plugin.StopAutomation();
 
@@ -318,6 +322,7 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.Text($"Cleanup status: {plugin.CleanupStatusText}");
         ImGui.Text($"Buy status: {plugin.VendorPurchaseService.StatusText}");
         ImGui.Text($"Feed status: {plugin.StableFeedingService.StatusText}");
+        ImGui.Text($"Breeding status: {plugin.BreedingService.StatusText}");
     }
 
     private static void DrawStatRow(string label, ChocoboStatSnapshot stat)

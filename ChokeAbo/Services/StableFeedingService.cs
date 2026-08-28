@@ -36,6 +36,7 @@ public sealed class StableFeedingService
     private uint preFeedCount;
     private string lastError = string.Empty;
     private int consecutiveTrainerRecoveries;
+    private bool decrementConfiguredPlan = true;
 
     private enum FeedState
     {
@@ -89,7 +90,7 @@ public sealed class StableFeedingService
 
     private FeedPurchaseEntry? CurrentEntry => currentEntryIndex >= 0 && currentEntryIndex < queue.Count ? queue[currentEntryIndex] : null;
 
-    public void Start(FeedPurchasePlan plan)
+    public void Start(FeedPurchasePlan plan, bool decrementConfiguredPlan = true)
     {
         queue = plan.Entries
             .Where(entry => entry.PlannedQuantity > 0)
@@ -101,6 +102,7 @@ public sealed class StableFeedingService
         lastInteractionAtUtc = DateTime.MinValue;
         consecutiveTrainerRecoveries = 0;
         ConfirmedFeedCount = 0;
+        this.decrementConfiguredPlan = decrementConfiguredPlan;
 
         if (queue.Count == 0)
         {
@@ -126,6 +128,7 @@ public sealed class StableFeedingService
         lastError = string.Empty;
         consecutiveTrainerRecoveries = 0;
         ConfirmedFeedCount = 0;
+        decrementConfiguredPlan = true;
         state = FeedState.Idle;
         stateEnteredAtUtc = DateTime.MinValue;
     }
@@ -417,7 +420,8 @@ public sealed class StableFeedingService
             consecutiveTrainerRecoveries = 0;
             remainingFeedsForCurrentEntry--;
             ConfirmedFeedCount++;
-            DecrementPlannedTraining(current.StatKind);
+            if (decrementConfiguredPlan)
+                DecrementPlannedTraining(current.StatKind);
             log.Information($"[ChokeAbo] Fed {current.FeedName}. Remaining for this feed: {remainingFeedsForCurrentEntry}");
 
             if (remainingFeedsForCurrentEntry > 0)

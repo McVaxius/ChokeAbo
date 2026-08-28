@@ -29,6 +29,8 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
     [PluginService] internal static IToastGui ToastGui { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
+    [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
+    [PluginService] internal static IGameInventory GameInventory { get; private set; } = null!;
 
     private const string DutyMainWindowDeniedMessage = "Choke-abo main window closed because you are in a duty.";
     private static readonly TimeSpan DutyToastThrottle = TimeSpan.FromSeconds(2);
@@ -36,12 +38,17 @@ public sealed class Plugin : IDalamudPlugin
 
     public Configuration Configuration { get; }
     internal ChocoboStatsService ChocoboStatsService { get; }
+    internal CharacterStateService CharacterStateService { get; }
     internal InventoryService InventoryService { get; }
     internal VendorPurchaseService VendorPurchaseService { get; }
     internal StableFeedingService StableFeedingService { get; }
+    internal BreedingService BreedingService { get; }
+    internal PopupCaptureRecorder PopupCaptureRecorder { get; }
+    private readonly BreedingIpcProvider breedingIpcProvider;
     public WindowSystem WindowSystem { get; } = new(PluginInfo.InternalName);
     private readonly MainWindow mainWindow;
     private readonly ConfigWindow configWindow;
+    private readonly PopupCaptureWindow popupCaptureWindow;
     private IDtrBarEntry? dtrEntry;
     private DateTime lastDutyDeniedToastUtc = DateTime.MinValue;
     private CleanupMode cleanupMode;
@@ -73,15 +80,40 @@ public sealed class Plugin : IDalamudPlugin
     public Plugin()
     {
         Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
+        Configuration.BreedingStates ??= new();
+        CharacterStateService = new CharacterStateService(Configuration);
         InventoryService = new GameInventoryService(DataManager, Log);
         ChocoboStatsService = new ChocoboStatsService(CommandManager, GameGui, Log, InventoryService);
         VendorPurchaseService = new VendorPurchaseService(InventoryService, Log);
         StableFeedingService = new StableFeedingService(InventoryService, GameGui, Log, Configuration);
+        BreedingService? breedingService = null;
+        breedingService = new BreedingService(
+            Configuration,
+            CharacterStateService,
+            InventoryService,
+            ChocoboStatsService,
+            VendorPurchaseService,
+            StableFeedingService,
+            Log,
+            () => cleanupMode != CleanupMode.None ||
+                  ((VendorPurchaseService.IsRunning || StableFeedingService.IsRunning) && breedingService?.OwnsFeedServices != true));
+        BreedingService = breedingService;
+        PopupCaptureRecorder = new PopupCaptureRecorder(
+            AddonLifecycle,
+            GameInventory,
+            InventoryService,
+            ChocoboStatsService,
+            Log,
+            () => IsAutomationRunning,
+            PluginInterface.ConfigDirectory.FullName);
+        breedingIpcProvider = new BreedingIpcProvider(PluginInterface, BreedingService);
         mainWindow = new MainWindow(this, ChocoboStatsService);
         configWindow = new ConfigWindow(this);
+        popupCaptureWindow = new PopupCaptureWindow(this);
         WindowSystem.AddWindow(mainWindow);
         WindowSystem.AddWindow(configWindow);
-        CommandManager.AddHandler(PluginInfo.Command, new CommandInfo(OnCommand) { HelpMessage = $"Open {PluginInfo.DisplayName}. Use {PluginInfo.Command} refresh to refresh racing chocobo data or {PluginInfo.Command} config for settings." });
+        WindowSystem.AddWindow(popupCaptureWindow);
+        CommandManager.AddHandler(PluginInfo.Command, new CommandInfo(OnCommand) { HelpMessage = $"Open {PluginInfo.DisplayName}. Use {PluginInfo.Command} refresh, breed, dpopup, or config." });
         PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi += ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
@@ -93,6 +125,9 @@ public sealed class Plugin : IDalamudPlugin
 
     public void Dispose()
     {
+        PopupCaptureRecorder.Dispose();
+        breedingIpcProvider.Dispose();
+        BreedingService.Stop();
         Framework.Update -= OnFrameworkUpdate;
         PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigUi;
@@ -112,7 +147,7 @@ public sealed class Plugin : IDalamudPlugin
 
     public void ToggleConfigUi() => configWindow.Toggle();
     public void PrintStatus(string m) => ChatGui.Print($"[{PluginInfo.DisplayName}] {m}");
-    public bool IsAutomationRunning => VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || cleanupMode != CleanupMode.None;
+    public bool IsAutomationRunning => BreedingService.IsRunning || VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || cleanupMode != CleanupMode.None;
     public string CleanupStatusText => cleanupPhase switch
     {
         CleanupPhase.Purchasing => $"Pass {cleanupPassNumber}: buying missing feed ({remainingSessionBudget} sessions remain).",
@@ -192,6 +227,18 @@ public sealed class Plugin : IDalamudPlugin
             return;
         }
 
+        if (a.Equals("breed", StringComparison.OrdinalIgnoreCase))
+        {
+            StartBreeding();
+            return;
+        }
+
+        if (a.Equals("dpopup", StringComparison.OrdinalIgnoreCase))
+        {
+            popupCaptureWindow.Toggle();
+            return;
+        }
+
         OpenMainUi(requestRefresh: true);
     }
 
@@ -214,6 +261,7 @@ public sealed class Plugin : IDalamudPlugin
         ChocoboStatsService.Update();
         VendorPurchaseService.Update();
         StableFeedingService.Update();
+        BreedingService.Update();
         UpdateCleanupAutomation();
 
         UpdateDtrBar();
@@ -240,6 +288,7 @@ public sealed class Plugin : IDalamudPlugin
         cleanupTerminalStatus = printStatus ? "Stopped manually." : "Idle";
         VendorPurchaseService.Reset();
         StableFeedingService.Reset();
+        BreedingService.Stop();
         if (cancelRecoveryRefresh)
             ChocoboStatsService.CancelRefresh();
         GameHelpers.StopMovement();
@@ -277,6 +326,24 @@ public sealed class Plugin : IDalamudPlugin
     {
         StopAutomation(printStatus: false);
         StartCleanupAutomation(CleanupMode.FullCycle);
+    }
+
+    public void StartBreeding()
+    {
+        StopAutomation(printStatus: false);
+        if (!BreedingService.StartOrResume())
+            PrintStatus(BreedingService.StatusText);
+    }
+
+    public void TogglePopupCapture(PopupCaptureKind kind)
+    {
+        if (!PopupCaptureRecorder.Toggle(kind, out var message))
+        {
+            PrintStatus(message);
+            return;
+        }
+
+        PrintStatus(message);
     }
 
     private void StartCleanupAutomation(CleanupMode mode)
