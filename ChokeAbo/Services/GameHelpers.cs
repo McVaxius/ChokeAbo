@@ -168,8 +168,88 @@ public static class GameHelpers
         return true;
     }
 
+    public static unsafe bool TrySelectNativeListEntry(string addonName, string? label, Action beforeDispatch, bool randomize = false, uint? observedNodeId = null, Func<string, bool>? matches = null)
+    {
+        var handle = Plugin.GameGui.GetAddonByName(addonName);
+        if (handle.IsNull || !handle.IsVisible || !handle.IsReady) return false;
+        var addon = (AtkUnitBase*)handle.Address;
+        if (addon->UldManager.NodeListCount > 512) return false;
+        for (var i = 0; i < addon->UldManager.NodeListCount; ++i)
+        {
+            var node = addon->UldManager.NodeList[i];
+            if (node == null || !node->IsVisible() || (ushort)node->Type < 1000 ||
+                observedNodeId.HasValue && node->NodeId != observedNodeId.Value) continue;
+            var component = node->GetAsAtkComponentNode()->Component;
+            if (component == null || component->GetComponentType() is not (ComponentType.List or ComponentType.TreeList)) continue;
+            var list = (AtkComponentList*)component;
+            if (list->ListLength is <= 0 or > 512) continue;
+            var registered = false;
+            var count = 0;
+            for (var evt = node->AtkEventManager.Event; evt != null && count++ < 32; evt = evt->NextEvent)
+                registered |= evt->State.EventType == AtkEventType.ListItemClick && evt->Listener != null &&
+                    !evt->State.StateFlags.HasFlag(AtkEventStateFlags.IsGlobalEvent);
+            if (!registered) continue;
+            var selectedRow = -1;
+            var selectedLabel = string.Empty;
+            var candidates = 0;
+            for (var row = 0; row < list->ListLength; ++row)
+            {
+                var renderer = list->GetItemRenderer(row);
+                if (renderer == null || renderer->ListItemIndex != row || !renderer->IsEnabled || renderer->ButtonTextNode == null) continue;
+                var text = renderer->ButtonTextNode->NodeText.ToString().Trim();
+                if (string.IsNullOrWhiteSpace(text) || label != null && text != label || matches != null && !matches(text)) continue;
+                if (!randomize || Random.Shared.Next(++candidates) == 0)
+                { selectedRow = row; selectedLabel = text; }
+                if (!randomize) break;
+            }
+            if (selectedRow < 0) continue;
+            beforeDispatch();
+            Plugin.Log.Information($"[ChokeAbo][Native] Selecting registered list action: addon={addonName}; node={node->NodeId}; row={selectedRow}; text={selectedLabel}");
+            list->DispatchItemEvent(selectedRow, AtkEventType.ListItemClick);
+            return true;
+        }
+        return false;
+    }
+
+    public static unsafe bool TryClickNativeButton(string addonName, string? label, uint? observedNodeId = null)
+    {
+        var handle = Plugin.GameGui.GetAddonByName(addonName);
+        if (handle.IsNull || !handle.IsVisible || !handle.IsReady) return false;
+        var addon = (AtkUnitBase*)handle.Address;
+        if (addon->UldManager.NodeListCount > 512) return false;
+        AtkEvent* selected = null;
+        uint selectedNode = 0;
+        for (var i = 0; i < addon->UldManager.NodeListCount; ++i)
+        {
+            var node = addon->UldManager.NodeList[i];
+            if (node == null || !node->IsVisible() || (ushort)node->Type < 1000 ||
+                observedNodeId.HasValue && node->NodeId != observedNodeId.Value) continue;
+            var component = node->GetAsAtkComponentNode()->Component;
+            if (component == null || component->GetComponentType() is not (ComponentType.Button or ComponentType.RadioButton)) continue;
+            var button = (AtkComponentButton*)component;
+            if (!button->IsEnabled || label != null &&
+                (button->ButtonTextNode == null || button->ButtonTextNode->NodeText.ToString().Trim() != label)) continue;
+            var count = 0;
+            for (var evt = node->AtkEventManager.Event; evt != null && count++ < 32; evt = evt->NextEvent)
+            {
+                if (evt->State.EventType != AtkEventType.ButtonClick || evt->Listener != (AtkEventListener*)addon ||
+                    evt->State.StateFlags.HasFlag(AtkEventStateFlags.IsGlobalEvent)) continue;
+                if (selected != null) return false;
+                selected = evt;
+                selectedNode = node->NodeId;
+            }
+        }
+        if (selected == null) return false;
+        var click = *selected;
+        var data = new AtkEventData();
+        Plugin.Log.Information($"[ChokeAbo][Native] Clicking registered button: addon={addonName}; node={selectedNode}; param={click.Param}; label={label}");
+        click.Listener->ReceiveEvent(AtkEventType.ButtonClick, checked((int)click.Param), &click, &data);
+        return true;
+    }
+
     public static bool TryTravelToChocoboSquare()
     {
+        if (Plugin.Condition[ConditionFlag.OccupiedInEvent]) return false;
         if ((DateTime.UtcNow - lastTravelCommandAtUtc).TotalSeconds < 4)
             return false;
 
@@ -186,6 +266,153 @@ public static class GameHelpers
         }
 
         return false;
+    }
+
+    public static unsafe bool TryReadMgpShopEntry(int row, out uint itemId, out uint price)
+    {
+        itemId = price = 0;
+        var handle = Plugin.GameGui.GetAddonByName("ShopExchangeCurrency");
+        if (handle.IsNull || !handle.IsVisible || !handle.IsReady || handle.AtkValuesCount < 1188 || row is < 0 or >= 122) return false;
+        var addon = (AtkUnitBase*)handle.Address;
+        // Captured Race Items layout: currency at 3, row count at 4,
+        // prices at 456 and item IDs at 1066 (122 entries per column).
+        if (addon->AtkValues[3].Type != AtkValueType.UInt || addon->AtkValues[3].UInt != 29 ||
+            addon->AtkValues[4].Type != AtkValueType.UInt || addon->AtkValues[4].UInt > 122 || row >= addon->AtkValues[4].UInt ||
+            addon->AtkValues[456 + row].Type != AtkValueType.UInt || addon->AtkValues[1066 + row].Type != AtkValueType.UInt) return false;
+        itemId = addon->AtkValues[1066 + row].UInt;
+        price = addon->AtkValues[456 + row].UInt;
+        return itemId != 0 && price != 0;
+    }
+
+    private static unsafe FFXIVClientStructs.FFXIV.Client.Game.Event.ShopEventHandler* GetGilShopHandler()
+    {
+        var handle = Plugin.GameGui.GetAddonByName("Shop");
+        if (handle.IsNull || !handle.IsVisible || !handle.IsReady) return null;
+        var agent = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentShop.Instance();
+        var proxy = FFXIVClientStructs.FFXIV.Client.Game.Event.ShopEventHandler.AgentProxy.Instance();
+        if (agent == null || proxy == null || (nint)agent->EventReceiver != (nint)proxy ||
+            proxy->AddonId != ((AtkUnitBase*)handle.Address)->Id || proxy->Handler == null) return null;
+        var shop = proxy->Handler;
+        return !shop->BuybackTabActive && shop->ItemsCount is > 0 and <= 60 &&
+            shop->VisibleItemsCount is > 0 and <= 60 ? shop : null;
+    }
+
+    public static unsafe bool TryReadGilShopEntry(int row, out uint itemId, out uint price)
+    {
+        itemId = price = 0;
+        var shop = GetGilShopHandler();
+        if (shop == null || row < 0 || row >= shop->VisibleItemsCount) return false;
+        var index = shop->VisibleItems[row];
+        if (index < 0 || index >= shop->ItemsCount) return false;
+        var item = shop->Items[index];
+        if (item.ItemId == 0 || item.PriceBuy <= 0) return false;
+        itemId = item.ItemId;
+        price = (uint)item.PriceBuy;
+        return true;
+    }
+
+    public static unsafe bool TryBuyGilShopEntry(int row, uint itemId, uint price)
+    {
+        if (!TryReadGilShopEntry(row, out var liveItem, out var livePrice) ||
+            liveItem != itemId || livePrice != price || IsAddonVisible("SelectYesno")) return false;
+        var shop = GetGilShopHandler();
+        if (shop == null || shop->StartingBuy || shop->WaitingForTransactionToFinish) return false;
+        // The captured AgentShop proxy maps visible rows to actual ShopItems.
+        // ClientStructs requires this native index before ExecuteBuy(count).
+        shop->BuyItemIndex = shop->VisibleItems[row];
+        shop->ExecuteBuy(1);
+        return true;
+    }
+
+    public static unsafe bool TryCloseFeathertraderShop()
+    {
+        if (Plugin.TargetManager.Target?.BaseId != 1011585 || IsAddonVisible("SelectYesno")) return false;
+        var agent = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentShop.Instance();
+        var proxy = FFXIVClientStructs.FFXIV.Client.Game.Event.ShopEventHandler.AgentProxy.Instance();
+        if (agent == null) return false;
+        var closeDispatched = false;
+        if (proxy != null && proxy->Handler != null && Plugin.Condition[ConditionFlag.OccupiedInEvent])
+        {
+            var handler = proxy->Handler;
+            if (handler->ItemsCount == 7 && handler->Items[5].ItemId == ChocoboInventoryModel.FirstFledglingItemId &&
+                handler->Items[6].ItemId == ChocoboInventoryModel.FirstFemaleFledglingItemId &&
+                !handler->StartingBuy && !handler->WaitingForTransactionToFinish)
+            {
+                foreach (var obj in handler->EventObjects)
+                {
+                    if (obj.Value == null || (ulong)obj.Value->GetGameObjectId() != Plugin.TargetManager.Target.GameObjectId) continue;
+                    Plugin.Log.Information($"[ChokeAbo][Native] Cancelling owned Feathertrader interaction through its native ShopEventHandler; event={handler->Info.EventId.Id:X}.");
+                    handler->CancelInteraction();
+                    closeDispatched = true;
+                    break;
+                }
+            }
+        }
+        if (agent->IsAgentActive())
+        {
+            if (proxy == null || (nint)agent->EventReceiver != (nint)proxy || proxy->Handler == null) return false;
+            var handler = proxy->Handler;
+            if (handler->ItemsCount != 7 || handler->Items[5].ItemId != ChocoboInventoryModel.FirstFledglingItemId ||
+                handler->Items[6].ItemId != ChocoboInventoryModel.FirstFemaleFledglingItemId || handler->StartingBuy || handler->WaitingForTransactionToFinish) return false;
+            Plugin.Log.Information("[ChokeAbo][Native] Closing owned Feathertrader shop through AgentShop.Hide.");
+            agent->Hide();
+            closeDispatched = true;
+        }
+        // The captured vendor inventory remains OpenType5/title1 after Shop is
+        // gone. Its agent must also close before OccupiedInEvent is released.
+        var inventory = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentInventory.Instance();
+        if (inventory != null && inventory->IsAgentActive() && inventory->OpenType == 5 && inventory->OpenTitleId == 1 &&
+            inventory->CurrentInventoryContextEvent == null)
+        {
+            Plugin.Log.Information("[ChokeAbo][Native] Closing owned Feathertrader inventory through AgentInventory.Hide.");
+            inventory->Hide();
+            closeDispatched = true;
+        }
+        return closeDispatched || !agent->IsAgentActive() && !Plugin.Condition[ConditionFlag.OccupiedInEvent];
+    }
+
+    public static unsafe bool TryClosePermitShop(uint permitItemId)
+    {
+        if (permitItemId is < ChocoboInventoryModel.FirstCoveringPermissionItemId or > ChocoboInventoryModel.LastCoveringPermissionItemId ||
+            IsAddonVisible("SelectYesno")) return false;
+        var agent = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentShop.Instance();
+        if (agent == null) return false;
+        var handle = Plugin.GameGui.GetAddonByName("ShopExchangeCurrency");
+        if (handle.IsNull || !handle.IsVisible)
+            return !agent->IsAgentActive() && !Plugin.Condition[ConditionFlag.OccupiedInEvent];
+        // Resume cleanup may clear the NPC target after the shop has already closed.
+        // A visible shop still requires its actual supplier and addon ownership.
+        if (Plugin.TargetManager.Target?.BaseId != 1010488 || !handle.IsReady ||
+            !agent->IsAgentActive() || agent->AddonId != ((AtkUnitBase*)handle.Address)->Id) return false;
+        for (var row = 0; row < 122; ++row)
+        {
+            if (!TryReadMgpShopEntry(row, out var itemId, out _) || itemId != permitItemId) continue;
+            // Hide did not dismiss the live currency-exchange addon after a purchase.
+            // Use the native addon close path, as in DDuck, so its close handling runs.
+            Plugin.Log.Information($"[ChokeAbo][Native] Closing verified permit shop through AtkUnitBase.Close; item={permitItemId}; addon={agent->AddonId}.");
+            ((AtkUnitBase*)handle.Address)->Close(true);
+            return true;
+        }
+        return false;
+    }
+
+    public static unsafe bool IsMgpPurchaseConfirmation(int row, uint itemId, uint price, uint quantity)
+    {
+        if (quantity == 0 || !TryReadMgpShopEntry(row, out var liveItem, out var livePrice) ||
+            liveItem != itemId || livePrice != price) return false;
+        var shop = Plugin.GameGui.GetAddonByName("ShopExchangeCurrency");
+        var confirm = Plugin.GameGui.GetAddonByName("SelectYesno");
+        if (confirm.IsNull || !confirm.IsVisible || !confirm.IsReady || confirm.AtkValuesCount < 18) return false;
+        var dialog = (AtkUnitBase*)confirm.Address;
+        if (dialog->BlockedParentId != ((AtkUnitBase*)shop.Address)->Id ||
+            dialog->AtkValues[14].Type != AtkValueType.UInt || dialog->AtkValues[14].UInt != itemId ||
+            dialog->AtkValues[17].Type != AtkValueType.UInt || dialog->AtkValues[17].UInt != quantity) return false;
+        var promptNode = dialog->GetTextNodeById(2);
+        if (promptNode == null) return false;
+        var prompt = Dalamud.Game.Text.SeStringHandling.SeString.Parse(promptNode->NodeText.AsSpan()).TextValue;
+        var cost = checked((ulong)price * quantity);
+        return prompt == $"Exchange {cost:N0} MGP for the following item?" ||
+            prompt == $"Exchange {cost} MGP for the following item?";
     }
 
     public static bool IsLifestreamBusy()

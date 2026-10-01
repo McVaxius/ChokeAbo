@@ -21,6 +21,10 @@ public sealed class VendorPurchaseService
     private uint lastObservedItemCount;
     private string lastError = string.Empty;
     private string lastCallbackCommand = string.Empty;
+    private uint gilReserve;
+    private uint mgpReserve;
+    private bool verifyShopEntry;
+    private bool confirmationDispatched;
 
     private enum VendorPurchaseState
     {
@@ -45,6 +49,8 @@ public sealed class VendorPurchaseService
     public bool IsRunning => state is not VendorPurchaseState.Idle and not VendorPurchaseState.Complete and not VendorPurchaseState.Failed;
     public bool IsComplete => state == VendorPurchaseState.Complete;
     public bool IsFailed => state == VendorPurchaseState.Failed;
+    public bool PurchaseWasDispatched => purchaseAttempts > 0;
+    public bool ReserveBlocked { get; private set; }
     public string StatusText => state switch
     {
         VendorPurchaseState.Idle => "Idle",
@@ -61,8 +67,10 @@ public sealed class VendorPurchaseService
 
     private FeedPurchaseEntry? CurrentEntry => currentIndex >= 0 && currentIndex < queue.Count ? queue[currentIndex] : null;
 
-    public void Start(FeedPurchasePlan plan)
+    public void Start(FeedPurchasePlan plan, uint gilReserve = 0, uint mgpReserve = 0, bool verifyShopEntry = false, bool useOpenShop = false)
     {
+        this.gilReserve = gilReserve;
+        this.mgpReserve = mgpReserve;
         queue = plan.Entries
             .Where(entry => entry.QuantityToBuy > 0)
             .OrderBy(entry => entry.CurrencyKind)
@@ -70,6 +78,7 @@ public sealed class VendorPurchaseService
             .ToArray();
 
         ResetRuntimeFields();
+        this.verifyShopEntry = verifyShopEntry;
         if (queue.Count == 0)
         {
             state = VendorPurchaseState.Complete;
@@ -77,9 +86,23 @@ public sealed class VendorPurchaseService
         }
 
         log.Information($"[ChokeAbo] Starting buy cycle for {queue.Count} feed entries.");
-        SetState(GameHelpers.IsInChocoboSquare()
+        SetState(useOpenShop ? VendorPurchaseState.Purchasing : GameHelpers.IsInChocoboSquare()
             ? VendorPurchaseState.NavigatingToVendor
             : VendorPurchaseState.TravelingToChocoboSquare);
+    }
+
+    public bool AdoptPendingRequiredPurchase(FeedPurchasePlan plan, uint gilReserve, uint mgpReserve)
+    {
+        if (plan.Entries.Count != 1) return false;
+        var entry = plan.Entries[0];
+        if (entry.QuantityToBuy != 1 || inventoryService.GetItemCount(entry.ItemId) != entry.OnHandQuantity ||
+            !GameHelpers.IsMgpPurchaseConfirmation(entry.VendorCallbackIndex, entry.ItemId, entry.UnitCost, 1)) return false;
+        Start(plan, gilReserve, mgpReserve, verifyShopEntry: true);
+        purchaseAttempts = 1;
+        lastObservedItemCount = entry.OnHandQuantity;
+        SetState(VendorPurchaseState.WaitingForPurchaseResolution);
+        log.Information($"[ChokeAbo] Adopted pending required-supply confirmation for item {entry.ItemId}; no purchase callback replayed.");
+        return true;
     }
 
     public void Reset()
@@ -96,7 +119,15 @@ public sealed class VendorPurchaseService
         if (state is VendorPurchaseState.Idle or VendorPurchaseState.Complete or VendorPurchaseState.Failed)
             return;
 
-        if (GameHelpers.ClickYesIfVisible())
+        if (state == VendorPurchaseState.WaitingForPurchaseResolution && !confirmationDispatched && !PurchaseWithinReserves())
+        {
+            // A confirmed inventory increase resolves before checking another purchase.
+            if (CurrentEntry is { } pending && TryAdvanceIfCurrentEntryComplete(pending)) return;
+            ReserveBlocked = true;
+            Fail("Feed confirmation would cross the configured currency reserve.");
+            return;
+        }
+        if (state == VendorPurchaseState.WaitingForPurchaseResolution && !verifyShopEntry && GameHelpers.ClickYesIfVisible())
             return;
 
         if (CurrentEntry == null)
@@ -130,25 +161,22 @@ public sealed class VendorPurchaseService
 
     private void HandleTravelingToChocoboSquare()
     {
+        if (GameHelpers.IsLifestreamBusy() || !GameHelpers.IsPlayerAvailable()) return;
         if (GameHelpers.IsInChocoboSquare())
         {
             SetState(VendorPurchaseState.NavigatingToVendor);
             return;
         }
 
-        if (GameHelpers.IsLifestreamBusy())
-            return;
-
-        if ((DateTime.UtcNow - lastInteractionAtUtc).TotalSeconds >= 3)
+        if (lastInteractionAtUtc < stateEnteredAtUtc)
         {
-            lastInteractionAtUtc = DateTime.UtcNow;
-            if (!GameHelpers.TryTravelToChocoboSquare() &&
-                (DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 10)
+            if (!GameHelpers.TryTravelToChocoboSquare())
             {
-                Fail("Could not send /li chocobo. Check Lifestream or move there manually.");
+                if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 10)
+                    Fail("Could not start Lifestream travel to Chocobo Square.");
                 return;
             }
-
+            lastInteractionAtUtc = DateTime.UtcNow;
             log.Information("[ChokeAbo] Traveling to Chocobo Square.");
         }
 
@@ -284,6 +312,7 @@ public sealed class VendorPurchaseService
 
         if (!GameHelpers.IsAddonVisible(current.ExpectedAddonName))
         {
+            if (verifyShopEntry) { Fail("The verified required-supply shop closed before purchase."); return; }
             SetState(VendorPurchaseState.InteractingVendor);
             return;
         }
@@ -294,11 +323,27 @@ public sealed class VendorPurchaseService
         var onHand = inventoryService.GetItemCount(current.ItemId);
         lastObservedItemCount = onHand;
         lastActionAtUtc = DateTime.UtcNow;
-        purchaseAttempts++;
         var remaining = Math.Max(1, current.PlannedQuantity - (int)onHand);
-
+        if (!PurchaseWithinReserves())
+        {
+            ReserveBlocked = true;
+            Fail("Feed purchase would cross the configured currency reserve.");
+            return;
+        }
         if (string.Equals(current.ExpectedAddonName, "Shop", StringComparison.Ordinal))
         {
+            if (verifyShopEntry)
+            {
+                // Required G1 forms use the captured native shop handler, not feed callback positions.
+                if (!GameHelpers.TryBuyGilShopEntry(current.VendorCallbackIndex, current.ItemId, current.UnitCost))
+                { Fail("The native gil-shop purchase could not be dispatched safely."); return; }
+                purchaseAttempts++;
+                lastCallbackCommand = $"ShopEventHandler.ExecuteBuy(1), visible row {current.VendorCallbackIndex}";
+                log.Information($"[ChokeAbo] Buying 1 x {current.FeedName} via {lastCallbackCommand}");
+                SetState(VendorPurchaseState.WaitingForPurchaseResolution);
+                return;
+            }
+            purchaseAttempts++;
             lastCallbackCommand = GameHelpers.FormatCallbackCommand("Shop", true, current.VendorCallbackGroup, current.VendorCallbackIndex);
             log.Information($"[ChokeAbo] Buying 1 x {current.FeedName} from gil shop callback slot {current.VendorCallbackIndex} via {lastCallbackCommand}");
             GameHelpers.FireAddonCallback("Shop", true, current.VendorCallbackGroup, current.VendorCallbackIndex);
@@ -307,6 +352,7 @@ public sealed class VendorPurchaseService
         }
 
         var quantity = Math.Clamp(remaining, 1, 99);
+        purchaseAttempts++;
         lastCallbackCommand = GameHelpers.FormatCallbackCommand("ShopExchangeCurrency", true, current.VendorCallbackGroup, current.VendorCallbackIndex, quantity);
         log.Information($"[ChokeAbo] Buying {quantity} x {current.FeedName} from MGP shop callback slot {current.VendorCallbackIndex} via {lastCallbackCommand}");
         GameHelpers.FireAddonCallback("ShopExchangeCurrency", true, current.VendorCallbackGroup, current.VendorCallbackIndex, quantity);
@@ -326,6 +372,14 @@ public sealed class VendorPurchaseService
             return;
 
         var onHand = inventoryService.GetItemCount(current.ItemId);
+        if (verifyShopEntry && current.CurrencyKind == FeedCurrencyKind.Mgp && !confirmationDispatched &&
+            GameHelpers.IsMgpPurchaseConfirmation(current.VendorCallbackIndex, current.ItemId, current.UnitCost, 1) &&
+            PurchaseWithinReserves() && GameHelpers.TryClickNativeButton("SelectYesno", "Yes", 8))
+        {
+            confirmationDispatched = true;
+            stateEnteredAtUtc = DateTime.UtcNow;
+            return;
+        }
         if (onHand > lastObservedItemCount)
         {
             purchaseAttempts = 0;
@@ -336,6 +390,7 @@ public sealed class VendorPurchaseService
         if (!GameHelpers.IsAddonVisible(current.ExpectedAddonName) &&
             (DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 1.0)
         {
+            if (verifyShopEntry) { Fail("Required-supply shop closed before the purchase result was verified."); return; }
             SetState(VendorPurchaseState.InteractingVendor);
             return;
         }
@@ -343,13 +398,30 @@ public sealed class VendorPurchaseService
         if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds <= 4.0)
             return;
 
-        if (purchaseAttempts >= 2)
+        if (purchaseAttempts >= (verifyShopEntry ? 1 : 2))
         {
             Fail($"Purchase callback for {current.FeedName} did not change inventory. Last attempted: {lastCallbackCommand}");
             return;
         }
 
         SetState(VendorPurchaseState.Purchasing);
+    }
+
+    private bool PurchaseWithinReserves()
+    {
+        if (CurrentEntry is not { } entry) return false;
+        if (verifyShopEntry)
+        {
+            var mapped = entry.CurrencyKind == FeedCurrencyKind.Gil
+                ? GameHelpers.TryReadGilShopEntry(entry.VendorCallbackIndex, out var itemId, out var price)
+                : GameHelpers.TryReadMgpShopEntry(entry.VendorCallbackIndex, out itemId, out price);
+            if (!mapped || itemId != entry.ItemId || price != entry.UnitCost) return false;
+        }
+        var remaining = Math.Max(0, entry.PlannedQuantity - (int)inventoryService.GetItemCount(entry.ItemId));
+        var quantity = entry.CurrencyKind == FeedCurrencyKind.Gil ? Math.Min(1, remaining) : Math.Min(99, remaining);
+        var cost = checked(entry.UnitCost * (uint)quantity);
+        return BreedingService.CanSpend(inventoryService.GetItemCount(entry.CurrencyKind == FeedCurrencyKind.Gil ? 1u : 29u),
+            cost, entry.CurrencyKind == FeedCurrencyKind.Gil ? gilReserve : mgpReserve);
     }
 
     private bool TryAdvanceIfCurrentEntryComplete(FeedPurchaseEntry current)
@@ -406,5 +478,8 @@ public sealed class VendorPurchaseService
         lastInteractionAtUtc = DateTime.MinValue;
         lastError = string.Empty;
         lastCallbackCommand = string.Empty;
+        ReserveBlocked = false;
+        verifyShopEntry = false;
+        confirmationDispatched = false;
     }
 }

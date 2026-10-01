@@ -77,6 +77,9 @@ public sealed record ChocoboTrainingSnapshot(
     DateTimeOffset CapturedAtUtc,
     string StatusText)
 {
+    public uint InheritedAbilityId { get; init; }
+    public uint LearnedAbilityId { get; init; }
+    public uint ColourId { get; init; }
     public static ChocoboTrainingSnapshot Empty(string statusText)
         => new(
             false,
@@ -116,10 +119,7 @@ public sealed class ChocoboStatsService
     private const uint Grade3UnitCost = 1345;
     private static readonly TimeSpan GoldSaucerWindowTimeout = TimeSpan.FromSeconds(10);
     private static readonly TimeSpan FirstChocoboCallbackDelay = TimeSpan.FromSeconds(2);
-    private static readonly TimeSpan ChocoboCallbackStage2Delay = TimeSpan.FromSeconds(1);
-    private static readonly TimeSpan ChocoboCallbackFallbackDelay = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan ChocoboDataTimeout = TimeSpan.FromSeconds(30);
-    private static readonly int[] GoldSaucerInfoChocoboCallbackPayloads = { 130, 131 };
 
     private readonly ICommandManager commandManager;
     private readonly IGameGui gameGui;
@@ -128,7 +128,6 @@ public sealed class ChocoboStatsService
 
     private RefreshState state = RefreshState.Idle;
     private DateTime stateEnteredAtUtc = DateTime.MinValue;
-    private int chocoboCallbackPayloadIndex;
 
     public ChocoboTrainingSnapshot Snapshot { get; private set; } = ChocoboTrainingSnapshot.Empty("Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats.");
 
@@ -138,7 +137,6 @@ public sealed class ChocoboStatsService
         RefreshState.PendingGoldSaucerCommand => "Refresh requested; opening Gold Saucer window...",
         RefreshState.WaitingForGoldSaucerWindow => "Opening Gold Saucer window...",
         RefreshState.WaitingBeforeChocoboCallback => "Gold Saucer Info ready; waiting before Chocobo tab callback...",
-        RefreshState.WaitingForChocoboCallbackStage2 => "Opening racing chocobo page...",
         RefreshState.WaitingForChocoboData => "Waiting for racing chocobo data...",
         RefreshState.Complete => Snapshot.StatusText,
         RefreshState.Failed => Snapshot.StatusText,
@@ -163,6 +161,12 @@ public sealed class ChocoboStatsService
     public ActiveRacerSnapshot ReadActiveRacerSnapshot()
     {
         if (!TryCaptureSnapshot())
+        {
+            Snapshot = ChocoboTrainingSnapshot.Empty(IsRefreshFailed ? Snapshot.StatusText : "Current racer data has not been loaded.");
+            return new ActiveRacerSnapshot(false, 0, 0, ChocoboSex.Unknown, false);
+        }
+
+        if (Snapshot.Rank == 0)
             return new ActiveRacerSnapshot(false, 0, 0, ChocoboSex.Unknown, false);
 
         return ReadActiveRacerFromManager();
@@ -182,14 +186,14 @@ public sealed class ChocoboStatsService
             .FirstOrDefault();
     }
 
-    public FeedPurchasePlan BuildSingleTargetFeedPlan(ChocoboStatKind statKind, int preferredGrade)
+    public FeedPurchasePlan BuildSingleTargetFeedPlan(ChocoboStatKind statKind, int preferredGrade, bool allowLegacyFallback = true)
     {
         var grade = Math.Clamp(preferredGrade, 1, 3);
         var preferred = FeedCatalog.Get(statKind, grade);
         var preferredItemId = inventoryService.ResolveItemId(preferred.FeedName);
         var preferredOnHand = inventoryService.GetItemCount(preferredItemId);
         var currentMgp = GetCurrencyBalance(MgpItemId);
-        if (grade > 1 && preferredOnHand == 0 && currentMgp < preferred.UnitCost)
+        if (allowLegacyFallback && grade > 1 && preferredOnHand == 0 && currentMgp < preferred.UnitCost)
             grade = 1;
 
         var definition = FeedCatalog.Get(statKind, grade);
@@ -224,13 +228,37 @@ public sealed class ChocoboStatsService
             Snapshot.IsLoaded);
     }
 
+    public FeedPurchasePlan BuildTargetFeedPurchasePlan(int grade)
+    {
+        grade = Math.Clamp(grade, 1, 3);
+        var projected = Enum.GetValues<ChocoboStatKind>().ToDictionary(kind => kind, Snapshot.GetStat);
+        var trainings = Enum.GetValues<ChocoboStatKind>().ToDictionary(kind => kind, _ => 0);
+        for (var session = 0; session < Snapshot.SessionsAvailable; ++session)
+        {
+            var next = projected.Where(entry => entry.Value.Maximum > 0 && entry.Value.Current < entry.Value.Maximum)
+                .OrderBy(entry => entry.Value.Current / entry.Value.Maximum).ThenBy(entry => entry.Key)
+                .Select(entry => (ChocoboStatKind?)entry.Key).FirstOrDefault();
+            if (next is not { } kind) break;
+            ++trainings[kind];
+            projected[kind] = BuildProjectedStat(projected[kind], 1, grade);
+        }
+        // Reuse the normal multi-item buyer's stock subtraction, session cap and costs.
+        return BuildPurchasePlan(new Configuration
+        {
+            PlannedMaximumSpeedTrainings = trainings[ChocoboStatKind.MaximumSpeed], MaximumSpeedFeedGrade = grade,
+            PlannedAccelerationTrainings = trainings[ChocoboStatKind.Acceleration], AccelerationFeedGrade = grade,
+            PlannedEnduranceTrainings = trainings[ChocoboStatKind.Endurance], EnduranceFeedGrade = grade,
+            PlannedStaminaTrainings = trainings[ChocoboStatKind.Stamina], StaminaFeedGrade = grade,
+            PlannedCunningTrainings = trainings[ChocoboStatKind.Cunning], CunningFeedGrade = grade,
+        }, capToSessions: true);
+    }
+
     public void RequestRefresh()
     {
         if (IsRefreshActive())
             return;
 
         log.Information("[ChokeAbo] Delayed GoldSaucerInfo Chocobo refresh requested; scheduling /goldsaucer on framework update.");
-        chocoboCallbackPayloadIndex = 0;
         SetState(RefreshState.PendingGoldSaucerCommand);
         Snapshot = Snapshot with
         {
@@ -266,7 +294,7 @@ public sealed class ChocoboStatsService
             case RefreshState.PendingGoldSaucerCommand:
                 log.Information("[ChokeAbo] Opening Gold Saucer window via /goldsaucer from framework update.");
                 SetState(RefreshState.WaitingForGoldSaucerWindow);
-                if (!SendChatCommand("/goldsaucer"))
+                if (!TryGetReadyGoldSaucerInfoAddon(out _) && !SendChatCommand("/goldsaucer"))
                     Fail("The /goldsaucer command was not accepted.");
                 break;
 
@@ -291,17 +319,12 @@ public sealed class ChocoboStatsService
                 if (elapsed < FirstChocoboCallbackDelay)
                     break;
 
-                FireChocoboCallbackStage1();
-                break;
-
-            case RefreshState.WaitingForChocoboCallbackStage2:
-                if (TryBeginChocoboDataWaitIfPageReady())
-                    return;
-
-                if (elapsed < ChocoboCallbackStage2Delay)
+                if (!GameHelpers.TryClickNativeButton("GoldSaucerInfo", "Chocobo", 4))
+                {
+                    Fail("The observed Chocobo tab is not ready for its native button event.");
                     break;
-
-                FireChocoboCallbackStage2();
+                }
+                SetState(RefreshState.WaitingForChocoboData);
                 break;
 
             case RefreshState.WaitingForChocoboData:
@@ -324,12 +347,9 @@ public sealed class ChocoboStatsService
                     return;
                 }
 
-                if (elapsed >= ChocoboCallbackFallbackDelay && TryFireNextChocoboCallbackPayload())
-                    break;
-
                 if (elapsed > ChocoboDataTimeout)
                 {
-                    Fail("RaceChocoboManager did not load within 30 seconds after delayed GoldSaucerInfo Chocobo callbacks.");
+                    Fail("RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab.");
                 }
 
                 break;
@@ -514,7 +534,12 @@ public sealed class ChocoboStatsService
                 new ChocoboStatSnapshot(currentValues.Cunning, maximumValues.Cunning, NormalizeStarCount(starValues.Cunning)),
                 "RaceChocoboManager",
                 capturedAtUtc,
-                $"Loaded from RaceChocoboManager at {capturedAtUtc.ToLocalTime():HH:mm:ss}.");
+                $"Loaded from RaceChocoboManager at {capturedAtUtc.ToLocalTime():HH:mm:ss}.")
+            {
+                InheritedAbilityId = manager->AbilityHereditary,
+                LearnedAbilityId = manager->AbilityLearned,
+                ColourId = manager->Color,
+            };
             return true;
         }
         catch (Exception ex)
@@ -567,113 +592,8 @@ public sealed class ChocoboStatsService
         return false;
     }
 
-    private bool TryBeginChocoboDataWaitIfPageReady()
-    {
-        if (!IsAddonReadyAndVisible("GSInfoChocoboParam"))
-            return false;
-
-        log.Information("[ChokeAbo] GSInfoChocoboParam is visible and ready; waiting for RaceChocoboManager data.");
-        SetState(RefreshState.WaitingForChocoboData);
-        Snapshot = Snapshot with
-        {
-            StatusText = "Racing chocobo page detected; waiting for RaceChocoboManager data.",
-        };
-        return true;
-    }
-
-    private void FireChocoboCallbackStage1()
-    {
-        var payload = CurrentChocoboCallbackPayload;
-        var command = GameHelpers.FormatCallbackCommand("GoldSaucerInfo", true, 0, 1, payload);
-        log.Information($"[ChokeAbo] Firing Gold Saucer Chocobo callback stage 1 with payload {payload}: {command}");
-
-        if (!TryFireAddonCallback("GoldSaucerInfo", true, 0, 1, payload))
-        {
-            Fail("GoldSaucerInfo was not visible and ready for Chocobo callback stage 1; no further callbacks will be fired.");
-            return;
-        }
-
-        SetState(RefreshState.WaitingForChocoboCallbackStage2);
-        Snapshot = Snapshot with
-        {
-            StatusText = $"Chocobo callback stage 1 fired with payload {payload}; waiting before stage 2.",
-        };
-    }
-
-    private void FireChocoboCallbackStage2()
-    {
-        var payload = CurrentChocoboCallbackPayload;
-        var command = GameHelpers.FormatCallbackCommand("GoldSaucerInfo", true, 19, 0, payload);
-        log.Information($"[ChokeAbo] Firing Gold Saucer Chocobo callback stage 2 with payload {payload}: {command}");
-
-        if (!TryFireAddonCallback("GoldSaucerInfo", true, 19, 0, payload))
-        {
-            Fail("GoldSaucerInfo was not visible and ready for Chocobo callback stage 2; no further callbacks will be fired.");
-            return;
-        }
-
-        SetState(RefreshState.WaitingForChocoboData);
-        Snapshot = Snapshot with
-        {
-            StatusText = $"Chocobo callback stage 2 fired with payload {payload}; waiting for racing chocobo data.",
-        };
-    }
-
-    private int CurrentChocoboCallbackPayload
-        => GoldSaucerInfoChocoboCallbackPayloads[chocoboCallbackPayloadIndex];
-
-    private bool TryFireNextChocoboCallbackPayload()
-    {
-        var previousPayload = CurrentChocoboCallbackPayload;
-        if (chocoboCallbackPayloadIndex + 1 >= GoldSaucerInfoChocoboCallbackPayloads.Length)
-            return false;
-
-        chocoboCallbackPayloadIndex++;
-        var fallbackPayload = CurrentChocoboCallbackPayload;
-        log.Warning($"[ChokeAbo] Chocobo data was not available after payload {previousPayload}; trying GoldSaucerInfo fallback payload {fallbackPayload}.");
-        Snapshot = Snapshot with
-        {
-            StatusText = $"Chocobo data was not available after payload {previousPayload}; trying payload {fallbackPayload} fallback.",
-        };
-        FireChocoboCallbackStage1();
-        return true;
-    }
-
     private unsafe bool IsAddonReadyAndVisible(string addonName)
         => TryGetReadyAddon(addonName, out _, logFailure: false);
-
-    private unsafe bool TryFireAddonCallback(string addonName, bool updateState, params object[] args)
-    {
-        try
-        {
-            if (!TryGetReadyAddon(addonName, out var addon, logFailure: true))
-                return false;
-
-            var atkValues = new AtkValue[args.Length];
-            for (var index = 0; index < args.Length; index++)
-            {
-                atkValues[index] = args[index] switch
-                {
-                    int intValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Int, Int = intValue },
-                    uint uintValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.UInt, UInt = uintValue },
-                    bool boolValue => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Bool, Byte = (byte)(boolValue ? 1 : 0) },
-                    _ => new AtkValue { Type = FFXIVClientStructs.FFXIV.Component.GUI.AtkValueType.Int, Int = Convert.ToInt32(args[index]) },
-                };
-            }
-
-            fixed (AtkValue* pointer = atkValues)
-            {
-                addon->FireCallback((uint)atkValues.Length, pointer, updateState);
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            log.Warning($"[ChokeAbo] Failed to fire callback on '{addonName}': {ex.Message}");
-            return false;
-        }
-    }
 
     private unsafe bool TryGetReadyAddon(string addonName, out AtkUnitBase* addon, bool logFailure)
     {
@@ -739,7 +659,6 @@ public sealed class ChocoboStatsService
         => state is RefreshState.PendingGoldSaucerCommand
             or RefreshState.WaitingForGoldSaucerWindow
             or RefreshState.WaitingBeforeChocoboCallback
-            or RefreshState.WaitingForChocoboCallbackStage2
             or RefreshState.WaitingForChocoboData;
 
     private void SetState(RefreshState newState)
@@ -764,7 +683,6 @@ public sealed class ChocoboStatsService
         PendingGoldSaucerCommand,
         WaitingForGoldSaucerWindow,
         WaitingBeforeChocoboCallback,
-        WaitingForChocoboCallbackStage2,
         WaitingForChocoboData,
         Complete,
         Failed,

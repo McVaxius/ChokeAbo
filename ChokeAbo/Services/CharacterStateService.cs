@@ -22,6 +22,7 @@ public enum BreedingPhase
     Paused = 19,
     Blocked = 20,
     TargetReady = 21,
+    PurchasingSupplies = 22,
 }
 
 public enum BreedingExecutionOwner
@@ -64,6 +65,16 @@ public sealed class SelectedItemEvidence
 }
 
 [Serializable]
+public sealed class CollectionEvidence
+{
+    public SelectedItemEvidence Proof { get; set; } = new();
+    public int Pedigree { get; set; }
+    public uint MaleQuantity { get; set; }
+    public uint FemaleQuantity { get; set; }
+    public List<SelectedItemEvidence> ExistingOffspring { get; set; } = new();
+}
+
+[Serializable]
 public sealed class BreedingCharacterState
 {
     public BreedingExecutionOwner ExecutionOwner { get; set; }
@@ -72,9 +83,29 @@ public sealed class BreedingCharacterState
     public int TargetPedigree { get; set; }
     public int RetirementRank { get; set; }
     public int PreferredFeedGrade { get; set; }
+    public int ProtocolVersion { get; set; } = 2;
+    public BreedingMode BreedingMode { get; set; }
+    public bool ProduceCounterpart { get; set; }
+    public OffspringGoal OffspringGoal { get; set; }
+    public uint DesiredInheritedAbilityId { get; set; }
+    public List<uint> AcceptableColourIds { get; set; } = new();
+    public int AbilityOffspringRequested { get; set; } = 1;
+    public int ColourOffspringRequested { get; set; } = 1;
+    public int AbilityOffspringProduced { get; set; }
+    public int ColourOffspringProduced { get; set; }
+    public long OffspringCollected { get; set; }
+    public uint GilReserve { get; set; }
+    public uint MgpReserve { get; set; }
+    public InsufficientFeedPolicy FeedPolicy { get; set; } = InsufficientFeedPolicy.Skip;
+    public int SkippedFeedPedigree { get; set; }
+    public int SkippedFeedRank { get; set; }
+    public int ActionFeedGrade { get; set; }
+    public uint RequiredPurchaseItemId { get; set; }
+    public List<FeedPurchaseEntry> FeedPurchaseEntries { get; set; } = new();
     public SelectedItemEvidence? PrimarySelection { get; set; }
     public SelectedItemEvidence? PartnerSelection { get; set; }
     public SelectedItemEvidence? ActionBaseline { get; set; }
+    public CollectionEvidence? CollectionBaseline { get; set; }
     public uint BaselineSessionsAvailable { get; set; }
     public CoveringPurpose CoveringPurpose { get; set; }
     public bool PauseRequested { get; set; }
@@ -197,6 +228,7 @@ public sealed class CharacterStateService
             state.PrimarySelection = null;
             state.PartnerSelection = null;
             state.ActionBaseline = null;
+            state.CollectionBaseline = null;
             state.BaselineSessionsAvailable = 0;
             state.CoveringPurpose = CoveringPurpose.None;
             state.PauseRequested = false;

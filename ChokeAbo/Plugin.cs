@@ -27,6 +27,7 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static ITargetManager TargetManager { get; private set; } = null!;
     [PluginService] internal static IDtrBar DtrBar { get; private set; } = null!;
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
+    [PluginService] internal static ITextureProvider TextureProvider { get; private set; } = null!;
     [PluginService] internal static IToastGui ToastGui { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
@@ -107,6 +108,9 @@ public sealed class Plugin : IDalamudPlugin
             () => IsAutomationRunning,
             PluginInterface.ConfigDirectory.FullName);
         breedingIpcProvider = new BreedingIpcProvider(PluginInterface, BreedingService);
+        BreedingService.InspectNativeState = () => PopupCaptureRecorder.Inspect();
+        BreedingService.BeginNativeCapture = kind => PopupCaptureRecorder.Start(kind, out _, ownedExecution: true);
+        BreedingService.EndNativeCapture = PopupCaptureRecorder.Stop;
         mainWindow = new MainWindow(this, ChocoboStatsService);
         configWindow = new ConfigWindow(this);
         popupCaptureWindow = new PopupCaptureWindow(this);
@@ -120,14 +124,14 @@ public sealed class Plugin : IDalamudPlugin
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Fixed-build marker 2026-07-01: delayed GoldSaucerInfo Chocobo callbacks use payload 130 with payload 131 fallback and 2.0s ready gating.");
+        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20260930-94; saved production workflows and normal ownership continuation.");
     }
 
     public void Dispose()
     {
         PopupCaptureRecorder.Dispose();
         breedingIpcProvider.Dispose();
-        BreedingService.Stop();
+        BreedingService.SuspendTargetCycle(PlayerState.ContentId);
         Framework.Update -= OnFrameworkUpdate;
         PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigUi;
@@ -195,6 +199,17 @@ public sealed class Plugin : IDalamudPlugin
     private void OnCommand(string command, string arguments)
     {
         var a = arguments.Trim();
+        if (a.Equals("inspect forms", StringComparison.OrdinalIgnoreCase))
+        {
+            PopupCaptureRecorder.InspectFormDetails(out var message);
+            PrintStatus(message);
+            return;
+        }
+        if (a.Equals("inspect", StringComparison.OrdinalIgnoreCase) || a.StartsWith("inspect ", StringComparison.OrdinalIgnoreCase))
+        {
+            PopupCaptureRecorder.Inspect(a.Length > 7 ? a[8..].Trim() : null);
+            return;
+        }
         if (a.Equals("config", StringComparison.OrdinalIgnoreCase))
         {
             ToggleConfigUi();
@@ -259,9 +274,13 @@ public sealed class Plugin : IDalamudPlugin
             DenyMainWindowInDuty();
 
         ChocoboStatsService.Update();
+        BreedingService.Update();
+        if (CharacterStateService.GetCurrent().PauseRequested)
+            PopupCaptureRecorder.CancelFormInspection();
+        else
+            PopupCaptureRecorder.UpdateFormInspection();
         VendorPurchaseService.Update();
         StableFeedingService.Update();
-        BreedingService.Update();
         UpdateCleanupAutomation();
 
         UpdateDtrBar();
@@ -275,6 +294,7 @@ public sealed class Plugin : IDalamudPlugin
 
     public void StopAutomation(bool printStatus = true)
     {
+        PopupCaptureRecorder.CancelFormInspection();
         var cancelRecoveryRefresh = cleanupMode != CleanupMode.None &&
                                     cleanupPhase is CleanupPhase.WaitingToVerifyCaps
                                         or CleanupPhase.RefreshingChocoboStats

@@ -178,25 +178,22 @@ public sealed class StableFeedingService
 
     private void HandleTravelingToChocoboSquare()
     {
+        if (GameHelpers.IsLifestreamBusy() || !GameHelpers.IsPlayerAvailable()) return;
         if (GameHelpers.IsInChocoboSquare())
         {
             SetState(FeedState.NavigatingToTrainer);
             return;
         }
 
-        if (GameHelpers.IsLifestreamBusy())
-            return;
-
-        if ((DateTime.UtcNow - lastInteractionAtUtc).TotalSeconds >= 3)
+        if (lastInteractionAtUtc < stateEnteredAtUtc)
         {
-            lastInteractionAtUtc = DateTime.UtcNow;
-            if (!GameHelpers.TryTravelToChocoboSquare() &&
-                (DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 10)
+            if (!GameHelpers.TryTravelToChocoboSquare())
             {
-                Fail("Could not send /li chocobo. Check Lifestream or move there manually.");
+                if ((DateTime.UtcNow - stateEnteredAtUtc).TotalSeconds > 10)
+                    Fail("Could not start Lifestream travel to Chocobo Square.");
                 return;
             }
-
+            lastInteractionAtUtc = DateTime.UtcNow;
             log.Information("[ChokeAbo] Traveling to Chocobo Square for trainer feeding.");
         }
 

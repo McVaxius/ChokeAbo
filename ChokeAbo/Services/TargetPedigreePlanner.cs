@@ -17,6 +17,8 @@ public enum ChocoboSex
     Female,
 }
 
+public enum OffspringGoal { ReachPedigree, AbilityOffspring, ColourOffspring }
+
 public readonly record struct ChocoboInventoryForm(
     ChocoboFormKind Kind,
     uint ItemId,
@@ -145,6 +147,45 @@ public static class ChocoboInventoryModel
             .OrderBy(form => (int)form.Container)
             .ThenBy(form => form.Slot)
             .ToArray();
+
+    public static unsafe bool TryReadColour(ChocoboInventoryForm form, out uint colourId)
+    {
+        colourId = 0;
+        if (form.Kind is not (ChocoboFormKind.Fledgling or ChocoboFormKind.Retired)) return false;
+        var manager = InventoryManager.Instance();
+        var container = manager == null ? null : manager->GetInventoryContainer(form.Container);
+        if (container == null || form.Slot < 0 || form.Slot >= container->Size) return false;
+        var item = container->GetInventorySlot(form.Slot);
+        if (item == null || item->ItemId != form.ItemId || item->Quantity != form.Quantity || item->Condition != form.Capacity)
+            return false;
+        // Both observed colours agreed with seven exact native form tooltips on 2026-09-30.
+        var nativeColourId = item->Stains[0];
+        if (nativeColourId == 0 ||
+            !Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Stain>().TryGetRow(nativeColourId, out var colour) ||
+            string.IsNullOrWhiteSpace(colour.Name.ExtractText()))
+            return false;
+        colourId = nativeColourId;
+        return true;
+    }
+
+    public static unsafe bool TryReadInheritedAbility(ChocoboInventoryForm form, out uint abilityId)
+    {
+        abilityId = 0;
+        if (form.Kind is not (ChocoboFormKind.Fledgling or ChocoboFormKind.Retired)) return false;
+        var manager = InventoryManager.Instance();
+        var container = manager == null ? null : manager->GetInventoryContainer(form.Container);
+        if (container == null || form.Slot < 0 || form.Slot >= container->Size) return false;
+        var item = container->GetInventorySlot(form.Slot);
+        if (item == null || item->ItemId != form.ItemId || item->Quantity != form.Quantity || item->Condition != form.Capacity)
+            return false;
+        // Seven exact tooltips and a fledgling -> native registered-racer comparison agreed on this encoding.
+        var nativeAbilityId = ((uint)item->Materia[4] << 4) | item->MateriaGrades[4];
+        if (nativeAbilityId == 0 ||
+            !Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboRaceAbility>().TryGetRow(nativeAbilityId, out var ability) ||
+            string.IsNullOrWhiteSpace(ability.Name.ExtractText())) return false;
+        abilityId = nativeAbilityId;
+        return true;
+    }
 }
 
 public readonly record struct ActiveRacerSnapshot(
@@ -165,6 +206,8 @@ public enum TargetPlanAction
     WaitForCovering,
     AdoptFledgling,
     TargetReady,
+    BuyRegistrationForm,
+    BuyCoveringPermit,
 }
 
 public enum CoveringPurpose
@@ -179,7 +222,8 @@ public sealed record TargetPedigreePlan(
     string Reason,
     ChocoboInventoryForm? Primary,
     ChocoboInventoryForm? Partner,
-    CoveringPurpose CoveringPurpose)
+    CoveringPurpose CoveringPurpose,
+    uint RequiredItemId = 0)
 {
     public static TargetPedigreePlan Blocked(string reason)
         => new(TargetPlanAction.Blocked, reason, null, null, CoveringPurpose.None);
@@ -187,6 +231,140 @@ public sealed record TargetPedigreePlan(
 
 public static class TargetPedigreePlanner
 {
+    public static TargetPedigreePlan PlanOffspring(ActiveRacerSnapshot racer,
+        IReadOnlyList<ChocoboInventoryForm> forms, BreedingMode mode, int produced, int requested,
+        Func<ChocoboInventoryForm, bool?> matches, bool? racerMatches)
+    {
+        if (!Enum.IsDefined(mode) || requested < 1 || produced < 0)
+            return TargetPedigreePlan.Blocked("Invalid offspring production settings.");
+        if (produced >= requested)
+            return new(TargetPlanAction.TargetReady, $"Produced {produced}/{requested} matching G9 offspring; retained unregistered.",
+                null, null, CoveringPurpose.None);
+        if (forms.Any(form => form.Kind == ChocoboFormKind.Proof && form.Quantity > 0))
+            return new(TargetPlanAction.WaitForCovering, "Reconcile the existing covering before producing another offspring.",
+                null, null, CoveringPurpose.None);
+        if (racer.IsLoaded)
+        {
+            if (racer.Pedigree != 9 || racer.Sex == ChocoboSex.Unknown || racer.Rank is < 1 or > 50)
+                return TargetPedigreePlan.Blocked("Offspring production requires G9 breeding stock; lower-generation racing is stopped.");
+            if (racerMatches != true && !(racerMatches == false && forms.Any(form => form.Kind == ChocoboFormKind.Retired &&
+                form.Pedigree == 9 && form.HasPositiveCapacity && form.Sex != racer.Sex && matches(form) == true)))
+                return TargetPedigreePlan.Blocked("The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock.");
+            return new(racer.Rank >= 40 ? TargetPlanAction.RetireActive : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
+                $"Raise the matching G9 parent to retirement: racing rank {racer.Rank}/40. Matching offspring stay unregistered.",
+                null, null, CoveringPurpose.None);
+        }
+        var parents = OrderParents(forms.Where(form => form.Kind == ChocoboFormKind.Retired &&
+            form.Pedigree == 9 && form.Quantity > 0 && form.HasPositiveCapacity)).ToArray();
+        foreach (var parent in parents.Where(parent => matches(parent) == true))
+        {
+            if (mode == BreedingMode.NpcPermits)
+                return PlanPermit(parent, forms, CoveringPurpose.AdvancePedigree);
+            var partner = parents.FirstOrDefaultNullable(other => other.Sex != parent.Sex && other.Sex != ChocoboSex.Unknown);
+            if (partner.HasValue)
+                return new(TargetPlanAction.CoverPair, "Cover matching G9 stock with its retained opposite-sex G9 parent.",
+                    parent, partner, CoveringPurpose.AdvancePedigree);
+        }
+        if (!parents.Any(parent => matches(parent) == true))
+            return TargetPedigreePlan.Blocked("No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock.");
+        // Only non-matching G9 offspring may replace an exhausted/missing counterpart.
+        // Unknown traits and matching outputs are never consumed as breeding stock.
+        var replacement = forms.FirstOrDefaultNullable(form => form.Kind == ChocoboFormKind.Fledgling &&
+            form.Pedigree == 9 && form.Quantity > 0 && matches(form) == false &&
+            parents.Any(parent => matches(parent) == true && parent.Sex != form.Sex));
+        if (replacement.HasValue)
+            return new(TargetPlanAction.RegisterFledgling, "Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs.",
+                replacement, null, CoveringPurpose.ProduceMissingSex);
+        return TargetPedigreePlan.Blocked("Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits.");
+    }
+
+    public static TargetPedigreePlan PlanProgression(int targetPedigree, ActiveRacerSnapshot racer,
+        IReadOnlyList<ChocoboInventoryForm> forms, BreedingMode mode, bool produceCounterpart = false)
+    {
+        if (targetPedigree is < 2 or > 9 || !Enum.IsDefined(mode))
+            return TargetPedigreePlan.Blocked("Invalid progression settings.");
+        // Exhausted parents still prove the pedigree already reached. Never rebuild below it.
+        var pedigreeFloor = Math.Max(racer.IsLoaded ? racer.Pedigree : 0,
+            forms.Where(form => form.Quantity > 0 && form.Kind is ChocoboFormKind.Retired or ChocoboFormKind.Fledgling)
+                .Select(form => form.Pedigree).DefaultIfEmpty(0).Max());
+        if (targetPedigree < pedigreeFloor)
+            return TargetPedigreePlan.Blocked($"G{pedigreeFloor} has already been reached; the target cannot move backwards.");
+        if (produceCounterpart && (mode != BreedingMode.NpcPermits || pedigreeFloor < 2))
+            return TargetPedigreePlan.Blocked("Counterpart covering requires permit mode and a reached pedigree of G2 or higher.");
+        var usable = forms.Where(form => form.Quantity > 0 && form.HasPositiveCapacity).ToArray();
+        if (racer.IsLoaded)
+        {
+            if (racer.Pedigree is < 1 or > 9 || racer.Rank is < 1 or > 50 || racer.Sex == ChocoboSex.Unknown)
+                return TargetPedigreePlan.Blocked("Current racer pedigree, racing rank, or sex is unavailable.");
+            if (racer.Pedigree < pedigreeFloor)
+                return TargetPedigreePlan.Blocked($"The registered G{racer.Pedigree} racer is below the retained G{pedigreeFloor} pedigree; lower-generation racing is stopped.");
+            if (racer.Pedigree >= targetPedigree)
+                return racer.Pedigree == targetPedigree
+                    ? new(racer.Rank == 50 ? TargetPlanAction.TargetReady : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
+                        $"Retain G{racer.Pedigree}; racing rank {racer.Rank}/50.", null, null, CoveringPurpose.None)
+                    : TargetPedigreePlan.Blocked("The current racer exceeds the selected target pedigree; retain it.");
+            return new(racer.Rank >= 40 ? TargetPlanAction.RetireActive : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
+                $"G{racer.Pedigree} {racer.Sex}: racing rank {racer.Rank}/40 before retirement.", null, null, CoveringPurpose.None);
+        }
+        var proof = usable.FirstOrDefaultNullable(form => form.Kind == ChocoboFormKind.Proof);
+        if (proof.HasValue)
+            return new(TargetPlanAction.WaitForCovering, "Reconcile the existing Proof of Covering before another covering.", proof, null, CoveringPurpose.None);
+        var currentForms = usable.Where(form => form.Kind != ChocoboFormKind.Fledgling || form.Pedigree >= pedigreeFloor).ToArray();
+        var usefulCandidates = currentForms.Where(form => form.Kind != ChocoboFormKind.Fledgling ||
+            !HasUsableRetiredSex(currentForms, form.Pedigree, form.Sex)).ToArray();
+        var fledgling = SelectFledgling(produceCounterpart ? usefulCandidates : currentForms, targetPedigree)
+            ?? SelectUsefulFledgling(usefulCandidates, targetPedigree);
+        if (fledgling.HasValue)
+            return new(TargetPlanAction.RegisterFledgling, $"Register G{fledgling.Value.Pedigree} {fledgling.Value.Sex}.", fledgling, null, CoveringPurpose.None);
+        var parents = usable.Where(form => form.Kind == ChocoboFormKind.Retired && form.Pedigree < targetPedigree).ToArray();
+        var highest = parents.Select(form => form.Pedigree).DefaultIfEmpty(0).Max();
+        if (produceCounterpart)
+        {
+            if (TrySelectPair(usable.Where(form => form.Kind == ChocoboFormKind.Retired).ToArray(), pedigreeFloor, out _, out _))
+                return TargetPedigreePlan.Blocked($"A usable G{pedigreeFloor} pair is already retained. Select owned parents or advance-pedigree permits before another covering.");
+            var preceding = pedigreeFloor - 1;
+            var source = OrderParents(parents.Where(form => form.Pedigree == preceding)).FirstOrDefaultNullable();
+            if (!source.HasValue)
+                return TargetPedigreePlan.Blocked($"No usable G{preceding} parent remains to produce a G{pedigreeFloor} counterpart. Lower-generation covering is stopped.");
+            return PlanPermit(source.Value, usable, CoveringPurpose.ProduceMissingSex);
+        }
+        if (mode == BreedingMode.NpcPermits && highest > 0)
+        {
+            if (highest + 1 < pedigreeFloor)
+                return TargetPedigreePlan.Blocked($"No retained parent can produce G{pedigreeFloor} or higher; lower-generation covering is stopped.");
+            var parent = OrderParents(parents.Where(form => form.Pedigree == highest)).First();
+            return PlanPermit(parent, usable, CoveringPurpose.AdvancePedigree);
+        }
+        // A preceding pair may produce another current-grade parent, but never a lower grade.
+        // Owned mode does not purchase a permit without an explicit mode change.
+        for (var pedigree = highest; pedigree >= Math.Max(1, pedigreeFloor - 1); --pedigree)
+            if (TrySelectPair(parents, pedigree, out var primary, out var partner))
+                return new(TargetPlanAction.CoverPair, $"Cover retained G{pedigree} parents; preserve their remaining capacity.",
+                    primary, partner, pedigree == highest ? CoveringPurpose.AdvancePedigree : CoveringPurpose.ProduceMissingSex);
+        if (pedigreeFloor > 1)
+            return TargetPedigreePlan.Blocked($"Missing an owned G{pedigreeFloor} counterpart. No owned pair can produce G{pedigreeFloor} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped.");
+        var needFemale = parents.Any(form => form.Pedigree == 1 && form.Sex == ChocoboSex.Male);
+        var registrationId = needFemale ? ChocoboInventoryModel.FirstFemaleFledglingItemId : ChocoboInventoryModel.FirstFledglingItemId;
+        return new(TargetPlanAction.BuyRegistrationForm, $"Buy a G1 {(needFemale ? "female" : "male")} registration form to raise a missing owned parent.",
+            null, null, CoveringPurpose.ProduceMissingSex, registrationId);
+    }
+
+    private static TargetPedigreePlan PlanPermit(ChocoboInventoryForm parent,
+        IReadOnlyList<ChocoboInventoryForm> forms, CoveringPurpose purpose)
+    {
+        var permitId = (parent.Sex == ChocoboSex.Male ? ChocoboInventoryModel.FirstFemaleCoveringPermissionItemId
+            : ChocoboInventoryModel.FirstCoveringPermissionItemId) + (uint)parent.Pedigree - 1;
+        var permit = forms.FirstOrDefaultNullable(form => form.Kind == ChocoboFormKind.CoveringPermission && form.ItemId == permitId);
+        var resultPedigree = Math.Min(9, parent.Pedigree + 1);
+        return new(permit.HasValue ? TargetPlanAction.CoverPair : TargetPlanAction.BuyCoveringPermit,
+            permit.HasValue ? $"Cover the retained G{parent.Pedigree} parent and matching opposite-sex permit to produce G{resultPedigree}."
+                : $"Buy the opposite-sex G{parent.Pedigree} permit within reserves to produce G{resultPedigree}.",
+            parent, permit, purpose, permitId);
+    }
+
+    private static ChocoboInventoryForm? FirstOrDefaultNullable(this IEnumerable<ChocoboInventoryForm> forms,
+        Func<ChocoboInventoryForm, bool> predicate) => forms.Where(predicate).FirstOrDefaultNullable();
+
     public static TargetPedigreePlan Plan(
         int targetPedigree,
         int retirementRank,
