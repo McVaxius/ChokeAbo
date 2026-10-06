@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Enabled" xml:space="preserve"><value>Etkin</value></data>
+  <data name="DTR Bar" xml:space="preserve"><value>DTR çubuğu</value></data>
+  <data name="Settings" xml:space="preserve"><value>Ayarlar</value></data>
+  <data name="Refresh Chocobo Data" xml:space="preserve"><value>Chocobo verilerini yenile</value></data>
+  <data name="Status to chat" xml:space="preserve"><value>Durumu sohbete yaz</value></data>
+  <data name="Manual training and feed purchases" xml:space="preserve"><value>Elle eğitim ve yem alımı</value></data>
+  <data name="Plan training sessions, use feed already in inventory, and buy the remaining feed in one visit." xml:space="preserve"><value>Eğitim seanslarını planlayın, envanterdeki yemi kullanın ve kalanını tek ziyarette satın alın.</value></data>
+  <data name="Planned trainings exceed sessions available: {0}/{1}. Extra planned trainings will not fit this cycle." xml:space="preserve"><value>Planlanan eğitimler kullanılabilir seansları aşıyor: {0}/{1}. Ek eğitimler bu döngüye sığmaz.</value></data>
+  <data name="FFXIV Dalamud Plugin" xml:space="preserve"><value>FFXIV Dalamud eklentisi</value></data>
+  <data name="Support on Ko-fi" xml:space="preserve"><value>Ko-fi üzerinden destekle</value></data>
+  <data name="Compact mode" xml:space="preserve"><value>Kompakt mod</value></data>
+  <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>Chocobo ilerlemesini görmek için bir karakterle giriş yapın.</value></data>
+  <data name="Chocobo progression" xml:space="preserve"><value>Chocobo ilerlemesi</value></data>
+  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>İlerleme ayarlarını ve günlük yarış hakkını VERMAXION yönetir. Besleme ve çiftleştirmeyi Choke-abo yürütür.</value></data>
+  <data name="Open VERMAXION settings" xml:space="preserve"><value>VERMAXION ayarlarını aç</value></data>
+  <data name="Stop" xml:space="preserve"><value>Durdur</value></data>
+  <data name="Pedigree" xml:space="preserve"><value>Soy derecesi</value></data>
+  <data name="Unknown" xml:space="preserve"><value>Bilinmiyor</value></data>
+  <data name="Inherited ability" xml:space="preserve"><value>Kalıtsal yetenek</value></data>
+  <data name="Rank" xml:space="preserve"><value>Rütbe</value></data>
+  <data name="Learned ability" xml:space="preserve"><value>Öğrenilen yetenek</value></data>
+  <data name="Goal" xml:space="preserve"><value>Hedef</value></data>
+  <data name="Not configured" xml:space="preserve"><value>Ayarlanmamış</value></data>
+  <data name="Pedigree G{0}" xml:space="preserve"><value>Soy derecesi G{0}</value></data>
+  <data name="Offspring printer" xml:space="preserve"><value>Yavru üretimi</value></data>
+  <data name="Colour seeker" xml:space="preserve"><value>Renk arayışı</value></data>
+  <data name="Colour" xml:space="preserve"><value>Renk</value></data>
+  <data name="Phase" xml:space="preserve"><value>Aşama</value></data>
+  <data name="Covering ready in" xml:space="preserve"><value>Çiftleştirmeye kalan süre</value></data>
+  <data name="Ready" xml:space="preserve"><value>Hazır</value></data>
+  <data name="Next action" xml:space="preserve"><value>Sonraki eylem</value></data>
+  <data name="Matching G9 offspring: {0:N0} / {1:N0}" xml:space="preserve"><value>Uygun G9 yavruları: {0:N0} / {1:N0}</value></data>
+  <data name="Matching offspring retained unregistered" xml:space="preserve"><value>Uygun yavrular kaydedilmeden tutuluyor</value></data>
+  <data name="Desired inherited ability" xml:space="preserve"><value>İstenen kalıtsal yetenek</value></data>
+  <data name="Breeding mode: {0}" xml:space="preserve"><value>Çiftleştirme modu: {0}</value></data>
+  <data name="Owned parents" xml:space="preserve"><value>Sahip olunan ebeveynler</value></data>
+  <data name="NPC covering permits" xml:space="preserve"><value>NPC çiftleştirme izinleri</value></data>
+  <data name="Permit objective: produce G9 offspring" xml:space="preserve"><value>İzin hedefi: G9 yavruları üretmek</value></data>
+  <data name="Permit objective: produce a missing current-pedigree counterpart" xml:space="preserve"><value>İzin hedefi: mevcut soy derecesinin eksik eşini üretmek</value></data>
+  <data name="Permit objective: advance pedigree" xml:space="preserve"><value>İzin hedefi: soy derecesini artırmak</value></data>
+  <data name="Reserves: {0:N0} gil    {1:N0} MGP" xml:space="preserve"><value>Rezervler: {0:N0} gil    {1:N0} MGP</value></data>
+  <data name="Fall back to Grade 1, then skip" xml:space="preserve"><value>1. dereceyi dene, sonra atla</value></data>
+  <data name="Stop until Resume" xml:space="preserve"><value>Devam et seçilene kadar dur</value></data>
+  <data name="Skip this feeding round" xml:space="preserve"><value>Bu besleme turunu atla</value></data>
+  <data name="Feed: Grade {0}    If unavailable: {1}" xml:space="preserve"><value>Yem: derece {0}    Bulunamazsa: {1}</value></data>
+  <data name="Choose your progression goal, reserves and feeding policy in VERMAXION settings, then Resume to begin." xml:space="preserve"><value>VERMAXION ayarlarında ilerleme hedefinizi, rezervleri ve besleme politikasını seçin; başlamak için Devam et seçeneğini kullanın.</value></data>
+  <data name="No registered racing chocobo." xml:space="preserve"><value>Kayıtlı yarış chocobosu yok.</value></data>
+  <data name="Registered racer data is unavailable." xml:space="preserve"><value>Kayıtlı yarışçı verileri kullanılamıyor.</value></data>
+  <data name="Breeding stock" xml:space="preserve"><value>Damızlıklar</value></data>
+  <data name="Offspring sex is random. Two coverings do not guarantee a male and a female." xml:space="preserve"><value>Yavrunun cinsiyeti rastgeledir. İki çiftleştirme bir erkek ve bir dişi garanti etmez.</value></data>
+  <data name="Pedigree / sex" xml:space="preserve"><value>Soy derecesi / cinsiyet</value></data>
+  <data name="Coverings left" xml:space="preserve"><value>Kalan çiftleştirmeler</value></data>
+  <data name="Covering proof" xml:space="preserve"><value>Çiftleştirme belgesi</value></data>
+  <data name="No breeding forms or covering proof in inventory." xml:space="preserve"><value>Envanterde damızlık formu veya çiftleştirme belgesi yok.</value></data>
+  <data name="Covering in progress" xml:space="preserve"><value>Çiftleştirme sürüyor</value></data>
+  <data name="Collecting offspring" xml:space="preserve"><value>Yavrular alınıyor</value></data>
+  <data name="Registering offspring" xml:space="preserve"><value>Yavrular kaydediliyor</value></data>
+  <data name="Retiring the intermediate racer" xml:space="preserve"><value>Ara yarışçı emekliye ayrılıyor</value></data>
+  <data name="Retiring the G9 breeding parent" xml:space="preserve"><value>G9 damızlık ebeveyn emekliye ayrılıyor</value></data>
+  <data name="Preparing covering" xml:space="preserve"><value>Çiftleştirme hazırlanıyor</value></data>
+  <data name="Paused - Resume is required" xml:space="preserve"><value>Duraklatıldı - Devam et seçilmeli</value></data>
+  <data name="Needs attention" xml:space="preserve"><value>İlgilenilmeli</value></data>
+  <data name="Offspring goal reached" xml:space="preserve"><value>Yavru hedefine ulaşıldı</value></data>
+  <data name="Progression complete" xml:space="preserve"><value>İlerleme tamamlandı</value></data>
+  <data name="Verifying the registered racer" xml:space="preserve"><value>Kayıtlı yarışçı doğrulanıyor</value></data>
+  <data name="Ready for racing" xml:space="preserve"><value>Yarışa hazır</value></data>
+  <data name="Feeding the racer" xml:space="preserve"><value>Yarışçı besleniyor</value></data>
+  <data name="Purchasing supplies" xml:space="preserve"><value>Malzemeler satın alınıyor</value></data>
+  <data name="Ready to plan the next action" xml:space="preserve"><value>Sonraki eylemi planlamaya hazır</value></data>
+  <data name="{0}: none" xml:space="preserve"><value>{0}: yok</value></data>
+  <data name="Overview" xml:space="preserve"><value>Genel bakış</value></data>
+  <data name="Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="No chocobo data loaded yet." xml:space="preserve"><value>Henüz chocobo verisi yüklenmedi.</value></data>
+  <data name="Racing rank: {0}/50" xml:space="preserve"><value>Yarış rütbesi: {0}/50</value></data>
+  <data name="Rating: {0}" xml:space="preserve"><value>Puan: {0}</value></data>
+  <data name="Pedigree: G{0}" xml:space="preserve"><value>Soy derecesi: G{0}</value></data>
+  <data name="XP: {0:N0}/{1:N0}" xml:space="preserve"><value>XP: {0:N0}/{1:N0}</value></data>
+  <data name="Sessions: {0}" xml:space="preserve"><value>Seanslar: {0}</value></data>
+  <data name="Plan: {0}" xml:space="preserve"><value>Plan: {0}</value></data>
+  <data name="Gil: {0:N0}" xml:space="preserve"><value>Gil: {0:N0}</value></data>
+  <data name="MGP: {0:N0}" xml:space="preserve"><value>MGP: {0:N0}</value></data>
+  <data name="Need gil: {0:N0}" xml:space="preserve"><value>Gereken gil: {0:N0}</value></data>
+  <data name="Need MGP: {0:N0}" xml:space="preserve"><value>Gereken MGP: {0:N0}</value></data>
+  <data name="Stat" xml:space="preserve"><value>Özellik</value></data>
+  <data name="Stars" xml:space="preserve"><value>Yıldızlar</value></data>
+  <data name="Now" xml:space="preserve"><value>Şimdi</value></data>
+  <data name="After" xml:space="preserve"><value>Sonra</value></data>
+  <data name="Maximum Speed" xml:space="preserve"><value>Azami hız</value></data>
+  <data name="Acceleration" xml:space="preserve"><value>Hızlanma</value></data>
+  <data name="Endurance" xml:space="preserve"><value>Direnç</value></data>
+  <data name="Stamina" xml:space="preserve"><value>Dayanıklılık</value></data>
+  <data name="Cunning" xml:space="preserve"><value>Kurnazlık</value></data>
+  <data name="Training Plan" xml:space="preserve"><value>Eğitim planı</value></data>
+  <data name="Choose the number of training sessions and feed grade for each stat." xml:space="preserve"><value>Her özellik için eğitim seansı sayısını ve yem derecesini seçin.</value></data>
+  <data name="Qty" xml:space="preserve"><value>Adet</value></data>
+  <data name="Grade 1" xml:space="preserve"><value>1. derece</value></data>
+  <data name="Grade 2" xml:space="preserve"><value>2. derece</value></data>
+  <data name="Grade 3" xml:space="preserve"><value>3. derece</value></data>
+  <data name="Clear Plan" xml:space="preserve"><value>Planı temizle</value></data>
+  <data name="Planned trainings this cycle: {0}" xml:space="preserve"><value>Bu döngüde planlanan eğitimler: {0}</value></data>
+  <data name="Session cap: {0}" xml:space="preserve"><value>Seans sınırı: {0}</value></data>
+  <data name="Purchase Plan" xml:space="preserve"><value>Satın alma planı</value></data>
+  <data name="Exact shopping list for the current plan." xml:space="preserve"><value>Mevcut planın tam alışveriş listesi.</value></data>
+  <data name="Load racing chocobo data first so the purchase plan can compare against sessions available." xml:space="preserve"><value>Satın alma planının kullanılabilir seanslarla karşılaştırılabilmesi için önce yarış chocobosu verilerini yükleyin.</value></data>
+  <data name="Plan exceeds sessions available: {0}/{1}. The shopping list below still reflects the full plan." xml:space="preserve"><value>Plan kullanılabilir seansları aşıyor: {0}/{1}. Aşağıdaki alışveriş listesi yine de tüm planı yansıtır.</value></data>
+  <data name="Feed" xml:space="preserve"><value>Yem</value></data>
+  <data name="Qty on hand" xml:space="preserve"><value>Eldeki adet</value></data>
+  <data name="Currency" xml:space="preserve"><value>Para birimi</value></data>
+  <data name="Total" xml:space="preserve"><value>Toplam</value></data>
+  <data name="No planned feed purchases." xml:space="preserve"><value>Planlanmış yem alımı yok.</value></data>
+  <data name="{0:N0}" xml:space="preserve"><value>{0:N0}</value></data>
+  <data name="Total gil needed: {0:N0}" xml:space="preserve"><value>Gereken toplam gil: {0:N0}</value></data>
+  <data name="Total MGP needed: {0:N0}" xml:space="preserve"><value>Gereken toplam MGP: {0:N0}</value></data>
+  <data name="Current currency is below the planned purchase total. Adjust the plan or stock up before the buy loop is enabled." xml:space="preserve"><value>Mevcut para planlanan alım toplamından az. Satın alma döngüsü etkinleştirilmeden önce planı ayarlayın veya stok yapın.</value></data>
+  <data name="Buy Needed Feed" xml:space="preserve"><value>Gereken yemi satın al</value></data>
+  <data name="Feed Planned Sessions" xml:space="preserve"><value>Planlanan seansları besle</value></data>
+  <data name="Run Full Cycle" xml:space="preserve"><value>Tam döngüyü çalıştır</value></data>
+  <data name="Start / Resume Breeding" xml:space="preserve"><value>Çiftleştirmeyi başlat / sürdür</value></data>
+  <data name="Automation uses the session-capped plan and subtracts feed already on hand before buying." xml:space="preserve"><value>Otomasyon seans sınırına uygun planı kullanır ve satın almadan önce eldeki yemi düşer.</value></data>
+  <data name="Cleanup status: {0}" xml:space="preserve"><value>Temizlik durumu: {0}</value></data>
+  <data name="Buy status: {0}" xml:space="preserve"><value>Satın alma durumu: {0}</value></data>
+  <data name="Feed status: {0}" xml:space="preserve"><value>Besleme durumu: {0}</value></data>
+  <data name="Breeding status: {0}" xml:space="preserve"><value>Çiftleştirme durumu: {0}</value></data>
+  <data name="1 star" xml:space="preserve"><value>1 yıldız</value></data>
+  <data name="{0} stars" xml:space="preserve"><value>{0} yıldız</value></data>
+  <data name="Text only" xml:space="preserve"><value>Yalnızca metin</value></data>
+  <data name="Icon + text" xml:space="preserve"><value>Simge + metin</value></data>
+  <data name="Icon only" xml:space="preserve"><value>Yalnızca simge</value></data>
+  <data name="Plugin enabled" xml:space="preserve"><value>Eklenti etkin</value></data>
+  <data name="Show DTR bar entry" xml:space="preserve"><value>DTR çubuğu girdisini göster</value></data>
+  <data name="DTR mode" xml:space="preserve"><value>DTR modu</value></data>
+  <data name="DTR enabled glyph" xml:space="preserve"><value>DTR etkin simgesi</value></data>
+  <data name="DTR disabled glyph" xml:space="preserve"><value>DTR devre dışı simgesi</value></data>
+  <data name="Rollout phases" xml:space="preserve"><value>Uygulama aşamaları</value></data>
+  <data name="Concept recap" xml:space="preserve"><value>Kavram özeti</value></data>
+  <data name="Popup Capture" xml:space="preserve"><value>Açılır pencere yakalama</value></data>
+  <data name="Start/Stop Retirement" xml:space="preserve"><value>Emekliliği başlat/durdur</value></data>
+  <data name="Start/Stop Covering Selector" xml:space="preserve"><value>Çiftleştirme seçicisini başlat/durdur</value></data>
+  <data name="Start/Stop Fledgling Selector" xml:space="preserve"><value>Yavru seçicisini başlat/durdur</value></data>
+  <data name="Start/Stop Adoption" xml:space="preserve"><value>Evlat edinmeyi başlat/durdur</value></data>
+  <data name="Open Folder" xml:space="preserve"><value>Klasörü aç</value></data>
+  <data name="Scroll down to &quot;The Dumpster Fire&quot; channel to discuss issues / suggestions for specific plugins." xml:space="preserve"><value>Belirli eklentilerle ilgili sorunları / önerileri tartışmak için "The Dumpster Fire" kanalına kaydırın.</value></data>
+  <data name="Track current stats and feed plans." xml:space="preserve"><value>Mevcut özellikleri ve yem planlarını izle.</value></data>
+  <data name="Reserve stable and vendor automation seams." xml:space="preserve"><value>Ahır ve satıcı otomasyonu için bağlantı noktalarını ayır.</value></data>
+  <data name="Bias toward transparent deterministic flows." xml:space="preserve"><value>Şeffaf ve deterministik akışları önceliklendir.</value></data>
+  <data name="Shell and docs" xml:space="preserve"><value>İskelet ve belgeler</value></data>
+  <data name="Inventory truth" xml:space="preserve"><value>Gerçek envanter durumu</value></data>
+  <data name="Planning math" xml:space="preserve"><value>Plan hesaplaması</value></data>
+  <data name="Vendor flow" xml:space="preserve"><value>Satıcı akışı</value></data>
+  <data name="Stable loop" xml:space="preserve"><value>Ahır döngüsü</value></data>
+  <data name="Pass {0}: buying missing feed ({1} sessions remain)." xml:space="preserve"><value>Tur {0}: eksik yem alınıyor ({1} seans kaldı).</value></data>
+  <data name="Pass {0}: feeding ({1} sessions remain)." xml:space="preserve"><value>Tur {0}: besleniyor ({1} seans kaldı).</value></data>
+  <data name="Pass {0}: cleanup/retry in {1:0.0}s. {2}" xml:space="preserve"><value>Tur {0}: {1:0.0} sn sonra temizlik/yeniden deneme. {2}</value></data>
+  <data name="Pass {0}: waiting to verify caps in {1:0.0}s. {2}" xml:space="preserve"><value>Tur {0}: sınırları doğrulamak için {1:0.0} sn bekleniyor. {2}</value></data>
+  <data name="Pass {0}: refreshing Chocobo stats. {1}" xml:space="preserve"><value>Tur {0}: Chocobo özellikleri yenileniyor. {1}</value></data>
+  <data name="Pass {0}: Chocobo stat refresh failed; retrying refresh in {1:0.0}s. {2}" xml:space="preserve"><value>Tur {0}: Chocobo özellikleri yenilenemedi; {1:0.0} sn sonra yeniden denenecek. {2}</value></data>
+  <data name="Idle" xml:space="preserve"><value>Boşta</value></data>
+  <data name="{0} {1}. Click to open the main window." xml:space="preserve"><value>{0} {1}. Ana pencereyi açmak için tıklayın.</value></data>
+  <data name="Stopped manually." xml:space="preserve"><value>Elle durduruldu.</value></data>
+  <data name="Training plan cleared." xml:space="preserve"><value>Eğitim planı temizlendi.</value></data>
+  <data name="Cleanup did not start: load racing chocobo data first." xml:space="preserve"><value>Temizlik başlamadı: önce yarış chocobosu verilerini yükleyin.</value></data>
+  <data name="Cleanup complete: no planned training remains." xml:space="preserve"><value>Temizlik tamamlandı: planlanmış eğitim kalmadı.</value></data>
+  <data name="Cleanup complete: session budget exhausted with {0} planned training deferred." xml:space="preserve"><value>Temizlik tamamlandı: seans hakkı tükendi, {0} planlanmış eğitim ertelendi.</value></data>
+  <data name="Purchase pass failed: {0}" xml:space="preserve"><value>Satın alma turu başarısız: {0}</value></data>
+  <data name="Feeding pass completed." xml:space="preserve"><value>Besleme turu tamamlandı.</value></data>
+  <data name="Feeding pass failed: {0}" xml:space="preserve"><value>Besleme turu başarısız: {0}</value></data>
+  <data name="Chocobo stat refresh failed: {0}" xml:space="preserve"><value>Chocobo özellikleri yenilenemedi: {0}</value></data>
+  <data name="remaining plan reached zero" xml:space="preserve"><value>kalan plan sıfıra ulaştı</value></data>
+  <data name="session budget reached zero" xml:space="preserve"><value>seans hakkı sıfıra ulaştı</value></data>
+  <data name="{0}; waiting to verify caps" xml:space="preserve"><value>{0}; sınırların doğrulanması bekleniyor</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Kullanılamıyor</value></data>
+  <data name="Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats." xml:space="preserve"><value>Yarış chocobosu özelliklerini yüklemek için Chocobo verilerini yenile seçeneğini veya /chokeabo refresh komutunu kullanın.</value></data>
+  <data name="Refresh requested; opening Gold Saucer window..." xml:space="preserve"><value>Yenileme istendi; Gold Saucer penceresi açılıyor...</value></data>
+  <data name="Opening Gold Saucer window..." xml:space="preserve"><value>Gold Saucer penceresi açılıyor...</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback..." xml:space="preserve"><value>Gold Saucer Info hazır; Chocobo sekmesi geri çağrısından önce bekleniyor...</value></data>
+  <data name="Waiting for racing chocobo data..." xml:space="preserve"><value>Yarış chocobosu verileri bekleniyor...</value></data>
+  <data name="Current racer data has not been loaded." xml:space="preserve"><value>Mevcut yarışçı verileri yüklenmedi.</value></data>
+  <data name="Loaded from {0} at {1:HH:mm:ss}." xml:space="preserve"><value>{0} kaynağından {1:HH:mm:ss} saatinde yüklendi.</value></data>
+  <data name="Racing chocobo stat refresh cancelled." xml:space="preserve"><value>Yarış chocobosu özelliklerinin yenilenmesi iptal edildi.</value></data>
+  <data name="The /goldsaucer command was not accepted." xml:space="preserve"><value>/goldsaucer komutu kabul edilmedi.</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback." xml:space="preserve"><value>Gold Saucer Info hazır; Chocobo sekmesi geri çağrısından önce bekleniyor.</value></data>
+  <data name="Gold Saucer window did not appear in time." xml:space="preserve"><value>Gold Saucer penceresi zamanında görünmedi.</value></data>
+  <data name="The observed Chocobo tab is not ready for its native button event." xml:space="preserve"><value>Gözlenen Chocobo sekmesi kendi yerel düğme olayına hazır değil.</value></data>
+  <data name="Racing chocobo page detected; waiting for RaceChocoboManager data." xml:space="preserve"><value>Yarış chocobosu sayfası algılandı; RaceChocoboManager verileri bekleniyor.</value></data>
+  <data name="RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab." xml:space="preserve"><value>Yerel Chocobo sekmesi seçildikten sonraki 30 saniyede RaceChocoboManager yüklenmedi.</value></data>
+  <data name="Projected" xml:space="preserve"><value>Öngörülen</value></data>
+  <data name="Projected from current stats using {0} planned trainings." xml:space="preserve"><value>{0} planlanmış eğitimle mevcut özelliklerden hesaplandı.</value></data>
+  <data name="Loaded from RaceChocoboManager at {0:HH:mm:ss}." xml:space="preserve"><value>RaceChocoboManager kaynağından {0:HH:mm:ss} saatinde yüklendi.</value></data>
+  <data name="Traveling to Chocobo Square..." xml:space="preserve"><value>Chocobo Square konumuna gidiliyor...</value></data>
+  <data name="Moving to Race Chocobo Trainer..." xml:space="preserve"><value>Race Chocobo Trainer yakınına gidiliyor...</value></data>
+  <data name="Opening Race Chocobo Trainer..." xml:space="preserve"><value>Race Chocobo Trainer açılıyor...</value></data>
+  <data name="Waiting for feed inventory..." xml:space="preserve"><value>Yem envanteri bekleniyor...</value></data>
+  <data name="Finding {0}..." xml:space="preserve"><value>{0} aranıyor...</value></data>
+  <data name="Finding feed..." xml:space="preserve"><value>Yem aranıyor...</value></data>
+  <data name="Opening inventory context menu..." xml:space="preserve"><value>Envanter bağlam menüsü açılıyor...</value></data>
+  <data name="Waiting for Feed context menu..." xml:space="preserve"><value>Feed bağlam menüsü bekleniyor...</value></data>
+  <data name="Selecting Feed..." xml:space="preserve"><value>Feed seçiliyor...</value></data>
+  <data name="Waiting for Commence..." xml:space="preserve"><value>Commence bekleniyor...</value></data>
+  <data name="Confirming training..." xml:space="preserve"><value>Eğitim onaylanıyor...</value></data>
+  <data name="Waiting for training to complete..." xml:space="preserve"><value>Eğitimin tamamlanması bekleniyor...</value></data>
+  <data name="Feed cycle complete." xml:space="preserve"><value>Besleme döngüsü tamamlandı.</value></data>
+  <data name="Feed cycle failed." xml:space="preserve"><value>Besleme döngüsü başarısız.</value></data>
+  <data name="Could not start Lifestream travel to Chocobo Square." xml:space="preserve"><value>Chocobo Square konumuna Lifestream yolculuğu başlatılamadı.</value></data>
+  <data name="Timed out waiting to arrive in Chocobo Square." xml:space="preserve"><value>Chocobo Square konumuna varış beklenirken süre doldu.</value></data>
+  <data name="Could not find Race Chocobo Trainer in Chocobo Square." xml:space="preserve"><value>Chocobo Square içinde Race Chocobo Trainer bulunamadı.</value></data>
+  <data name="Could not path near Race Chocobo Trainer. Move closer or check vnavmesh." xml:space="preserve"><value>Race Chocobo Trainer yakınına rota bulunamadı. Yaklaşın veya vnavmesh'i kontrol edin.</value></data>
+  <data name="Timed out moving near Race Chocobo Trainer." xml:space="preserve"><value>Race Chocobo Trainer yakınına giderken süre doldu.</value></data>
+  <data name="Could not open Race Chocobo Trainer. Move closer and try again." xml:space="preserve"><value>Race Chocobo Trainer açılamadı. Yaklaşın ve yeniden deneyin.</value></data>
+  <data name="Trainer feed inventory did not open after selecting the trainer menu entry." xml:space="preserve"><value>Eğitmen menü girdisi seçildikten sonra eğitmenin yem envanteri açılmadı.</value></data>
+  <data name="Missing {0} in inventory." xml:space="preserve"><value>Envanterde {0} eksik.</value></data>
+  <data name="Could not locate {0} in the main inventory pages." xml:space="preserve"><value>Ana envanter sayfalarında {0} bulunamadı.</value></data>
+  <data name="No visible inventory window was found while opening the trainer-feed context menu." xml:space="preserve"><value>Eğitmen yemi bağlam menüsü açılırken görünür envanter penceresi bulunamadı.</value></data>
+  <data name="Inventory window disappeared before the trainer-feed context menu became visible." xml:space="preserve"><value>Eğitmen yemi bağlam menüsü görünmeden envanter penceresi kayboldu.</value></data>
+  <data name="Context menu disappeared before Feed could be selected." xml:space="preserve"><value>Feed seçilemeden bağlam menüsü kayboldu.</value></data>
+  <data name="Commence window did not appear after selecting Feed." xml:space="preserve"><value>Feed seçildikten sonra Commence penceresi görünmedi.</value></data>
+  <data name="Training confirmation window did not appear after Commence." xml:space="preserve"><value>Commence sonrasında eğitim onay penceresi görünmedi.</value></data>
+  <data name="Feed did not appear to consume {0}. Check the trainer flow and inventory state." xml:space="preserve"><value>Besleme {0} tüketmemiş görünüyor. Eğitmen akışını ve envanter durumunu kontrol edin.</value></data>
+  <data name="Trainer feed flow stayed unstable after {0} recovery attempts. Last issue: {1}" xml:space="preserve"><value>Eğitmen besleme akışı {0} kurtarma denemesinden sonra da kararsız kaldı. Son sorun: {1}</value></data>
+  <data name="Moving to Tack &amp; Feed Trader..." xml:space="preserve"><value>Tack &amp; Feed Trader yakınına gidiliyor...</value></data>
+  <data name="Opening Tack &amp; Feed Trader..." xml:space="preserve"><value>Tack &amp; Feed Trader açılıyor...</value></data>
+  <data name="Selecting vendor page..." xml:space="preserve"><value>Satıcı sayfası seçiliyor...</value></data>
+  <data name="Buying {0}..." xml:space="preserve"><value>{0} satın alınıyor...</value></data>
+  <data name="Buying feed..." xml:space="preserve"><value>Yem satın alınıyor...</value></data>
+  <data name="Waiting for purchase result..." xml:space="preserve"><value>Satın alma sonucu bekleniyor...</value></data>
+  <data name="Purchase cycle complete." xml:space="preserve"><value>Satın alma döngüsü tamamlandı.</value></data>
+  <data name="Purchase cycle failed." xml:space="preserve"><value>Satın alma döngüsü başarısız.</value></data>
+  <data name="Feed confirmation would cross the configured currency reserve." xml:space="preserve"><value>Besleme onayı ayarlanan para rezervinin altına düşürecek.</value></data>
+  <data name="Could not find Tack &amp; Feed Trader in Chocobo Square." xml:space="preserve"><value>Chocobo Square içinde Tack &amp; Feed Trader bulunamadı.</value></data>
+  <data name="Could not path near Tack &amp; Feed Trader. Move closer or check vnavmesh." xml:space="preserve"><value>Tack &amp; Feed Trader yakınına rota bulunamadı. Yaklaşın veya vnavmesh'i kontrol edin.</value></data>
+  <data name="Timed out moving near Tack &amp; Feed Trader." xml:space="preserve"><value>Tack &amp; Feed Trader yakınına giderken süre doldu.</value></data>
+  <data name="Could not open Tack &amp; Feed Trader. Move closer and try again." xml:space="preserve"><value>Tack &amp; Feed Trader açılamadı. Yaklaşın ve yeniden deneyin.</value></data>
+  <data name="Could not open '{0}' on Tack &amp; Feed Trader." xml:space="preserve"><value>Tack &amp; Feed Trader üzerinde '{0}' açılamadı.</value></data>
+  <data name="The verified required-supply shop closed before purchase." xml:space="preserve"><value>Doğrulanan gerekli malzeme dükkânı satın almadan önce kapandı.</value></data>
+  <data name="Feed purchase would cross the configured currency reserve." xml:space="preserve"><value>Yem alımı ayarlanan para rezervinin altına düşürecek.</value></data>
+  <data name="The native gil-shop purchase could not be dispatched safely." xml:space="preserve"><value>Yerel gil dükkânı satın alma isteği güvenle gönderilemedi.</value></data>
+  <data name="ShopEventHandler.ExecuteBuy(1), visible row {0}" xml:space="preserve"><value>ShopEventHandler.ExecuteBuy(1), görünür satır {0}</value></data>
+  <data name="Required-supply shop closed before the purchase result was verified." xml:space="preserve"><value>Satın alma sonucu doğrulanmadan gerekli malzeme dükkânı kapandı.</value></data>
+  <data name="Purchase callback for {0} did not change inventory. Last attempted: {1}" xml:space="preserve"><value>{0} satın alma geri çağrısı envanteri değiştirmedi. Son deneme: {1}</value></data>
+  <data name="Target feeding purchase: {0}" xml:space="preserve"><value>Hedef beslemesi için satın alma: {0}</value></data>
+  <data name="Target feeding: {0}" xml:space="preserve"><value>Hedef beslemesi: {0}</value></data>
+  <data name="Target cycle paused at a safe boundary." xml:space="preserve"><value>Hedef döngüsü güvenli bir noktada duraklatıldı.</value></data>
+  <data name="Log into a character before starting breeding automation." xml:space="preserve"><value>Çiftleştirme otomasyonunu başlatmadan önce bir karakterle giriş yapın.</value></data>
+  <data name="This target cycle is owned by VERMAXION; use its Target Pedigree controls." xml:space="preserve"><value>Bu hedef döngüsünü VERMAXION yönetiyor; oradaki Hedef soy derecesi kontrollerini kullanın.</value></data>
+  <data name="Breeding UI mappings still require native inspection before automatic selection is available." xml:space="preserve"><value>Otomatik seçim kullanılabilmeden önce çiftleştirme arayüzü eşlemeleri yerel olarak incelenmeli.</value></data>
+  <data name="No logged-in Content ID is available." xml:space="preserve"><value>Giriş yapmış karakterin Content ID değeri kullanılamıyor.</value></data>
+  <data name="Content ID mismatch: request {0}, current {1}." xml:space="preserve"><value>Content ID uyuşmazlığı: istek {0}, mevcut {1}.</value></data>
+  <data name="Choke-abo is disabled." xml:space="preserve"><value>Choke-abo devre dışı.</value></data>
+  <data name="This progression requires V3; older callers cannot remove its spending limits." xml:space="preserve"><value>Bu ilerleme V3 gerektirir; eski çağıranlar harcama sınırlarını kaldıramaz.</value></data>
+  <data name="Start a new offspring batch only after the existing action, queue and covering have settled." xml:space="preserve"><value>Yeni yavru grubunu ancak mevcut eylem, kuyruk ve çiftleştirme sonlandıktan sonra başlatın.</value></data>
+  <data name="Finish the existing covering with its saved goal before changing the production target." xml:space="preserve"><value>Üretim hedefini değiştirmeden önce mevcut çiftleştirmeyi kaydedilmiş hedefiyle tamamlayın.</value></data>
+  <data name="The desired inherited ability is unavailable in current game data." xml:space="preserve"><value>İstenen kalıtsal yetenek mevcut oyun verilerinde kullanılamıyor.</value></data>
+  <data name="The acceptable colours are unavailable in current game data." xml:space="preserve"><value>Kabul edilebilir renkler mevcut oyun verilerinde kullanılamıyor.</value></data>
+  <data name="Target inputs changed while an immediate feed action was awaiting evidence." xml:space="preserve"><value>Anlık besleme eylemi kanıt beklerken hedef girdileri değişti.</value></data>
+  <data name="Pause Content ID does not match the current character." xml:space="preserve"><value>Duraklatma Content ID değeri mevcut karakterle uyuşmuyor.</value></data>
+  <data name="Suspend identity mismatch." xml:space="preserve"><value>Askıya alma kimliği uyuşmuyor.</value></data>
+  <data name="Status Content ID does not match the current character." xml:space="preserve"><value>Durum Content ID değeri mevcut karakterle uyuşmuyor.</value></data>
+  <data name="Another Choke-abo automation owns the feed/vendor services." xml:space="preserve"><value>Besleme/satıcı hizmetlerini başka bir Choke-abo otomasyonu yönetiyor.</value></data>
+  <data name="Current racer data could not be loaded: {0}" xml:space="preserve"><value>Mevcut yarışçı verileri yüklenemedi: {0}</value></data>
+  <data name="Loading current racer data before selecting a breeding action." xml:space="preserve"><value>Çiftleştirme eylemi seçilmeden önce mevcut yarışçı verileri yükleniyor.</value></data>
+  <data name="Initial racing tutorial admitted; VERMAXION owns the race." xml:space="preserve"><value>İlk yarış eğitimi kabul edildi; yarışı VERMAXION yönetiyor.</value></data>
+  <data name="Complete the registrar's initial racing training course." xml:space="preserve"><value>Kayıt görevlisinin ilk yarış eğitimini tamamlayın.</value></data>
+  <data name="Complete Like Sire Like Fledgling before retiring this racer." xml:space="preserve"><value>Bu yarışçıyı emekliye ayırmadan önce Like Sire Like Fledgling görevini tamamlayın.</value></data>
+  <data name="An unowned Proof of Covering is present; its exact start time cannot be inferred safely." xml:space="preserve"><value>Sahiplenilmemiş bir Proof of Covering var; kesin başlangıç zamanı güvenle çıkarılamaz.</value></data>
+  <data name="Feed for the available training sessions cannot be purchased within the currency reserves." xml:space="preserve"><value>Kullanılabilir eğitim seansları için yem, para rezervleri korunarak satın alınamıyor.</value></data>
+  <data name="No free main-inventory slot is available for target feed." xml:space="preserve"><value>Hedef yemi için ana envanterde boş yer yok.</value></data>
+  <data name="The selected target feed item could not be resolved." xml:space="preserve"><value>Seçilen hedef yem öğesi çözümlenemedi.</value></data>
+  <data name="Buying {0} feed across {1} items for {2} available training sessions." xml:space="preserve"><value>{2} kullanılabilir eğitim seansı için {1} öğe üzerinden {0} yem satın alınıyor.</value></data>
+  <data name="Feeding one {0}; awaiting exact item and session evidence." xml:space="preserve"><value>Bir {0} veriliyor; tam öğe ve seans kanıtı bekleniyor.</value></data>
+  <data name="Persisted feed-purchase intent has no item baseline." xml:space="preserve"><value>Kaydedilmiş yem alım niyetinin başlangıç öğe verisi yok.</value></data>
+  <data name="Feed purchase completed without an exact item-ID quantity increase." xml:space="preserve"><value>Yem alımı, tam öğe kimliğinin miktarında artış olmadan tamamlandı.</value></data>
+  <data name="Feed selection changed after purchase; exact purchase evidence cannot be reconciled." xml:space="preserve"><value>Alımdan sonra yem seçimi değişti; kesin alım kanıtı uzlaştırılamıyor.</value></data>
+  <data name="Purchased feed could not be resolved to an exact inventory slot." xml:space="preserve"><value>Alınan yem tam bir envanter yuvasıyla eşleştirilemedi.</value></data>
+  <data name="Target feed purchase blocked: {0}" xml:space="preserve"><value>Hedef yem alımı engellendi: {0}</value></data>
+  <data name="Reload found an unverified feed-purchase intent; it will not be replayed." xml:space="preserve"><value>Yeniden yüklemede doğrulanmamış yem alım niyeti bulundu; tekrarlanmayacak.</value></data>
+  <data name="The completed feed batch does not contain the current training selection." xml:space="preserve"><value>Tamamlanan yem grubu mevcut eğitim seçimini içermiyor.</value></data>
+  <data name="The feed batch is not fully present in inventory; reconcile its pending purchases before another vendor visit." xml:space="preserve"><value>Yem grubunun tamamı envanterde yok; satıcıya tekrar gitmeden önce bekleyen alımları uzlaştırın.</value></data>
+  <data name="Persisted feeding intent has no item baseline." xml:space="preserve"><value>Kaydedilmiş besleme niyetinin başlangıç öğe verisi yok.</value></data>
+  <data name="Target feeding blocked: {0}" xml:space="preserve"><value>Hedef beslemesi engellendi: {0}</value></data>
+  <data name="Feeding did not produce one exact feed-item decrease and one confirmed-session decrease." xml:space="preserve"><value>Besleme, tam olarak bir yem öğesi ve bir onaylanmış seans azalması sağlamadı.</value></data>
+  <data name="Reload found an unverified feeding intent; it will not be replayed." xml:space="preserve"><value>Yeniden yüklemede doğrulanmamış besleme niyeti bulundu; tekrarlanmayacak.</value></data>
+  <data name="Covering is eligible; collection requires a verified native UI mapping." xml:space="preserve"><value>Çiftleştirme hazır; teslim alma doğrulanmış yerel arayüz eşlemesi gerektirir.</value></data>
+  <data name="Paused by VERMAXION at a safe boundary." xml:space="preserve"><value>VERMAXION tarafından güvenli bir noktada duraklatıldı.</value></data>
+  <data name="{0} Native UI selection remains unverified (capture reference: {1})." xml:space="preserve"><value>{0} Yerel arayüz seçimi hâlâ doğrulanmadı (yakalama referansı: {1}).</value></data>
+  <data name="Breeding supply is purchased, but the supplier interaction did not release; Resume to reconcile the retained item." xml:space="preserve"><value>Damızlık malzemesi alındı ancak tedarikçi etkileşimi bitmedi; tutulan öğeyi uzlaştırmak için Devam et seçin.</value></data>
+  <data name="Could not reach the required breeding service for native UI inspection." xml:space="preserve"><value>Yerel arayüz incelemesi için gereken çiftleştirme hizmetine ulaşılamadı.</value></data>
+  <data name="The covering confirmation would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Çiftleştirme onayı gil rezervinin altına düşürecek. Devam et açıkça seçilmeli.</value></data>
+  <data name="Covering Commence was dispatched; its exact confirmation or proof result must be reconciled before another covering." xml:space="preserve"><value>Çiftleştirme Commence isteği gönderildi; başka bir çiftleştirmeden önce kesin onayı veya belge sonucu uzlaştırılmalı.</value></data>
+  <data name="The retained covering parent changed before native selection." xml:space="preserve"><value>Tutulan çiftleştirme ebeveyni yerel seçimden önce değişti.</value></data>
+  <data name="The selected covering stock is captured; native selected-parent evidence and the fee require verification before Commence." xml:space="preserve"><value>Seçilen damızlıklar kaydedildi; Commence öncesinde yerel seçili ebeveyn kanıtı ve ücret doğrulanmalı.</value></data>
+  <data name="Native racing unlock verified; reassessing feeding and racing." xml:space="preserve"><value>Yerel yarış erişimi doğrulandı; besleme ve yarışlar yeniden değerlendiriliyor.</value></data>
+  <data name="The initial racing tutorial awaits the next daily allowance." xml:space="preserve"><value>İlk yarış eğitimi sonraki günlük hakkı bekliyor.</value></data>
+  <data name="Registrar race entry captured; initial training admission is awaiting verification." xml:space="preserve"><value>Kayıt görevlisinin yarış girdisi yakalandı; ilk eğitim kabulü doğrulama bekliyor.</value></data>
+  <data name="Retirement confirmation sent; awaiting the retired form and cleared current racer. Any further native prompt is captured before another action." xml:space="preserve"><value>Emeklilik onayı gönderildi; emekli formu ve mevcut yarışçının kaldırılması bekleniyor. Başka bir eylemden önce tüm ek yerel istemler yakalanır.</value></data>
+  <data name="Retirement requires an intermediate rank40 racer and room for its retained form." xml:space="preserve"><value>Emeklilik, rütbe 40 ara yarışçı ve tutulacak formu için yer gerektirir.</value></data>
+  <data name="The observed retirement confirmation button is unavailable." xml:space="preserve"><value>Gözlenen emeklilik onay düğmesi kullanılamıyor.</value></data>
+  <data name="Retirement menu selected; the resulting native window is captured before confirming retirement." xml:space="preserve"><value>Emeklilik menüsü seçildi; emeklilik onaylanmadan önce açılan yerel pencere yakalanır.</value></data>
+  <data name="Registration confirmation was sent but matching form consumption and current racer evidence are unavailable." xml:space="preserve"><value>Kayıt onayı gönderildi ancak eşleşen form tüketimi ve mevcut yarışçı kanıtı kullanılamıyor.</value></data>
+  <data name="Registration name stage {0} captured; final registration evidence remains pending." xml:space="preserve"><value>Kayıt adı aşaması {0} yakalandı; son kayıt kanıtı hâlâ bekleniyor.</value></data>
+  <data name="Selected registration form; the resulting registration window is captured for verification." xml:space="preserve"><value>Kayıt formu seçildi; açılan kayıt penceresi doğrulama için yakalanır.</value></data>
+  <data name="The selected registration form changed before opening its context menu." xml:space="preserve"><value>Seçilen kayıt formu bağlam menüsü açılmadan önce değişti.</value></data>
+  <data name="Breeding service interaction captured; its native selection must be verified before dispatch." xml:space="preserve"><value>Çiftleştirme hizmeti etkileşimi yakalandı; gönderimden önce yerel seçimi doğrulanmalı.</value></data>
+  <data name="Saved collection evidence is invalid; no collection will be replayed." xml:space="preserve"><value>Kaydedilmiş teslim alma kanıtı geçersiz; teslim alma tekrarlanmayacak.</value></data>
+  <data name="Collection occurred, but the exact new offspring and its trait must be reconciled before counting or another covering." xml:space="preserve"><value>Teslim alma gerçekleşti ancak sayım veya yeni çiftleştirme öncesinde tam yeni yavru ve özelliği uzlaştırılmalı.</value></data>
+  <data name="Collection was requested; proof consumption and one matching fledgling must be reconciled before another request." xml:space="preserve"><value>Teslim alma istendi; başka bir istekten önce belge tüketimi ve bir eşleşen yavru uzlaştırılmalı.</value></data>
+  <data name="Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering." xml:space="preserve"><value>Teslim alma mevcut hazır çiftleştirmeyi, tutulan ebeveynin soy derecesini ve tam bir Proof of Covering gerektirir.</value></data>
+  <data name="The required covering fee would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Gereken çiftleştirme ücreti gil rezervinin altına düşürecek. Devam et açıkça seçilmeli.</value></data>
+  <data name="The required supply does not match the selected breeding mode and supplier." xml:space="preserve"><value>Gereken malzeme seçili çiftleştirme modu ve tedarikçiyle uyuşmuyor.</value></data>
+  <data name="The required breeding supply would cross the {0} reserve." xml:space="preserve"><value>Gereken damızlık malzemesi {0} rezervinin altına düşürecek.</value></data>
+  <data name="A free main-inventory slot is required for the breeding supply." xml:space="preserve"><value>Damızlık malzemesi için ana envanterde boş yer gerekir.</value></data>
+  <data name="Buying {0} for {1} {2} within reserves; awaiting its inventory result." xml:space="preserve"><value>Rezervleri koruyarak {1} {2} karşılığında {0} alınıyor; envanter sonucu bekleniyor.</value></data>
+  <data name="The required breeding supply was not found in the verified native shop." xml:space="preserve"><value>Gereken damızlık malzemesi doğrulanmış yerel dükkânda bulunamadı.</value></data>
+  <data name="Required supply purchase stopped: {0}" xml:space="preserve"><value>Gereken malzeme alımı durdu: {0}</value></data>
+  <data name="A required-supply purchase is unverified after reload; its matching pending confirmation or inventory result is required before another purchase." xml:space="preserve"><value>Yeniden yüklemeden sonra gerekli malzeme alımı doğrulanmadı; başka bir alımdan önce eşleşen bekleyen onay veya envanter sonucu gerekir.</value></data>
+  <data name="{0} Explicit Resume is required." xml:space="preserve"><value>{0} Devam et açıkça seçilmeli.</value></data>
+  <data name="{0} Feeding policy is Stop; explicit Resume is required." xml:space="preserve"><value>{0} Besleme politikası Durdur; Devam et açıkça seçilmeli.</value></data>
+  <data name="Cannot skip feeding without a current racer snapshot." xml:space="preserve"><value>Mevcut yarışçı verisi olmadan besleme atlanamaz.</value></data>
+  <data name="Skipped this feeding round: {0}" xml:space="preserve"><value>Bu besleme turu atlandı: {0}</value></data>
+  <data name="vnavmesh is unavailable or not ready for target feeding." xml:space="preserve"><value>vnavmesh kullanılamıyor veya hedef beslemesi için hazır değil.</value></data>
+  <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader etkileşimi kullanılamıyor.</value></data>
+  <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Gereken Lifestream/vnavmesh satıcı etkileşimi kullanılamıyor.</value></data>
+  <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Çiftleştirme bekleyişinin geçerli hazır olma kanıtı yok.</value></data>
+  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Çiftleştirme hazır; evlat edinme kesin yakalama kanıtı bekliyor.</value></data>
+  <data name="Covering wait until {0:u}." xml:space="preserve"><value>Çiftleştirme için {0:u} zamanına kadar bekleniyor.</value></data>
+  <data name="Invalid offspring production settings." xml:space="preserve"><value>Yavru üretim ayarları geçersiz.</value></data>
+  <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>{0}/{1} uygun G9 yavrusu üretildi; kaydedilmeden tutuldu.</value></data>
+  <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Başka bir yavru üretmeden önce mevcut çiftleştirmeyi uzlaştırın.</value></data>
+  <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Yavru üretimi G9 damızlıkları gerektirir; daha düşük nesil yarışları durduruldu.</value></data>
+  <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Kayıtlı G9 yarışçının istenen özelliği doğrulanmadı. Onu tutun ve uygun damızlıkları seçin.</value></data>
+  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Uygun G9 ebeveyni emekliliğe ulaştırın: yarış rütbesi {0}/40. Uygun yavrular kaydedilmez.</value></data>
+  <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Uygun G9 damızlıklarını tutulan karşı cins G9 ebeveynle çiftleştirin.</value></data>
+  <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>İstenen özelliği doğrulanmış, kullanılabilir emekli G9 ebeveyn yok. Yavruları tutun ve uygun G9 damızlıklarını tamamlayın.</value></data>
+  <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Bu uygun olmayan G9 yavrusunu eksik sahip olunan eş olarak yetiştirin; uygun sonuçları tutun.</value></data>
+  <data name="Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits." xml:space="preserve"><value>Kullanılabilir karşı cins G9 ebeveyn eksik. Sahip olunan ebeveyn modu uygun G9 damızlıkları veya NPC izinlerine açık geçiş gerektirir.</value></data>
+  <data name="Invalid progression settings." xml:space="preserve"><value>İlerleme ayarları geçersiz.</value></data>
+  <data name="G{0} has already been reached; the target cannot move backwards." xml:space="preserve"><value>G{0} zaten elde edildi; hedef geriye gidemez.</value></data>
+  <data name="Counterpart covering requires permit mode and a reached pedigree of G2 or higher." xml:space="preserve"><value>Eş üretmek için çiftleştirme izin modu ve elde edilmiş G2 veya üstü soy derecesi gerektirir.</value></data>
+  <data name="Current racer pedigree, racing rank, or sex is unavailable." xml:space="preserve"><value>Kayıtlı yarışçının soy derecesi, yarış rütbesi veya cinsiyeti kullanılamıyor.</value></data>
+  <data name="The registered G{0} racer is below the retained G{1} pedigree; lower-generation racing is stopped." xml:space="preserve"><value>Kayıtlı G{0} yarışçı tutulan G{1} soy derecesinden düşük; daha düşük nesil yarışları durduruldu.</value></data>
+  <data name="Retain G{0}; racing rank {1}/50." xml:space="preserve"><value>G{0} tutulsun; yarış rütbesi {1}/50.</value></data>
+  <data name="The current racer exceeds the selected target pedigree; retain it." xml:space="preserve"><value>Mevcut yarışçı seçili hedef soy derecesini aşıyor; onu tutun.</value></data>
+  <data name="G{0} {1}: racing rank {2}/40 before retirement." xml:space="preserve"><value>G{0} {1}: emeklilik öncesi yarış rütbesi {2}/40.</value></data>
+  <data name="Reconcile the existing Proof of Covering before another covering." xml:space="preserve"><value>Başka bir çiftleştirmeden önce mevcut Proof of Covering öğesini uzlaştırın.</value></data>
+  <data name="Register G{0} {1}." xml:space="preserve"><value>G{0} {1} kaydedilsin.</value></data>
+  <data name="A usable G{0} pair is already retained. Select owned parents or advance-pedigree permits before another covering." xml:space="preserve"><value>Kullanılabilir G{0} çifti zaten tutuluyor. Başka çiftleştirme öncesinde sahip olunan ebeveynleri veya soy artırma izinlerini seçin.</value></data>
+  <data name="No usable G{0} parent remains to produce a G{1} counterpart. Lower-generation covering is stopped." xml:space="preserve"><value>G{1} eşi üretebilecek kullanılabilir G{0} ebeveyn kalmadı. Daha düşük nesil çiftleştirmeleri durduruldu.</value></data>
+  <data name="No retained parent can produce G{0} or higher; lower-generation covering is stopped." xml:space="preserve"><value>Tutulan hiçbir ebeveyn G{0} veya üstünü üretemiyor; daha düşük nesil çiftleştirmeleri durduruldu.</value></data>
+  <data name="Cover retained G{0} parents; preserve their remaining capacity." xml:space="preserve"><value>Tutulan G{0} ebeveynleri çiftleştirin; kalan kapasitelerini koruyun.</value></data>
+  <data name="Missing an owned G{0} counterpart. No owned pair can produce G{1} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped." xml:space="preserve"><value>Sahip olunan G{0} eşi eksik. Sahip olunan hiçbir çift G{1} veya üstünü üretemiyor; izinli çiftleştirmeyi açıkça seçin. Daha düşük nesilden yeniden üretim durduruldu.</value></data>
+  <data name="Cover the retained G{0} parent and matching opposite-sex permit to produce G{1}." xml:space="preserve"><value>G{1} üretmek için tutulan G{0} ebeveyni eşleşen karşı cins izinle çiftleştirin.</value></data>
+  <data name="Buy the opposite-sex G{0} permit within reserves to produce G{1}." xml:space="preserve"><value>G{1} üretmek için rezervleri koruyarak karşı cins G{0} iznini alın.</value></data>
+  <data name="Target pedigree G{0} is outside G2-G9." xml:space="preserve"><value>Hedef soy derecesi G{0}, G2-G9 aralığının dışında.</value></data>
+  <data name="Retirement rank {0} is outside 40-50." xml:space="preserve"><value>Emeklilik rütbesi {0}, 40-50 aralığının dışında.</value></data>
+  <data name="Register the exact G{0} fledgling in {1} slot {2}." xml:space="preserve"><value>Tam G{0} yavrusunu {1} içindeki {2} yuvasından kaydedin.</value></data>
+  <data name="The active racer's sex is unavailable." xml:space="preserve"><value>Aktif yarışçının cinsiyeti kullanılamıyor.</value></data>
+  <data name="The active G{0} racer is above target G{1}." xml:space="preserve"><value>Aktif G{0} yarışçı hedef G{1} derecesinden yüksek.</value></data>
+  <data name="Feed the target racer before declaring it ready." xml:space="preserve"><value>Hazır ilan etmeden önce hedef yarışçıyı besleyin.</value></data>
+  <data name="The active G{0} racer is target-ready." xml:space="preserve"><value>Aktif G{0} yarışçı hedefe hazır.</value></data>
+  <data name="Cover the exact G{0} pair to advance toward G{1}." xml:space="preserve"><value>G{1} yönünde ilerlemek için tam G{0} çiftini çiftleştirin.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex while the useful racer continues racing." xml:space="preserve"><value>Yararlı yarışçı yarışırken eksik G{1} cinsiyetini üretmek için tam G{0} çiftini çiftleştirin.</value></data>
+  <data name="The active G{0} {1} duplicates an owned usable parent and no productive pair is available." xml:space="preserve"><value>Aktif G{0} {1}, sahip olunan kullanılabilir bir ebeveynle aynı ve üretken çift yok.</value></data>
+  <data name="Race the useful G{0} {1} candidate to rank {2}." xml:space="preserve"><value>Yararlı G{0} {1} adayını {2} rütbesine kadar yarıştırın.</value></data>
+  <data name="Use the active racer's remaining training sessions before retirement." xml:space="preserve"><value>Emeklilik öncesinde aktif yarışçının kalan eğitim seanslarını kullanın.</value></data>
+  <data name="Retire the active G{0} {1} racer exactly." xml:space="preserve"><value>Tam aktif G{0} {1} yarışçıyı emekliye ayırın.</value></data>
+  <data name="A Proof of Covering is present." xml:space="preserve"><value>Bir Proof of Covering var.</value></data>
+  <data name="Register the exact useful G{0} {1} fledgling." xml:space="preserve"><value>Tam yararlı G{0} {1} yavrusunu kaydedin.</value></data>
+  <data name="No useful active racer, fledgling, or covering parents are available." xml:space="preserve"><value>Yararlı aktif yarışçı, yavru veya çiftleştirme ebeveyni yok.</value></data>
+  <data name="G{0} is missing a usable opposite-sex parent and no preceding-pedigree pair can produce it." xml:space="preserve"><value>G{0} için kullanılabilir karşı cins ebeveyn eksik ve önceki soy derecesinden hiçbir çift onu üretemiyor.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex." xml:space="preserve"><value>Eksik G{1} cinsiyetini üretmek için tam G{0} çiftini çiftleştirin.</value></data>
+  <data name="Resume" xml:space="preserve"><value>Devam et</value></data>
+  <data name="Pause" xml:space="preserve"><value>Duraklat</value></data>
+  <data name="Language" xml:space="preserve"><value>Dil</value></data>
+  <data name="Color" xml:space="preserve"><value>Renk</value></data>
+  <data name="Teal" xml:space="preserve"><value>Turkuaz</value></data>
+  <data name="Blue" xml:space="preserve"><value>Mavi</value></data>
+  <data name="Pink" xml:space="preserve"><value>Pembe</value></data>
+  <data name="Custom RGB" xml:space="preserve"><value>Özel RGB</value></data>
+  <data name="Loading UI fonts..." xml:space="preserve"><value>Arayüz yazı tipleri yükleniyor...</value></data>
+  <data name="UI fonts failed to load. See the plugin log." xml:space="preserve"><value>Arayüz yazı tipleri yüklenemedi. Eklenti günlüğüne bakın.</value></data>
+  <data name="Male" xml:space="preserve"><value>Erkek</value></data>
+  <data name="Female" xml:space="preserve"><value>Dişi</value></data>
+  <data name="Gil" xml:space="preserve"><value>Gil</value></data>
+  <data name="MGP" xml:space="preserve"><value>MGP</value></data>
+  <data name="Running" xml:space="preserve"><value>Çalışıyor</value></data>
+  <data name="None" xml:space="preserve"><value>Yok</value></data>
+  <data name="Sex" xml:space="preserve"><value>Cinsiyet</value></data>
+  <data name="Item" xml:space="preserve"><value>Öğe</value></data>
+  <data name="Quantity" xml:space="preserve"><value>Miktar</value></data>
+  <data name="Buy a G1 {0} registration form to raise a missing owned parent." xml:space="preserve"><value>Eksik sahip olunan ebeveyni yetiştirmek için bir G1 {0} kayıt formu satın alın.</value></data>
+  <data name="The native Select Chocobo list entry is unavailable or disabled." xml:space="preserve"><value>Yerel Select Chocobo liste girdisi kullanılamıyor veya devre dışı.</value></data>
+  <data name="Breeding supply" xml:space="preserve"><value>Damızlık malzemesi</value></data>
+  <data name="Offspring ready" xml:space="preserve"><value>Yavru hazır</value></data>
+  <data name="Window appearance" xml:space="preserve">
+    <value>Pencere görünümü</value>
+  </data>
+  <data name="Compact visible on main window" xml:space="preserve">
+    <value>Ana pencerede kompakt modu göster</value>
+  </data>
+  <data name="Language visible on main window" xml:space="preserve">
+    <value>Ana pencerede dil seçimini göster</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>Saydamlık</value>
+  </data>
+  <data name="Opacity (%)" xml:space="preserve">
+    <value>Opaklık (%)</value>
+  </data>
+  <data name="Auto-fade when unfocused" xml:space="preserve">
+    <value>Odak yokken otomatik soldur</value>
+  </data>
+  <data name="Unfocused opacity (%)" xml:space="preserve">
+    <value>Odak yokken opaklık (%)</value>
+  </data>
+  <data name="Unfocused delay (seconds)" xml:space="preserve">
+    <value>Odak kaybı gecikmesi (saniye)</value>
+  </data>
+</root>

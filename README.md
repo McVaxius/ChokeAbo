@@ -16,6 +16,10 @@ https://aethertek.io/x.json
 
 Dalamud plugin workspace for `Choke-abo`.
 
+## Interface
+
+Regular and compact windows share the saved colour and language choice. The interface and displayed authored statuses support English, German, French, Spanish, Italian, Russian, Japanese, Korean, Simplified Chinese, Vietnamese, Brazilian Portuguese, Indonesian, Polish and Turkish. Game-sourced names, commands and raw diagnostic details retain their original values.
+
 ## Current Status
 
 Stage 1 target-pedigree automation is implemented and builds in `Debug x64`. Inventory decoding, deterministic planning, per-character lifecycle persistence, adaptive feeding, V1/V2 IPC, and the passive dialog recorder are present. Exact retirement, covering, fledgling-selection, and adoption actions remain safely blocked until the four recorder captures provide their real addon mappings; this has not been accepted live in game.

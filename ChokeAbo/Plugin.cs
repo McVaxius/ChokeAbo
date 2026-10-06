@@ -118,13 +118,14 @@ public sealed class Plugin : IDalamudPlugin
         WindowSystem.AddWindow(configWindow);
         WindowSystem.AddWindow(popupCaptureWindow);
         CommandManager.AddHandler(PluginInfo.Command, new CommandInfo(OnCommand) { HelpMessage = $"Open {PluginInfo.DisplayName}. Use {PluginInfo.Command} refresh, breed, dpopup, or config." });
-        PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
+        Appearance = new Ui.ChokeAppearance(this);
+        PluginInterface.UiBuilder.Draw += DrawUi;
         PluginInterface.UiBuilder.OpenConfigUi += ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20260930-94; saved production workflows and normal ownership continuation.");
+        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261006-98; native duty inspection available through the existing command.");
     }
 
     public void Dispose()
@@ -133,11 +134,12 @@ public sealed class Plugin : IDalamudPlugin
         breedingIpcProvider.Dispose();
         BreedingService.SuspendTargetCycle(PlayerState.ContentId);
         Framework.Update -= OnFrameworkUpdate;
-        PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
+        PluginInterface.UiBuilder.Draw -= DrawUi;
         PluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi -= ToggleMainUi;
         CommandManager.RemoveHandler(PluginInfo.Command);
         WindowSystem.RemoveAllWindows();
+        Appearance.Dispose();
         dtrEntry?.Remove();
     }
 
@@ -150,6 +152,8 @@ public sealed class Plugin : IDalamudPlugin
     }
 
     public void ToggleConfigUi() => configWindow.Toggle();
+    internal Ui.ChokeAppearance Appearance { get; }
+    private void DrawUi() => Appearance.Draw(WindowSystem);
     public void PrintStatus(string m) => ChatGui.Print($"[{PluginInfo.DisplayName}] {m}");
     public bool IsAutomationRunning => BreedingService.IsRunning || VendorPurchaseService.IsRunning || StableFeedingService.IsRunning || cleanupMode != CleanupMode.None;
     public string CleanupStatusText => cleanupPhase switch
@@ -265,7 +269,18 @@ public sealed class Plugin : IDalamudPlugin
 
     public void UpdateDtrBar()
     {
-        if (dtrEntry == null) return; dtrEntry.Shown = Configuration.DtrBarEnabled; if (!Configuration.DtrBarEnabled) return; var g = Configuration.PluginEnabled ? Configuration.DtrIconEnabled : Configuration.DtrIconDisabled; var s = IsAutomationRunning ? "Running" : Configuration.PluginEnabled ? "Ready" : "Idle"; dtrEntry.Text = Configuration.DtrBarMode switch { 1 => new SeString(new TextPayload($"{g} CA")), 2 => new SeString(new TextPayload(g)), _ => new SeString(new TextPayload("CA: " + s)), }; dtrEntry.Tooltip = new SeString(new TextPayload($"{PluginInfo.DisplayName} {s}. Click to open the main window."));
+        if (dtrEntry == null) return;
+        dtrEntry.Shown = Configuration.DtrBarEnabled;
+        if (!Configuration.DtrBarEnabled) return;
+        var glyph = Configuration.PluginEnabled ? Configuration.DtrIconEnabled : Configuration.DtrIconDisabled;
+        var status = Appearance.Label(IsAutomationRunning ? "Running" : Configuration.PluginEnabled ? "Ready" : "Idle");
+        dtrEntry.Text = Configuration.DtrBarMode switch
+        {
+            1 => new SeString(new TextPayload($"{glyph} CA")),
+            2 => new SeString(new TextPayload(glyph)),
+            _ => new SeString(new TextPayload("CA: " + status)),
+        };
+        dtrEntry.Tooltip = new SeString(new TextPayload(Appearance.Format("{0} {1}. Click to open the main window.", PluginInfo.DisplayName, status)));
     }
 
     private void OnFrameworkUpdate(IFramework framework)

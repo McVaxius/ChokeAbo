@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Enabled" xml:space="preserve"><value>Aktif</value></data>
+  <data name="DTR Bar" xml:space="preserve"><value>Bilah DTR</value></data>
+  <data name="Settings" xml:space="preserve"><value>Pengaturan</value></data>
+  <data name="Refresh Chocobo Data" xml:space="preserve"><value>Perbarui data chocobo</value></data>
+  <data name="Status to chat" xml:space="preserve"><value>Status ke chat</value></data>
+  <data name="Manual training and feed purchases" xml:space="preserve"><value>Latihan manual dan pembelian pakan</value></data>
+  <data name="Plan training sessions, use feed already in inventory, and buy the remaining feed in one visit." xml:space="preserve"><value>Rencanakan sesi latihan, gunakan pakan yang ada di inventaris, lalu beli sisanya dalam satu kunjungan.</value></data>
+  <data name="Planned trainings exceed sessions available: {0}/{1}. Extra planned trainings will not fit this cycle." xml:space="preserve"><value>Latihan yang direncanakan melebihi sesi tersedia: {0}/{1}. Latihan tambahan tidak muat dalam siklus ini.</value></data>
+  <data name="FFXIV Dalamud Plugin" xml:space="preserve"><value>Plugin Dalamud FFXIV</value></data>
+  <data name="Support on Ko-fi" xml:space="preserve"><value>Dukung di Ko-fi</value></data>
+  <data name="Compact mode" xml:space="preserve"><value>Mode ringkas</value></data>
+  <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>Masuk dengan karakter untuk melihat progres chocobo.</value></data>
+  <data name="Chocobo progression" xml:space="preserve"><value>Progres chocobo</value></data>
+  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION mengatur progres dan jatah balapan harian. Choke-abo menjalankan pemberian pakan dan pembiakan.</value></data>
+  <data name="Open VERMAXION settings" xml:space="preserve"><value>Buka pengaturan VERMAXION</value></data>
+  <data name="Stop" xml:space="preserve"><value>Hentikan</value></data>
+  <data name="Pedigree" xml:space="preserve"><value>Silsilah</value></data>
+  <data name="Unknown" xml:space="preserve"><value>Tidak diketahui</value></data>
+  <data name="Inherited ability" xml:space="preserve"><value>Kemampuan bawaan</value></data>
+  <data name="Rank" xml:space="preserve"><value>Peringkat</value></data>
+  <data name="Learned ability" xml:space="preserve"><value>Kemampuan yang dipelajari</value></data>
+  <data name="Goal" xml:space="preserve"><value>Tujuan</value></data>
+  <data name="Not configured" xml:space="preserve"><value>Belum diatur</value></data>
+  <data name="Pedigree G{0}" xml:space="preserve"><value>Silsilah G{0}</value></data>
+  <data name="Offspring printer" xml:space="preserve"><value>Produksi anak chocobo</value></data>
+  <data name="Colour seeker" xml:space="preserve"><value>Pencarian warna</value></data>
+  <data name="Colour" xml:space="preserve"><value>Warna</value></data>
+  <data name="Phase" xml:space="preserve"><value>Fase</value></data>
+  <data name="Covering ready in" xml:space="preserve"><value>Perkawinan siap dalam</value></data>
+  <data name="Ready" xml:space="preserve"><value>Siap</value></data>
+  <data name="Next action" xml:space="preserve"><value>Tindakan berikutnya</value></data>
+  <data name="Matching G9 offspring: {0:N0} / {1:N0}" xml:space="preserve"><value>Anak G9 yang sesuai: {0:N0} / {1:N0}</value></data>
+  <data name="Matching offspring retained unregistered" xml:space="preserve"><value>Anak yang sesuai disimpan tanpa didaftarkan</value></data>
+  <data name="Desired inherited ability" xml:space="preserve"><value>Kemampuan bawaan yang diinginkan</value></data>
+  <data name="Breeding mode: {0}" xml:space="preserve"><value>Mode pembiakan: {0}</value></data>
+  <data name="Owned parents" xml:space="preserve"><value>Induk milik sendiri</value></data>
+  <data name="NPC covering permits" xml:space="preserve"><value>Izin perkawinan NPC</value></data>
+  <data name="Permit objective: produce G9 offspring" xml:space="preserve"><value>Tujuan izin: menghasilkan anak G9</value></data>
+  <data name="Permit objective: produce a missing current-pedigree counterpart" xml:space="preserve"><value>Tujuan izin: menghasilkan pasangan yang belum ada untuk silsilah saat ini</value></data>
+  <data name="Permit objective: advance pedigree" xml:space="preserve"><value>Tujuan izin: meningkatkan silsilah</value></data>
+  <data name="Reserves: {0:N0} gil    {1:N0} MGP" xml:space="preserve"><value>Cadangan: {0:N0} gil    {1:N0} MGP</value></data>
+  <data name="Fall back to Grade 1, then skip" xml:space="preserve"><value>Gunakan Grade 1 sebagai pengganti, lalu lewati</value></data>
+  <data name="Stop until Resume" xml:space="preserve"><value>Berhenti hingga Lanjutkan</value></data>
+  <data name="Skip this feeding round" xml:space="preserve"><value>Lewati pemberian pakan kali ini</value></data>
+  <data name="Feed: Grade {0}    If unavailable: {1}" xml:space="preserve"><value>Pakan: Grade {0}    Jika tidak tersedia: {1}</value></data>
+  <data name="Choose your progression goal, reserves and feeding policy in VERMAXION settings, then Resume to begin." xml:space="preserve"><value>Pilih tujuan progres, cadangan, dan kebijakan pakan di pengaturan VERMAXION, lalu pilih Lanjutkan untuk memulai.</value></data>
+  <data name="No registered racing chocobo." xml:space="preserve"><value>Tidak ada chocobo balap terdaftar.</value></data>
+  <data name="Registered racer data is unavailable." xml:space="preserve"><value>Data chocobo balap terdaftar tidak tersedia.</value></data>
+  <data name="Breeding stock" xml:space="preserve"><value>Stok induk</value></data>
+  <data name="Offspring sex is random. Two coverings do not guarantee a male and a female." xml:space="preserve"><value>Jenis kelamin anak bersifat acak. Dua perkawinan tidak menjamin jantan dan betina.</value></data>
+  <data name="Pedigree / sex" xml:space="preserve"><value>Silsilah / jenis kelamin</value></data>
+  <data name="Coverings left" xml:space="preserve"><value>Sisa perkawinan</value></data>
+  <data name="Covering proof" xml:space="preserve"><value>Bukti perkawinan</value></data>
+  <data name="No breeding forms or covering proof in inventory." xml:space="preserve"><value>Tidak ada formulir pembiakan atau bukti perkawinan di inventaris.</value></data>
+  <data name="Covering in progress" xml:space="preserve"><value>Perkawinan berlangsung</value></data>
+  <data name="Collecting offspring" xml:space="preserve"><value>Mengambil anak chocobo</value></data>
+  <data name="Registering offspring" xml:space="preserve"><value>Mendaftarkan anak chocobo</value></data>
+  <data name="Retiring the intermediate racer" xml:space="preserve"><value>Memensiunkan chocobo balap perantara</value></data>
+  <data name="Retiring the G9 breeding parent" xml:space="preserve"><value>Memensiunkan induk G9</value></data>
+  <data name="Preparing covering" xml:space="preserve"><value>Menyiapkan perkawinan</value></data>
+  <data name="Paused - Resume is required" xml:space="preserve"><value>Dijeda - pilih Lanjutkan</value></data>
+  <data name="Needs attention" xml:space="preserve"><value>Perlu perhatian</value></data>
+  <data name="Offspring goal reached" xml:space="preserve"><value>Tujuan anak chocobo tercapai</value></data>
+  <data name="Progression complete" xml:space="preserve"><value>Progres selesai</value></data>
+  <data name="Verifying the registered racer" xml:space="preserve"><value>Memverifikasi chocobo balap terdaftar</value></data>
+  <data name="Ready for racing" xml:space="preserve"><value>Siap untuk balapan</value></data>
+  <data name="Feeding the racer" xml:space="preserve"><value>Memberi pakan chocobo balap</value></data>
+  <data name="Purchasing supplies" xml:space="preserve"><value>Membeli persediaan</value></data>
+  <data name="Ready to plan the next action" xml:space="preserve"><value>Siap merencanakan tindakan berikutnya</value></data>
+  <data name="{0}: none" xml:space="preserve"><value>{0}: tidak ada</value></data>
+  <data name="Overview" xml:space="preserve"><value>Ringkasan</value></data>
+  <data name="Plan" xml:space="preserve"><value>Rencana</value></data>
+  <data name="No chocobo data loaded yet." xml:space="preserve"><value>Data chocobo belum dimuat.</value></data>
+  <data name="Racing rank: {0}/50" xml:space="preserve"><value>Peringkat balapan: {0}/50</value></data>
+  <data name="Rating: {0}" xml:space="preserve"><value>Nilai: {0}</value></data>
+  <data name="Pedigree: G{0}" xml:space="preserve"><value>Silsilah: G{0}</value></data>
+  <data name="XP: {0:N0}/{1:N0}" xml:space="preserve"><value>XP: {0:N0}/{1:N0}</value></data>
+  <data name="Sessions: {0}" xml:space="preserve"><value>Sesi: {0}</value></data>
+  <data name="Plan: {0}" xml:space="preserve"><value>Rencana: {0}</value></data>
+  <data name="Gil: {0:N0}" xml:space="preserve"><value>Gil: {0:N0}</value></data>
+  <data name="MGP: {0:N0}" xml:space="preserve"><value>MGP: {0:N0}</value></data>
+  <data name="Need gil: {0:N0}" xml:space="preserve"><value>Gil diperlukan: {0:N0}</value></data>
+  <data name="Need MGP: {0:N0}" xml:space="preserve"><value>MGP diperlukan: {0:N0}</value></data>
+  <data name="Stat" xml:space="preserve"><value>Atribut</value></data>
+  <data name="Stars" xml:space="preserve"><value>Bintang</value></data>
+  <data name="Now" xml:space="preserve"><value>Sekarang</value></data>
+  <data name="After" xml:space="preserve"><value>Setelahnya</value></data>
+  <data name="Maximum Speed" xml:space="preserve"><value>Kecepatan maksimum</value></data>
+  <data name="Acceleration" xml:space="preserve"><value>Akselerasi</value></data>
+  <data name="Endurance" xml:space="preserve"><value>Ketahanan</value></data>
+  <data name="Stamina" xml:space="preserve"><value>Stamina</value></data>
+  <data name="Cunning" xml:space="preserve"><value>Kecerdikan</value></data>
+  <data name="Training Plan" xml:space="preserve"><value>Rencana latihan</value></data>
+  <data name="Choose the number of training sessions and feed grade for each stat." xml:space="preserve"><value>Pilih jumlah sesi latihan dan grade pakan untuk setiap atribut.</value></data>
+  <data name="Qty" xml:space="preserve"><value>Jml.</value></data>
+  <data name="Grade 1" xml:space="preserve"><value>Grade 1</value></data>
+  <data name="Grade 2" xml:space="preserve"><value>Grade 2</value></data>
+  <data name="Grade 3" xml:space="preserve"><value>Grade 3</value></data>
+  <data name="Clear Plan" xml:space="preserve"><value>Hapus rencana</value></data>
+  <data name="Planned trainings this cycle: {0}" xml:space="preserve"><value>Latihan yang direncanakan siklus ini: {0}</value></data>
+  <data name="Session cap: {0}" xml:space="preserve"><value>Batas sesi: {0}</value></data>
+  <data name="Purchase Plan" xml:space="preserve"><value>Rencana pembelian</value></data>
+  <data name="Exact shopping list for the current plan." xml:space="preserve"><value>Daftar belanja persis untuk rencana saat ini.</value></data>
+  <data name="Load racing chocobo data first so the purchase plan can compare against sessions available." xml:space="preserve"><value>Muat data chocobo balap dahulu agar rencana pembelian dapat dibandingkan dengan sesi tersedia.</value></data>
+  <data name="Plan exceeds sessions available: {0}/{1}. The shopping list below still reflects the full plan." xml:space="preserve"><value>Rencana melebihi sesi tersedia: {0}/{1}. Daftar belanja di bawah tetap mencakup seluruh rencana.</value></data>
+  <data name="Feed" xml:space="preserve"><value>Pakan</value></data>
+  <data name="Qty on hand" xml:space="preserve"><value>Jumlah tersedia</value></data>
+  <data name="Currency" xml:space="preserve"><value>Mata uang</value></data>
+  <data name="Total" xml:space="preserve"><value>Total</value></data>
+  <data name="No planned feed purchases." xml:space="preserve"><value>Tidak ada pembelian pakan yang direncanakan.</value></data>
+  <data name="{0:N0}" xml:space="preserve"><value>{0:N0}</value></data>
+  <data name="Total gil needed: {0:N0}" xml:space="preserve"><value>Total gil diperlukan: {0:N0}</value></data>
+  <data name="Total MGP needed: {0:N0}" xml:space="preserve"><value>Total MGP diperlukan: {0:N0}</value></data>
+  <data name="Current currency is below the planned purchase total. Adjust the plan or stock up before the buy loop is enabled." xml:space="preserve"><value>Mata uang saat ini kurang dari total rencana pembelian. Sesuaikan rencana atau tambah persediaan sebelum siklus pembelian diaktifkan.</value></data>
+  <data name="Buy Needed Feed" xml:space="preserve"><value>Beli pakan yang diperlukan</value></data>
+  <data name="Feed Planned Sessions" xml:space="preserve"><value>Beri pakan sesuai sesi rencana</value></data>
+  <data name="Run Full Cycle" xml:space="preserve"><value>Jalankan siklus penuh</value></data>
+  <data name="Start / Resume Breeding" xml:space="preserve"><value>Mulai / lanjutkan pembiakan</value></data>
+  <data name="Automation uses the session-capped plan and subtracts feed already on hand before buying." xml:space="preserve"><value>Otomatisasi memakai rencana sesuai batas sesi dan mengurangi pakan yang tersedia sebelum membeli.</value></data>
+  <data name="Cleanup status: {0}" xml:space="preserve"><value>Status pembersihan: {0}</value></data>
+  <data name="Buy status: {0}" xml:space="preserve"><value>Status pembelian: {0}</value></data>
+  <data name="Feed status: {0}" xml:space="preserve"><value>Status pemberian pakan: {0}</value></data>
+  <data name="Breeding status: {0}" xml:space="preserve"><value>Status pembiakan: {0}</value></data>
+  <data name="1 star" xml:space="preserve"><value>1 bintang</value></data>
+  <data name="{0} stars" xml:space="preserve"><value>{0} bintang</value></data>
+  <data name="Text only" xml:space="preserve"><value>Hanya teks</value></data>
+  <data name="Icon + text" xml:space="preserve"><value>Ikon + teks</value></data>
+  <data name="Icon only" xml:space="preserve"><value>Hanya ikon</value></data>
+  <data name="Plugin enabled" xml:space="preserve"><value>Plugin aktif</value></data>
+  <data name="Show DTR bar entry" xml:space="preserve"><value>Tampilkan entri bilah DTR</value></data>
+  <data name="DTR mode" xml:space="preserve"><value>Mode DTR</value></data>
+  <data name="DTR enabled glyph" xml:space="preserve"><value>Glif DTR aktif</value></data>
+  <data name="DTR disabled glyph" xml:space="preserve"><value>Glif DTR nonaktif</value></data>
+  <data name="Rollout phases" xml:space="preserve"><value>Fase penerapan</value></data>
+  <data name="Concept recap" xml:space="preserve"><value>Ringkasan konsep</value></data>
+  <data name="Popup Capture" xml:space="preserve"><value>Tangkapan popup</value></data>
+  <data name="Start/Stop Retirement" xml:space="preserve"><value>Mulai/hentikan pensiun</value></data>
+  <data name="Start/Stop Covering Selector" xml:space="preserve"><value>Mulai/hentikan pemilih perkawinan</value></data>
+  <data name="Start/Stop Fledgling Selector" xml:space="preserve"><value>Mulai/hentikan pemilih anak chocobo</value></data>
+  <data name="Start/Stop Adoption" xml:space="preserve"><value>Mulai/hentikan adopsi</value></data>
+  <data name="Open Folder" xml:space="preserve"><value>Buka folder</value></data>
+  <data name="Scroll down to &quot;The Dumpster Fire&quot; channel to discuss issues / suggestions for specific plugins." xml:space="preserve"><value>Gulir ke kanal "The Dumpster Fire" untuk membahas masalah / saran plugin tertentu.</value></data>
+  <data name="Track current stats and feed plans." xml:space="preserve"><value>Pantau atribut saat ini dan rencana pakan.</value></data>
+  <data name="Reserve stable and vendor automation seams." xml:space="preserve"><value>Sediakan titik integrasi otomatisasi kandang dan penjual.</value></data>
+  <data name="Bias toward transparent deterministic flows." xml:space="preserve"><value>Utamakan alur yang transparan dan deterministik.</value></data>
+  <data name="Shell and docs" xml:space="preserve"><value>Kerangka dan dokumentasi</value></data>
+  <data name="Inventory truth" xml:space="preserve"><value>Kondisi inventaris sebenarnya</value></data>
+  <data name="Planning math" xml:space="preserve"><value>Perhitungan rencana</value></data>
+  <data name="Vendor flow" xml:space="preserve"><value>Alur penjual</value></data>
+  <data name="Stable loop" xml:space="preserve"><value>Siklus kandang</value></data>
+  <data name="Pass {0}: buying missing feed ({1} sessions remain)." xml:space="preserve"><value>Putaran {0}: membeli pakan yang kurang ({1} sesi tersisa).</value></data>
+  <data name="Pass {0}: feeding ({1} sessions remain)." xml:space="preserve"><value>Putaran {0}: memberi pakan ({1} sesi tersisa).</value></data>
+  <data name="Pass {0}: cleanup/retry in {1:0.0}s. {2}" xml:space="preserve"><value>Putaran {0}: pembersihan/coba ulang dalam {1:0.0} detik. {2}</value></data>
+  <data name="Pass {0}: waiting to verify caps in {1:0.0}s. {2}" xml:space="preserve"><value>Putaran {0}: menunggu verifikasi batas dalam {1:0.0} detik. {2}</value></data>
+  <data name="Pass {0}: refreshing Chocobo stats. {1}" xml:space="preserve"><value>Putaran {0}: memperbarui atribut chocobo. {1}</value></data>
+  <data name="Pass {0}: Chocobo stat refresh failed; retrying refresh in {1:0.0}s. {2}" xml:space="preserve"><value>Putaran {0}: pembaruan atribut chocobo gagal; coba ulang dalam {1:0.0} detik. {2}</value></data>
+  <data name="Idle" xml:space="preserve"><value>Menganggur</value></data>
+  <data name="{0} {1}. Click to open the main window." xml:space="preserve"><value>{0} {1}. Klik untuk membuka jendela utama.</value></data>
+  <data name="Stopped manually." xml:space="preserve"><value>Dihentikan secara manual.</value></data>
+  <data name="Training plan cleared." xml:space="preserve"><value>Rencana latihan dihapus.</value></data>
+  <data name="Cleanup did not start: load racing chocobo data first." xml:space="preserve"><value>Pembersihan tidak dimulai: muat data chocobo balap dahulu.</value></data>
+  <data name="Cleanup complete: no planned training remains." xml:space="preserve"><value>Pembersihan selesai: tidak ada latihan terencana tersisa.</value></data>
+  <data name="Cleanup complete: session budget exhausted with {0} planned training deferred." xml:space="preserve"><value>Pembersihan selesai: jatah sesi habis dengan {0} latihan terencana ditunda.</value></data>
+  <data name="Purchase pass failed: {0}" xml:space="preserve"><value>Putaran pembelian gagal: {0}</value></data>
+  <data name="Feeding pass completed." xml:space="preserve"><value>Putaran pemberian pakan selesai.</value></data>
+  <data name="Feeding pass failed: {0}" xml:space="preserve"><value>Putaran pemberian pakan gagal: {0}</value></data>
+  <data name="Chocobo stat refresh failed: {0}" xml:space="preserve"><value>Pembaruan atribut chocobo gagal: {0}</value></data>
+  <data name="remaining plan reached zero" xml:space="preserve"><value>sisa rencana mencapai nol</value></data>
+  <data name="session budget reached zero" xml:space="preserve"><value>jatah sesi mencapai nol</value></data>
+  <data name="{0}; waiting to verify caps" xml:space="preserve"><value>{0}; menunggu verifikasi batas</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Tidak tersedia</value></data>
+  <data name="Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats." xml:space="preserve"><value>Gunakan Perbarui data chocobo atau /chokeabo refresh untuk memuat atribut chocobo balap.</value></data>
+  <data name="Refresh requested; opening Gold Saucer window..." xml:space="preserve"><value>Pembaruan diminta; membuka jendela Gold Saucer...</value></data>
+  <data name="Opening Gold Saucer window..." xml:space="preserve"><value>Membuka jendela Gold Saucer...</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback..." xml:space="preserve"><value>Gold Saucer Info siap; menunggu sebelum callback tab Chocobo...</value></data>
+  <data name="Waiting for racing chocobo data..." xml:space="preserve"><value>Menunggu data chocobo balap...</value></data>
+  <data name="Current racer data has not been loaded." xml:space="preserve"><value>Data chocobo balap saat ini belum dimuat.</value></data>
+  <data name="Loaded from {0} at {1:HH:mm:ss}." xml:space="preserve"><value>Dimuat dari {0} pada {1:HH:mm:ss}.</value></data>
+  <data name="Racing chocobo stat refresh cancelled." xml:space="preserve"><value>Pembaruan atribut chocobo balap dibatalkan.</value></data>
+  <data name="The /goldsaucer command was not accepted." xml:space="preserve"><value>Perintah /goldsaucer tidak diterima.</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback." xml:space="preserve"><value>Gold Saucer Info siap; menunggu sebelum callback tab Chocobo.</value></data>
+  <data name="Gold Saucer window did not appear in time." xml:space="preserve"><value>Jendela Gold Saucer tidak muncul tepat waktu.</value></data>
+  <data name="The observed Chocobo tab is not ready for its native button event." xml:space="preserve"><value>Tab Chocobo yang diamati belum siap untuk peristiwa tombol native.</value></data>
+  <data name="Racing chocobo page detected; waiting for RaceChocoboManager data." xml:space="preserve"><value>Halaman chocobo balap terdeteksi; menunggu data RaceChocoboManager.</value></data>
+  <data name="RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab." xml:space="preserve"><value>RaceChocoboManager tidak dimuat dalam 30 detik setelah memilih tab Chocobo native.</value></data>
+  <data name="Projected" xml:space="preserve"><value>Proyeksi</value></data>
+  <data name="Projected from current stats using {0} planned trainings." xml:space="preserve"><value>Diproyeksikan dari atribut saat ini memakai {0} latihan terencana.</value></data>
+  <data name="Loaded from RaceChocoboManager at {0:HH:mm:ss}." xml:space="preserve"><value>Dimuat dari RaceChocoboManager pada {0:HH:mm:ss}.</value></data>
+  <data name="Traveling to Chocobo Square..." xml:space="preserve"><value>Bepergian ke Chocobo Square...</value></data>
+  <data name="Moving to Race Chocobo Trainer..." xml:space="preserve"><value>Bergerak ke Race Chocobo Trainer...</value></data>
+  <data name="Opening Race Chocobo Trainer..." xml:space="preserve"><value>Membuka Race Chocobo Trainer...</value></data>
+  <data name="Waiting for feed inventory..." xml:space="preserve"><value>Menunggu pakan di inventaris...</value></data>
+  <data name="Finding {0}..." xml:space="preserve"><value>Mencari {0}...</value></data>
+  <data name="Finding feed..." xml:space="preserve"><value>Mencari pakan...</value></data>
+  <data name="Opening inventory context menu..." xml:space="preserve"><value>Membuka menu konteks inventaris...</value></data>
+  <data name="Waiting for Feed context menu..." xml:space="preserve"><value>Menunggu menu konteks Feed...</value></data>
+  <data name="Selecting Feed..." xml:space="preserve"><value>Memilih Feed...</value></data>
+  <data name="Waiting for Commence..." xml:space="preserve"><value>Menunggu Commence...</value></data>
+  <data name="Confirming training..." xml:space="preserve"><value>Mengonfirmasi latihan...</value></data>
+  <data name="Waiting for training to complete..." xml:space="preserve"><value>Menunggu latihan selesai...</value></data>
+  <data name="Feed cycle complete." xml:space="preserve"><value>Siklus pemberian pakan selesai.</value></data>
+  <data name="Feed cycle failed." xml:space="preserve"><value>Siklus pemberian pakan gagal.</value></data>
+  <data name="Could not start Lifestream travel to Chocobo Square." xml:space="preserve"><value>Tidak dapat memulai perjalanan Lifestream ke Chocobo Square.</value></data>
+  <data name="Timed out waiting to arrive in Chocobo Square." xml:space="preserve"><value>Waktu tunggu untuk tiba di Chocobo Square habis.</value></data>
+  <data name="Could not find Race Chocobo Trainer in Chocobo Square." xml:space="preserve"><value>Tidak dapat menemukan Race Chocobo Trainer di Chocobo Square.</value></data>
+  <data name="Could not path near Race Chocobo Trainer. Move closer or check vnavmesh." xml:space="preserve"><value>Tidak dapat mencari rute dekat Race Chocobo Trainer. Mendekatlah atau periksa vnavmesh.</value></data>
+  <data name="Timed out moving near Race Chocobo Trainer." xml:space="preserve"><value>Waktu untuk bergerak dekat Race Chocobo Trainer habis.</value></data>
+  <data name="Could not open Race Chocobo Trainer. Move closer and try again." xml:space="preserve"><value>Tidak dapat membuka Race Chocobo Trainer. Mendekatlah dan coba lagi.</value></data>
+  <data name="Trainer feed inventory did not open after selecting the trainer menu entry." xml:space="preserve"><value>Inventaris pakan pelatih tidak terbuka setelah memilih entri menu pelatih.</value></data>
+  <data name="Missing {0} in inventory." xml:space="preserve"><value>{0} tidak ada di inventaris.</value></data>
+  <data name="Could not locate {0} in the main inventory pages." xml:space="preserve"><value>Tidak dapat menemukan {0} pada halaman inventaris utama.</value></data>
+  <data name="No visible inventory window was found while opening the trainer-feed context menu." xml:space="preserve"><value>Tidak ditemukan jendela inventaris terlihat saat membuka menu konteks pakan pelatih.</value></data>
+  <data name="Inventory window disappeared before the trainer-feed context menu became visible." xml:space="preserve"><value>Jendela inventaris menghilang sebelum menu konteks pakan pelatih terlihat.</value></data>
+  <data name="Context menu disappeared before Feed could be selected." xml:space="preserve"><value>Menu konteks menghilang sebelum Feed dapat dipilih.</value></data>
+  <data name="Commence window did not appear after selecting Feed." xml:space="preserve"><value>Jendela Commence tidak muncul setelah memilih Feed.</value></data>
+  <data name="Training confirmation window did not appear after Commence." xml:space="preserve"><value>Jendela konfirmasi latihan tidak muncul setelah Commence.</value></data>
+  <data name="Feed did not appear to consume {0}. Check the trainer flow and inventory state." xml:space="preserve"><value>Pemberian pakan tampaknya tidak menghabiskan {0}. Periksa alur pelatih dan kondisi inventaris.</value></data>
+  <data name="Trainer feed flow stayed unstable after {0} recovery attempts. Last issue: {1}" xml:space="preserve"><value>Alur pakan pelatih tetap tidak stabil setelah {0} upaya pemulihan. Masalah terakhir: {1}</value></data>
+  <data name="Moving to Tack &amp; Feed Trader..." xml:space="preserve"><value>Bergerak ke Tack &amp; Feed Trader...</value></data>
+  <data name="Opening Tack &amp; Feed Trader..." xml:space="preserve"><value>Membuka Tack &amp; Feed Trader...</value></data>
+  <data name="Selecting vendor page..." xml:space="preserve"><value>Memilih halaman penjual...</value></data>
+  <data name="Buying {0}..." xml:space="preserve"><value>Membeli {0}...</value></data>
+  <data name="Buying feed..." xml:space="preserve"><value>Membeli pakan...</value></data>
+  <data name="Waiting for purchase result..." xml:space="preserve"><value>Menunggu hasil pembelian...</value></data>
+  <data name="Purchase cycle complete." xml:space="preserve"><value>Siklus pembelian selesai.</value></data>
+  <data name="Purchase cycle failed." xml:space="preserve"><value>Siklus pembelian gagal.</value></data>
+  <data name="Feed confirmation would cross the configured currency reserve." xml:space="preserve"><value>Konfirmasi pakan akan mengurangi cadangan mata uang yang diatur.</value></data>
+  <data name="Could not find Tack &amp; Feed Trader in Chocobo Square." xml:space="preserve"><value>Tidak dapat menemukan Tack &amp; Feed Trader di Chocobo Square.</value></data>
+  <data name="Could not path near Tack &amp; Feed Trader. Move closer or check vnavmesh." xml:space="preserve"><value>Tidak dapat mencari rute dekat Tack &amp; Feed Trader. Mendekatlah atau periksa vnavmesh.</value></data>
+  <data name="Timed out moving near Tack &amp; Feed Trader." xml:space="preserve"><value>Waktu untuk bergerak dekat Tack &amp; Feed Trader habis.</value></data>
+  <data name="Could not open Tack &amp; Feed Trader. Move closer and try again." xml:space="preserve"><value>Tidak dapat membuka Tack &amp; Feed Trader. Mendekatlah dan coba lagi.</value></data>
+  <data name="Could not open '{0}' on Tack &amp; Feed Trader." xml:space="preserve"><value>Tidak dapat membuka '{0}' pada Tack &amp; Feed Trader.</value></data>
+  <data name="The verified required-supply shop closed before purchase." xml:space="preserve"><value>Toko persediaan wajib yang terverifikasi ditutup sebelum pembelian.</value></data>
+  <data name="Feed purchase would cross the configured currency reserve." xml:space="preserve"><value>Pembelian pakan akan mengurangi cadangan mata uang yang diatur.</value></data>
+  <data name="The native gil-shop purchase could not be dispatched safely." xml:space="preserve"><value>Pembelian pada toko gil native tidak dapat dikirim dengan aman.</value></data>
+  <data name="ShopEventHandler.ExecuteBuy(1), visible row {0}" xml:space="preserve"><value>ShopEventHandler.ExecuteBuy(1), baris terlihat {0}</value></data>
+  <data name="Required-supply shop closed before the purchase result was verified." xml:space="preserve"><value>Toko persediaan wajib ditutup sebelum hasil pembelian terverifikasi.</value></data>
+  <data name="Purchase callback for {0} did not change inventory. Last attempted: {1}" xml:space="preserve"><value>Callback pembelian {0} tidak mengubah inventaris. Upaya terakhir: {1}</value></data>
+  <data name="Target feeding purchase: {0}" xml:space="preserve"><value>Pembelian pakan target: {0}</value></data>
+  <data name="Target feeding: {0}" xml:space="preserve"><value>Pemberian pakan target: {0}</value></data>
+  <data name="Target cycle paused at a safe boundary." xml:space="preserve"><value>Siklus target dijeda pada batas yang aman.</value></data>
+  <data name="Log into a character before starting breeding automation." xml:space="preserve"><value>Masuk dengan karakter sebelum memulai otomatisasi pembiakan.</value></data>
+  <data name="This target cycle is owned by VERMAXION; use its Target Pedigree controls." xml:space="preserve"><value>Siklus target ini dikendalikan VERMAXION; gunakan kontrol Target Pedigree di sana.</value></data>
+  <data name="Breeding UI mappings still require native inspection before automatic selection is available." xml:space="preserve"><value>Pemetaan UI pembiakan masih memerlukan inspeksi native sebelum pemilihan otomatis tersedia.</value></data>
+  <data name="No logged-in Content ID is available." xml:space="preserve"><value>Tidak tersedia Content ID karakter yang masuk.</value></data>
+  <data name="Content ID mismatch: request {0}, current {1}." xml:space="preserve"><value>Content ID tidak cocok: permintaan {0}, saat ini {1}.</value></data>
+  <data name="Choke-abo is disabled." xml:space="preserve"><value>Choke-abo dinonaktifkan.</value></data>
+  <data name="This progression requires V3; older callers cannot remove its spending limits." xml:space="preserve"><value>Progres ini memerlukan V3; pemanggil lama tidak dapat menghapus batas pengeluarannya.</value></data>
+  <data name="Start a new offspring batch only after the existing action, queue and covering have settled." xml:space="preserve"><value>Mulai kelompok anak baru hanya setelah tindakan, antrean, dan perkawinan yang ada selesai.</value></data>
+  <data name="Finish the existing covering with its saved goal before changing the production target." xml:space="preserve"><value>Selesaikan perkawinan yang ada dengan tujuan tersimpan sebelum mengubah target produksi.</value></data>
+  <data name="The desired inherited ability is unavailable in current game data." xml:space="preserve"><value>Kemampuan bawaan yang diinginkan tidak tersedia pada data game saat ini.</value></data>
+  <data name="The acceptable colours are unavailable in current game data." xml:space="preserve"><value>Warna yang dapat diterima tidak tersedia pada data game saat ini.</value></data>
+  <data name="Target inputs changed while an immediate feed action was awaiting evidence." xml:space="preserve"><value>Input target berubah saat tindakan pakan langsung menunggu bukti.</value></data>
+  <data name="Pause Content ID does not match the current character." xml:space="preserve"><value>Content ID jeda tidak cocok dengan karakter saat ini.</value></data>
+  <data name="Suspend identity mismatch." xml:space="preserve"><value>Identitas penangguhan tidak cocok.</value></data>
+  <data name="Status Content ID does not match the current character." xml:space="preserve"><value>Content ID status tidak cocok dengan karakter saat ini.</value></data>
+  <data name="Another Choke-abo automation owns the feed/vendor services." xml:space="preserve"><value>Otomatisasi Choke-abo lain menguasai layanan pakan/penjual.</value></data>
+  <data name="Current racer data could not be loaded: {0}" xml:space="preserve"><value>Data chocobo balap saat ini tidak dapat dimuat: {0}</value></data>
+  <data name="Loading current racer data before selecting a breeding action." xml:space="preserve"><value>Memuat data chocobo balap saat ini sebelum memilih tindakan pembiakan.</value></data>
+  <data name="Initial racing tutorial admitted; VERMAXION owns the race." xml:space="preserve"><value>Tutorial balapan awal diterima; VERMAXION mengendalikan balapan.</value></data>
+  <data name="Complete the registrar's initial racing training course." xml:space="preserve"><value>Selesaikan kursus latihan balapan awal dari petugas pendaftaran.</value></data>
+  <data name="Complete Like Sire Like Fledgling before retiring this racer." xml:space="preserve"><value>Selesaikan Like Sire Like Fledgling sebelum memensiunkan chocobo balap ini.</value></data>
+  <data name="An unowned Proof of Covering is present; its exact start time cannot be inferred safely." xml:space="preserve"><value>Ada Proof of Covering yang tidak dimiliki; waktu mulai persisnya tidak dapat diperkirakan dengan aman.</value></data>
+  <data name="Feed for the available training sessions cannot be purchased within the currency reserves." xml:space="preserve"><value>Pakan untuk sesi latihan tersedia tidak dapat dibeli tanpa mengurangi cadangan mata uang.</value></data>
+  <data name="No free main-inventory slot is available for target feed." xml:space="preserve"><value>Tidak tersedia slot inventaris utama kosong untuk pakan target.</value></data>
+  <data name="The selected target feed item could not be resolved." xml:space="preserve"><value>Item pakan target yang dipilih tidak dapat ditentukan.</value></data>
+  <data name="Buying {0} feed across {1} items for {2} available training sessions." xml:space="preserve"><value>Membeli pakan {0} pada {1} item untuk {2} sesi latihan tersedia.</value></data>
+  <data name="Feeding one {0}; awaiting exact item and session evidence." xml:space="preserve"><value>Memberikan satu {0}; menunggu bukti item dan sesi yang tepat.</value></data>
+  <data name="Persisted feed-purchase intent has no item baseline." xml:space="preserve"><value>Niat pembelian pakan tersimpan tidak memiliki data awal item.</value></data>
+  <data name="Feed purchase completed without an exact item-ID quantity increase." xml:space="preserve"><value>Pembelian pakan selesai tanpa peningkatan jumlah item dengan ID yang tepat.</value></data>
+  <data name="Feed selection changed after purchase; exact purchase evidence cannot be reconciled." xml:space="preserve"><value>Pilihan pakan berubah setelah pembelian; bukti pembelian persis tidak dapat dicocokkan.</value></data>
+  <data name="Purchased feed could not be resolved to an exact inventory slot." xml:space="preserve"><value>Pakan yang dibeli tidak dapat dicocokkan dengan slot inventaris yang tepat.</value></data>
+  <data name="Target feed purchase blocked: {0}" xml:space="preserve"><value>Pembelian pakan target terblokir: {0}</value></data>
+  <data name="Reload found an unverified feed-purchase intent; it will not be replayed." xml:space="preserve"><value>Pemuatan ulang menemukan niat pembelian pakan yang belum terverifikasi; niat itu tidak akan dijalankan ulang.</value></data>
+  <data name="The completed feed batch does not contain the current training selection." xml:space="preserve"><value>Kelompok pakan selesai tidak mencakup pilihan latihan saat ini.</value></data>
+  <data name="The feed batch is not fully present in inventory; reconcile its pending purchases before another vendor visit." xml:space="preserve"><value>Kelompok pakan belum lengkap di inventaris; cocokkan pembelian tertundanya sebelum mengunjungi penjual lagi.</value></data>
+  <data name="Persisted feeding intent has no item baseline." xml:space="preserve"><value>Niat pemberian pakan tersimpan tidak memiliki data awal item.</value></data>
+  <data name="Target feeding blocked: {0}" xml:space="preserve"><value>Pemberian pakan target terblokir: {0}</value></data>
+  <data name="Feeding did not produce one exact feed-item decrease and one confirmed-session decrease." xml:space="preserve"><value>Pemberian pakan tidak menghasilkan pengurangan tepat satu item pakan dan satu sesi terkonfirmasi.</value></data>
+  <data name="Reload found an unverified feeding intent; it will not be replayed." xml:space="preserve"><value>Pemuatan ulang menemukan niat pemberian pakan yang belum terverifikasi; niat itu tidak akan dijalankan ulang.</value></data>
+  <data name="Covering is eligible; collection requires a verified native UI mapping." xml:space="preserve"><value>Perkawinan siap; pengambilan memerlukan pemetaan UI native terverifikasi.</value></data>
+  <data name="Paused by VERMAXION at a safe boundary." xml:space="preserve"><value>Dijeda oleh VERMAXION pada batas yang aman.</value></data>
+  <data name="{0} Native UI selection remains unverified (capture reference: {1})." xml:space="preserve"><value>{0} Pemilihan UI native belum terverifikasi (referensi tangkapan: {1}).</value></data>
+  <data name="Breeding supply is purchased, but the supplier interaction did not release; Resume to reconcile the retained item." xml:space="preserve"><value>Persediaan pembiakan sudah dibeli, tetapi interaksi pemasok belum selesai; pilih Lanjutkan untuk mencocokkan item yang disimpan.</value></data>
+  <data name="Could not reach the required breeding service for native UI inspection." xml:space="preserve"><value>Tidak dapat mencapai layanan pembiakan yang diperlukan untuk inspeksi UI native.</value></data>
+  <data name="The covering confirmation would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Konfirmasi perkawinan akan mengurangi cadangan gil. Lanjutkan harus dipilih secara eksplisit.</value></data>
+  <data name="Covering Commence was dispatched; its exact confirmation or proof result must be reconciled before another covering." xml:space="preserve"><value>Commence perkawinan dikirim; konfirmasi persis atau hasil buktinya harus dicocokkan sebelum perkawinan lain.</value></data>
+  <data name="The retained covering parent changed before native selection." xml:space="preserve"><value>Induk perkawinan yang disimpan berubah sebelum pemilihan native.</value></data>
+  <data name="The selected covering stock is captured; native selected-parent evidence and the fee require verification before Commence." xml:space="preserve"><value>Stok perkawinan yang dipilih telah direkam; bukti induk terpilih native dan biaya harus diverifikasi sebelum Commence.</value></data>
+  <data name="Native racing unlock verified; reassessing feeding and racing." xml:space="preserve"><value>Pembukaan akses balapan native terverifikasi; menilai ulang pakan dan balapan.</value></data>
+  <data name="The initial racing tutorial awaits the next daily allowance." xml:space="preserve"><value>Tutorial balapan awal menunggu jatah harian berikutnya.</value></data>
+  <data name="Registrar race entry captured; initial training admission is awaiting verification." xml:space="preserve"><value>Pendaftaran balapan dari petugas direkam; penerimaan latihan awal menunggu verifikasi.</value></data>
+  <data name="Retirement confirmation sent; awaiting the retired form and cleared current racer. Any further native prompt is captured before another action." xml:space="preserve"><value>Konfirmasi pensiun dikirim; menunggu formulir pensiun dan pengosongan chocobo balap saat ini. Setiap prompt native tambahan direkam sebelum tindakan berikutnya.</value></data>
+  <data name="Retirement requires an intermediate rank40 racer and room for its retained form." xml:space="preserve"><value>Pensiun memerlukan chocobo balap perantara peringkat 40 dan ruang untuk formulir yang disimpan.</value></data>
+  <data name="The observed retirement confirmation button is unavailable." xml:space="preserve"><value>Tombol konfirmasi pensiun yang diamati tidak tersedia.</value></data>
+  <data name="Retirement menu selected; the resulting native window is captured before confirming retirement." xml:space="preserve"><value>Menu pensiun dipilih; jendela native yang muncul direkam sebelum mengonfirmasi pensiun.</value></data>
+  <data name="Registration confirmation was sent but matching form consumption and current racer evidence are unavailable." xml:space="preserve"><value>Konfirmasi pendaftaran dikirim tetapi bukti konsumsi formulir yang sesuai dan chocobo balap saat ini tidak tersedia.</value></data>
+  <data name="Registration name stage {0} captured; final registration evidence remains pending." xml:space="preserve"><value>Tahap nama pendaftaran {0} direkam; bukti pendaftaran akhir masih ditunggu.</value></data>
+  <data name="Selected registration form; the resulting registration window is captured for verification." xml:space="preserve"><value>Formulir pendaftaran dipilih; jendela pendaftaran yang muncul direkam untuk verifikasi.</value></data>
+  <data name="The selected registration form changed before opening its context menu." xml:space="preserve"><value>Formulir pendaftaran yang dipilih berubah sebelum menu konteks dibuka.</value></data>
+  <data name="Breeding service interaction captured; its native selection must be verified before dispatch." xml:space="preserve"><value>Interaksi layanan pembiakan direkam; pilihan native harus diverifikasi sebelum dikirim.</value></data>
+  <data name="Saved collection evidence is invalid; no collection will be replayed." xml:space="preserve"><value>Bukti pengambilan tersimpan tidak valid; tidak ada pengambilan yang akan dijalankan ulang.</value></data>
+  <data name="Collection occurred, but the exact new offspring and its trait must be reconciled before counting or another covering." xml:space="preserve"><value>Pengambilan terjadi, tetapi anak baru yang tepat dan sifatnya harus dicocokkan sebelum dihitung atau perkawinan lain.</value></data>
+  <data name="Collection was requested; proof consumption and one matching fledgling must be reconciled before another request." xml:space="preserve"><value>Pengambilan diminta; konsumsi bukti dan satu anak yang sesuai harus dicocokkan sebelum permintaan lain.</value></data>
+  <data name="Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering." xml:space="preserve"><value>Pengambilan memerlukan perkawinan yang ada dan siap, silsilah induk tersimpan, dan tepat satu Proof of Covering.</value></data>
+  <data name="The required covering fee would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Biaya perkawinan yang diperlukan akan mengurangi cadangan gil. Lanjutkan harus dipilih secara eksplisit.</value></data>
+  <data name="The required supply does not match the selected breeding mode and supplier." xml:space="preserve"><value>Persediaan wajib tidak sesuai dengan mode pembiakan dan pemasok yang dipilih.</value></data>
+  <data name="The required breeding supply would cross the {0} reserve." xml:space="preserve"><value>Persediaan pembiakan wajib akan mengurangi cadangan {0}.</value></data>
+  <data name="A free main-inventory slot is required for the breeding supply." xml:space="preserve"><value>Slot inventaris utama kosong diperlukan untuk persediaan pembiakan.</value></data>
+  <data name="Buying {0} for {1} {2} within reserves; awaiting its inventory result." xml:space="preserve"><value>Membeli {0} seharga {1} {2} tanpa melewati cadangan; menunggu hasil inventaris.</value></data>
+  <data name="The required breeding supply was not found in the verified native shop." xml:space="preserve"><value>Persediaan pembiakan wajib tidak ditemukan pada toko native terverifikasi.</value></data>
+  <data name="Required supply purchase stopped: {0}" xml:space="preserve"><value>Pembelian persediaan wajib dihentikan: {0}</value></data>
+  <data name="A required-supply purchase is unverified after reload; its matching pending confirmation or inventory result is required before another purchase." xml:space="preserve"><value>Pembelian persediaan wajib belum terverifikasi setelah pemuatan ulang; konfirmasi tertunda atau hasil inventaris yang sesuai diperlukan sebelum pembelian lain.</value></data>
+  <data name="{0} Explicit Resume is required." xml:space="preserve"><value>{0} Lanjutkan harus dipilih secara eksplisit.</value></data>
+  <data name="{0} Feeding policy is Stop; explicit Resume is required." xml:space="preserve"><value>{0} Kebijakan pakan adalah Hentikan; Lanjutkan harus dipilih secara eksplisit.</value></data>
+  <data name="Cannot skip feeding without a current racer snapshot." xml:space="preserve"><value>Tidak dapat melewati pemberian pakan tanpa snapshot chocobo balap saat ini.</value></data>
+  <data name="Skipped this feeding round: {0}" xml:space="preserve"><value>Pemberian pakan kali ini dilewati: {0}</value></data>
+  <data name="vnavmesh is unavailable or not ready for target feeding." xml:space="preserve"><value>vnavmesh tidak tersedia atau belum siap untuk pemberian pakan target.</value></data>
+  <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader tidak tersedia untuk interaksi.</value></data>
+  <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Interaksi penjual Lifestream/vnavmesh yang diperlukan tidak tersedia.</value></data>
+  <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Waktu tunggu perkawinan tidak memiliki bukti kesiapan yang valid.</value></data>
+  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Perkawinan siap; adopsi menunggu bukti tangkapan yang tepat.</value></data>
+  <data name="Covering wait until {0:u}." xml:space="preserve"><value>Menunggu perkawinan hingga {0:u}.</value></data>
+  <data name="Invalid offspring production settings." xml:space="preserve"><value>Pengaturan produksi anak tidak valid.</value></data>
+  <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Menghasilkan {0}/{1} anak G9 yang sesuai; disimpan tanpa didaftarkan.</value></data>
+  <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Cocokkan perkawinan yang ada sebelum menghasilkan anak lain.</value></data>
+  <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Produksi anak memerlukan stok induk G9; balapan generasi lebih rendah dihentikan.</value></data>
+  <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Chocobo balap G9 terdaftar belum memiliki sifat yang diminta dan terkonfirmasi. Simpan dan pilih stok induk yang sesuai.</value></data>
+  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Besarkan induk G9 yang sesuai hingga pensiun: peringkat balapan {0}/40. Anak yang sesuai tetap tidak didaftarkan.</value></data>
+  <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Kawinkan stok G9 yang sesuai dengan induk G9 lawan jenis yang disimpan.</value></data>
+  <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Tidak ada induk G9 pensiun yang dapat digunakan dengan sifat yang diminta dan terkonfirmasi. Simpan anak dan isi kembali stok G9 yang sesuai.</value></data>
+  <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Besarkan anak G9 yang tidak sesuai ini sebagai pasangan milik sendiri yang belum ada; simpan hasil yang sesuai.</value></data>
+  <data name="Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits." xml:space="preserve"><value>Induk G9 lawan jenis yang dapat digunakan belum ada. Mode induk milik sendiri memerlukan stok G9 yang sesuai atau perubahan eksplisit ke izin NPC.</value></data>
+  <data name="Invalid progression settings." xml:space="preserve"><value>Pengaturan progres tidak valid.</value></data>
+  <data name="G{0} has already been reached; the target cannot move backwards." xml:space="preserve"><value>G{0} telah dicapai; target tidak dapat mundur.</value></data>
+  <data name="Counterpart covering requires permit mode and a reached pedigree of G2 or higher." xml:space="preserve"><value>Perkawinan untuk menghasilkan pasangan memerlukan mode izin dan silsilah G2 atau lebih yang sudah dicapai.</value></data>
+  <data name="Current racer pedigree, racing rank, or sex is unavailable." xml:space="preserve"><value>Silsilah, peringkat balapan, atau jenis kelamin chocobo balap terdaftar tidak tersedia.</value></data>
+  <data name="The registered G{0} racer is below the retained G{1} pedigree; lower-generation racing is stopped." xml:space="preserve"><value>Chocobo balap G{0} terdaftar berada di bawah silsilah G{1} tersimpan; balapan generasi lebih rendah dihentikan.</value></data>
+  <data name="Retain G{0}; racing rank {1}/50." xml:space="preserve"><value>Simpan G{0}; peringkat balapan {1}/50.</value></data>
+  <data name="The current racer exceeds the selected target pedigree; retain it." xml:space="preserve"><value>Chocobo balap saat ini melebihi silsilah target terpilih; simpan.</value></data>
+  <data name="G{0} {1}: racing rank {2}/40 before retirement." xml:space="preserve"><value>G{0} {1}: peringkat balapan {2}/40 sebelum pensiun.</value></data>
+  <data name="Reconcile the existing Proof of Covering before another covering." xml:space="preserve"><value>Cocokkan Proof of Covering yang ada sebelum perkawinan lain.</value></data>
+  <data name="Register G{0} {1}." xml:space="preserve"><value>Daftarkan G{0} {1}.</value></data>
+  <data name="A usable G{0} pair is already retained. Select owned parents or advance-pedigree permits before another covering." xml:space="preserve"><value>Pasangan G{0} yang dapat digunakan sudah disimpan. Pilih induk milik sendiri atau izin peningkatan silsilah sebelum perkawinan lain.</value></data>
+  <data name="No usable G{0} parent remains to produce a G{1} counterpart. Lower-generation covering is stopped." xml:space="preserve"><value>Tidak ada induk G{0} yang dapat digunakan untuk menghasilkan pasangan G{1}. Perkawinan generasi lebih rendah dihentikan.</value></data>
+  <data name="No retained parent can produce G{0} or higher; lower-generation covering is stopped." xml:space="preserve"><value>Tidak ada induk tersimpan yang dapat menghasilkan G{0} atau lebih; perkawinan generasi lebih rendah dihentikan.</value></data>
+  <data name="Cover retained G{0} parents; preserve their remaining capacity." xml:space="preserve"><value>Kawinkan induk G{0} tersimpan; pertahankan kapasitas yang tersisa.</value></data>
+  <data name="Missing an owned G{0} counterpart. No owned pair can produce G{1} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped." xml:space="preserve"><value>Pasangan G{0} milik sendiri belum ada. Tidak ada pasangan milik sendiri yang dapat menghasilkan G{1} atau lebih; pilih perkawinan berizin secara eksplisit. Pembentukan ulang dari generasi lebih rendah dihentikan.</value></data>
+  <data name="Cover the retained G{0} parent and matching opposite-sex permit to produce G{1}." xml:space="preserve"><value>Kawinkan induk G{0} tersimpan dengan izin lawan jenis yang sesuai untuk menghasilkan G{1}.</value></data>
+  <data name="Buy the opposite-sex G{0} permit within reserves to produce G{1}." xml:space="preserve"><value>Beli izin G{0} lawan jenis tanpa melewati cadangan untuk menghasilkan G{1}.</value></data>
+  <data name="Target pedigree G{0} is outside G2-G9." xml:space="preserve"><value>Silsilah target G{0} di luar G2-G9.</value></data>
+  <data name="Retirement rank {0} is outside 40-50." xml:space="preserve"><value>Peringkat pensiun {0} di luar 40-50.</value></data>
+  <data name="Register the exact G{0} fledgling in {1} slot {2}." xml:space="preserve"><value>Daftarkan anak G{0} yang tepat pada {1} slot {2}.</value></data>
+  <data name="The active racer's sex is unavailable." xml:space="preserve"><value>Jenis kelamin chocobo balap aktif tidak tersedia.</value></data>
+  <data name="The active G{0} racer is above target G{1}." xml:space="preserve"><value>Chocobo balap G{0} aktif di atas target G{1}.</value></data>
+  <data name="Feed the target racer before declaring it ready." xml:space="preserve"><value>Beri pakan chocobo balap target sebelum menyatakannya siap.</value></data>
+  <data name="The active G{0} racer is target-ready." xml:space="preserve"><value>Chocobo balap G{0} aktif siap mencapai target.</value></data>
+  <data name="Cover the exact G{0} pair to advance toward G{1}." xml:space="preserve"><value>Kawinkan pasangan G{0} yang tepat untuk maju menuju G{1}.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex while the useful racer continues racing." xml:space="preserve"><value>Kawinkan pasangan G{0} yang tepat untuk menghasilkan jenis kelamin G{1} yang belum ada sementara chocobo berguna terus balapan.</value></data>
+  <data name="The active G{0} {1} duplicates an owned usable parent and no productive pair is available." xml:space="preserve"><value>G{0} {1} aktif menduplikasi induk milik sendiri yang dapat digunakan dan tidak ada pasangan produktif tersedia.</value></data>
+  <data name="Race the useful G{0} {1} candidate to rank {2}." xml:space="preserve"><value>Balapkan kandidat G{0} {1} yang berguna hingga peringkat {2}.</value></data>
+  <data name="Use the active racer's remaining training sessions before retirement." xml:space="preserve"><value>Gunakan sisa sesi latihan chocobo balap aktif sebelum pensiun.</value></data>
+  <data name="Retire the active G{0} {1} racer exactly." xml:space="preserve"><value>Pensiunkan G{0} {1} aktif yang tepat.</value></data>
+  <data name="A Proof of Covering is present." xml:space="preserve"><value>Ada Proof of Covering.</value></data>
+  <data name="Register the exact useful G{0} {1} fledgling." xml:space="preserve"><value>Daftarkan anak G{0} {1} berguna yang tepat.</value></data>
+  <data name="No useful active racer, fledgling, or covering parents are available." xml:space="preserve"><value>Tidak ada chocobo balap aktif, anak, atau induk perkawinan yang berguna.</value></data>
+  <data name="G{0} is missing a usable opposite-sex parent and no preceding-pedigree pair can produce it." xml:space="preserve"><value>G{0} belum memiliki induk lawan jenis yang dapat digunakan dan tidak ada pasangan silsilah sebelumnya yang dapat menghasilkannya.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex." xml:space="preserve"><value>Kawinkan pasangan G{0} yang tepat untuk menghasilkan jenis kelamin G{1} yang belum ada.</value></data>
+  <data name="Resume" xml:space="preserve"><value>Lanjutkan</value></data>
+  <data name="Pause" xml:space="preserve"><value>Jeda</value></data>
+  <data name="Language" xml:space="preserve"><value>Bahasa</value></data>
+  <data name="Color" xml:space="preserve"><value>Warna</value></data>
+  <data name="Teal" xml:space="preserve"><value>Hijau kebiruan</value></data>
+  <data name="Blue" xml:space="preserve"><value>Biru</value></data>
+  <data name="Pink" xml:space="preserve"><value>Merah muda</value></data>
+  <data name="Custom RGB" xml:space="preserve"><value>RGB kustom</value></data>
+  <data name="Loading UI fonts..." xml:space="preserve"><value>Memuat font UI...</value></data>
+  <data name="UI fonts failed to load. See the plugin log." xml:space="preserve"><value>Font UI gagal dimuat. Lihat log plugin.</value></data>
+  <data name="Male" xml:space="preserve"><value>Jantan</value></data>
+  <data name="Female" xml:space="preserve"><value>Betina</value></data>
+  <data name="Gil" xml:space="preserve"><value>Gil</value></data>
+  <data name="MGP" xml:space="preserve"><value>MGP</value></data>
+  <data name="Running" xml:space="preserve"><value>Berjalan</value></data>
+  <data name="None" xml:space="preserve"><value>Tidak ada</value></data>
+  <data name="Sex" xml:space="preserve"><value>Jenis kelamin</value></data>
+  <data name="Item" xml:space="preserve"><value>Item</value></data>
+  <data name="Quantity" xml:space="preserve"><value>Jumlah</value></data>
+  <data name="Buy a G1 {0} registration form to raise a missing owned parent." xml:space="preserve"><value>Beli formulir pendaftaran G1 {0} untuk membesarkan induk milik sendiri yang belum ada.</value></data>
+  <data name="The native Select Chocobo list entry is unavailable or disabled." xml:space="preserve"><value>Entri daftar Select Chocobo native tidak tersedia atau nonaktif.</value></data>
+  <data name="Breeding supply" xml:space="preserve"><value>Persediaan pembiakan</value></data>
+  <data name="Offspring ready" xml:space="preserve"><value>Anak chocobo siap</value></data>
+  <data name="Window appearance" xml:space="preserve">
+    <value>Tampilan jendela</value>
+  </data>
+  <data name="Compact visible on main window" xml:space="preserve">
+    <value>Tampilkan mode ringkas di jendela utama</value>
+  </data>
+  <data name="Language visible on main window" xml:space="preserve">
+    <value>Tampilkan pilihan bahasa di jendela utama</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>Transparansi</value>
+  </data>
+  <data name="Opacity (%)" xml:space="preserve">
+    <value>Opasitas (%)</value>
+  </data>
+  <data name="Auto-fade when unfocused" xml:space="preserve">
+    <value>Redupkan otomatis saat tidak fokus</value>
+  </data>
+  <data name="Unfocused opacity (%)" xml:space="preserve">
+    <value>Opasitas saat tidak fokus (%)</value>
+  </data>
+  <data name="Unfocused delay (seconds)" xml:space="preserve">
+    <value>Jeda saat tidak fokus (detik)</value>
+  </data>
+</root>

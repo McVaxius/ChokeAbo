@@ -387,10 +387,11 @@ public static class GameHelpers
         for (var row = 0; row < 122; ++row)
         {
             if (!TryReadMgpShopEntry(row, out var itemId, out _) || itemId != permitItemId) continue;
-            // Hide did not dismiss the live currency-exchange addon after a purchase.
-            // Use the native addon close path, as in DDuck, so its close handling runs.
-            Plugin.Log.Information($"[ChokeAbo][Native] Closing verified permit shop through AtkUnitBase.Close; item={permitItemId}; addon={agent->AddonId}.");
+            // Close the actual addon and release its verified shop agent. Each
+            // operation alone has left part of this supplier interaction active.
+            Plugin.Log.Information($"[ChokeAbo][Native] Closing verified permit addon and shop agent; item={permitItemId}; addon={agent->AddonId}.");
             ((AtkUnitBase*)handle.Address)->Close(true);
+            agent->Hide();
             return true;
         }
         return false;

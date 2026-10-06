@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Enabled" xml:space="preserve"><value>Bật</value></data>
+  <data name="DTR Bar" xml:space="preserve"><value>Thanh DTR</value></data>
+  <data name="Settings" xml:space="preserve"><value>Cài đặt</value></data>
+  <data name="Refresh Chocobo Data" xml:space="preserve"><value>Làm mới dữ liệu chocobo</value></data>
+  <data name="Status to chat" xml:space="preserve"><value>Gửi trạng thái vào chat</value></data>
+  <data name="Manual training and feed purchases" xml:space="preserve"><value>Huấn luyện thủ công và mua thức ăn</value></data>
+  <data name="Plan training sessions, use feed already in inventory, and buy the remaining feed in one visit." xml:space="preserve"><value>Lập kế hoạch các buổi huấn luyện, dùng thức ăn có sẵn trong túi đồ rồi mua phần còn thiếu trong một lượt.</value></data>
+  <data name="Planned trainings exceed sessions available: {0}/{1}. Extra planned trainings will not fit this cycle." xml:space="preserve"><value>Số buổi huấn luyện dự kiến vượt số buổi khả dụng: {0}/{1}. Các buổi dư không thể thực hiện trong chu kỳ này.</value></data>
+  <data name="FFXIV Dalamud Plugin" xml:space="preserve"><value>Plugin Dalamud cho FFXIV</value></data>
+  <data name="Support on Ko-fi" xml:space="preserve"><value>Ủng hộ trên Ko-fi</value></data>
+  <data name="Compact mode" xml:space="preserve"><value>Chế độ gọn</value></data>
+  <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>Đăng nhập nhân vật để xem tiến trình chocobo.</value></data>
+  <data name="Chocobo progression" xml:space="preserve"><value>Tiến trình chocobo</value></data>
+  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION quản lý cài đặt tiến trình và lượt đua hằng ngày. Choke-abo thực hiện cho ăn và phối giống.</value></data>
+  <data name="Open VERMAXION settings" xml:space="preserve"><value>Mở cài đặt VERMAXION</value></data>
+  <data name="Stop" xml:space="preserve"><value>Dừng</value></data>
+  <data name="Pedigree" xml:space="preserve"><value>Đời giống</value></data>
+  <data name="Unknown" xml:space="preserve"><value>Không rõ</value></data>
+  <data name="Inherited ability" xml:space="preserve"><value>Kỹ năng di truyền</value></data>
+  <data name="Rank" xml:space="preserve"><value>Hạng</value></data>
+  <data name="Learned ability" xml:space="preserve"><value>Kỹ năng đã học</value></data>
+  <data name="Goal" xml:space="preserve"><value>Mục tiêu</value></data>
+  <data name="Not configured" xml:space="preserve"><value>Chưa thiết lập</value></data>
+  <data name="Pedigree G{0}" xml:space="preserve"><value>Đời giống G{0}</value></data>
+  <data name="Offspring printer" xml:space="preserve"><value>Sản xuất chocobo con</value></data>
+  <data name="Colour seeker" xml:space="preserve"><value>Tìm màu</value></data>
+  <data name="Colour" xml:space="preserve"><value>Màu</value></data>
+  <data name="Phase" xml:space="preserve"><value>Giai đoạn</value></data>
+  <data name="Covering ready in" xml:space="preserve"><value>Phối giống sẵn sàng sau</value></data>
+  <data name="Ready" xml:space="preserve"><value>Sẵn sàng</value></data>
+  <data name="Next action" xml:space="preserve"><value>Thao tác tiếp theo</value></data>
+  <data name="Matching G9 offspring: {0:N0} / {1:N0}" xml:space="preserve"><value>Chocobo con G9 phù hợp: {0:N0} / {1:N0}</value></data>
+  <data name="Matching offspring retained unregistered" xml:space="preserve"><value>Giữ chocobo con phù hợp chưa đăng ký</value></data>
+  <data name="Desired inherited ability" xml:space="preserve"><value>Kỹ năng di truyền mong muốn</value></data>
+  <data name="Breeding mode: {0}" xml:space="preserve"><value>Chế độ phối giống: {0}</value></data>
+  <data name="Owned parents" xml:space="preserve"><value>Bố mẹ sở hữu</value></data>
+  <data name="NPC covering permits" xml:space="preserve"><value>Giấy phép phối giống với NPC</value></data>
+  <data name="Permit objective: produce G9 offspring" xml:space="preserve"><value>Mục tiêu giấy phép: tạo chocobo con G9</value></data>
+  <data name="Permit objective: produce a missing current-pedigree counterpart" xml:space="preserve"><value>Mục tiêu giấy phép: tạo cá thể đối ứng còn thiếu ở đời giống hiện tại</value></data>
+  <data name="Permit objective: advance pedigree" xml:space="preserve"><value>Mục tiêu giấy phép: nâng đời giống</value></data>
+  <data name="Reserves: {0:N0} gil    {1:N0} MGP" xml:space="preserve"><value>Dự trữ: {0:N0} gil    {1:N0} MGP</value></data>
+  <data name="Fall back to Grade 1, then skip" xml:space="preserve"><value>Dùng cấp 1 thay thế, rồi bỏ qua</value></data>
+  <data name="Stop until Resume" xml:space="preserve"><value>Dừng đến khi chọn Tiếp tục</value></data>
+  <data name="Skip this feeding round" xml:space="preserve"><value>Bỏ qua lượt cho ăn này</value></data>
+  <data name="Feed: Grade {0}    If unavailable: {1}" xml:space="preserve"><value>Thức ăn: cấp {0}    Nếu không có: {1}</value></data>
+  <data name="Choose your progression goal, reserves and feeding policy in VERMAXION settings, then Resume to begin." xml:space="preserve"><value>Chọn mục tiêu tiến trình, mức dự trữ và chính sách cho ăn trong cài đặt VERMAXION, rồi chọn Tiếp tục để bắt đầu.</value></data>
+  <data name="No registered racing chocobo." xml:space="preserve"><value>Không có chocobo đua đã đăng ký.</value></data>
+  <data name="Registered racer data is unavailable." xml:space="preserve"><value>Không có dữ liệu chocobo đua đã đăng ký.</value></data>
+  <data name="Breeding stock" xml:space="preserve"><value>Đàn giống</value></data>
+  <data name="Offspring sex is random. Two coverings do not guarantee a male and a female." xml:space="preserve"><value>Giới tính chocobo con là ngẫu nhiên. Hai lần phối giống không đảm bảo có một đực và một cái.</value></data>
+  <data name="Pedigree / sex" xml:space="preserve"><value>Đời giống / giới tính</value></data>
+  <data name="Coverings left" xml:space="preserve"><value>Số lần phối giống còn lại</value></data>
+  <data name="Covering proof" xml:space="preserve"><value>Giấy xác nhận phối giống</value></data>
+  <data name="No breeding forms or covering proof in inventory." xml:space="preserve"><value>Không có mẫu đăng ký giống hoặc giấy xác nhận phối giống trong túi đồ.</value></data>
+  <data name="Covering in progress" xml:space="preserve"><value>Đang phối giống</value></data>
+  <data name="Collecting offspring" xml:space="preserve"><value>Đang nhận chocobo con</value></data>
+  <data name="Registering offspring" xml:space="preserve"><value>Đang đăng ký chocobo con</value></data>
+  <data name="Retiring the intermediate racer" xml:space="preserve"><value>Đang cho chocobo đua trung gian nghỉ hưu</value></data>
+  <data name="Retiring the G9 breeding parent" xml:space="preserve"><value>Đang cho bố mẹ giống G9 nghỉ hưu</value></data>
+  <data name="Preparing covering" xml:space="preserve"><value>Đang chuẩn bị phối giống</value></data>
+  <data name="Paused - Resume is required" xml:space="preserve"><value>Đã tạm dừng - cần chọn Tiếp tục</value></data>
+  <data name="Needs attention" xml:space="preserve"><value>Cần chú ý</value></data>
+  <data name="Offspring goal reached" xml:space="preserve"><value>Đã đạt mục tiêu chocobo con</value></data>
+  <data name="Progression complete" xml:space="preserve"><value>Đã hoàn thành tiến trình</value></data>
+  <data name="Verifying the registered racer" xml:space="preserve"><value>Đang xác minh chocobo đua đã đăng ký</value></data>
+  <data name="Ready for racing" xml:space="preserve"><value>Sẵn sàng đua</value></data>
+  <data name="Feeding the racer" xml:space="preserve"><value>Đang cho chocobo đua ăn</value></data>
+  <data name="Purchasing supplies" xml:space="preserve"><value>Đang mua vật tư</value></data>
+  <data name="Ready to plan the next action" xml:space="preserve"><value>Sẵn sàng lập kế hoạch thao tác tiếp theo</value></data>
+  <data name="{0}: none" xml:space="preserve"><value>{0}: không có</value></data>
+  <data name="Overview" xml:space="preserve"><value>Tổng quan</value></data>
+  <data name="Plan" xml:space="preserve"><value>Kế hoạch</value></data>
+  <data name="No chocobo data loaded yet." xml:space="preserve"><value>Chưa tải dữ liệu chocobo.</value></data>
+  <data name="Racing rank: {0}/50" xml:space="preserve"><value>Hạng đua: {0}/50</value></data>
+  <data name="Rating: {0}" xml:space="preserve"><value>Đánh giá: {0}</value></data>
+  <data name="Pedigree: G{0}" xml:space="preserve"><value>Đời giống: G{0}</value></data>
+  <data name="XP: {0:N0}/{1:N0}" xml:space="preserve"><value>XP: {0:N0}/{1:N0}</value></data>
+  <data name="Sessions: {0}" xml:space="preserve"><value>Số buổi: {0}</value></data>
+  <data name="Plan: {0}" xml:space="preserve"><value>Kế hoạch: {0}</value></data>
+  <data name="Gil: {0:N0}" xml:space="preserve"><value>Gil: {0:N0}</value></data>
+  <data name="MGP: {0:N0}" xml:space="preserve"><value>MGP: {0:N0}</value></data>
+  <data name="Need gil: {0:N0}" xml:space="preserve"><value>Gil cần có: {0:N0}</value></data>
+  <data name="Need MGP: {0:N0}" xml:space="preserve"><value>MGP cần có: {0:N0}</value></data>
+  <data name="Stat" xml:space="preserve"><value>Chỉ số</value></data>
+  <data name="Stars" xml:space="preserve"><value>Sao</value></data>
+  <data name="Now" xml:space="preserve"><value>Hiện tại</value></data>
+  <data name="After" xml:space="preserve"><value>Sau đó</value></data>
+  <data name="Maximum Speed" xml:space="preserve"><value>Tốc độ tối đa</value></data>
+  <data name="Acceleration" xml:space="preserve"><value>Gia tốc</value></data>
+  <data name="Endurance" xml:space="preserve"><value>Sức bền</value></data>
+  <data name="Stamina" xml:space="preserve"><value>Thể lực</value></data>
+  <data name="Cunning" xml:space="preserve"><value>Khôn khéo</value></data>
+  <data name="Training Plan" xml:space="preserve"><value>Kế hoạch huấn luyện</value></data>
+  <data name="Choose the number of training sessions and feed grade for each stat." xml:space="preserve"><value>Chọn số buổi huấn luyện và cấp thức ăn cho từng chỉ số.</value></data>
+  <data name="Qty" xml:space="preserve"><value>SL</value></data>
+  <data name="Grade 1" xml:space="preserve"><value>Cấp 1</value></data>
+  <data name="Grade 2" xml:space="preserve"><value>Cấp 2</value></data>
+  <data name="Grade 3" xml:space="preserve"><value>Cấp 3</value></data>
+  <data name="Clear Plan" xml:space="preserve"><value>Xóa kế hoạch</value></data>
+  <data name="Planned trainings this cycle: {0}" xml:space="preserve"><value>Số buổi huấn luyện dự kiến trong chu kỳ này: {0}</value></data>
+  <data name="Session cap: {0}" xml:space="preserve"><value>Giới hạn số buổi: {0}</value></data>
+  <data name="Purchase Plan" xml:space="preserve"><value>Kế hoạch mua</value></data>
+  <data name="Exact shopping list for the current plan." xml:space="preserve"><value>Danh sách mua chính xác cho kế hoạch hiện tại.</value></data>
+  <data name="Load racing chocobo data first so the purchase plan can compare against sessions available." xml:space="preserve"><value>Tải dữ liệu chocobo đua trước để kế hoạch mua có thể so sánh với số buổi khả dụng.</value></data>
+  <data name="Plan exceeds sessions available: {0}/{1}. The shopping list below still reflects the full plan." xml:space="preserve"><value>Kế hoạch vượt số buổi khả dụng: {0}/{1}. Danh sách mua bên dưới vẫn phản ánh toàn bộ kế hoạch.</value></data>
+  <data name="Feed" xml:space="preserve"><value>Thức ăn</value></data>
+  <data name="Qty on hand" xml:space="preserve"><value>Số lượng có sẵn</value></data>
+  <data name="Currency" xml:space="preserve"><value>Tiền tệ</value></data>
+  <data name="Total" xml:space="preserve"><value>Tổng</value></data>
+  <data name="No planned feed purchases." xml:space="preserve"><value>Không có kế hoạch mua thức ăn.</value></data>
+  <data name="{0:N0}" xml:space="preserve"><value>{0:N0}</value></data>
+  <data name="Total gil needed: {0:N0}" xml:space="preserve"><value>Tổng gil cần có: {0:N0}</value></data>
+  <data name="Total MGP needed: {0:N0}" xml:space="preserve"><value>Tổng MGP cần có: {0:N0}</value></data>
+  <data name="Current currency is below the planned purchase total. Adjust the plan or stock up before the buy loop is enabled." xml:space="preserve"><value>Số tiền hiện tại thấp hơn tổng mua dự kiến. Điều chỉnh kế hoạch hoặc bổ sung tiền trước khi bật chu kỳ mua.</value></data>
+  <data name="Buy Needed Feed" xml:space="preserve"><value>Mua thức ăn cần thiết</value></data>
+  <data name="Feed Planned Sessions" xml:space="preserve"><value>Cho ăn theo các buổi đã lên kế hoạch</value></data>
+  <data name="Run Full Cycle" xml:space="preserve"><value>Chạy chu kỳ đầy đủ</value></data>
+  <data name="Start / Resume Breeding" xml:space="preserve"><value>Bắt đầu / tiếp tục phối giống</value></data>
+  <data name="Automation uses the session-capped plan and subtracts feed already on hand before buying." xml:space="preserve"><value>Tự động hóa dùng kế hoạch giới hạn theo số buổi và trừ thức ăn có sẵn trước khi mua.</value></data>
+  <data name="Cleanup status: {0}" xml:space="preserve"><value>Trạng thái dọn dẹp: {0}</value></data>
+  <data name="Buy status: {0}" xml:space="preserve"><value>Trạng thái mua: {0}</value></data>
+  <data name="Feed status: {0}" xml:space="preserve"><value>Trạng thái cho ăn: {0}</value></data>
+  <data name="Breeding status: {0}" xml:space="preserve"><value>Trạng thái phối giống: {0}</value></data>
+  <data name="1 star" xml:space="preserve"><value>1 sao</value></data>
+  <data name="{0} stars" xml:space="preserve"><value>{0} sao</value></data>
+  <data name="Text only" xml:space="preserve"><value>Chỉ văn bản</value></data>
+  <data name="Icon + text" xml:space="preserve"><value>Biểu tượng + văn bản</value></data>
+  <data name="Icon only" xml:space="preserve"><value>Chỉ biểu tượng</value></data>
+  <data name="Plugin enabled" xml:space="preserve"><value>Plugin được bật</value></data>
+  <data name="Show DTR bar entry" xml:space="preserve"><value>Hiện mục trên thanh DTR</value></data>
+  <data name="DTR mode" xml:space="preserve"><value>Chế độ DTR</value></data>
+  <data name="DTR enabled glyph" xml:space="preserve"><value>Ký tự DTR khi bật</value></data>
+  <data name="DTR disabled glyph" xml:space="preserve"><value>Ký tự DTR khi tắt</value></data>
+  <data name="Rollout phases" xml:space="preserve"><value>Giai đoạn triển khai</value></data>
+  <data name="Concept recap" xml:space="preserve"><value>Tóm tắt ý tưởng</value></data>
+  <data name="Popup Capture" xml:space="preserve"><value>Chụp cửa sổ bật lên</value></data>
+  <data name="Start/Stop Retirement" xml:space="preserve"><value>Bắt đầu/dừng nghỉ hưu</value></data>
+  <data name="Start/Stop Covering Selector" xml:space="preserve"><value>Bắt đầu/dừng bộ chọn phối giống</value></data>
+  <data name="Start/Stop Fledgling Selector" xml:space="preserve"><value>Bắt đầu/dừng bộ chọn chocobo con</value></data>
+  <data name="Start/Stop Adoption" xml:space="preserve"><value>Bắt đầu/dừng nhận nuôi</value></data>
+  <data name="Open Folder" xml:space="preserve"><value>Mở thư mục</value></data>
+  <data name="Scroll down to &quot;The Dumpster Fire&quot; channel to discuss issues / suggestions for specific plugins." xml:space="preserve"><value>Cuộn đến kênh "The Dumpster Fire" để thảo luận vấn đề / đề xuất cho từng plugin.</value></data>
+  <data name="Track current stats and feed plans." xml:space="preserve"><value>Theo dõi chỉ số hiện tại và kế hoạch cho ăn.</value></data>
+  <data name="Reserve stable and vendor automation seams." xml:space="preserve"><value>Dành các điểm tích hợp tự động hóa chuồng và người bán.</value></data>
+  <data name="Bias toward transparent deterministic flows." xml:space="preserve"><value>Ưu tiên luồng minh bạch và có kết quả xác định.</value></data>
+  <data name="Shell and docs" xml:space="preserve"><value>Khung và tài liệu</value></data>
+  <data name="Inventory truth" xml:space="preserve"><value>Trạng thái thực của túi đồ</value></data>
+  <data name="Planning math" xml:space="preserve"><value>Tính toán kế hoạch</value></data>
+  <data name="Vendor flow" xml:space="preserve"><value>Luồng người bán</value></data>
+  <data name="Stable loop" xml:space="preserve"><value>Chu kỳ chuồng</value></data>
+  <data name="Pass {0}: buying missing feed ({1} sessions remain)." xml:space="preserve"><value>Lượt {0}: đang mua thức ăn còn thiếu (còn {1} buổi).</value></data>
+  <data name="Pass {0}: feeding ({1} sessions remain)." xml:space="preserve"><value>Lượt {0}: đang cho ăn (còn {1} buổi).</value></data>
+  <data name="Pass {0}: cleanup/retry in {1:0.0}s. {2}" xml:space="preserve"><value>Lượt {0}: dọn dẹp/thử lại sau {1:0.0} giây. {2}</value></data>
+  <data name="Pass {0}: waiting to verify caps in {1:0.0}s. {2}" xml:space="preserve"><value>Lượt {0}: chờ xác minh giới hạn sau {1:0.0} giây. {2}</value></data>
+  <data name="Pass {0}: refreshing Chocobo stats. {1}" xml:space="preserve"><value>Lượt {0}: đang làm mới chỉ số chocobo. {1}</value></data>
+  <data name="Pass {0}: Chocobo stat refresh failed; retrying refresh in {1:0.0}s. {2}" xml:space="preserve"><value>Lượt {0}: làm mới chỉ số chocobo thất bại; thử lại sau {1:0.0} giây. {2}</value></data>
+  <data name="Idle" xml:space="preserve"><value>Nhàn rỗi</value></data>
+  <data name="{0} {1}. Click to open the main window." xml:space="preserve"><value>{0} {1}. Nhấp để mở cửa sổ chính.</value></data>
+  <data name="Stopped manually." xml:space="preserve"><value>Đã dừng thủ công.</value></data>
+  <data name="Training plan cleared." xml:space="preserve"><value>Đã xóa kế hoạch huấn luyện.</value></data>
+  <data name="Cleanup did not start: load racing chocobo data first." xml:space="preserve"><value>Dọn dẹp chưa bắt đầu: tải dữ liệu chocobo đua trước.</value></data>
+  <data name="Cleanup complete: no planned training remains." xml:space="preserve"><value>Dọn dẹp hoàn tất: không còn buổi huấn luyện dự kiến.</value></data>
+  <data name="Cleanup complete: session budget exhausted with {0} planned training deferred." xml:space="preserve"><value>Dọn dẹp hoàn tất: hết số buổi, hoãn {0} buổi huấn luyện dự kiến.</value></data>
+  <data name="Purchase pass failed: {0}" xml:space="preserve"><value>Lượt mua thất bại: {0}</value></data>
+  <data name="Feeding pass completed." xml:space="preserve"><value>Lượt cho ăn hoàn tất.</value></data>
+  <data name="Feeding pass failed: {0}" xml:space="preserve"><value>Lượt cho ăn thất bại: {0}</value></data>
+  <data name="Chocobo stat refresh failed: {0}" xml:space="preserve"><value>Làm mới chỉ số chocobo thất bại: {0}</value></data>
+  <data name="remaining plan reached zero" xml:space="preserve"><value>kế hoạch còn lại về không</value></data>
+  <data name="session budget reached zero" xml:space="preserve"><value>số buổi khả dụng về không</value></data>
+  <data name="{0}; waiting to verify caps" xml:space="preserve"><value>{0}; đang chờ xác minh giới hạn</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Không khả dụng</value></data>
+  <data name="Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats." xml:space="preserve"><value>Dùng Làm mới dữ liệu chocobo hoặc /chokeabo refresh để tải chỉ số chocobo đua.</value></data>
+  <data name="Refresh requested; opening Gold Saucer window..." xml:space="preserve"><value>Đã yêu cầu làm mới; đang mở cửa sổ Gold Saucer...</value></data>
+  <data name="Opening Gold Saucer window..." xml:space="preserve"><value>Đang mở cửa sổ Gold Saucer...</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback..." xml:space="preserve"><value>Gold Saucer Info sẵn sàng; chờ trước khi gọi lại thẻ Chocobo...</value></data>
+  <data name="Waiting for racing chocobo data..." xml:space="preserve"><value>Đang chờ dữ liệu chocobo đua...</value></data>
+  <data name="Current racer data has not been loaded." xml:space="preserve"><value>Chưa tải dữ liệu chocobo đua hiện tại.</value></data>
+  <data name="Loaded from {0} at {1:HH:mm:ss}." xml:space="preserve"><value>Đã tải từ {0} lúc {1:HH:mm:ss}.</value></data>
+  <data name="Racing chocobo stat refresh cancelled." xml:space="preserve"><value>Đã hủy làm mới chỉ số chocobo đua.</value></data>
+  <data name="The /goldsaucer command was not accepted." xml:space="preserve"><value>Lệnh /goldsaucer không được chấp nhận.</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback." xml:space="preserve"><value>Gold Saucer Info sẵn sàng; chờ trước khi gọi lại thẻ Chocobo.</value></data>
+  <data name="Gold Saucer window did not appear in time." xml:space="preserve"><value>Cửa sổ Gold Saucer không xuất hiện kịp.</value></data>
+  <data name="The observed Chocobo tab is not ready for its native button event." xml:space="preserve"><value>Thẻ Chocobo quan sát được chưa sẵn sàng cho sự kiện nút gốc.</value></data>
+  <data name="Racing chocobo page detected; waiting for RaceChocoboManager data." xml:space="preserve"><value>Đã phát hiện trang chocobo đua; đang chờ dữ liệu RaceChocoboManager.</value></data>
+  <data name="RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab." xml:space="preserve"><value>RaceChocoboManager không tải trong 30 giây sau khi chọn thẻ Chocobo gốc.</value></data>
+  <data name="Projected" xml:space="preserve"><value>Dự kiến</value></data>
+  <data name="Projected from current stats using {0} planned trainings." xml:space="preserve"><value>Dự kiến từ chỉ số hiện tại với {0} buổi huấn luyện đã lên kế hoạch.</value></data>
+  <data name="Loaded from RaceChocoboManager at {0:HH:mm:ss}." xml:space="preserve"><value>Đã tải từ RaceChocoboManager lúc {0:HH:mm:ss}.</value></data>
+  <data name="Traveling to Chocobo Square..." xml:space="preserve"><value>Đang di chuyển đến Chocobo Square...</value></data>
+  <data name="Moving to Race Chocobo Trainer..." xml:space="preserve"><value>Đang đến gần Race Chocobo Trainer...</value></data>
+  <data name="Opening Race Chocobo Trainer..." xml:space="preserve"><value>Đang mở Race Chocobo Trainer...</value></data>
+  <data name="Waiting for feed inventory..." xml:space="preserve"><value>Đang chờ thức ăn trong túi đồ...</value></data>
+  <data name="Finding {0}..." xml:space="preserve"><value>Đang tìm {0}...</value></data>
+  <data name="Finding feed..." xml:space="preserve"><value>Đang tìm thức ăn...</value></data>
+  <data name="Opening inventory context menu..." xml:space="preserve"><value>Đang mở trình đơn ngữ cảnh túi đồ...</value></data>
+  <data name="Waiting for Feed context menu..." xml:space="preserve"><value>Đang chờ trình đơn ngữ cảnh Feed...</value></data>
+  <data name="Selecting Feed..." xml:space="preserve"><value>Đang chọn Feed...</value></data>
+  <data name="Waiting for Commence..." xml:space="preserve"><value>Đang chờ Commence...</value></data>
+  <data name="Confirming training..." xml:space="preserve"><value>Đang xác nhận huấn luyện...</value></data>
+  <data name="Waiting for training to complete..." xml:space="preserve"><value>Đang chờ huấn luyện hoàn tất...</value></data>
+  <data name="Feed cycle complete." xml:space="preserve"><value>Chu kỳ cho ăn hoàn tất.</value></data>
+  <data name="Feed cycle failed." xml:space="preserve"><value>Chu kỳ cho ăn thất bại.</value></data>
+  <data name="Could not start Lifestream travel to Chocobo Square." xml:space="preserve"><value>Không thể bắt đầu di chuyển bằng Lifestream đến Chocobo Square.</value></data>
+  <data name="Timed out waiting to arrive in Chocobo Square." xml:space="preserve"><value>Hết thời gian chờ đến Chocobo Square.</value></data>
+  <data name="Could not find Race Chocobo Trainer in Chocobo Square." xml:space="preserve"><value>Không tìm thấy Race Chocobo Trainer tại Chocobo Square.</value></data>
+  <data name="Could not path near Race Chocobo Trainer. Move closer or check vnavmesh." xml:space="preserve"><value>Không thể tìm đường đến gần Race Chocobo Trainer. Hãy đến gần hơn hoặc kiểm tra vnavmesh.</value></data>
+  <data name="Timed out moving near Race Chocobo Trainer." xml:space="preserve"><value>Hết thời gian di chuyển đến gần Race Chocobo Trainer.</value></data>
+  <data name="Could not open Race Chocobo Trainer. Move closer and try again." xml:space="preserve"><value>Không thể mở Race Chocobo Trainer. Hãy đến gần hơn và thử lại.</value></data>
+  <data name="Trainer feed inventory did not open after selecting the trainer menu entry." xml:space="preserve"><value>Túi thức ăn của người huấn luyện không mở sau khi chọn mục trình đơn của họ.</value></data>
+  <data name="Missing {0} in inventory." xml:space="preserve"><value>Thiếu {0} trong túi đồ.</value></data>
+  <data name="Could not locate {0} in the main inventory pages." xml:space="preserve"><value>Không thể tìm {0} trên các trang túi đồ chính.</value></data>
+  <data name="No visible inventory window was found while opening the trainer-feed context menu." xml:space="preserve"><value>Không tìm thấy cửa sổ túi đồ hiển thị khi mở trình đơn ngữ cảnh thức ăn của người huấn luyện.</value></data>
+  <data name="Inventory window disappeared before the trainer-feed context menu became visible." xml:space="preserve"><value>Cửa sổ túi đồ biến mất trước khi trình đơn ngữ cảnh thức ăn của người huấn luyện hiển thị.</value></data>
+  <data name="Context menu disappeared before Feed could be selected." xml:space="preserve"><value>Trình đơn ngữ cảnh biến mất trước khi chọn được Feed.</value></data>
+  <data name="Commence window did not appear after selecting Feed." xml:space="preserve"><value>Cửa sổ Commence không xuất hiện sau khi chọn Feed.</value></data>
+  <data name="Training confirmation window did not appear after Commence." xml:space="preserve"><value>Cửa sổ xác nhận huấn luyện không xuất hiện sau Commence.</value></data>
+  <data name="Feed did not appear to consume {0}. Check the trainer flow and inventory state." xml:space="preserve"><value>Thao tác cho ăn dường như không tiêu thụ {0}. Kiểm tra luồng người huấn luyện và trạng thái túi đồ.</value></data>
+  <data name="Trainer feed flow stayed unstable after {0} recovery attempts. Last issue: {1}" xml:space="preserve"><value>Luồng cho ăn của người huấn luyện vẫn không ổn định sau {0} lần khôi phục. Vấn đề gần nhất: {1}</value></data>
+  <data name="Moving to Tack &amp; Feed Trader..." xml:space="preserve"><value>Đang đến gần Tack &amp; Feed Trader...</value></data>
+  <data name="Opening Tack &amp; Feed Trader..." xml:space="preserve"><value>Đang mở Tack &amp; Feed Trader...</value></data>
+  <data name="Selecting vendor page..." xml:space="preserve"><value>Đang chọn trang người bán...</value></data>
+  <data name="Buying {0}..." xml:space="preserve"><value>Đang mua {0}...</value></data>
+  <data name="Buying feed..." xml:space="preserve"><value>Đang mua thức ăn...</value></data>
+  <data name="Waiting for purchase result..." xml:space="preserve"><value>Đang chờ kết quả mua...</value></data>
+  <data name="Purchase cycle complete." xml:space="preserve"><value>Chu kỳ mua hoàn tất.</value></data>
+  <data name="Purchase cycle failed." xml:space="preserve"><value>Chu kỳ mua thất bại.</value></data>
+  <data name="Feed confirmation would cross the configured currency reserve." xml:space="preserve"><value>Xác nhận cho ăn sẽ làm số tiền thấp hơn mức dự trữ đã đặt.</value></data>
+  <data name="Could not find Tack &amp; Feed Trader in Chocobo Square." xml:space="preserve"><value>Không tìm thấy Tack &amp; Feed Trader tại Chocobo Square.</value></data>
+  <data name="Could not path near Tack &amp; Feed Trader. Move closer or check vnavmesh." xml:space="preserve"><value>Không thể tìm đường đến gần Tack &amp; Feed Trader. Hãy đến gần hơn hoặc kiểm tra vnavmesh.</value></data>
+  <data name="Timed out moving near Tack &amp; Feed Trader." xml:space="preserve"><value>Hết thời gian di chuyển đến gần Tack &amp; Feed Trader.</value></data>
+  <data name="Could not open Tack &amp; Feed Trader. Move closer and try again." xml:space="preserve"><value>Không thể mở Tack &amp; Feed Trader. Hãy đến gần hơn và thử lại.</value></data>
+  <data name="Could not open '{0}' on Tack &amp; Feed Trader." xml:space="preserve"><value>Không thể mở '{0}' tại Tack &amp; Feed Trader.</value></data>
+  <data name="The verified required-supply shop closed before purchase." xml:space="preserve"><value>Cửa hàng vật tư bắt buộc đã xác minh đóng trước khi mua.</value></data>
+  <data name="Feed purchase would cross the configured currency reserve." xml:space="preserve"><value>Mua thức ăn sẽ làm số tiền thấp hơn mức dự trữ đã đặt.</value></data>
+  <data name="The native gil-shop purchase could not be dispatched safely." xml:space="preserve"><value>Không thể gửi thao tác mua tại cửa hàng gil gốc một cách an toàn.</value></data>
+  <data name="ShopEventHandler.ExecuteBuy(1), visible row {0}" xml:space="preserve"><value>ShopEventHandler.ExecuteBuy(1), hàng hiển thị {0}</value></data>
+  <data name="Required-supply shop closed before the purchase result was verified." xml:space="preserve"><value>Cửa hàng vật tư bắt buộc đóng trước khi kết quả mua được xác minh.</value></data>
+  <data name="Purchase callback for {0} did not change inventory. Last attempted: {1}" xml:space="preserve"><value>Lệnh gọi lại mua {0} không thay đổi túi đồ. Lần thử gần nhất: {1}</value></data>
+  <data name="Target feeding purchase: {0}" xml:space="preserve"><value>Mua thức ăn cho mục tiêu: {0}</value></data>
+  <data name="Target feeding: {0}" xml:space="preserve"><value>Cho mục tiêu ăn: {0}</value></data>
+  <data name="Target cycle paused at a safe boundary." xml:space="preserve"><value>Chu kỳ mục tiêu đã tạm dừng tại điểm an toàn.</value></data>
+  <data name="Log into a character before starting breeding automation." xml:space="preserve"><value>Đăng nhập nhân vật trước khi bắt đầu tự động phối giống.</value></data>
+  <data name="This target cycle is owned by VERMAXION; use its Target Pedigree controls." xml:space="preserve"><value>VERMAXION quản lý chu kỳ mục tiêu này; dùng điều khiển Đời giống mục tiêu của nó.</value></data>
+  <data name="Breeding UI mappings still require native inspection before automatic selection is available." xml:space="preserve"><value>Ánh xạ giao diện phối giống vẫn cần kiểm tra giao diện gốc trước khi dùng lựa chọn tự động.</value></data>
+  <data name="No logged-in Content ID is available." xml:space="preserve"><value>Không có Content ID của nhân vật đang đăng nhập.</value></data>
+  <data name="Content ID mismatch: request {0}, current {1}." xml:space="preserve"><value>Content ID không khớp: yêu cầu {0}, hiện tại {1}.</value></data>
+  <data name="Choke-abo is disabled." xml:space="preserve"><value>Choke-abo đã tắt.</value></data>
+  <data name="This progression requires V3; older callers cannot remove its spending limits." xml:space="preserve"><value>Tiến trình này cần V3; bên gọi cũ không thể gỡ giới hạn chi tiêu.</value></data>
+  <data name="Start a new offspring batch only after the existing action, queue and covering have settled." xml:space="preserve"><value>Chỉ bắt đầu lứa chocobo con mới sau khi thao tác, hàng đợi và phối giống hiện tại đã ổn định.</value></data>
+  <data name="Finish the existing covering with its saved goal before changing the production target." xml:space="preserve"><value>Hoàn thành phối giống hiện tại với mục tiêu đã lưu trước khi đổi mục tiêu sản xuất.</value></data>
+  <data name="The desired inherited ability is unavailable in current game data." xml:space="preserve"><value>Kỹ năng di truyền mong muốn không có trong dữ liệu trò chơi hiện tại.</value></data>
+  <data name="The acceptable colours are unavailable in current game data." xml:space="preserve"><value>Các màu chấp nhận được không có trong dữ liệu trò chơi hiện tại.</value></data>
+  <data name="Target inputs changed while an immediate feed action was awaiting evidence." xml:space="preserve"><value>Đầu vào mục tiêu thay đổi khi thao tác cho ăn ngay đang chờ bằng chứng.</value></data>
+  <data name="Pause Content ID does not match the current character." xml:space="preserve"><value>Content ID tạm dừng không khớp nhân vật hiện tại.</value></data>
+  <data name="Suspend identity mismatch." xml:space="preserve"><value>Danh tính đình chỉ không khớp.</value></data>
+  <data name="Status Content ID does not match the current character." xml:space="preserve"><value>Content ID trạng thái không khớp nhân vật hiện tại.</value></data>
+  <data name="Another Choke-abo automation owns the feed/vendor services." xml:space="preserve"><value>Tự động hóa Choke-abo khác đang quản lý dịch vụ cho ăn/người bán.</value></data>
+  <data name="Current racer data could not be loaded: {0}" xml:space="preserve"><value>Không thể tải dữ liệu chocobo đua hiện tại: {0}</value></data>
+  <data name="Loading current racer data before selecting a breeding action." xml:space="preserve"><value>Đang tải dữ liệu chocobo đua hiện tại trước khi chọn thao tác phối giống.</value></data>
+  <data name="Initial racing tutorial admitted; VERMAXION owns the race." xml:space="preserve"><value>Đã được nhận vào hướng dẫn đua ban đầu; VERMAXION quản lý cuộc đua.</value></data>
+  <data name="Complete the registrar's initial racing training course." xml:space="preserve"><value>Hoàn thành khóa huấn luyện đua ban đầu của người đăng ký.</value></data>
+  <data name="Complete Like Sire Like Fledgling before retiring this racer." xml:space="preserve"><value>Hoàn thành Like Sire Like Fledgling trước khi cho chocobo đua này nghỉ hưu.</value></data>
+  <data name="An unowned Proof of Covering is present; its exact start time cannot be inferred safely." xml:space="preserve"><value>Có Proof of Covering không thuộc quyền quản lý; không thể suy ra thời điểm bắt đầu chính xác một cách an toàn.</value></data>
+  <data name="Feed for the available training sessions cannot be purchased within the currency reserves." xml:space="preserve"><value>Không thể mua thức ăn cho các buổi huấn luyện khả dụng mà vẫn giữ mức dự trữ tiền.</value></data>
+  <data name="No free main-inventory slot is available for target feed." xml:space="preserve"><value>Không có ô túi đồ chính trống cho thức ăn mục tiêu.</value></data>
+  <data name="The selected target feed item could not be resolved." xml:space="preserve"><value>Không thể xác định vật phẩm thức ăn mục tiêu đã chọn.</value></data>
+  <data name="Buying {0} feed across {1} items for {2} available training sessions." xml:space="preserve"><value>Đang mua thức ăn {0} từ {1} vật phẩm cho {2} buổi huấn luyện khả dụng.</value></data>
+  <data name="Feeding one {0}; awaiting exact item and session evidence." xml:space="preserve"><value>Đang cho ăn một {0}; chờ bằng chứng về đúng vật phẩm và số buổi.</value></data>
+  <data name="Persisted feed-purchase intent has no item baseline." xml:space="preserve"><value>Ý định mua thức ăn đã lưu không có số liệu vật phẩm ban đầu.</value></data>
+  <data name="Feed purchase completed without an exact item-ID quantity increase." xml:space="preserve"><value>Mua thức ăn hoàn tất nhưng số lượng của đúng ID vật phẩm không tăng.</value></data>
+  <data name="Feed selection changed after purchase; exact purchase evidence cannot be reconciled." xml:space="preserve"><value>Lựa chọn thức ăn thay đổi sau khi mua; không thể đối chiếu bằng chứng mua chính xác.</value></data>
+  <data name="Purchased feed could not be resolved to an exact inventory slot." xml:space="preserve"><value>Không thể xác định ô túi đồ chính xác chứa thức ăn đã mua.</value></data>
+  <data name="Target feed purchase blocked: {0}" xml:space="preserve"><value>Mua thức ăn mục tiêu bị chặn: {0}</value></data>
+  <data name="Reload found an unverified feed-purchase intent; it will not be replayed." xml:space="preserve"><value>Tải lại phát hiện ý định mua thức ăn chưa xác minh; sẽ không thực hiện lại.</value></data>
+  <data name="The completed feed batch does not contain the current training selection." xml:space="preserve"><value>Lô thức ăn đã hoàn tất không chứa lựa chọn huấn luyện hiện tại.</value></data>
+  <data name="The feed batch is not fully present in inventory; reconcile its pending purchases before another vendor visit." xml:space="preserve"><value>Lô thức ăn chưa có đủ trong túi đồ; đối chiếu các lần mua đang chờ trước khi ghé người bán lần nữa.</value></data>
+  <data name="Persisted feeding intent has no item baseline." xml:space="preserve"><value>Ý định cho ăn đã lưu không có số liệu vật phẩm ban đầu.</value></data>
+  <data name="Target feeding blocked: {0}" xml:space="preserve"><value>Cho mục tiêu ăn bị chặn: {0}</value></data>
+  <data name="Feeding did not produce one exact feed-item decrease and one confirmed-session decrease." xml:space="preserve"><value>Cho ăn không làm giảm đúng một vật phẩm thức ăn và một buổi đã xác nhận.</value></data>
+  <data name="Reload found an unverified feeding intent; it will not be replayed." xml:space="preserve"><value>Tải lại phát hiện ý định cho ăn chưa xác minh; sẽ không thực hiện lại.</value></data>
+  <data name="Covering is eligible; collection requires a verified native UI mapping." xml:space="preserve"><value>Phối giống đã sẵn sàng; nhận con cần ánh xạ giao diện gốc đã xác minh.</value></data>
+  <data name="Paused by VERMAXION at a safe boundary." xml:space="preserve"><value>VERMAXION đã tạm dừng tại điểm an toàn.</value></data>
+  <data name="{0} Native UI selection remains unverified (capture reference: {1})." xml:space="preserve"><value>{0} Lựa chọn giao diện gốc vẫn chưa xác minh (tham chiếu bản chụp: {1}).</value></data>
+  <data name="Breeding supply is purchased, but the supplier interaction did not release; Resume to reconcile the retained item." xml:space="preserve"><value>Đã mua vật tư phối giống nhưng tương tác nhà cung cấp chưa kết thúc; chọn Tiếp tục để đối chiếu vật phẩm được giữ lại.</value></data>
+  <data name="Could not reach the required breeding service for native UI inspection." xml:space="preserve"><value>Không thể đến dịch vụ phối giống bắt buộc để kiểm tra giao diện gốc.</value></data>
+  <data name="The covering confirmation would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Xác nhận phối giống sẽ làm gil thấp hơn mức dự trữ. Cần chủ động chọn Tiếp tục.</value></data>
+  <data name="Covering Commence was dispatched; its exact confirmation or proof result must be reconciled before another covering." xml:space="preserve"><value>Đã gửi Commence phối giống; đối chiếu xác nhận chính xác hoặc kết quả giấy xác nhận trước lần phối giống khác.</value></data>
+  <data name="The retained covering parent changed before native selection." xml:space="preserve"><value>Bố mẹ phối giống được giữ lại thay đổi trước khi chọn trên giao diện gốc.</value></data>
+  <data name="The selected covering stock is captured; native selected-parent evidence and the fee require verification before Commence." xml:space="preserve"><value>Đã chụp đàn giống được chọn; xác minh bằng chứng bố mẹ đã chọn trên giao diện gốc và phí trước Commence.</value></data>
+  <data name="Native racing unlock verified; reassessing feeding and racing." xml:space="preserve"><value>Đã xác minh mở khóa đua trên giao diện gốc; đang đánh giá lại cho ăn và đua.</value></data>
+  <data name="The initial racing tutorial awaits the next daily allowance." xml:space="preserve"><value>Hướng dẫn đua ban đầu đang chờ lượt hằng ngày tiếp theo.</value></data>
+  <data name="Registrar race entry captured; initial training admission is awaiting verification." xml:space="preserve"><value>Đã chụp mục đua của người đăng ký; việc nhận vào huấn luyện ban đầu đang chờ xác minh.</value></data>
+  <data name="Retirement confirmation sent; awaiting the retired form and cleared current racer. Any further native prompt is captured before another action." xml:space="preserve"><value>Đã gửi xác nhận nghỉ hưu; chờ mẫu nghỉ hưu và xóa chocobo đua hiện tại. Mọi lời nhắc gốc tiếp theo được chụp trước thao tác khác.</value></data>
+  <data name="Retirement requires an intermediate rank40 racer and room for its retained form." xml:space="preserve"><value>Nghỉ hưu cần chocobo đua trung gian hạng 40 và chỗ cho mẫu được giữ lại.</value></data>
+  <data name="The observed retirement confirmation button is unavailable." xml:space="preserve"><value>Nút xác nhận nghỉ hưu quan sát được không khả dụng.</value></data>
+  <data name="Retirement menu selected; the resulting native window is captured before confirming retirement." xml:space="preserve"><value>Đã chọn trình đơn nghỉ hưu; chụp cửa sổ gốc xuất hiện trước khi xác nhận nghỉ hưu.</value></data>
+  <data name="Registration confirmation was sent but matching form consumption and current racer evidence are unavailable." xml:space="preserve"><value>Đã gửi xác nhận đăng ký nhưng không có bằng chứng tương ứng về tiêu thụ mẫu và chocobo đua hiện tại.</value></data>
+  <data name="Registration name stage {0} captured; final registration evidence remains pending." xml:space="preserve"><value>Đã chụp giai đoạn đặt tên đăng ký {0}; bằng chứng đăng ký cuối cùng vẫn đang chờ.</value></data>
+  <data name="Selected registration form; the resulting registration window is captured for verification." xml:space="preserve"><value>Đã chọn mẫu đăng ký; chụp cửa sổ đăng ký xuất hiện để xác minh.</value></data>
+  <data name="The selected registration form changed before opening its context menu." xml:space="preserve"><value>Mẫu đăng ký đã chọn thay đổi trước khi mở trình đơn ngữ cảnh.</value></data>
+  <data name="Breeding service interaction captured; its native selection must be verified before dispatch." xml:space="preserve"><value>Đã chụp tương tác dịch vụ phối giống; xác minh lựa chọn giao diện gốc trước khi gửi.</value></data>
+  <data name="Saved collection evidence is invalid; no collection will be replayed." xml:space="preserve"><value>Bằng chứng nhận con đã lưu không hợp lệ; không thực hiện lại việc nhận con.</value></data>
+  <data name="Collection occurred, but the exact new offspring and its trait must be reconciled before counting or another covering." xml:space="preserve"><value>Đã nhận con nhưng cần đối chiếu chính xác chocobo con mới và đặc tính trước khi tính số lượng hoặc phối giống lần nữa.</value></data>
+  <data name="Collection was requested; proof consumption and one matching fledgling must be reconciled before another request." xml:space="preserve"><value>Đã yêu cầu nhận con; đối chiếu việc tiêu thụ giấy xác nhận và một chocobo con phù hợp trước yêu cầu khác.</value></data>
+  <data name="Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering." xml:space="preserve"><value>Nhận con cần lần phối giống hiện tại đã sẵn sàng, đời giống của bố mẹ được giữ lại và đúng một Proof of Covering.</value></data>
+  <data name="The required covering fee would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Phí phối giống bắt buộc sẽ làm gil thấp hơn mức dự trữ. Cần chủ động chọn Tiếp tục.</value></data>
+  <data name="The required supply does not match the selected breeding mode and supplier." xml:space="preserve"><value>Vật tư bắt buộc không khớp chế độ phối giống và nhà cung cấp đã chọn.</value></data>
+  <data name="The required breeding supply would cross the {0} reserve." xml:space="preserve"><value>Vật tư phối giống bắt buộc sẽ làm {0} thấp hơn mức dự trữ.</value></data>
+  <data name="A free main-inventory slot is required for the breeding supply." xml:space="preserve"><value>Cần một ô túi đồ chính trống cho vật tư phối giống.</value></data>
+  <data name="Buying {0} for {1} {2} within reserves; awaiting its inventory result." xml:space="preserve"><value>Đang mua {0} với giá {1} {2} trong giới hạn dự trữ; chờ kết quả túi đồ.</value></data>
+  <data name="The required breeding supply was not found in the verified native shop." xml:space="preserve"><value>Không tìm thấy vật tư phối giống bắt buộc trong cửa hàng gốc đã xác minh.</value></data>
+  <data name="Required supply purchase stopped: {0}" xml:space="preserve"><value>Mua vật tư bắt buộc đã dừng: {0}</value></data>
+  <data name="A required-supply purchase is unverified after reload; its matching pending confirmation or inventory result is required before another purchase." xml:space="preserve"><value>Một lần mua vật tư bắt buộc chưa được xác minh sau khi tải lại; cần xác nhận đang chờ tương ứng hoặc kết quả túi đồ trước lần mua khác.</value></data>
+  <data name="{0} Explicit Resume is required." xml:space="preserve"><value>{0} Cần chủ động chọn Tiếp tục.</value></data>
+  <data name="{0} Feeding policy is Stop; explicit Resume is required." xml:space="preserve"><value>{0} Chính sách cho ăn là Dừng; cần chủ động chọn Tiếp tục.</value></data>
+  <data name="Cannot skip feeding without a current racer snapshot." xml:space="preserve"><value>Không thể bỏ qua cho ăn khi không có dữ liệu chocobo đua hiện tại.</value></data>
+  <data name="Skipped this feeding round: {0}" xml:space="preserve"><value>Đã bỏ qua lượt cho ăn này: {0}</value></data>
+  <data name="vnavmesh is unavailable or not ready for target feeding." xml:space="preserve"><value>vnavmesh không khả dụng hoặc chưa sẵn sàng cho mục tiêu ăn.</value></data>
+  <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader không khả dụng để tương tác.</value></data>
+  <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Không có tương tác người bán Lifestream/vnavmesh bắt buộc.</value></data>
+  <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Chờ phối giống không có bằng chứng sẵn sàng hợp lệ.</value></data>
+  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Phối giống đã sẵn sàng; nhận nuôi đang chờ bằng chứng bản chụp chính xác.</value></data>
+  <data name="Covering wait until {0:u}." xml:space="preserve"><value>Chờ phối giống đến {0:u}.</value></data>
+  <data name="Invalid offspring production settings." xml:space="preserve"><value>Cài đặt sản xuất chocobo con không hợp lệ.</value></data>
+  <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Đã tạo {0}/{1} chocobo con G9 phù hợp; giữ lại chưa đăng ký.</value></data>
+  <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Đối chiếu lần phối giống hiện tại trước khi tạo chocobo con khác.</value></data>
+  <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Sản xuất chocobo con cần đàn giống G9; đã dừng đua các đời thấp hơn.</value></data>
+  <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Chocobo đua G9 đã đăng ký chưa có đặc tính yêu cầu được xác nhận. Giữ nó và chọn đàn giống phù hợp.</value></data>
+  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Nuôi bố mẹ G9 phù hợp đến nghỉ hưu: hạng đua {0}/40. Chocobo con phù hợp vẫn chưa đăng ký.</value></data>
+  <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Phối đàn giống G9 phù hợp với bố mẹ G9 khác giới được giữ lại.</value></data>
+  <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Không có bố mẹ G9 nghỉ hưu khả dụng có đặc tính yêu cầu đã xác nhận. Giữ chocobo con và bổ sung đàn giống G9 phù hợp.</value></data>
+  <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Nuôi chocobo con G9 không phù hợp này làm cá thể đối ứng sở hữu còn thiếu; giữ những con phù hợp.</value></data>
+  <data name="Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits." xml:space="preserve"><value>Thiếu bố mẹ G9 khác giới khả dụng. Chế độ sở hữu cần đàn giống G9 phù hợp hoặc chủ động đổi sang giấy phép NPC.</value></data>
+  <data name="Invalid progression settings." xml:space="preserve"><value>Cài đặt tiến trình không hợp lệ.</value></data>
+  <data name="G{0} has already been reached; the target cannot move backwards." xml:space="preserve"><value>Đã đạt G{0}; mục tiêu không thể lùi lại.</value></data>
+  <data name="Counterpart covering requires permit mode and a reached pedigree of G2 or higher." xml:space="preserve"><value>Phối giống tạo cá thể đối ứng cần chế độ giấy phép và đã đạt đời giống G2 trở lên.</value></data>
+  <data name="Current racer pedigree, racing rank, or sex is unavailable." xml:space="preserve"><value>Không có đời giống, hạng đua hoặc giới tính của chocobo đua đã đăng ký.</value></data>
+  <data name="The registered G{0} racer is below the retained G{1} pedigree; lower-generation racing is stopped." xml:space="preserve"><value>Chocobo đua G{0} đã đăng ký thấp hơn đời giống G{1} được giữ lại; đã dừng đua các đời thấp hơn.</value></data>
+  <data name="Retain G{0}; racing rank {1}/50." xml:space="preserve"><value>Giữ G{0}; hạng đua {1}/50.</value></data>
+  <data name="The current racer exceeds the selected target pedigree; retain it." xml:space="preserve"><value>Chocobo đua hiện tại vượt đời giống mục tiêu đã chọn; giữ nó.</value></data>
+  <data name="G{0} {1}: racing rank {2}/40 before retirement." xml:space="preserve"><value>G{0} {1}: hạng đua {2}/40 trước nghỉ hưu.</value></data>
+  <data name="Reconcile the existing Proof of Covering before another covering." xml:space="preserve"><value>Đối chiếu Proof of Covering hiện có trước lần phối giống khác.</value></data>
+  <data name="Register G{0} {1}." xml:space="preserve"><value>Đăng ký G{0} {1}.</value></data>
+  <data name="A usable G{0} pair is already retained. Select owned parents or advance-pedigree permits before another covering." xml:space="preserve"><value>Đã giữ cặp G{0} khả dụng. Chọn bố mẹ sở hữu hoặc giấy phép nâng đời giống trước lần phối giống khác.</value></data>
+  <data name="No usable G{0} parent remains to produce a G{1} counterpart. Lower-generation covering is stopped." xml:space="preserve"><value>Không còn bố mẹ G{0} khả dụng để tạo cá thể đối ứng G{1}. Đã dừng phối giống các đời thấp hơn.</value></data>
+  <data name="No retained parent can produce G{0} or higher; lower-generation covering is stopped." xml:space="preserve"><value>Không có bố mẹ được giữ lại có thể tạo G{0} trở lên; đã dừng phối giống các đời thấp hơn.</value></data>
+  <data name="Cover retained G{0} parents; preserve their remaining capacity." xml:space="preserve"><value>Phối bố mẹ G{0} được giữ lại; bảo toàn khả năng phối giống còn lại.</value></data>
+  <data name="Missing an owned G{0} counterpart. No owned pair can produce G{1} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped." xml:space="preserve"><value>Thiếu cá thể đối ứng G{0} sở hữu. Không có cặp sở hữu nào có thể tạo G{1} trở lên; chủ động chọn phối giống được cấp phép. Đã dừng xây dựng lại từ đời thấp hơn.</value></data>
+  <data name="Cover the retained G{0} parent and matching opposite-sex permit to produce G{1}." xml:space="preserve"><value>Phối bố mẹ G{0} được giữ lại với giấy phép khác giới tương ứng để tạo G{1}.</value></data>
+  <data name="Buy the opposite-sex G{0} permit within reserves to produce G{1}." xml:space="preserve"><value>Mua giấy phép G{0} khác giới trong giới hạn dự trữ để tạo G{1}.</value></data>
+  <data name="Target pedigree G{0} is outside G2-G9." xml:space="preserve"><value>Đời giống mục tiêu G{0} nằm ngoài G2-G9.</value></data>
+  <data name="Retirement rank {0} is outside 40-50." xml:space="preserve"><value>Hạng nghỉ hưu {0} nằm ngoài 40-50.</value></data>
+  <data name="Register the exact G{0} fledgling in {1} slot {2}." xml:space="preserve"><value>Đăng ký đúng chocobo con G{0} ở {1}, ô {2}.</value></data>
+  <data name="The active racer's sex is unavailable." xml:space="preserve"><value>Không có giới tính của chocobo đua đang hoạt động.</value></data>
+  <data name="The active G{0} racer is above target G{1}." xml:space="preserve"><value>Chocobo đua G{0} đang hoạt động cao hơn mục tiêu G{1}.</value></data>
+  <data name="Feed the target racer before declaring it ready." xml:space="preserve"><value>Cho chocobo đua mục tiêu ăn trước khi báo sẵn sàng.</value></data>
+  <data name="The active G{0} racer is target-ready." xml:space="preserve"><value>Chocobo đua G{0} đang hoạt động đã sẵn sàng đạt mục tiêu.</value></data>
+  <data name="Cover the exact G{0} pair to advance toward G{1}." xml:space="preserve"><value>Phối đúng cặp G{0} để tiến đến G{1}.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex while the useful racer continues racing." xml:space="preserve"><value>Phối đúng cặp G{0} để tạo giới tính G{1} còn thiếu trong khi chocobo hữu ích tiếp tục đua.</value></data>
+  <data name="The active G{0} {1} duplicates an owned usable parent and no productive pair is available." xml:space="preserve"><value>G{0} {1} đang hoạt động trùng với bố mẹ sở hữu khả dụng và không có cặp sinh sản được.</value></data>
+  <data name="Race the useful G{0} {1} candidate to rank {2}." xml:space="preserve"><value>Cho cá thể G{0} {1} hữu ích đua đến hạng {2}.</value></data>
+  <data name="Use the active racer's remaining training sessions before retirement." xml:space="preserve"><value>Dùng số buổi huấn luyện còn lại của chocobo đua đang hoạt động trước nghỉ hưu.</value></data>
+  <data name="Retire the active G{0} {1} racer exactly." xml:space="preserve"><value>Cho đúng G{0} {1} đang hoạt động nghỉ hưu.</value></data>
+  <data name="A Proof of Covering is present." xml:space="preserve"><value>Có Proof of Covering.</value></data>
+  <data name="Register the exact useful G{0} {1} fledgling." xml:space="preserve"><value>Đăng ký đúng chocobo con G{0} {1} hữu ích.</value></data>
+  <data name="No useful active racer, fledgling, or covering parents are available." xml:space="preserve"><value>Không có chocobo đua đang hoạt động, chocobo con hoặc bố mẹ phối giống hữu ích.</value></data>
+  <data name="G{0} is missing a usable opposite-sex parent and no preceding-pedigree pair can produce it." xml:space="preserve"><value>G{0} thiếu bố mẹ khác giới khả dụng và không có cặp đời giống trước đó có thể tạo nó.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex." xml:space="preserve"><value>Phối đúng cặp G{0} để tạo giới tính G{1} còn thiếu.</value></data>
+  <data name="Resume" xml:space="preserve"><value>Tiếp tục</value></data>
+  <data name="Pause" xml:space="preserve"><value>Tạm dừng</value></data>
+  <data name="Language" xml:space="preserve"><value>Ngôn ngữ</value></data>
+  <data name="Color" xml:space="preserve"><value>Màu</value></data>
+  <data name="Teal" xml:space="preserve"><value>Xanh ngọc</value></data>
+  <data name="Blue" xml:space="preserve"><value>Xanh dương</value></data>
+  <data name="Pink" xml:space="preserve"><value>Hồng</value></data>
+  <data name="Custom RGB" xml:space="preserve"><value>RGB tùy chỉnh</value></data>
+  <data name="Loading UI fonts..." xml:space="preserve"><value>Đang tải phông chữ giao diện...</value></data>
+  <data name="UI fonts failed to load. See the plugin log." xml:space="preserve"><value>Không tải được phông chữ giao diện. Xem nhật ký plugin.</value></data>
+  <data name="Male" xml:space="preserve"><value>Đực</value></data>
+  <data name="Female" xml:space="preserve"><value>Cái</value></data>
+  <data name="Gil" xml:space="preserve"><value>Gil</value></data>
+  <data name="MGP" xml:space="preserve"><value>MGP</value></data>
+  <data name="Running" xml:space="preserve"><value>Đang chạy</value></data>
+  <data name="None" xml:space="preserve"><value>Không có</value></data>
+  <data name="Sex" xml:space="preserve"><value>Giới tính</value></data>
+  <data name="Item" xml:space="preserve"><value>Vật phẩm</value></data>
+  <data name="Quantity" xml:space="preserve"><value>Số lượng</value></data>
+  <data name="Buy a G1 {0} registration form to raise a missing owned parent." xml:space="preserve"><value>Mua mẫu đăng ký G1 {0} để nuôi bố mẹ sở hữu còn thiếu.</value></data>
+  <data name="The native Select Chocobo list entry is unavailable or disabled." xml:space="preserve"><value>Mục danh sách Select Chocobo gốc không khả dụng hoặc bị tắt.</value></data>
+  <data name="Breeding supply" xml:space="preserve"><value>Vật tư phối giống</value></data>
+  <data name="Offspring ready" xml:space="preserve"><value>Chocobo con sẵn sàng</value></data>
+  <data name="Window appearance" xml:space="preserve">
+    <value>Giao diện cửa sổ</value>
+  </data>
+  <data name="Compact visible on main window" xml:space="preserve">
+    <value>Hiển thị chế độ gọn trên cửa sổ chính</value>
+  </data>
+  <data name="Language visible on main window" xml:space="preserve">
+    <value>Hiển thị lựa chọn ngôn ngữ trên cửa sổ chính</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>Độ trong suốt</value>
+  </data>
+  <data name="Opacity (%)" xml:space="preserve">
+    <value>Độ đục (%)</value>
+  </data>
+  <data name="Auto-fade when unfocused" xml:space="preserve">
+    <value>Tự giảm độ đục khi mất tiêu điểm</value>
+  </data>
+  <data name="Unfocused opacity (%)" xml:space="preserve">
+    <value>Độ đục khi mất tiêu điểm (%)</value>
+  </data>
+  <data name="Unfocused delay (seconds)" xml:space="preserve">
+    <value>Độ trễ khi mất tiêu điểm (giây)</value>
+  </data>
+</root>

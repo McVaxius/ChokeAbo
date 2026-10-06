@@ -1748,10 +1748,16 @@ public sealed class BreedingService
             }
             else if (baseline.ItemId is >= ChocoboInventoryModel.FirstCoveringPermissionItemId and <= ChocoboInventoryModel.LastCoveringPermissionItemId)
             {
-                if (!nativeSupplyCloseRequested)
+                // A late purchase refresh can show the shop again after receipt.
+                // Keep the receipt and use the existing native action cadence until
+                // the verified shop stays closed and its event ownership releases.
+                if (!nativeSupplyCloseRequested || GameHelpers.IsAddonVisible("ShopExchangeCurrency"))
                 {
+                    if (nativeSupplyCloseRequested && DateTime.UtcNow - nativeInteractionAt < TimeSpan.FromSeconds(2)) return;
                     nativeSupplyCloseRequested = GameHelpers.TryClosePermitShop(baseline.ItemId);
                     if (!nativeSupplyCloseRequested) return;
+                    nativeInteractionAt = DateTime.UtcNow;
+                    return;
                 }
                 if (!GameHelpers.IsPlayerAvailable() ||
                     Plugin.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.OccupiedInEvent]) return;

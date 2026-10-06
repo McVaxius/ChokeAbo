@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Enabled" xml:space="preserve"><value>활성화</value></data>
+  <data name="DTR Bar" xml:space="preserve"><value>DTR 표시줄</value></data>
+  <data name="Settings" xml:space="preserve"><value>설정</value></data>
+  <data name="Refresh Chocobo Data" xml:space="preserve"><value>초코보 정보 새로 고침</value></data>
+  <data name="Status to chat" xml:space="preserve"><value>상태를 채팅으로</value></data>
+  <data name="Manual training and feed purchases" xml:space="preserve"><value>수동 훈련 및 사료 구매</value></data>
+  <data name="Plan training sessions, use feed already in inventory, and buy the remaining feed in one visit." xml:space="preserve"><value>훈련을 계획하고 보유 사료를 사용한 뒤 부족분을 한 번에 구매합니다.</value></data>
+  <data name="Planned trainings exceed sessions available: {0}/{1}. Extra planned trainings will not fit this cycle." xml:space="preserve"><value>계획된 훈련이 가능한 횟수를 초과합니다: {0}/{1}. 추가 훈련은 이번 주기에 진행할 수 없습니다.</value></data>
+  <data name="FFXIV Dalamud Plugin" xml:space="preserve"><value>FFXIV Dalamud 플러그인</value></data>
+  <data name="Support on Ko-fi" xml:space="preserve"><value>Ko-fi에서 후원</value></data>
+  <data name="Compact mode" xml:space="preserve"><value>컴팩트 모드</value></data>
+  <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>캐릭터로 로그인하면 초코보 육성 진행 상황을 볼 수 있습니다.</value></data>
+  <data name="Chocobo progression" xml:space="preserve"><value>초코보 육성</value></data>
+  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION이 육성 설정과 일일 경주 허용량을 관리하며 Choke-abo가 먹이 주기와 교배를 수행합니다.</value></data>
+  <data name="Open VERMAXION settings" xml:space="preserve"><value>VERMAXION 설정 열기</value></data>
+  <data name="Stop" xml:space="preserve"><value>중지</value></data>
+  <data name="Pedigree" xml:space="preserve"><value>혈통</value></data>
+  <data name="Unknown" xml:space="preserve"><value>알 수 없음</value></data>
+  <data name="Inherited ability" xml:space="preserve"><value>계승 능력</value></data>
+  <data name="Rank" xml:space="preserve"><value>등급</value></data>
+  <data name="Learned ability" xml:space="preserve"><value>습득 능력</value></data>
+  <data name="Goal" xml:space="preserve"><value>목표</value></data>
+  <data name="Not configured" xml:space="preserve"><value>설정되지 않음</value></data>
+  <data name="Pedigree G{0}" xml:space="preserve"><value>혈통 G{0}</value></data>
+  <data name="Offspring printer" xml:space="preserve"><value>자손 출력</value></data>
+  <data name="Colour seeker" xml:space="preserve"><value>색상 탐색</value></data>
+  <data name="Colour" xml:space="preserve"><value>색상</value></data>
+  <data name="Phase" xml:space="preserve"><value>단계</value></data>
+  <data name="Covering ready in" xml:space="preserve"><value>교배 완료까지</value></data>
+  <data name="Ready" xml:space="preserve"><value>준비 완료</value></data>
+  <data name="Next action" xml:space="preserve"><value>다음 작업</value></data>
+  <data name="Matching G9 offspring: {0:N0} / {1:N0}" xml:space="preserve"><value>조건에 맞는 G9 자손: {0:N0} / {1:N0}</value></data>
+  <data name="Matching offspring retained unregistered" xml:space="preserve"><value>조건에 맞는 자손은 미등록 상태로 보관</value></data>
+  <data name="Desired inherited ability" xml:space="preserve"><value>원하는 계승 능력</value></data>
+  <data name="Breeding mode: {0}" xml:space="preserve"><value>교배 모드: {0}</value></data>
+  <data name="Owned parents" xml:space="preserve"><value>보유한 부모 초코보</value></data>
+  <data name="NPC covering permits" xml:space="preserve"><value>NPC 교배 허가증</value></data>
+  <data name="Permit objective: produce G9 offspring" xml:space="preserve"><value>허가서 목표: G9 자손 생산</value></data>
+  <data name="Permit objective: produce a missing current-pedigree counterpart" xml:space="preserve"><value>허가서 목표: 현재 혈통의 부족한 짝 생산</value></data>
+  <data name="Permit objective: advance pedigree" xml:space="preserve"><value>허가서 목표: 혈통 향상</value></data>
+  <data name="Reserves: {0:N0} gil    {1:N0} MGP" xml:space="preserve"><value>보유 한도: {0:N0}길    {1:N0} MGP</value></data>
+  <data name="Fall back to Grade 1, then skip" xml:space="preserve"><value>1등급으로 전환 후 건너뛰기</value></data>
+  <data name="Stop until Resume" xml:space="preserve"><value>재개할 때까지 중지</value></data>
+  <data name="Skip this feeding round" xml:space="preserve"><value>이번 먹이 주기 건너뛰기</value></data>
+  <data name="Feed: Grade {0}    If unavailable: {1}" xml:space="preserve"><value>사료: {0}등급    없을 경우: {1}</value></data>
+  <data name="Choose your progression goal, reserves and feeding policy in VERMAXION settings, then Resume to begin." xml:space="preserve"><value>VERMAXION에서 육성 목표, 보유 한도, 먹이 정책을 선택한 뒤 재개하세요.</value></data>
+  <data name="No registered racing chocobo." xml:space="preserve"><value>등록된 경주 초코보가 없습니다.</value></data>
+  <data name="Registered racer data is unavailable." xml:space="preserve"><value>등록된 경주 초코보 데이터를 확인할 수 없습니다.</value></data>
+  <data name="Breeding stock" xml:space="preserve"><value>교배용 보유 개체</value></data>
+  <data name="Offspring sex is random. Two coverings do not guarantee a male and a female." xml:space="preserve"><value>자손 성별은 무작위입니다. 두 번 교배해도 암수 한 쌍을 보장하지 않습니다.</value></data>
+  <data name="Pedigree / sex" xml:space="preserve"><value>혈통 / 성별</value></data>
+  <data name="Coverings left" xml:space="preserve"><value>남은 교배 횟수</value></data>
+  <data name="Covering proof" xml:space="preserve"><value>교배 증명서</value></data>
+  <data name="No breeding forms or covering proof in inventory." xml:space="preserve"><value>소지품에 교배용 등록증이나 교배 증명서가 없습니다.</value></data>
+  <data name="Covering in progress" xml:space="preserve"><value>교배 중</value></data>
+  <data name="Collecting offspring" xml:space="preserve"><value>자손 수령 중</value></data>
+  <data name="Registering offspring" xml:space="preserve"><value>자손 등록 중</value></data>
+  <data name="Retiring the intermediate racer" xml:space="preserve"><value>중간 육성 경주 초코보 은퇴 중</value></data>
+  <data name="Retiring the G9 breeding parent" xml:space="preserve"><value>G9 교배 부모 은퇴 중</value></data>
+  <data name="Preparing covering" xml:space="preserve"><value>교배 준비 중</value></data>
+  <data name="Paused - Resume is required" xml:space="preserve"><value>일시 정지됨 - 재개 필요</value></data>
+  <data name="Needs attention" xml:space="preserve"><value>확인 필요</value></data>
+  <data name="Offspring goal reached" xml:space="preserve"><value>자손 목표 달성</value></data>
+  <data name="Progression complete" xml:space="preserve"><value>육성 완료</value></data>
+  <data name="Verifying the registered racer" xml:space="preserve"><value>등록 경주 초코보 확인 중</value></data>
+  <data name="Ready for racing" xml:space="preserve"><value>경주 준비 완료</value></data>
+  <data name="Feeding the racer" xml:space="preserve"><value>경주 초코보 먹이 주는 중</value></data>
+  <data name="Purchasing supplies" xml:space="preserve"><value>물품 구매 중</value></data>
+  <data name="Ready to plan the next action" xml:space="preserve"><value>다음 작업 계획 가능</value></data>
+  <data name="{0}: none" xml:space="preserve"><value>{0}: 없음</value></data>
+  <data name="Overview" xml:space="preserve"><value>개요</value></data>
+  <data name="Plan" xml:space="preserve"><value>계획</value></data>
+  <data name="No chocobo data loaded yet." xml:space="preserve"><value>초코보 정보가 아직 로드되지 않았습니다.</value></data>
+  <data name="Racing rank: {0}/50" xml:space="preserve"><value>경주 등급: {0}/50</value></data>
+  <data name="Rating: {0}" xml:space="preserve"><value>평가: {0}</value></data>
+  <data name="Pedigree: G{0}" xml:space="preserve"><value>혈통: G{0}</value></data>
+  <data name="XP: {0:N0}/{1:N0}" xml:space="preserve"><value>경험치: {0:N0}/{1:N0}</value></data>
+  <data name="Sessions: {0}" xml:space="preserve"><value>훈련 횟수: {0}</value></data>
+  <data name="Plan: {0}" xml:space="preserve"><value>계획: {0}</value></data>
+  <data name="Gil: {0:N0}" xml:space="preserve"><value>길: {0:N0}</value></data>
+  <data name="MGP: {0:N0}" xml:space="preserve"><value>MGP: {0:N0}</value></data>
+  <data name="Need gil: {0:N0}" xml:space="preserve"><value>필요 길: {0:N0}</value></data>
+  <data name="Need MGP: {0:N0}" xml:space="preserve"><value>필요 MGP: {0:N0}</value></data>
+  <data name="Stat" xml:space="preserve"><value>능력치</value></data>
+  <data name="Stars" xml:space="preserve"><value>별</value></data>
+  <data name="Now" xml:space="preserve"><value>지금</value></data>
+  <data name="After" xml:space="preserve"><value>이후</value></data>
+  <data name="Maximum Speed" xml:space="preserve"><value>최고 속도</value></data>
+  <data name="Acceleration" xml:space="preserve"><value>가속력</value></data>
+  <data name="Endurance" xml:space="preserve"><value>지구력</value></data>
+  <data name="Stamina" xml:space="preserve"><value>체력</value></data>
+  <data name="Cunning" xml:space="preserve"><value>적응력</value></data>
+  <data name="Training Plan" xml:space="preserve"><value>훈련 계획</value></data>
+  <data name="Choose the number of training sessions and feed grade for each stat." xml:space="preserve"><value>능력치별 훈련 횟수와 사료 등급을 선택하세요.</value></data>
+  <data name="Qty" xml:space="preserve"><value>수량</value></data>
+  <data name="Grade 1" xml:space="preserve"><value>1등급</value></data>
+  <data name="Grade 2" xml:space="preserve"><value>2등급</value></data>
+  <data name="Grade 3" xml:space="preserve"><value>3등급</value></data>
+  <data name="Clear Plan" xml:space="preserve"><value>계획 지우기</value></data>
+  <data name="Planned trainings this cycle: {0}" xml:space="preserve"><value>이번 주기 계획 훈련: {0}</value></data>
+  <data name="Session cap: {0}" xml:space="preserve"><value>훈련 한도: {0}</value></data>
+  <data name="Purchase Plan" xml:space="preserve"><value>구매 계획</value></data>
+  <data name="Exact shopping list for the current plan." xml:space="preserve"><value>현재 계획에 필요한 정확한 구매 목록입니다.</value></data>
+  <data name="Load racing chocobo data first so the purchase plan can compare against sessions available." xml:space="preserve"><value>구매 계획을 가능한 훈련 횟수와 비교하려면 경주 초코보 정보를 먼저 로드하세요.</value></data>
+  <data name="Plan exceeds sessions available: {0}/{1}. The shopping list below still reflects the full plan." xml:space="preserve"><value>계획이 가능한 훈련 횟수를 초과합니다: {0}/{1}. 구매 목록에는 전체 계획이 표시됩니다.</value></data>
+  <data name="Feed" xml:space="preserve"><value>사료</value></data>
+  <data name="Qty on hand" xml:space="preserve"><value>보유 수량</value></data>
+  <data name="Currency" xml:space="preserve"><value>화폐</value></data>
+  <data name="Total" xml:space="preserve"><value>합계</value></data>
+  <data name="No planned feed purchases." xml:space="preserve"><value>계획된 사료 구매가 없습니다.</value></data>
+  <data name="{0:N0}" xml:space="preserve"><value>{0:N0}</value></data>
+  <data name="Total gil needed: {0:N0}" xml:space="preserve"><value>필요 길 합계: {0:N0}</value></data>
+  <data name="Total MGP needed: {0:N0}" xml:space="preserve"><value>필요 MGP 합계: {0:N0}</value></data>
+  <data name="Current currency is below the planned purchase total. Adjust the plan or stock up before the buy loop is enabled." xml:space="preserve"><value>구매 계획에 필요한 화폐가 부족합니다. 구매를 시작하기 전에 계획을 조정하거나 자금을 마련하세요.</value></data>
+  <data name="Buy Needed Feed" xml:space="preserve"><value>필요 사료 구매</value></data>
+  <data name="Feed Planned Sessions" xml:space="preserve"><value>계획된 훈련 먹이 주기</value></data>
+  <data name="Run Full Cycle" xml:space="preserve"><value>전체 주기 실행</value></data>
+  <data name="Start / Resume Breeding" xml:space="preserve"><value>교배 시작 / 재개</value></data>
+  <data name="Automation uses the session-capped plan and subtracts feed already on hand before buying." xml:space="preserve"><value>자동화는 가능한 훈련 횟수로 계획을 제한하며 구매 전 보유 사료를 제외합니다.</value></data>
+  <data name="Cleanup status: {0}" xml:space="preserve"><value>정리 상태: {0}</value></data>
+  <data name="Buy status: {0}" xml:space="preserve"><value>구매 상태: {0}</value></data>
+  <data name="Feed status: {0}" xml:space="preserve"><value>먹이 주기 상태: {0}</value></data>
+  <data name="Breeding status: {0}" xml:space="preserve"><value>교배 상태: {0}</value></data>
+  <data name="1 star" xml:space="preserve"><value>별 1개</value></data>
+  <data name="{0} stars" xml:space="preserve"><value>별 {0}개</value></data>
+  <data name="Text only" xml:space="preserve"><value>텍스트만</value></data>
+  <data name="Icon + text" xml:space="preserve"><value>아이콘 + 텍스트</value></data>
+  <data name="Icon only" xml:space="preserve"><value>아이콘만</value></data>
+  <data name="Plugin enabled" xml:space="preserve"><value>플러그인 활성화</value></data>
+  <data name="Show DTR bar entry" xml:space="preserve"><value>DTR 항목 표시</value></data>
+  <data name="DTR mode" xml:space="preserve"><value>DTR 모드</value></data>
+  <data name="DTR enabled glyph" xml:space="preserve"><value>DTR 활성 기호</value></data>
+  <data name="DTR disabled glyph" xml:space="preserve"><value>DTR 비활성 기호</value></data>
+  <data name="Rollout phases" xml:space="preserve"><value>개발 단계</value></data>
+  <data name="Concept recap" xml:space="preserve"><value>개념 요약</value></data>
+  <data name="Popup Capture" xml:space="preserve"><value>팝업 기록</value></data>
+  <data name="Start/Stop Retirement" xml:space="preserve"><value>은퇴 기록 시작/중지</value></data>
+  <data name="Start/Stop Covering Selector" xml:space="preserve"><value>교배 선택 기록 시작/중지</value></data>
+  <data name="Start/Stop Fledgling Selector" xml:space="preserve"><value>자손 선택 기록 시작/중지</value></data>
+  <data name="Start/Stop Adoption" xml:space="preserve"><value>수령 기록 시작/중지</value></data>
+  <data name="Open Folder" xml:space="preserve"><value>폴더 열기</value></data>
+  <data name="Scroll down to &quot;The Dumpster Fire&quot; channel to discuss issues / suggestions for specific plugins." xml:space="preserve"><value>플러그인 문제와 제안은 «The Dumpster Fire» 채널에서 이야기하세요.</value></data>
+  <data name="Track current stats and feed plans." xml:space="preserve"><value>현재 능력치와 사료 계획 추적.</value></data>
+  <data name="Reserve stable and vendor automation seams." xml:space="preserve"><value>축사 및 상인 자동화 연동 부분 확보.</value></data>
+  <data name="Bias toward transparent deterministic flows." xml:space="preserve"><value>투명하고 결정적인 흐름 우선.</value></data>
+  <data name="Shell and docs" xml:space="preserve"><value>기본 구조 및 문서</value></data>
+  <data name="Inventory truth" xml:space="preserve"><value>소지품 실측</value></data>
+  <data name="Planning math" xml:space="preserve"><value>계획 계산</value></data>
+  <data name="Vendor flow" xml:space="preserve"><value>상인 흐름</value></data>
+  <data name="Stable loop" xml:space="preserve"><value>축사 반복</value></data>
+  <data name="Pass {0}: buying missing feed ({1} sessions remain)." xml:space="preserve"><value>{0}회차: 부족한 사료 구매 중 (남은 훈련 {1}회).</value></data>
+  <data name="Pass {0}: feeding ({1} sessions remain)." xml:space="preserve"><value>{0}회차: 먹이 주는 중 (남은 훈련 {1}회).</value></data>
+  <data name="Pass {0}: cleanup/retry in {1:0.0}s. {2}" xml:space="preserve"><value>{0}회차: {1:0.0}초 후 정리/재시도. {2}</value></data>
+  <data name="Pass {0}: waiting to verify caps in {1:0.0}s. {2}" xml:space="preserve"><value>{0}회차: {1:0.0}초 후 한도 확인. {2}</value></data>
+  <data name="Pass {0}: refreshing Chocobo stats. {1}" xml:space="preserve"><value>{0}회차: 초코보 능력치 갱신 중. {1}</value></data>
+  <data name="Pass {0}: Chocobo stat refresh failed; retrying refresh in {1:0.0}s. {2}" xml:space="preserve"><value>{0}회차: 능력치 갱신 실패; {1:0.0}초 후 재시도. {2}</value></data>
+  <data name="Idle" xml:space="preserve"><value>대기</value></data>
+  <data name="{0} {1}. Click to open the main window." xml:space="preserve"><value>{0} {1}. 클릭하면 메인 창이 열립니다.</value></data>
+  <data name="Stopped manually." xml:space="preserve"><value>수동으로 중지되었습니다.</value></data>
+  <data name="Training plan cleared." xml:space="preserve"><value>훈련 계획이 초기화되었습니다.</value></data>
+  <data name="Cleanup did not start: load racing chocobo data first." xml:space="preserve"><value>정리 시작 실패: 경주 초코보 정보를 먼저 로드하세요.</value></data>
+  <data name="Cleanup complete: no planned training remains." xml:space="preserve"><value>정리 완료: 남은 계획 훈련이 없습니다.</value></data>
+  <data name="Cleanup complete: session budget exhausted with {0} planned training deferred." xml:space="preserve"><value>정리 완료: 훈련 한도 소진, 계획 훈련 {0}회 연기.</value></data>
+  <data name="Purchase pass failed: {0}" xml:space="preserve"><value>구매 회차 실패: {0}</value></data>
+  <data name="Feeding pass completed." xml:space="preserve"><value>먹이 주기 회차 완료.</value></data>
+  <data name="Feeding pass failed: {0}" xml:space="preserve"><value>먹이 주기 회차 실패: {0}</value></data>
+  <data name="Chocobo stat refresh failed: {0}" xml:space="preserve"><value>초코보 능력치 갱신 실패: {0}</value></data>
+  <data name="remaining plan reached zero" xml:space="preserve"><value>남은 계획이 0이 됨</value></data>
+  <data name="session budget reached zero" xml:space="preserve"><value>훈련 한도가 0이 됨</value></data>
+  <data name="{0}; waiting to verify caps" xml:space="preserve"><value>{0}; 한도 확인 대기 중</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>사용 불가</value></data>
+  <data name="Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats." xml:space="preserve"><value>초코보 정보 새로 고침 또는 /chokeabo refresh로 경주 능력치를 로드하세요.</value></data>
+  <data name="Refresh requested; opening Gold Saucer window..." xml:space="preserve"><value>갱신 요청됨; 골드 소서 창 여는 중...</value></data>
+  <data name="Opening Gold Saucer window..." xml:space="preserve"><value>골드 소서 창 여는 중...</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback..." xml:space="preserve"><value>골드 소서 정보 준비됨; 초코보 탭 호출 대기 중...</value></data>
+  <data name="Waiting for racing chocobo data..." xml:space="preserve"><value>경주 초코보 정보 대기 중...</value></data>
+  <data name="Current racer data has not been loaded." xml:space="preserve"><value>현재 경주 초코보 정보가 로드되지 않았습니다.</value></data>
+  <data name="Loaded from {0} at {1:HH:mm:ss}." xml:space="preserve"><value>{0}에서 {1:HH:mm:ss}에 로드됨.</value></data>
+  <data name="Racing chocobo stat refresh cancelled." xml:space="preserve"><value>경주 초코보 갱신이 취소되었습니다.</value></data>
+  <data name="The /goldsaucer command was not accepted." xml:space="preserve"><value>/goldsaucer 명령이 처리되지 않았습니다.</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback." xml:space="preserve"><value>골드 소서 정보 준비됨; 초코보 탭 호출 대기 중.</value></data>
+  <data name="Gold Saucer window did not appear in time." xml:space="preserve"><value>골드 소서 창이 제때 나타나지 않았습니다.</value></data>
+  <data name="The observed Chocobo tab is not ready for its native button event." xml:space="preserve"><value>확인된 초코보 탭의 기본 버튼 이벤트가 준비되지 않았습니다.</value></data>
+  <data name="Racing chocobo page detected; waiting for RaceChocoboManager data." xml:space="preserve"><value>경주 초코보 페이지 감지됨; RaceChocoboManager 정보 대기 중.</value></data>
+  <data name="RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab." xml:space="preserve"><value>초코보 탭 선택 후 30초 내에 RaceChocoboManager가 로드되지 않았습니다.</value></data>
+  <data name="Projected" xml:space="preserve"><value>예상</value></data>
+  <data name="Projected from current stats using {0} planned trainings." xml:space="preserve"><value>현재 능력치와 계획 훈련 {0}회로 계산한 예상치.</value></data>
+  <data name="Loaded from RaceChocoboManager at {0:HH:mm:ss}." xml:space="preserve"><value>RaceChocoboManager에서 {0:HH:mm:ss}에 로드됨.</value></data>
+  <data name="Traveling to Chocobo Square..." xml:space="preserve"><value>초코보 광장으로 이동 중...</value></data>
+  <data name="Moving to Race Chocobo Trainer..." xml:space="preserve"><value>Race Chocobo Trainer로 이동 중...</value></data>
+  <data name="Opening Race Chocobo Trainer..." xml:space="preserve"><value>Race Chocobo Trainer 여는 중...</value></data>
+  <data name="Waiting for feed inventory..." xml:space="preserve"><value>사료 소지품 창 대기 중...</value></data>
+  <data name="Finding {0}..." xml:space="preserve"><value>{0} 찾는 중...</value></data>
+  <data name="Finding feed..." xml:space="preserve"><value>사료 찾는 중...</value></data>
+  <data name="Opening inventory context menu..." xml:space="preserve"><value>소지품 메뉴 여는 중...</value></data>
+  <data name="Waiting for Feed context menu..." xml:space="preserve"><value>먹이 주기 메뉴 대기 중...</value></data>
+  <data name="Selecting Feed..." xml:space="preserve"><value>먹이 주기 선택 중...</value></data>
+  <data name="Waiting for Commence..." xml:space="preserve"><value>시작 대기 중...</value></data>
+  <data name="Confirming training..." xml:space="preserve"><value>훈련 확인 중...</value></data>
+  <data name="Waiting for training to complete..." xml:space="preserve"><value>훈련 완료 대기 중...</value></data>
+  <data name="Feed cycle complete." xml:space="preserve"><value>먹이 주기 완료.</value></data>
+  <data name="Feed cycle failed." xml:space="preserve"><value>먹이 주기 실패.</value></data>
+  <data name="Could not start Lifestream travel to Chocobo Square." xml:space="preserve"><value>Lifestream으로 초코보 광장 이동을 시작하지 못했습니다.</value></data>
+  <data name="Timed out waiting to arrive in Chocobo Square." xml:space="preserve"><value>초코보 광장 도착 대기 시간이 초과되었습니다.</value></data>
+  <data name="Could not find Race Chocobo Trainer in Chocobo Square." xml:space="preserve"><value>초코보 광장에서 Race Chocobo Trainer를 찾지 못했습니다.</value></data>
+  <data name="Could not path near Race Chocobo Trainer. Move closer or check vnavmesh." xml:space="preserve"><value>Race Chocobo Trainer까지 경로를 찾지 못했습니다. 가까이 이동하거나 vnavmesh를 확인하세요.</value></data>
+  <data name="Timed out moving near Race Chocobo Trainer." xml:space="preserve"><value>Race Chocobo Trainer 접근 시간이 초과되었습니다.</value></data>
+  <data name="Could not open Race Chocobo Trainer. Move closer and try again." xml:space="preserve"><value>Race Chocobo Trainer를 열지 못했습니다. 가까이 이동한 뒤 다시 시도하세요.</value></data>
+  <data name="Trainer feed inventory did not open after selecting the trainer menu entry." xml:space="preserve"><value>조련사 메뉴 선택 후 사료 소지품 창이 열리지 않았습니다.</value></data>
+  <data name="Missing {0} in inventory." xml:space="preserve"><value>소지품에 {0}이 없습니다.</value></data>
+  <data name="Could not locate {0} in the main inventory pages." xml:space="preserve"><value>기본 소지품에서 {0}을 찾지 못했습니다.</value></data>
+  <data name="No visible inventory window was found while opening the trainer-feed context menu." xml:space="preserve"><value>먹이 메뉴를 열 때 표시된 소지품 창이 없었습니다.</value></data>
+  <data name="Inventory window disappeared before the trainer-feed context menu became visible." xml:space="preserve"><value>먹이 메뉴가 나타나기 전에 소지품 창이 사라졌습니다.</value></data>
+  <data name="Context menu disappeared before Feed could be selected." xml:space="preserve"><value>먹이 주기를 선택하기 전에 메뉴가 사라졌습니다.</value></data>
+  <data name="Commence window did not appear after selecting Feed." xml:space="preserve"><value>먹이 주기 선택 후 시작 창이 나타나지 않았습니다.</value></data>
+  <data name="Training confirmation window did not appear after Commence." xml:space="preserve"><value>시작 후 훈련 확인 창이 나타나지 않았습니다.</value></data>
+  <data name="Feed did not appear to consume {0}. Check the trainer flow and inventory state." xml:space="preserve"><value>{0}이 소비되지 않은 것 같습니다. 조련사 절차와 소지품을 확인하세요.</value></data>
+  <data name="Trainer feed flow stayed unstable after {0} recovery attempts. Last issue: {1}" xml:space="preserve"><value>복구 {0}회 후에도 먹이 절차가 불안정합니다. 마지막 문제: {1}</value></data>
+  <data name="Moving to Tack &amp; Feed Trader..." xml:space="preserve"><value>Tack &amp; Feed Trader로 이동 중...</value></data>
+  <data name="Opening Tack &amp; Feed Trader..." xml:space="preserve"><value>Tack &amp; Feed Trader 여는 중...</value></data>
+  <data name="Selecting vendor page..." xml:space="preserve"><value>상점 페이지 선택 중...</value></data>
+  <data name="Buying {0}..." xml:space="preserve"><value>{0} 구매 중...</value></data>
+  <data name="Buying feed..." xml:space="preserve"><value>사료 구매 중...</value></data>
+  <data name="Waiting for purchase result..." xml:space="preserve"><value>구매 결과 대기 중...</value></data>
+  <data name="Purchase cycle complete." xml:space="preserve"><value>구매 주기 완료.</value></data>
+  <data name="Purchase cycle failed." xml:space="preserve"><value>구매 주기 실패.</value></data>
+  <data name="Feed confirmation would cross the configured currency reserve." xml:space="preserve"><value>사료 확인 시 설정한 화폐 보유 한도를 밑돕니다.</value></data>
+  <data name="Could not find Tack &amp; Feed Trader in Chocobo Square." xml:space="preserve"><value>초코보 광장에서 Tack &amp; Feed Trader를 찾지 못했습니다.</value></data>
+  <data name="Could not path near Tack &amp; Feed Trader. Move closer or check vnavmesh." xml:space="preserve"><value>Tack &amp; Feed Trader까지 경로가 없습니다. 가까이 이동하거나 vnavmesh를 확인하세요.</value></data>
+  <data name="Timed out moving near Tack &amp; Feed Trader." xml:space="preserve"><value>Tack &amp; Feed Trader 접근 시간이 초과되었습니다.</value></data>
+  <data name="Could not open Tack &amp; Feed Trader. Move closer and try again." xml:space="preserve"><value>Tack &amp; Feed Trader를 열지 못했습니다. 가까이 이동한 뒤 다시 시도하세요.</value></data>
+  <data name="Could not open '{0}' on Tack &amp; Feed Trader." xml:space="preserve"><value>Tack &amp; Feed Trader의 '{0}'을 열지 못했습니다.</value></data>
+  <data name="The verified required-supply shop closed before purchase." xml:space="preserve"><value>확인된 물품 상점이 구매 전에 닫혔습니다.</value></data>
+  <data name="Feed purchase would cross the configured currency reserve." xml:space="preserve"><value>사료 구매 시 설정한 화폐 보유 한도를 밑돕니다.</value></data>
+  <data name="The native gil-shop purchase could not be dispatched safely." xml:space="preserve"><value>기본 길 상점 구매를 안전하게 실행하지 못했습니다.</value></data>
+  <data name="ShopEventHandler.ExecuteBuy(1), visible row {0}" xml:space="preserve"><value>ShopEventHandler.ExecuteBuy(1), 표시 행 {0}</value></data>
+  <data name="Required-supply shop closed before the purchase result was verified." xml:space="preserve"><value>구매 결과를 확인하기 전에 물품 상점이 닫혔습니다.</value></data>
+  <data name="Purchase callback for {0} did not change inventory. Last attempted: {1}" xml:space="preserve"><value>{0} 구매 호출 후 소지품 변화가 없습니다. 마지막 시도: {1}</value></data>
+  <data name="Target feeding purchase: {0}" xml:space="preserve"><value>목표 사료 구매: {0}</value></data>
+  <data name="Target feeding: {0}" xml:space="preserve"><value>목표 먹이 주기: {0}</value></data>
+  <data name="Target cycle paused at a safe boundary." xml:space="preserve"><value>목표 주기가 안전한 지점에서 일시 정지되었습니다.</value></data>
+  <data name="Log into a character before starting breeding automation." xml:space="preserve"><value>교배 자동화를 시작하기 전에 캐릭터로 로그인하세요.</value></data>
+  <data name="This target cycle is owned by VERMAXION; use its Target Pedigree controls." xml:space="preserve"><value>이 목표 주기는 VERMAXION이 관리합니다. 해당 목표 혈통 제어를 사용하세요.</value></data>
+  <data name="Breeding UI mappings still require native inspection before automatic selection is available." xml:space="preserve"><value>자동 선택 전에 교배 UI 매핑의 기본 화면 검증이 필요합니다.</value></data>
+  <data name="No logged-in Content ID is available." xml:space="preserve"><value>로그인된 Content ID가 없습니다.</value></data>
+  <data name="Content ID mismatch: request {0}, current {1}." xml:space="preserve"><value>Content ID 불일치: 요청 {0}, 현재 {1}.</value></data>
+  <data name="Choke-abo is disabled." xml:space="preserve"><value>Choke-abo가 비활성화되었습니다.</value></data>
+  <data name="This progression requires V3; older callers cannot remove its spending limits." xml:space="preserve"><value>이 육성은 V3가 필요하며 이전 호출자는 지출 한도를 제거할 수 없습니다.</value></data>
+  <data name="Start a new offspring batch only after the existing action, queue and covering have settled." xml:space="preserve"><value>현재 작업, 대기열, 교배가 안정된 뒤 새 자손 묶음을 시작하세요.</value></data>
+  <data name="Finish the existing covering with its saved goal before changing the production target." xml:space="preserve"><value>생산 목표를 변경하기 전에 저장된 목표로 기존 교배를 완료하세요.</value></data>
+  <data name="The desired inherited ability is unavailable in current game data." xml:space="preserve"><value>원하는 유전 능력이 현재 게임 데이터에 없습니다.</value></data>
+  <data name="The acceptable colours are unavailable in current game data." xml:space="preserve"><value>허용 색상이 현재 게임 데이터에 없습니다.</value></data>
+  <data name="Target inputs changed while an immediate feed action was awaiting evidence." xml:space="preserve"><value>즉시 먹이 주기 증거를 기다리는 동안 목표 입력이 변경되었습니다.</value></data>
+  <data name="Pause Content ID does not match the current character." xml:space="preserve"><value>일시 정지 Content ID가 현재 캐릭터와 다릅니다.</value></data>
+  <data name="Suspend identity mismatch." xml:space="preserve"><value>중단 식별 정보가 일치하지 않습니다.</value></data>
+  <data name="Status Content ID does not match the current character." xml:space="preserve"><value>상태 Content ID가 현재 캐릭터와 다릅니다.</value></data>
+  <data name="Another Choke-abo automation owns the feed/vendor services." xml:space="preserve"><value>다른 Choke-abo 자동화가 사료/상인 서비스를 사용 중입니다.</value></data>
+  <data name="Current racer data could not be loaded: {0}" xml:space="preserve"><value>현재 경주 초코보 정보 로드 실패: {0}</value></data>
+  <data name="Loading current racer data before selecting a breeding action." xml:space="preserve"><value>교배 작업 선택 전 현재 경주 초코보 정보 로드 중.</value></data>
+  <data name="Initial racing tutorial admitted; VERMAXION owns the race." xml:space="preserve"><value>초기 경주 훈련 입장 승인; VERMAXION이 경주를 관리합니다.</value></data>
+  <data name="Complete the registrar's initial racing training course." xml:space="preserve"><value>접수원의 초기 경주 훈련 과정을 완료하세요.</value></data>
+  <data name="Complete Like Sire Like Fledgling before retiring this racer." xml:space="preserve"><value>은퇴 전에 Like Sire Like Fledgling을 완료하세요.</value></data>
+  <data name="An unowned Proof of Covering is present; its exact start time cannot be inferred safely." xml:space="preserve"><value>소유권 없는 교배 증명서가 있어 정확한 시작 시간을 안전하게 추정할 수 없습니다.</value></data>
+  <data name="Feed for the available training sessions cannot be purchased within the currency reserves." xml:space="preserve"><value>보유 한도를 유지하면서 가능한 훈련용 사료를 구매할 수 없습니다.</value></data>
+  <data name="No free main-inventory slot is available for target feed." xml:space="preserve"><value>목표 사료를 위한 기본 소지품 빈칸이 없습니다.</value></data>
+  <data name="The selected target feed item could not be resolved." xml:space="preserve"><value>선택한 목표 사료를 확인하지 못했습니다.</value></data>
+  <data name="Buying {0} feed across {1} items for {2} available training sessions." xml:space="preserve"><value>가능한 훈련 {2}회에 필요한 {1}종 사료 {0}개 구매 중.</value></data>
+  <data name="Feeding one {0}; awaiting exact item and session evidence." xml:space="preserve"><value>{0} 하나 먹이 주는 중; 정확한 아이템 및 훈련 증거 대기.</value></data>
+  <data name="Persisted feed-purchase intent has no item baseline." xml:space="preserve"><value>저장된 사료 구매 의도에 아이템 기준값이 없습니다.</value></data>
+  <data name="Feed purchase completed without an exact item-ID quantity increase." xml:space="preserve"><value>사료 구매 완료 후 해당 아이템 ID 수량 증가가 확인되지 않았습니다.</value></data>
+  <data name="Feed selection changed after purchase; exact purchase evidence cannot be reconciled." xml:space="preserve"><value>구매 후 사료 선택이 변경되어 정확한 구매 증거를 대조할 수 없습니다.</value></data>
+  <data name="Purchased feed could not be resolved to an exact inventory slot." xml:space="preserve"><value>구매한 사료의 정확한 소지품 칸을 확인할 수 없습니다.</value></data>
+  <data name="Target feed purchase blocked: {0}" xml:space="preserve"><value>목표 사료 구매 차단: {0}</value></data>
+  <data name="Reload found an unverified feed-purchase intent; it will not be replayed." xml:space="preserve"><value>다시 로드 시 미확인 사료 구매 의도 발견; 재실행하지 않습니다.</value></data>
+  <data name="The completed feed batch does not contain the current training selection." xml:space="preserve"><value>완료된 사료 묶음에 현재 훈련 선택이 없습니다.</value></data>
+  <data name="The feed batch is not fully present in inventory; reconcile its pending purchases before another vendor visit." xml:space="preserve"><value>사료 묶음이 소지품에 완전히 없습니다. 상인 재방문 전 미완료 구매를 대조하세요.</value></data>
+  <data name="Persisted feeding intent has no item baseline." xml:space="preserve"><value>저장된 먹이 주기 의도에 아이템 기준값이 없습니다.</value></data>
+  <data name="Target feeding blocked: {0}" xml:space="preserve"><value>목표 먹이 주기 차단: {0}</value></data>
+  <data name="Feeding did not produce one exact feed-item decrease and one confirmed-session decrease." xml:space="preserve"><value>먹이 주기 후 사료 1개와 확인된 훈련 1회 감소를 확인하지 못했습니다.</value></data>
+  <data name="Reload found an unverified feeding intent; it will not be replayed." xml:space="preserve"><value>다시 로드 시 미확인 먹이 주기 의도 발견; 재실행하지 않습니다.</value></data>
+  <data name="Covering is eligible; collection requires a verified native UI mapping." xml:space="preserve"><value>교배 완료; 수령에는 검증된 기본 UI 매핑이 필요합니다.</value></data>
+  <data name="Paused by VERMAXION at a safe boundary." xml:space="preserve"><value>VERMAXION이 안전한 지점에서 일시 정지했습니다.</value></data>
+  <data name="{0} Native UI selection remains unverified (capture reference: {1})." xml:space="preserve"><value>{0} 기본 UI 선택 미검증 (기록 참조: {1}).</value></data>
+  <data name="Breeding supply is purchased, but the supplier interaction did not release; Resume to reconcile the retained item." xml:space="preserve"><value>교배 물품은 구매했으나 상인 상호작용이 종료되지 않았습니다. 재개하여 보유 아이템을 대조하세요.</value></data>
+  <data name="Could not reach the required breeding service for native UI inspection." xml:space="preserve"><value>기본 UI 검증에 필요한 교배 서비스에 도달하지 못했습니다.</value></data>
+  <data name="The covering confirmation would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>교배 확인 시 길 보유 한도를 밑돕니다. 명시적 재개가 필요합니다.</value></data>
+  <data name="Covering Commence was dispatched; its exact confirmation or proof result must be reconciled before another covering." xml:space="preserve"><value>교배 시작 실행됨; 다음 교배 전 정확한 확인 또는 증명 결과를 대조하세요.</value></data>
+  <data name="The retained covering parent changed before native selection." xml:space="preserve"><value>기본 선택 전에 보유 교배 부모가 변경되었습니다.</value></data>
+  <data name="The selected covering stock is captured; native selected-parent evidence and the fee require verification before Commence." xml:space="preserve"><value>선택 교배 개체 기록됨; 시작 전 기본 부모 선택 증거와 비용을 검증하세요.</value></data>
+  <data name="Native racing unlock verified; reassessing feeding and racing." xml:space="preserve"><value>기본 경주 해금 확인됨; 먹이 주기와 경주 재평가 중.</value></data>
+  <data name="The initial racing tutorial awaits the next daily allowance." xml:space="preserve"><value>초기 경주 훈련이 다음 일일 허용량을 기다립니다.</value></data>
+  <data name="Registrar race entry captured; initial training admission is awaiting verification." xml:space="preserve"><value>접수원 경주 항목 기록됨; 초기 훈련 입장 검증 대기.</value></data>
+  <data name="Retirement confirmation sent; awaiting the retired form and cleared current racer. Any further native prompt is captured before another action." xml:space="preserve"><value>은퇴 확인 전송됨; 은퇴 등록증과 현재 경주 개체 제거 대기. 추가 기본 창은 다음 작업 전 기록합니다.</value></data>
+  <data name="Retirement requires an intermediate rank40 racer and room for its retained form." xml:space="preserve"><value>은퇴에는 40등급 중간 육성 경주 초코보와 등록증 보관 공간이 필요합니다.</value></data>
+  <data name="The observed retirement confirmation button is unavailable." xml:space="preserve"><value>확인된 은퇴 확인 버튼을 사용할 수 없습니다.</value></data>
+  <data name="Retirement menu selected; the resulting native window is captured before confirming retirement." xml:space="preserve"><value>은퇴 메뉴 선택됨; 확인 전에 나타난 기본 창을 기록합니다.</value></data>
+  <data name="Registration confirmation was sent but matching form consumption and current racer evidence are unavailable." xml:space="preserve"><value>등록 확인은 전송됐으나 해당 등록증 소비와 현재 경주 초코보 증거가 없습니다.</value></data>
+  <data name="Registration name stage {0} captured; final registration evidence remains pending." xml:space="preserve"><value>등록 이름 단계 {0} 기록됨; 최종 등록 증거 대기.</value></data>
+  <data name="Selected registration form; the resulting registration window is captured for verification." xml:space="preserve"><value>등록증 선택됨; 검증을 위해 나타난 등록 창을 기록합니다.</value></data>
+  <data name="The selected registration form changed before opening its context menu." xml:space="preserve"><value>메뉴를 열기 전에 선택한 등록증이 변경되었습니다.</value></data>
+  <data name="Breeding service interaction captured; its native selection must be verified before dispatch." xml:space="preserve"><value>교배 서비스 상호작용 기록됨; 실행 전에 기본 선택을 검증해야 합니다.</value></data>
+  <data name="Saved collection evidence is invalid; no collection will be replayed." xml:space="preserve"><value>저장된 수령 증거가 유효하지 않아 재실행하지 않습니다.</value></data>
+  <data name="Collection occurred, but the exact new offspring and its trait must be reconciled before counting or another covering." xml:space="preserve"><value>수령 완료; 집계나 다음 교배 전 정확한 새 자손과 특성을 대조하세요.</value></data>
+  <data name="Collection was requested; proof consumption and one matching fledgling must be reconciled before another request." xml:space="preserve"><value>수령 요청됨; 재요청 전에 증명서 소비와 일치하는 자손 한 마리를 대조하세요.</value></data>
+  <data name="Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering." xml:space="preserve"><value>수령에는 기존 완료 교배, 보유 부모 혈통, 정확히 한 장의 교배 증명서가 필요합니다.</value></data>
+  <data name="The required covering fee would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>필요 교배 비용이 길 보유 한도를 밑돕니다. 명시적 재개가 필요합니다.</value></data>
+  <data name="The required supply does not match the selected breeding mode and supplier." xml:space="preserve"><value>필요 물품이 선택 교배 모드 및 공급자와 다릅니다.</value></data>
+  <data name="The required breeding supply would cross the {0} reserve." xml:space="preserve"><value>필요 교배 물품이 {0} 보유 한도를 밑돕니다.</value></data>
+  <data name="A free main-inventory slot is required for the breeding supply." xml:space="preserve"><value>교배 물품을 위한 기본 소지품 빈칸이 필요합니다.</value></data>
+  <data name="Buying {0} for {1} {2} within reserves; awaiting its inventory result." xml:space="preserve"><value>보유 한도 내에서 {0}을 {1} {2}에 구매 중; 소지품 결과 대기.</value></data>
+  <data name="The required breeding supply was not found in the verified native shop." xml:space="preserve"><value>검증된 기본 상점에서 필요한 교배 물품을 찾지 못했습니다.</value></data>
+  <data name="Required supply purchase stopped: {0}" xml:space="preserve"><value>필요 물품 구매 중지: {0}</value></data>
+  <data name="A required-supply purchase is unverified after reload; its matching pending confirmation or inventory result is required before another purchase." xml:space="preserve"><value>다시 로드 후 물품 구매 미확인; 재구매 전에 일치하는 대기 확인 또는 소지품 결과가 필요합니다.</value></data>
+  <data name="{0} Explicit Resume is required." xml:space="preserve"><value>{0} 명시적 재개가 필요합니다.</value></data>
+  <data name="{0} Feeding policy is Stop; explicit Resume is required." xml:space="preserve"><value>{0} 먹이 정책이 중지입니다. 명시적 재개가 필요합니다.</value></data>
+  <data name="Cannot skip feeding without a current racer snapshot." xml:space="preserve"><value>현재 경주 초코보 정보 없이 먹이 주기를 건너뛸 수 없습니다.</value></data>
+  <data name="Skipped this feeding round: {0}" xml:space="preserve"><value>이번 먹이 주기 건너뜀: {0}</value></data>
+  <data name="vnavmesh is unavailable or not ready for target feeding." xml:space="preserve"><value>목표 먹이 주기에 필요한 vnavmesh가 없거나 준비되지 않았습니다.</value></data>
+  <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader와 상호작용할 수 없습니다.</value></data>
+  <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>필요한 Lifestream/vnavmesh 상인 상호작용을 사용할 수 없습니다.</value></data>
+  <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>교배 대기에 유효한 수령 조건 증거가 없습니다.</value></data>
+  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>교배 완료; 수령을 위한 정확한 기록 증거 대기.</value></data>
+  <data name="Covering wait until {0:u}." xml:space="preserve"><value>교배 대기 종료: {0:u}.</value></data>
+  <data name="Invalid offspring production settings." xml:space="preserve"><value>자손 생산 설정이 유효하지 않습니다.</value></data>
+  <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>조건에 맞는 G9 자손 {0}/{1} 생산; 미등록 상태로 보관.</value></data>
+  <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>새 자손 생산 전에 기존 교배를 대조하세요.</value></data>
+  <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>자손 생산은 G9 교배 개체가 필요하며 낮은 혈통 경주는 중지됩니다.</value></data>
+  <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>등록 G9 경주 개체의 요청 특성이 확인되지 않았습니다. 보관하고 적합한 교배 개체를 선택하세요.</value></data>
+  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>조건에 맞는 G9 부모를 은퇴까지 육성: 경주 등급 {0}/40. 일치 자손은 미등록 보관.</value></data>
+  <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>일치하는 G9 개체와 보유한 반대 성별 G9 부모를 교배하세요.</value></data>
+  <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>요청 특성이 확인된 사용 가능 은퇴 G9 부모가 없습니다. 자손을 보관하고 적합한 G9 개체를 보충하세요.</value></data>
+  <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>불일치 G9 자손을 부족한 소유 짝으로 육성하고 일치 자손은 보관하세요.</value></data>
+  <data name="Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits." xml:space="preserve"><value>사용 가능한 반대 성별 G9 부모가 없습니다. 소유 모드에는 적합한 G9 개체 또는 NPC 허가서로 명시적 전환이 필요합니다.</value></data>
+  <data name="Invalid progression settings." xml:space="preserve"><value>육성 설정이 유효하지 않습니다.</value></data>
+  <data name="G{0} has already been reached; the target cannot move backwards." xml:space="preserve"><value>G{0} 달성됨; 목표를 낮출 수 없습니다.</value></data>
+  <data name="Counterpart covering requires permit mode and a reached pedigree of G2 or higher." xml:space="preserve"><value>짝 생산 교배는 허가서 모드와 G2 이상 달성 혈통이 필요합니다.</value></data>
+  <data name="Current racer pedigree, racing rank, or sex is unavailable." xml:space="preserve"><value>현재 경주 개체의 혈통, 등급 또는 성별을 알 수 없습니다.</value></data>
+  <data name="The registered G{0} racer is below the retained G{1} pedigree; lower-generation racing is stopped." xml:space="preserve"><value>등록 G{0} 경주 개체가 보유 G{1} 혈통보다 낮아 저세대 경주가 중지됩니다.</value></data>
+  <data name="Retain G{0}; racing rank {1}/50." xml:space="preserve"><value>G{0} 보관; 경주 등급 {1}/50.</value></data>
+  <data name="The current racer exceeds the selected target pedigree; retain it." xml:space="preserve"><value>현재 경주 개체가 목표 혈통을 초과합니다. 보관하세요.</value></data>
+  <data name="G{0} {1}: racing rank {2}/40 before retirement." xml:space="preserve"><value>G{0} {1}: 은퇴 전 경주 등급 {2}/40.</value></data>
+  <data name="Reconcile the existing Proof of Covering before another covering." xml:space="preserve"><value>다음 교배 전에 기존 교배 증명서를 대조하세요.</value></data>
+  <data name="Register G{0} {1}." xml:space="preserve"><value>G{0} {1} 등록.</value></data>
+  <data name="A usable G{0} pair is already retained. Select owned parents or advance-pedigree permits before another covering." xml:space="preserve"><value>사용 가능한 G{0} 쌍을 보유 중입니다. 다음 교배 전에 소유 부모 또는 혈통 향상 허가서를 선택하세요.</value></data>
+  <data name="No usable G{0} parent remains to produce a G{1} counterpart. Lower-generation covering is stopped." xml:space="preserve"><value>G{1} 짝을 생산할 사용 가능 G{0} 부모가 없습니다. 저세대 교배 중지.</value></data>
+  <data name="No retained parent can produce G{0} or higher; lower-generation covering is stopped." xml:space="preserve"><value>보유 부모로 G{0} 이상을 생산할 수 없습니다. 저세대 교배 중지.</value></data>
+  <data name="Cover retained G{0} parents; preserve their remaining capacity." xml:space="preserve"><value>보유 G{0} 부모를 교배하고 남은 교배 횟수를 보존하세요.</value></data>
+  <data name="Missing an owned G{0} counterpart. No owned pair can produce G{1} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped." xml:space="preserve"><value>소유 G{0} 짝이 없고 G{1} 이상을 생산할 소유 쌍도 없습니다. 허가 교배를 명시적으로 선택하세요. 저세대 재육성 중지.</value></data>
+  <data name="Cover the retained G{0} parent and matching opposite-sex permit to produce G{1}." xml:space="preserve"><value>보유 G{0} 부모와 일치하는 반대 성별 허가서를 교배하여 G{1}을 생산하세요.</value></data>
+  <data name="Buy the opposite-sex G{0} permit within reserves to produce G{1}." xml:space="preserve"><value>보유 한도 내 반대 성별 G{0} 허가서를 구매하여 G{1}을 생산하세요.</value></data>
+  <data name="Target pedigree G{0} is outside G2-G9." xml:space="preserve"><value>목표 혈통 G{0}이 G2–G9 범위를 벗어납니다.</value></data>
+  <data name="Retirement rank {0} is outside 40-50." xml:space="preserve"><value>은퇴 등급 {0}이 40–50 범위를 벗어납니다.</value></data>
+  <data name="Register the exact G{0} fledgling in {1} slot {2}." xml:space="preserve"><value>{1}의 {2}번 칸에 있는 정확한 G{0} 자손 등록.</value></data>
+  <data name="The active racer's sex is unavailable." xml:space="preserve"><value>현재 경주 개체의 성별을 알 수 없습니다.</value></data>
+  <data name="The active G{0} racer is above target G{1}." xml:space="preserve"><value>현재 G{0} 경주 개체가 목표 G{1}보다 높습니다.</value></data>
+  <data name="Feed the target racer before declaring it ready." xml:space="preserve"><value>준비 완료 선언 전에 목표 경주 개체에게 먹이를 주세요.</value></data>
+  <data name="The active G{0} racer is target-ready." xml:space="preserve"><value>현재 G{0} 경주 개체가 목표 준비 완료.</value></data>
+  <data name="Cover the exact G{0} pair to advance toward G{1}." xml:space="preserve"><value>정확한 G{0} 쌍을 교배하여 G{1}로 진행하세요.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex while the useful racer continues racing." xml:space="preserve"><value>유용한 경주 개체가 경주를 계속하는 동안 정확한 G{0} 쌍으로 부족한 G{1} 성별을 생산하세요.</value></data>
+  <data name="The active G{0} {1} duplicates an owned usable parent and no productive pair is available." xml:space="preserve"><value>현재 G{0} {1}이 사용 가능한 소유 부모와 중복되며 생산 가능한 쌍이 없습니다.</value></data>
+  <data name="Race the useful G{0} {1} candidate to rank {2}." xml:space="preserve"><value>유용한 G{0} {1} 후보를 경주로 {2}등급까지 육성.</value></data>
+  <data name="Use the active racer's remaining training sessions before retirement." xml:space="preserve"><value>은퇴 전에 현재 경주 개체의 남은 훈련 횟수를 사용하세요.</value></data>
+  <data name="Retire the active G{0} {1} racer exactly." xml:space="preserve"><value>정확한 현재 G{0} {1} 경주 개체 은퇴.</value></data>
+  <data name="A Proof of Covering is present." xml:space="preserve"><value>교배 증명서가 있습니다.</value></data>
+  <data name="Register the exact useful G{0} {1} fledgling." xml:space="preserve"><value>정확한 유용 G{0} {1} 자손 등록.</value></data>
+  <data name="No useful active racer, fledgling, or covering parents are available." xml:space="preserve"><value>유용한 현재 경주 개체, 자손 또는 교배 부모가 없습니다.</value></data>
+  <data name="G{0} is missing a usable opposite-sex parent and no preceding-pedigree pair can produce it." xml:space="preserve"><value>G{0}의 사용 가능한 반대 성별 부모가 없으며 이전 혈통 쌍으로도 생산할 수 없습니다.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex." xml:space="preserve"><value>정확한 G{0} 쌍으로 부족한 G{1} 성별을 생산하세요.</value></data>
+  <data name="Resume" xml:space="preserve"><value>재개</value></data>
+  <data name="Pause" xml:space="preserve"><value>일시 정지</value></data>
+  <data name="Language" xml:space="preserve"><value>언어</value></data>
+  <data name="Color" xml:space="preserve"><value>색상</value></data>
+  <data name="Teal" xml:space="preserve"><value>청록색</value></data>
+  <data name="Blue" xml:space="preserve"><value>파란색</value></data>
+  <data name="Pink" xml:space="preserve"><value>분홍색</value></data>
+  <data name="Custom RGB" xml:space="preserve"><value>사용자 지정 RGB</value></data>
+  <data name="Loading UI fonts..." xml:space="preserve"><value>글꼴 불러오는 중…</value></data>
+  <data name="UI fonts failed to load. See the plugin log." xml:space="preserve"><value>글꼴을 불러오지 못했습니다. 플러그인 로그를 확인하세요.</value></data>
+  <data name="Male" xml:space="preserve"><value>수컷</value></data>
+  <data name="Female" xml:space="preserve"><value>암컷</value></data>
+  <data name="Gil" xml:space="preserve"><value>길</value></data>
+  <data name="MGP" xml:space="preserve"><value>MGP</value></data>
+  <data name="Running" xml:space="preserve"><value>실행 중</value></data>
+  <data name="None" xml:space="preserve"><value>없음</value></data>
+  <data name="Sex" xml:space="preserve"><value>성별</value></data>
+  <data name="Item" xml:space="preserve"><value>아이템</value></data>
+  <data name="Quantity" xml:space="preserve"><value>수량</value></data>
+  <data name="Buy a G1 {0} registration form to raise a missing owned parent." xml:space="preserve"><value>G1 {0} 등록증을 구매하여 부족한 소유 부모를 육성하세요.</value></data>
+  <data name="The native Select Chocobo list entry is unavailable or disabled." xml:space="preserve"><value>기본 Select Chocobo 항목이 없거나 비활성화되었습니다.</value></data>
+  <data name="Breeding supply" xml:space="preserve"><value>교배 물품</value></data>
+  <data name="Offspring ready" xml:space="preserve"><value>자손 준비 완료</value></data>
+  <data name="Window appearance" xml:space="preserve">
+    <value>창 모양</value>
+  </data>
+  <data name="Compact visible on main window" xml:space="preserve">
+    <value>메인 창에 간결 모드 전환 표시</value>
+  </data>
+  <data name="Language visible on main window" xml:space="preserve">
+    <value>메인 창에 언어 선택 표시</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>투명도</value>
+  </data>
+  <data name="Opacity (%)" xml:space="preserve">
+    <value>불투명도 (%)</value>
+  </data>
+  <data name="Auto-fade when unfocused" xml:space="preserve">
+    <value>포커스를 잃으면 자동으로 흐리게 표시</value>
+  </data>
+  <data name="Unfocused opacity (%)" xml:space="preserve">
+    <value>포커스가 없을 때 불투명도 (%)</value>
+  </data>
+  <data name="Unfocused delay (seconds)" xml:space="preserve">
+    <value>포커스를 잃은 후 대기 시간 (초)</value>
+  </data>
+</root>

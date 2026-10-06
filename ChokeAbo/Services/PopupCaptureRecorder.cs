@@ -290,6 +290,20 @@ public sealed unsafe class PopupCaptureRecorder : IDisposable
                 foreach (var id in Enum.GetValues<FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentId>())
                     if (Plugin.GameGui.GetAgentById((int)id).Address == agent.Address) { agentName = id.ToString(); break; }
             log.Information($"[ChokeAbo][Inspect] addon={name}; id={addon->Id}; parent={addon->ParentId}; host={addon->HostId}; blockedParent={addon->BlockedParentId}; agent={agentName}; values={handle.AtkValuesCount}");
+            if (name == "ContentsFinder")
+            {
+                var finder = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentContentsFinder.Instance();
+                if (finder != null && finder->AddonId == addon->Id)
+                {
+                    log.Information($"[ChokeAbo][Inspect] nativeFinder active={finder->IsAgentActive()}; selectedDutyType={finder->SelectedDuty.ContentType}; selectedDutyId={finder->SelectedDuty.Id}; selectedCount={finder->SelectedContent.Count}");
+                    var selectedIndex = 0;
+                    foreach (var entry in finder->SelectedContent)
+                    {
+                        if (selectedIndex >= 16) break;
+                        log.Information($"[ChokeAbo][Inspect] nativeFinder selected[{selectedIndex++}] type={entry.ContentType}; id={entry.Id}");
+                    }
+                }
+            }
             if (name == "Shop")
             {
                 var shopAgent = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentShop.Instance();

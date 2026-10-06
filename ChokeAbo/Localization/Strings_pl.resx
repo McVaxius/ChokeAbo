@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Enabled" xml:space="preserve"><value>Włączone</value></data>
+  <data name="DTR Bar" xml:space="preserve"><value>Pasek DTR</value></data>
+  <data name="Settings" xml:space="preserve"><value>Ustawienia</value></data>
+  <data name="Refresh Chocobo Data" xml:space="preserve"><value>Odśwież dane Chocobo</value></data>
+  <data name="Status to chat" xml:space="preserve"><value>Status na czacie</value></data>
+  <data name="Manual training and feed purchases" xml:space="preserve"><value>Ręczny trening i zakup paszy</value></data>
+  <data name="Plan training sessions, use feed already in inventory, and buy the remaining feed in one visit." xml:space="preserve"><value>Zaplanuj treningi, wykorzystaj paszę z ekwipunku i kup brakującą paszę podczas jednej wizyty.</value></data>
+  <data name="Planned trainings exceed sessions available: {0}/{1}. Extra planned trainings will not fit this cycle." xml:space="preserve"><value>Zaplanowane treningi przekraczają liczbę dostępnych sesji: {0}/{1}. Dodatkowe treningi nie zmieszczą się w tym cyklu.</value></data>
+  <data name="FFXIV Dalamud Plugin" xml:space="preserve"><value>Wtyczka FFXIV Dalamud</value></data>
+  <data name="Support on Ko-fi" xml:space="preserve"><value>Wesprzyj na Ko-fi</value></data>
+  <data name="Compact mode" xml:space="preserve"><value>Tryb kompaktowy</value></data>
+  <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>Zaloguj się na postać, aby zobaczyć postępy Chocobo.</value></data>
+  <data name="Chocobo progression" xml:space="preserve"><value>Rozwój Chocobo</value></data>
+  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION zarządza ustawieniami rozwoju i dziennym limitem wyścigów. Choke-abo zajmuje się karmieniem i hodowlą.</value></data>
+  <data name="Open VERMAXION settings" xml:space="preserve"><value>Otwórz ustawienia VERMAXION</value></data>
+  <data name="Stop" xml:space="preserve"><value>Zatrzymaj</value></data>
+  <data name="Pedigree" xml:space="preserve"><value>Rodowód</value></data>
+  <data name="Unknown" xml:space="preserve"><value>Nieznane</value></data>
+  <data name="Inherited ability" xml:space="preserve"><value>Odziedziczona zdolność</value></data>
+  <data name="Rank" xml:space="preserve"><value>Ranga</value></data>
+  <data name="Learned ability" xml:space="preserve"><value>Wyuczona zdolność</value></data>
+  <data name="Goal" xml:space="preserve"><value>Cel</value></data>
+  <data name="Not configured" xml:space="preserve"><value>Nie skonfigurowano</value></data>
+  <data name="Pedigree G{0}" xml:space="preserve"><value>Rodowód G{0}</value></data>
+  <data name="Offspring printer" xml:space="preserve"><value>Produkcja potomstwa</value></data>
+  <data name="Colour seeker" xml:space="preserve"><value>Poszukiwanie koloru</value></data>
+  <data name="Colour" xml:space="preserve"><value>Kolor</value></data>
+  <data name="Phase" xml:space="preserve"><value>Etap</value></data>
+  <data name="Covering ready in" xml:space="preserve"><value>Krycie gotowe za</value></data>
+  <data name="Ready" xml:space="preserve"><value>Gotowe</value></data>
+  <data name="Next action" xml:space="preserve"><value>Następna czynność</value></data>
+  <data name="Matching G9 offspring: {0:N0} / {1:N0}" xml:space="preserve"><value>Pasujące potomstwo G9: {0:N0} / {1:N0}</value></data>
+  <data name="Matching offspring retained unregistered" xml:space="preserve"><value>Pasujące potomstwo zachowane bez rejestracji</value></data>
+  <data name="Desired inherited ability" xml:space="preserve"><value>Pożądana odziedziczona zdolność</value></data>
+  <data name="Breeding mode: {0}" xml:space="preserve"><value>Tryb hodowli: {0}</value></data>
+  <data name="Owned parents" xml:space="preserve"><value>Własni rodzice</value></data>
+  <data name="NPC covering permits" xml:space="preserve"><value>Zezwolenia na krycie od NPC</value></data>
+  <data name="Permit objective: produce G9 offspring" xml:space="preserve"><value>Cel zezwolenia: uzyskaj potomstwo G9</value></data>
+  <data name="Permit objective: produce a missing current-pedigree counterpart" xml:space="preserve"><value>Cel zezwolenia: uzyskaj brakującego partnera obecnego rodowodu</value></data>
+  <data name="Permit objective: advance pedigree" xml:space="preserve"><value>Cel zezwolenia: podnieś rodowód</value></data>
+  <data name="Reserves: {0:N0} gil    {1:N0} MGP" xml:space="preserve"><value>Rezerwy: {0:N0} gil    {1:N0} MGP</value></data>
+  <data name="Fall back to Grade 1, then skip" xml:space="preserve"><value>Spróbuj klasy 1, potem pomiń</value></data>
+  <data name="Stop until Resume" xml:space="preserve"><value>Zatrzymaj do wznowienia</value></data>
+  <data name="Skip this feeding round" xml:space="preserve"><value>Pomiń tę rundę karmienia</value></data>
+  <data name="Feed: Grade {0}    If unavailable: {1}" xml:space="preserve"><value>Pasza: klasa {0}    Gdy niedostępna: {1}</value></data>
+  <data name="Choose your progression goal, reserves and feeding policy in VERMAXION settings, then Resume to begin." xml:space="preserve"><value>Wybierz cel rozwoju, rezerwy i zasady karmienia w ustawieniach VERMAXION, a następnie wznów, aby rozpocząć.</value></data>
+  <data name="No registered racing chocobo." xml:space="preserve"><value>Brak zarejestrowanego wyścigowego Chocobo.</value></data>
+  <data name="Registered racer data is unavailable." xml:space="preserve"><value>Dane zarejestrowanego zawodnika są niedostępne.</value></data>
+  <data name="Breeding stock" xml:space="preserve"><value>Stado hodowlane</value></data>
+  <data name="Offspring sex is random. Two coverings do not guarantee a male and a female." xml:space="preserve"><value>Płeć potomstwa jest losowa. Dwa krycia nie gwarantują samca i samicy.</value></data>
+  <data name="Pedigree / sex" xml:space="preserve"><value>Rodowód / płeć</value></data>
+  <data name="Coverings left" xml:space="preserve"><value>Pozostałe krycia</value></data>
+  <data name="Covering proof" xml:space="preserve"><value>Dowód krycia</value></data>
+  <data name="No breeding forms or covering proof in inventory." xml:space="preserve"><value>Brak formularzy hodowlanych i dowodu krycia w ekwipunku.</value></data>
+  <data name="Covering in progress" xml:space="preserve"><value>Krycie w toku</value></data>
+  <data name="Collecting offspring" xml:space="preserve"><value>Odbieranie potomstwa</value></data>
+  <data name="Registering offspring" xml:space="preserve"><value>Rejestrowanie potomstwa</value></data>
+  <data name="Retiring the intermediate racer" xml:space="preserve"><value>Wycofywanie zawodnika pośredniego</value></data>
+  <data name="Retiring the G9 breeding parent" xml:space="preserve"><value>Wycofywanie rodzica hodowlanego G9</value></data>
+  <data name="Preparing covering" xml:space="preserve"><value>Przygotowanie krycia</value></data>
+  <data name="Paused - Resume is required" xml:space="preserve"><value>Wstrzymano — wymagane wznowienie</value></data>
+  <data name="Needs attention" xml:space="preserve"><value>Wymaga uwagi</value></data>
+  <data name="Offspring goal reached" xml:space="preserve"><value>Osiągnięto cel potomstwa</value></data>
+  <data name="Progression complete" xml:space="preserve"><value>Rozwój zakończony</value></data>
+  <data name="Verifying the registered racer" xml:space="preserve"><value>Weryfikacja zarejestrowanego zawodnika</value></data>
+  <data name="Ready for racing" xml:space="preserve"><value>Gotowy do wyścigów</value></data>
+  <data name="Feeding the racer" xml:space="preserve"><value>Karmienie zawodnika</value></data>
+  <data name="Purchasing supplies" xml:space="preserve"><value>Zakup zaopatrzenia</value></data>
+  <data name="Ready to plan the next action" xml:space="preserve"><value>Gotowe do zaplanowania następnej czynności</value></data>
+  <data name="{0}: none" xml:space="preserve"><value>{0}: brak</value></data>
+  <data name="Overview" xml:space="preserve"><value>Przegląd</value></data>
+  <data name="Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="No chocobo data loaded yet." xml:space="preserve"><value>Nie wczytano jeszcze danych Chocobo.</value></data>
+  <data name="Racing rank: {0}/50" xml:space="preserve"><value>Ranga wyścigowa: {0}/50</value></data>
+  <data name="Rating: {0}" xml:space="preserve"><value>Ocena: {0}</value></data>
+  <data name="Pedigree: G{0}" xml:space="preserve"><value>Rodowód: G{0}</value></data>
+  <data name="XP: {0:N0}/{1:N0}" xml:space="preserve"><value>PD: {0:N0}/{1:N0}</value></data>
+  <data name="Sessions: {0}" xml:space="preserve"><value>Sesje: {0}</value></data>
+  <data name="Plan: {0}" xml:space="preserve"><value>Plan: {0}</value></data>
+  <data name="Gil: {0:N0}" xml:space="preserve"><value>Gil: {0:N0}</value></data>
+  <data name="MGP: {0:N0}" xml:space="preserve"><value>MGP: {0:N0}</value></data>
+  <data name="Need gil: {0:N0}" xml:space="preserve"><value>Potrzebne gil: {0:N0}</value></data>
+  <data name="Need MGP: {0:N0}" xml:space="preserve"><value>Potrzebne MGP: {0:N0}</value></data>
+  <data name="Stat" xml:space="preserve"><value>Statystyka</value></data>
+  <data name="Stars" xml:space="preserve"><value>Gwiazdki</value></data>
+  <data name="Now" xml:space="preserve"><value>Teraz</value></data>
+  <data name="After" xml:space="preserve"><value>Po</value></data>
+  <data name="Maximum Speed" xml:space="preserve"><value>Maksymalna prędkość</value></data>
+  <data name="Acceleration" xml:space="preserve"><value>Przyspieszenie</value></data>
+  <data name="Endurance" xml:space="preserve"><value>Wytrzymałość</value></data>
+  <data name="Stamina" xml:space="preserve"><value>Kondycja</value></data>
+  <data name="Cunning" xml:space="preserve"><value>Spryt</value></data>
+  <data name="Training Plan" xml:space="preserve"><value>Plan treningów</value></data>
+  <data name="Choose the number of training sessions and feed grade for each stat." xml:space="preserve"><value>Wybierz liczbę sesji treningowych i klasę paszy dla każdej statystyki.</value></data>
+  <data name="Qty" xml:space="preserve"><value>Liczba</value></data>
+  <data name="Grade 1" xml:space="preserve"><value>Klasa 1</value></data>
+  <data name="Grade 2" xml:space="preserve"><value>Klasa 2</value></data>
+  <data name="Grade 3" xml:space="preserve"><value>Klasa 3</value></data>
+  <data name="Clear Plan" xml:space="preserve"><value>Wyczyść plan</value></data>
+  <data name="Planned trainings this cycle: {0}" xml:space="preserve"><value>Zaplanowane treningi w tym cyklu: {0}</value></data>
+  <data name="Session cap: {0}" xml:space="preserve"><value>Limit sesji: {0}</value></data>
+  <data name="Purchase Plan" xml:space="preserve"><value>Plan zakupów</value></data>
+  <data name="Exact shopping list for the current plan." xml:space="preserve"><value>Dokładna lista zakupów dla bieżącego planu.</value></data>
+  <data name="Load racing chocobo data first so the purchase plan can compare against sessions available." xml:space="preserve"><value>Najpierw wczytaj dane wyścigowego Chocobo, aby plan zakupów mógł uwzględnić dostępne sesje.</value></data>
+  <data name="Plan exceeds sessions available: {0}/{1}. The shopping list below still reflects the full plan." xml:space="preserve"><value>Plan przekracza dostępne sesje: {0}/{1}. Poniższa lista zakupów nadal obejmuje pełny plan.</value></data>
+  <data name="Feed" xml:space="preserve"><value>Pasza</value></data>
+  <data name="Qty on hand" xml:space="preserve"><value>Liczba w ekwipunku</value></data>
+  <data name="Currency" xml:space="preserve"><value>Waluta</value></data>
+  <data name="Total" xml:space="preserve"><value>Razem</value></data>
+  <data name="No planned feed purchases." xml:space="preserve"><value>Brak zaplanowanych zakupów paszy.</value></data>
+  <data name="{0:N0}" xml:space="preserve"><value>{0:N0}</value></data>
+  <data name="Total gil needed: {0:N0}" xml:space="preserve"><value>Łącznie potrzebne gil: {0:N0}</value></data>
+  <data name="Total MGP needed: {0:N0}" xml:space="preserve"><value>Łącznie potrzebne MGP: {0:N0}</value></data>
+  <data name="Current currency is below the planned purchase total. Adjust the plan or stock up before the buy loop is enabled." xml:space="preserve"><value>Obecne środki nie wystarczają na zaplanowane zakupy. Zmień plan lub uzupełnij środki przed włączeniem zakupów.</value></data>
+  <data name="Buy Needed Feed" xml:space="preserve"><value>Kup potrzebną paszę</value></data>
+  <data name="Feed Planned Sessions" xml:space="preserve"><value>Nakarm według planu sesji</value></data>
+  <data name="Run Full Cycle" xml:space="preserve"><value>Uruchom pełny cykl</value></data>
+  <data name="Start / Resume Breeding" xml:space="preserve"><value>Rozpocznij / wznów hodowlę</value></data>
+  <data name="Automation uses the session-capped plan and subtracts feed already on hand before buying." xml:space="preserve"><value>Automatyzacja używa planu ograniczonego liczbą sesji i odejmuje posiadaną paszę przed zakupem.</value></data>
+  <data name="Cleanup status: {0}" xml:space="preserve"><value>Stan porządkowania: {0}</value></data>
+  <data name="Buy status: {0}" xml:space="preserve"><value>Stan zakupów: {0}</value></data>
+  <data name="Feed status: {0}" xml:space="preserve"><value>Stan karmienia: {0}</value></data>
+  <data name="Breeding status: {0}" xml:space="preserve"><value>Stan hodowli: {0}</value></data>
+  <data name="1 star" xml:space="preserve"><value>1 gwiazdka</value></data>
+  <data name="{0} stars" xml:space="preserve"><value>{0} gwiazdek</value></data>
+  <data name="Text only" xml:space="preserve"><value>Tylko tekst</value></data>
+  <data name="Icon + text" xml:space="preserve"><value>Ikona i tekst</value></data>
+  <data name="Icon only" xml:space="preserve"><value>Tylko ikona</value></data>
+  <data name="Plugin enabled" xml:space="preserve"><value>Wtyczka włączona</value></data>
+  <data name="Show DTR bar entry" xml:space="preserve"><value>Pokaż wpis na pasku DTR</value></data>
+  <data name="DTR mode" xml:space="preserve"><value>Tryb DTR</value></data>
+  <data name="DTR enabled glyph" xml:space="preserve"><value>Symbol włączonego DTR</value></data>
+  <data name="DTR disabled glyph" xml:space="preserve"><value>Symbol wyłączonego DTR</value></data>
+  <data name="Rollout phases" xml:space="preserve"><value>Etapy wdrażania</value></data>
+  <data name="Concept recap" xml:space="preserve"><value>Podsumowanie koncepcji</value></data>
+  <data name="Popup Capture" xml:space="preserve"><value>Przechwytywanie okien</value></data>
+  <data name="Start/Stop Retirement" xml:space="preserve"><value>Rozpocznij/zatrzymaj wycofywanie</value></data>
+  <data name="Start/Stop Covering Selector" xml:space="preserve"><value>Rozpocznij/zatrzymaj wybór krycia</value></data>
+  <data name="Start/Stop Fledgling Selector" xml:space="preserve"><value>Rozpocznij/zatrzymaj wybór pisklęcia</value></data>
+  <data name="Start/Stop Adoption" xml:space="preserve"><value>Rozpocznij/zatrzymaj adopcję</value></data>
+  <data name="Open Folder" xml:space="preserve"><value>Otwórz folder</value></data>
+  <data name='Scroll down to "The Dumpster Fire" channel to discuss issues / suggestions for specific plugins.' xml:space="preserve"><value>Przewiń do kanału „The Dumpster Fire”, aby omówić problemy i sugestie dotyczące poszczególnych wtyczek.</value></data>
+  <data name="Track current stats and feed plans." xml:space="preserve"><value>Śledź bieżące statystyki i plany karmienia.</value></data>
+  <data name="Reserve stable and vendor automation seams." xml:space="preserve"><value>Zachowaj punkty integracji automatyzacji stajni i sprzedawcy.</value></data>
+  <data name="Bias toward transparent deterministic flows." xml:space="preserve"><value>Stawiaj na przejrzyste, deterministyczne działania.</value></data>
+  <data name="Shell and docs" xml:space="preserve"><value>Interfejs i dokumentacja</value></data>
+  <data name="Inventory truth" xml:space="preserve"><value>Stan faktyczny ekwipunku</value></data>
+  <data name="Planning math" xml:space="preserve"><value>Obliczenia planu</value></data>
+  <data name="Vendor flow" xml:space="preserve"><value>Obsługa sprzedawcy</value></data>
+  <data name="Stable loop" xml:space="preserve"><value>Cykl stajni</value></data>
+  <data name="Pass {0}: buying missing feed ({1} sessions remain)." xml:space="preserve"><value>Przebieg {0}: zakup brakującej paszy (pozostało sesji: {1}).</value></data>
+  <data name="Pass {0}: feeding ({1} sessions remain)." xml:space="preserve"><value>Przebieg {0}: karmienie (pozostało sesji: {1}).</value></data>
+  <data name="Pass {0}: cleanup/retry in {1:0.0}s. {2}" xml:space="preserve"><value>Przebieg {0}: porządkowanie/ponowienie za {1:0.0}s. {2}</value></data>
+  <data name="Pass {0}: waiting to verify caps in {1:0.0}s. {2}" xml:space="preserve"><value>Przebieg {0}: oczekiwanie na sprawdzenie limitów za {1:0.0}s. {2}</value></data>
+  <data name="Pass {0}: refreshing Chocobo stats. {1}" xml:space="preserve"><value>Przebieg {0}: odświeżanie statystyk Chocobo. {1}</value></data>
+  <data name="Pass {0}: Chocobo stat refresh failed; retrying refresh in {1:0.0}s. {2}" xml:space="preserve"><value>Przebieg {0}: odświeżenie statystyk Chocobo nie powiodło się; ponowienie za {1:0.0}s. {2}</value></data>
+  <data name="Idle" xml:space="preserve"><value>Bezczynne</value></data>
+  <data name="{0} {1}. Click to open the main window." xml:space="preserve"><value>{0} {1}. Kliknij, aby otworzyć główne okno.</value></data>
+  <data name="Stopped manually." xml:space="preserve"><value>Zatrzymano ręcznie.</value></data>
+  <data name="Training plan cleared." xml:space="preserve"><value>Wyczyszczono plan treningów.</value></data>
+  <data name="Cleanup did not start: load racing chocobo data first." xml:space="preserve"><value>Porządkowanie nie rozpoczęło się: najpierw wczytaj dane wyścigowego Chocobo.</value></data>
+  <data name="Cleanup complete: no planned training remains." xml:space="preserve"><value>Porządkowanie zakończone: nie pozostały zaplanowane treningi.</value></data>
+  <data name="Cleanup complete: session budget exhausted with {0} planned training deferred." xml:space="preserve"><value>Porządkowanie zakończone: wykorzystano limit sesji, odroczono {0} zaplanowanych treningów.</value></data>
+  <data name="Purchase pass failed: {0}" xml:space="preserve"><value>Przebieg zakupów nie powiódł się: {0}</value></data>
+  <data name="Feeding pass completed." xml:space="preserve"><value>Przebieg karmienia zakończony.</value></data>
+  <data name="Feeding pass failed: {0}" xml:space="preserve"><value>Przebieg karmienia nie powiódł się: {0}</value></data>
+  <data name="Chocobo stat refresh failed: {0}" xml:space="preserve"><value>Odświeżenie statystyk Chocobo nie powiodło się: {0}</value></data>
+  <data name="remaining plan reached zero" xml:space="preserve"><value>pozostały plan osiągnął zero</value></data>
+  <data name="session budget reached zero" xml:space="preserve"><value>liczba pozostałych sesji osiągnęła zero</value></data>
+  <data name="{0}; waiting to verify caps" xml:space="preserve"><value>{0}; oczekiwanie na sprawdzenie limitów</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Niedostępne</value></data>
+  <data name="Use Refresh Chocobo Data or /chokeabo refresh to load racing chocobo stats." xml:space="preserve"><value>Użyj Odśwież dane Chocobo lub /chokeabo refresh, aby wczytać statystyki wyścigowego Chocobo.</value></data>
+  <data name="Refresh requested; opening Gold Saucer window..." xml:space="preserve"><value>Zażądano odświeżenia; otwieranie okna Gold Saucer...</value></data>
+  <data name="Opening Gold Saucer window..." xml:space="preserve"><value>Otwieranie okna Gold Saucer...</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback..." xml:space="preserve"><value>Informacje Gold Saucer gotowe; oczekiwanie przed wywołaniem zakładki Chocobo...</value></data>
+  <data name="Waiting for racing chocobo data..." xml:space="preserve"><value>Oczekiwanie na dane wyścigowego Chocobo...</value></data>
+  <data name="Current racer data has not been loaded." xml:space="preserve"><value>Dane obecnego zawodnika nie zostały wczytane.</value></data>
+  <data name="Loaded from {0} at {1:HH:mm:ss}." xml:space="preserve"><value>Wczytano z {0} o {1:HH:mm:ss}.</value></data>
+  <data name="Racing chocobo stat refresh cancelled." xml:space="preserve"><value>Anulowano odświeżenie statystyk wyścigowego Chocobo.</value></data>
+  <data name="The /goldsaucer command was not accepted." xml:space="preserve"><value>Polecenie /goldsaucer nie zostało przyjęte.</value></data>
+  <data name="Gold Saucer Info ready; waiting before Chocobo tab callback." xml:space="preserve"><value>Informacje Gold Saucer gotowe; oczekiwanie przed wywołaniem zakładki Chocobo.</value></data>
+  <data name="Gold Saucer window did not appear in time." xml:space="preserve"><value>Okno Gold Saucer nie pojawiło się na czas.</value></data>
+  <data name="The observed Chocobo tab is not ready for its native button event." xml:space="preserve"><value>Zaobserwowana zakładka Chocobo nie jest gotowa na natywne zdarzenie przycisku.</value></data>
+  <data name="Racing chocobo page detected; waiting for RaceChocoboManager data." xml:space="preserve"><value>Wykryto stronę wyścigowego Chocobo; oczekiwanie na dane RaceChocoboManager.</value></data>
+  <data name="RaceChocoboManager did not load within 30 seconds after selecting the native Chocobo tab." xml:space="preserve"><value>RaceChocoboManager nie wczytał danych w ciągu 30 sekund od wyboru natywnej zakładki Chocobo.</value></data>
+  <data name="Projected" xml:space="preserve"><value>Przewidywane</value></data>
+  <data name="Projected from current stats using {0} planned trainings." xml:space="preserve"><value>Przewidywane na podstawie obecnych statystyk i {0} zaplanowanych treningów.</value></data>
+  <data name="Loaded from RaceChocoboManager at {0:HH:mm:ss}." xml:space="preserve"><value>Wczytano z RaceChocoboManager o {0:HH:mm:ss}.</value></data>
+  <data name="Traveling to Chocobo Square..." xml:space="preserve"><value>Podróż do Chocobo Square...</value></data>
+  <data name="Moving to Race Chocobo Trainer..." xml:space="preserve"><value>Przemieszczanie do Race Chocobo Trainer...</value></data>
+  <data name="Opening Race Chocobo Trainer..." xml:space="preserve"><value>Otwieranie Race Chocobo Trainer...</value></data>
+  <data name="Waiting for feed inventory..." xml:space="preserve"><value>Oczekiwanie na ekwipunek z paszą...</value></data>
+  <data name="Finding {0}..." xml:space="preserve"><value>Szukanie {0}...</value></data>
+  <data name="Finding feed..." xml:space="preserve"><value>Szukanie paszy...</value></data>
+  <data name="Opening inventory context menu..." xml:space="preserve"><value>Otwieranie menu kontekstowego ekwipunku...</value></data>
+  <data name="Waiting for Feed context menu..." xml:space="preserve"><value>Oczekiwanie na menu kontekstowe karmienia...</value></data>
+  <data name="Selecting Feed..." xml:space="preserve"><value>Wybieranie karmienia...</value></data>
+  <data name="Waiting for Commence..." xml:space="preserve"><value>Oczekiwanie na Commence...</value></data>
+  <data name="Confirming training..." xml:space="preserve"><value>Potwierdzanie treningu...</value></data>
+  <data name="Waiting for training to complete..." xml:space="preserve"><value>Oczekiwanie na zakończenie treningu...</value></data>
+  <data name="Feed cycle complete." xml:space="preserve"><value>Cykl karmienia zakończony.</value></data>
+  <data name="Feed cycle failed." xml:space="preserve"><value>Cykl karmienia nie powiódł się.</value></data>
+  <data name="Could not start Lifestream travel to Chocobo Square." xml:space="preserve"><value>Nie udało się rozpocząć podróży Lifestream do Chocobo Square.</value></data>
+  <data name="Timed out waiting to arrive in Chocobo Square." xml:space="preserve"><value>Upłynął czas oczekiwania na przybycie do Chocobo Square.</value></data>
+  <data name="Could not find Race Chocobo Trainer in Chocobo Square." xml:space="preserve"><value>Nie znaleziono Race Chocobo Trainer w Chocobo Square.</value></data>
+  <data name="Could not path near Race Chocobo Trainer. Move closer or check vnavmesh." xml:space="preserve"><value>Nie udało się wyznaczyć drogi w pobliże Race Chocobo Trainer. Podejdź bliżej lub sprawdź vnavmesh.</value></data>
+  <data name="Timed out moving near Race Chocobo Trainer." xml:space="preserve"><value>Upłynął czas przemieszczania w pobliże Race Chocobo Trainer.</value></data>
+  <data name="Could not open Race Chocobo Trainer. Move closer and try again." xml:space="preserve"><value>Nie udało się otworzyć Race Chocobo Trainer. Podejdź bliżej i spróbuj ponownie.</value></data>
+  <data name="Trainer feed inventory did not open after selecting the trainer menu entry." xml:space="preserve"><value>Ekwipunek paszy trenera nie otworzył się po wyborze wpisu w menu trenera.</value></data>
+  <data name="Missing {0} in inventory." xml:space="preserve"><value>Brakuje {0} w ekwipunku.</value></data>
+  <data name="Could not locate {0} in the main inventory pages." xml:space="preserve"><value>Nie znaleziono {0} na głównych stronach ekwipunku.</value></data>
+  <data name="No visible inventory window was found while opening the trainer-feed context menu." xml:space="preserve"><value>Nie znaleziono widocznego okna ekwipunku podczas otwierania menu paszy trenera.</value></data>
+  <data name="Inventory window disappeared before the trainer-feed context menu became visible." xml:space="preserve"><value>Okno ekwipunku zniknęło, zanim pojawiło się menu paszy trenera.</value></data>
+  <data name="Context menu disappeared before Feed could be selected." xml:space="preserve"><value>Menu kontekstowe zniknęło, zanim można było wybrać karmienie.</value></data>
+  <data name="Commence window did not appear after selecting Feed." xml:space="preserve"><value>Okno Commence nie pojawiło się po wyborze karmienia.</value></data>
+  <data name="Training confirmation window did not appear after Commence." xml:space="preserve"><value>Okno potwierdzenia treningu nie pojawiło się po Commence.</value></data>
+  <data name="Feed did not appear to consume {0}. Check the trainer flow and inventory state." xml:space="preserve"><value>Karmienie nie zużyło {0}. Sprawdź przebieg u trenera i stan ekwipunku.</value></data>
+  <data name="Trainer feed flow stayed unstable after {0} recovery attempts. Last issue: {1}" xml:space="preserve"><value>Karmienie u trenera pozostało niestabilne po {0} próbach naprawy. Ostatni problem: {1}</value></data>
+  <data name="Moving to Tack &amp; Feed Trader..." xml:space="preserve"><value>Przemieszczanie do Tack &amp; Feed Trader...</value></data>
+  <data name="Opening Tack &amp; Feed Trader..." xml:space="preserve"><value>Otwieranie Tack &amp; Feed Trader...</value></data>
+  <data name="Selecting vendor page..." xml:space="preserve"><value>Wybieranie strony sprzedawcy...</value></data>
+  <data name="Buying {0}..." xml:space="preserve"><value>Kupowanie {0}...</value></data>
+  <data name="Buying feed..." xml:space="preserve"><value>Kupowanie paszy...</value></data>
+  <data name="Waiting for purchase result..." xml:space="preserve"><value>Oczekiwanie na wynik zakupu...</value></data>
+  <data name="Purchase cycle complete." xml:space="preserve"><value>Cykl zakupów zakończony.</value></data>
+  <data name="Purchase cycle failed." xml:space="preserve"><value>Cykl zakupów nie powiódł się.</value></data>
+  <data name="Feed confirmation would cross the configured currency reserve." xml:space="preserve"><value>Potwierdzenie paszy naruszyłoby skonfigurowaną rezerwę waluty.</value></data>
+  <data name="Could not find Tack &amp; Feed Trader in Chocobo Square." xml:space="preserve"><value>Nie znaleziono Tack &amp; Feed Trader w Chocobo Square.</value></data>
+  <data name="Could not path near Tack &amp; Feed Trader. Move closer or check vnavmesh." xml:space="preserve"><value>Nie udało się wyznaczyć drogi w pobliże Tack &amp; Feed Trader. Podejdź bliżej lub sprawdź vnavmesh.</value></data>
+  <data name="Timed out moving near Tack &amp; Feed Trader." xml:space="preserve"><value>Upłynął czas przemieszczania w pobliże Tack &amp; Feed Trader.</value></data>
+  <data name="Could not open Tack &amp; Feed Trader. Move closer and try again." xml:space="preserve"><value>Nie udało się otworzyć Tack &amp; Feed Trader. Podejdź bliżej i spróbuj ponownie.</value></data>
+  <data name="Could not open '{0}' on Tack &amp; Feed Trader." xml:space="preserve"><value>Nie udało się otworzyć „{0}” u Tack &amp; Feed Trader.</value></data>
+  <data name="The verified required-supply shop closed before purchase." xml:space="preserve"><value>Zweryfikowany sklep z wymaganym zaopatrzeniem zamknął się przed zakupem.</value></data>
+  <data name="Feed purchase would cross the configured currency reserve." xml:space="preserve"><value>Zakup paszy naruszyłby skonfigurowaną rezerwę waluty.</value></data>
+  <data name="The native gil-shop purchase could not be dispatched safely." xml:space="preserve"><value>Nie udało się bezpiecznie wysłać natywnego zakupu w sklepie za gil.</value></data>
+  <data name="ShopEventHandler.ExecuteBuy(1), visible row {0}" xml:space="preserve"><value>ShopEventHandler.ExecuteBuy(1), widoczny wiersz {0}</value></data>
+  <data name="Required-supply shop closed before the purchase result was verified." xml:space="preserve"><value>Sklep z wymaganym zaopatrzeniem zamknął się przed weryfikacją wyniku zakupu.</value></data>
+  <data name="Purchase callback for {0} did not change inventory. Last attempted: {1}" xml:space="preserve"><value>Wywołanie zakupu {0} nie zmieniło ekwipunku. Ostatnia próba: {1}</value></data>
+  <data name="Target feeding purchase: {0}" xml:space="preserve"><value>Zakup paszy dla celu: {0}</value></data>
+  <data name="Target feeding: {0}" xml:space="preserve"><value>Karmienie dla celu: {0}</value></data>
+  <data name="Target cycle paused at a safe boundary." xml:space="preserve"><value>Cykl celu wstrzymany w bezpiecznym punkcie.</value></data>
+  <data name="Log into a character before starting breeding automation." xml:space="preserve"><value>Zaloguj się na postać przed uruchomieniem automatycznej hodowli.</value></data>
+  <data name="This target cycle is owned by VERMAXION; use its Target Pedigree controls." xml:space="preserve"><value>Ten cykl celu należy do VERMAXION; użyj jego ustawień docelowego rodowodu.</value></data>
+  <data name="Breeding UI mappings still require native inspection before automatic selection is available." xml:space="preserve"><value>Powiązania interfejsu hodowli wymagają natywnej inspekcji przed udostępnieniem automatycznego wyboru.</value></data>
+  <data name="No logged-in Content ID is available." xml:space="preserve"><value>Brak Content ID zalogowanej postaci.</value></data>
+  <data name="Content ID mismatch: request {0}, current {1}." xml:space="preserve"><value>Niezgodność Content ID: żądany {0}, bieżący {1}.</value></data>
+  <data name="Choke-abo is disabled." xml:space="preserve"><value>Choke-abo jest wyłączone.</value></data>
+  <data name="This progression requires V3; older callers cannot remove its spending limits." xml:space="preserve"><value>Ten rozwój wymaga V3; starsze wywołania nie mogą usunąć jego limitów wydatków.</value></data>
+  <data name="Start a new offspring batch only after the existing action, queue and covering have settled." xml:space="preserve"><value>Rozpocznij nową partię potomstwa dopiero po zakończeniu obecnej czynności, kolejki i krycia.</value></data>
+  <data name="Finish the existing covering with its saved goal before changing the production target." xml:space="preserve"><value>Zakończ obecne krycie z zapisanym celem przed zmianą celu produkcji.</value></data>
+  <data name="The desired inherited ability is unavailable in current game data." xml:space="preserve"><value>Pożądana odziedziczona zdolność jest niedostępna w bieżących danych gry.</value></data>
+  <data name="The acceptable colours are unavailable in current game data." xml:space="preserve"><value>Akceptowane kolory są niedostępne w bieżących danych gry.</value></data>
+  <data name="Target inputs changed while an immediate feed action was awaiting evidence." xml:space="preserve"><value>Dane celu zmieniły się, gdy natychmiastowe karmienie oczekiwało na potwierdzenie.</value></data>
+  <data name="Pause Content ID does not match the current character." xml:space="preserve"><value>Content ID wstrzymania nie odpowiada obecnej postaci.</value></data>
+  <data name="Suspend identity mismatch." xml:space="preserve"><value>Niezgodność tożsamości zawieszenia.</value></data>
+  <data name="Status Content ID does not match the current character." xml:space="preserve"><value>Content ID statusu nie odpowiada obecnej postaci.</value></data>
+  <data name="Another Choke-abo automation owns the feed/vendor services." xml:space="preserve"><value>Inna automatyzacja Choke-abo zajmuje usługi karmienia/sprzedawcy.</value></data>
+  <data name="Current racer data could not be loaded: {0}" xml:space="preserve"><value>Nie udało się wczytać danych obecnego zawodnika: {0}</value></data>
+  <data name="Loading current racer data before selecting a breeding action." xml:space="preserve"><value>Wczytywanie danych obecnego zawodnika przed wyborem czynności hodowlanej.</value></data>
+  <data name="Initial racing tutorial admitted; VERMAXION owns the race." xml:space="preserve"><value>Przyjęto do początkowego samouczka wyścigów; VERMAXION zarządza wyścigiem.</value></data>
+  <data name="Complete the registrar's initial racing training course." xml:space="preserve"><value>Ukończ początkowy kurs wyścigowy u rejestratora.</value></data>
+  <data name="Complete Like Sire Like Fledgling before retiring this racer." xml:space="preserve"><value>Ukończ Like Sire Like Fledgling przed wycofaniem tego zawodnika.</value></data>
+  <data name="An unowned Proof of Covering is present; its exact start time cannot be inferred safely." xml:space="preserve"><value>Obecny jest nieprzypisany Proof of Covering; nie można bezpiecznie ustalić dokładnego czasu jego rozpoczęcia.</value></data>
+  <data name="Feed for the available training sessions cannot be purchased within the currency reserves." xml:space="preserve"><value>Paszy na dostępne sesje treningowe nie można kupić z zachowaniem rezerw waluty.</value></data>
+  <data name="No free main-inventory slot is available for target feed." xml:space="preserve"><value>Brak wolnego miejsca w głównym ekwipunku na paszę dla celu.</value></data>
+  <data name="The selected target feed item could not be resolved." xml:space="preserve"><value>Nie udało się ustalić wybranego przedmiotu paszy dla celu.</value></data>
+  <data name="Buying {0} feed across {1} items for {2} available training sessions." xml:space="preserve"><value>Zakup {0} paszy w {1} przedmiotach na {2} dostępnych sesji treningowych.</value></data>
+  <data name="Feeding one {0}; awaiting exact item and session evidence." xml:space="preserve"><value>Karmienie jednym {0}; oczekiwanie na dokładne potwierdzenie przedmiotu i sesji.</value></data>
+  <data name="Persisted feed-purchase intent has no item baseline." xml:space="preserve"><value>Zapisany zamiar zakupu paszy nie ma stanu początkowego przedmiotu.</value></data>
+  <data name="Feed purchase completed without an exact item-ID quantity increase." xml:space="preserve"><value>Zakup paszy zakończył się bez dokładnego wzrostu liczby przedmiotów o wymaganym ID.</value></data>
+  <data name="Feed selection changed after purchase; exact purchase evidence cannot be reconciled." xml:space="preserve"><value>Wybór paszy zmienił się po zakupie; nie można uzgodnić dokładnego potwierdzenia zakupu.</value></data>
+  <data name="Purchased feed could not be resolved to an exact inventory slot." xml:space="preserve"><value>Nie udało się przypisać zakupionej paszy do dokładnego miejsca w ekwipunku.</value></data>
+  <data name="Target feed purchase blocked: {0}" xml:space="preserve"><value>Zakup paszy dla celu zablokowany: {0}</value></data>
+  <data name="Reload found an unverified feed-purchase intent; it will not be replayed." xml:space="preserve"><value>Ponowne wczytanie wykryło niezweryfikowany zamiar zakupu paszy; nie zostanie on powtórzony.</value></data>
+  <data name="The completed feed batch does not contain the current training selection." xml:space="preserve"><value>Zakończona partia paszy nie obejmuje obecnego wyboru treningów.</value></data>
+  <data name="The feed batch is not fully present in inventory; reconcile its pending purchases before another vendor visit." xml:space="preserve"><value>Partia paszy nie jest w całości w ekwipunku; uzgodnij oczekujące zakupy przed kolejną wizytą u sprzedawcy.</value></data>
+  <data name="Persisted feeding intent has no item baseline." xml:space="preserve"><value>Zapisany zamiar karmienia nie ma stanu początkowego przedmiotu.</value></data>
+  <data name="Target feeding blocked: {0}" xml:space="preserve"><value>Karmienie dla celu zablokowane: {0}</value></data>
+  <data name="Feeding did not produce one exact feed-item decrease and one confirmed-session decrease." xml:space="preserve"><value>Karmienie nie spowodowało dokładnego spadku o jeden przedmiot paszy i jedną potwierdzoną sesję.</value></data>
+  <data name="Reload found an unverified feeding intent; it will not be replayed." xml:space="preserve"><value>Ponowne wczytanie wykryło niezweryfikowany zamiar karmienia; nie zostanie on powtórzony.</value></data>
+  <data name="Covering is eligible; collection requires a verified native UI mapping." xml:space="preserve"><value>Krycie jest gotowe; odbiór wymaga zweryfikowanego powiązania natywnego interfejsu.</value></data>
+  <data name="Paused by VERMAXION at a safe boundary." xml:space="preserve"><value>Wstrzymano przez VERMAXION w bezpiecznym punkcie.</value></data>
+  <data name="{0} Native UI selection remains unverified (capture reference: {1})." xml:space="preserve"><value>{0} Natywny wybór w interfejsie pozostaje niezweryfikowany (odniesienie przechwycenia: {1}).</value></data>
+  <data name="Breeding supply is purchased, but the supplier interaction did not release; Resume to reconcile the retained item." xml:space="preserve"><value>Zaopatrzenie hodowlane kupiono, ale interakcja ze sprzedawcą nie zakończyła się; wznów, aby uzgodnić zachowany przedmiot.</value></data>
+  <data name="Could not reach the required breeding service for native UI inspection." xml:space="preserve"><value>Nie udało się dotrzeć do wymaganej usługi hodowlanej w celu inspekcji natywnego interfejsu.</value></data>
+  <data name="The covering confirmation would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Potwierdzenie krycia naruszyłoby rezerwę gil. Wymagane jest jawne wznowienie.</value></data>
+  <data name="Covering Commence was dispatched; its exact confirmation or proof result must be reconciled before another covering." xml:space="preserve"><value>Wysłano Commence krycia; jego dokładne potwierdzenie lub wynik dowodu wymaga uzgodnienia przed kolejnym kryciem.</value></data>
+  <data name="The retained covering parent changed before native selection." xml:space="preserve"><value>Zachowany rodzic do krycia zmienił się przed natywnym wyborem.</value></data>
+  <data name="The selected covering stock is captured; native selected-parent evidence and the fee require verification before Commence." xml:space="preserve"><value>Wybrane stado do krycia przechwycono; natywne potwierdzenie wybranego rodzica i opłaty wymaga weryfikacji przed Commence.</value></data>
+  <data name="Native racing unlock verified; reassessing feeding and racing." xml:space="preserve"><value>Zweryfikowano natywne odblokowanie wyścigów; ponowna ocena karmienia i wyścigów.</value></data>
+  <data name="The initial racing tutorial awaits the next daily allowance." xml:space="preserve"><value>Początkowy samouczek wyścigów oczekuje na następny dzienny limit.</value></data>
+  <data name="Registrar race entry captured; initial training admission is awaiting verification." xml:space="preserve"><value>Przechwycono wpis wyścigu rejestratora; przyjęcie do początkowego treningu oczekuje na weryfikację.</value></data>
+  <data name="Retirement confirmation sent; awaiting the retired form and cleared current racer. Any further native prompt is captured before another action." xml:space="preserve"><value>Wysłano potwierdzenie wycofania; oczekiwanie na formularz wycofanego zawodnika i brak obecnego zawodnika. Każdy kolejny natywny monit zostanie przechwycony przed następną czynnością.</value></data>
+  <data name="Retirement requires an intermediate rank40 racer and room for its retained form." xml:space="preserve"><value>Wycofanie wymaga zawodnika pośredniego rangi 40 i miejsca na zachowany formularz.</value></data>
+  <data name="The observed retirement confirmation button is unavailable." xml:space="preserve"><value>Zaobserwowany przycisk potwierdzenia wycofania jest niedostępny.</value></data>
+  <data name="Retirement menu selected; the resulting native window is captured before confirming retirement." xml:space="preserve"><value>Wybrano menu wycofania; powstałe natywne okno zostanie przechwycone przed potwierdzeniem wycofania.</value></data>
+  <data name="Registration confirmation was sent but matching form consumption and current racer evidence are unavailable." xml:space="preserve"><value>Wysłano potwierdzenie rejestracji, ale brak potwierdzenia zużycia odpowiedniego formularza i obecnego zawodnika.</value></data>
+  <data name="Registration name stage {0} captured; final registration evidence remains pending." xml:space="preserve"><value>Przechwycono etap nazwy rejestracji {0}; końcowe potwierdzenie rejestracji nadal oczekuje.</value></data>
+  <data name="Selected registration form; the resulting registration window is captured for verification." xml:space="preserve"><value>Wybrano formularz rejestracji; powstałe okno rejestracji przechwycono do weryfikacji.</value></data>
+  <data name="The selected registration form changed before opening its context menu." xml:space="preserve"><value>Wybrany formularz rejestracji zmienił się przed otwarciem jego menu kontekstowego.</value></data>
+  <data name="Breeding service interaction captured; its native selection must be verified before dispatch." xml:space="preserve"><value>Przechwycono interakcję z usługą hodowlaną; jej natywny wybór musi zostać zweryfikowany przed wysłaniem.</value></data>
+  <data name="Saved collection evidence is invalid; no collection will be replayed." xml:space="preserve"><value>Zapisane potwierdzenie odbioru jest nieprawidłowe; żaden odbiór nie zostanie powtórzony.</value></data>
+  <data name="Collection occurred, but the exact new offspring and its trait must be reconciled before counting or another covering." xml:space="preserve"><value>Odbiór nastąpił, ale dokładne nowe potomstwo i jego cecha wymagają uzgodnienia przed zliczaniem lub kolejnym kryciem.</value></data>
+  <data name="Collection was requested; proof consumption and one matching fledgling must be reconciled before another request." xml:space="preserve"><value>Zażądano odbioru; zużycie dowodu i jedno pasujące pisklę muszą zostać uzgodnione przed kolejnym żądaniem.</value></data>
+  <data name="Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering." xml:space="preserve"><value>Odbiór wymaga obecnego gotowego krycia, rodowodu zachowanego rodzica i dokładnie jednego Proof of Covering.</value></data>
+  <data name="The required covering fee would cross the gil reserve. Explicit Resume is required." xml:space="preserve"><value>Wymagana opłata krycia naruszyłaby rezerwę gil. Wymagane jest jawne wznowienie.</value></data>
+  <data name="The required supply does not match the selected breeding mode and supplier." xml:space="preserve"><value>Wymagane zaopatrzenie nie pasuje do wybranego trybu hodowli i dostawcy.</value></data>
+  <data name="The required breeding supply would cross the {0} reserve." xml:space="preserve"><value>Wymagane zaopatrzenie hodowlane naruszyłoby rezerwę {0}.</value></data>
+  <data name="A free main-inventory slot is required for the breeding supply." xml:space="preserve"><value>Zaopatrzenie hodowlane wymaga wolnego miejsca w głównym ekwipunku.</value></data>
+  <data name="Buying {0} for {1} {2} within reserves; awaiting its inventory result." xml:space="preserve"><value>Zakup {0} za {1} {2} w granicach rezerw; oczekiwanie na wynik w ekwipunku.</value></data>
+  <data name="The required breeding supply was not found in the verified native shop." xml:space="preserve"><value>Wymaganego zaopatrzenia hodowlanego nie znaleziono w zweryfikowanym natywnym sklepie.</value></data>
+  <data name="Required supply purchase stopped: {0}" xml:space="preserve"><value>Zatrzymano zakup wymaganego zaopatrzenia: {0}</value></data>
+  <data name="A required-supply purchase is unverified after reload; its matching pending confirmation or inventory result is required before another purchase." xml:space="preserve"><value>Zakup wymaganego zaopatrzenia pozostaje niezweryfikowany po ponownym wczytaniu; przed kolejnym zakupem wymagane jest odpowiednie oczekujące potwierdzenie lub wynik w ekwipunku.</value></data>
+  <data name="{0} Explicit Resume is required." xml:space="preserve"><value>{0} Wymagane jest jawne wznowienie.</value></data>
+  <data name="{0} Feeding policy is Stop; explicit Resume is required." xml:space="preserve"><value>{0} Zasady karmienia nakazują zatrzymanie; wymagane jest jawne wznowienie.</value></data>
+  <data name="Cannot skip feeding without a current racer snapshot." xml:space="preserve"><value>Nie można pominąć karmienia bez aktualnego stanu zawodnika.</value></data>
+  <data name="Skipped this feeding round: {0}" xml:space="preserve"><value>Pominięto tę rundę karmienia: {0}</value></data>
+  <data name="vnavmesh is unavailable or not ready for target feeding." xml:space="preserve"><value>vnavmesh jest niedostępne lub niegotowe do karmienia dla celu.</value></data>
+  <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader jest niedostępny do interakcji.</value></data>
+  <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Wymagana interakcja sprzedawcy przez Lifestream/vnavmesh jest niedostępna.</value></data>
+  <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Oczekiwanie na krycie nie ma prawidłowego potwierdzenia gotowości.</value></data>
+  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Krycie jest gotowe; adopcja oczekuje na dokładne potwierdzenie przechwycenia.</value></data>
+  <data name="Covering wait until {0:u}." xml:space="preserve"><value>Oczekiwanie na krycie do {0:u}.</value></data>
+  <data name="Invalid offspring production settings." xml:space="preserve"><value>Nieprawidłowe ustawienia produkcji potomstwa.</value></data>
+  <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Uzyskano {0}/{1} pasującego potomstwa G9; zachowano bez rejestracji.</value></data>
+  <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Uzgodnij obecne krycie przed produkcją kolejnego potomstwa.</value></data>
+  <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Produkcja potomstwa wymaga stada hodowlanego G9; wyścigi niższych pokoleń zatrzymano.</value></data>
+  <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Zarejestrowany zawodnik G9 nie ma potwierdzonej żądanej cechy. Zachowaj go i wybierz odpowiednie stado hodowlane.</value></data>
+  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Rozwijaj pasującego rodzica G9 do wycofania: ranga wyścigowa {0}/40. Pasujące potomstwo pozostaje niezarejestrowane.</value></data>
+  <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Pokryj pasujące stado G9 jego zachowanym rodzicem G9 przeciwnej płci.</value></data>
+  <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Żaden użyteczny wycofany rodzic G9 nie ma potwierdzonej żądanej cechy. Zachowaj potomstwo i uzupełnij odpowiednie stado G9.</value></data>
+  <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Rozwijaj to niepasujące potomstwo G9 jako brakującego własnego partnera; zachowaj pasujące wyniki.</value></data>
+  <data name="Missing a usable opposite-sex G9 parent. Owned mode requires suitable G9 stock or an explicit switch to NPC permits." xml:space="preserve"><value>Brak użytecznego rodzica G9 przeciwnej płci. Tryb własnych rodziców wymaga odpowiedniego stada G9 lub jawnego przełączenia na zezwolenia NPC.</value></data>
+  <data name="Invalid progression settings." xml:space="preserve"><value>Nieprawidłowe ustawienia rozwoju.</value></data>
+  <data name="G{0} has already been reached; the target cannot move backwards." xml:space="preserve"><value>G{0} zostało już osiągnięte; nie można cofnąć celu.</value></data>
+  <data name="Counterpart covering requires permit mode and a reached pedigree of G2 or higher." xml:space="preserve"><value>Krycie w celu uzyskania partnera wymaga trybu zezwoleń i osiągniętego rodowodu G2 lub wyższego.</value></data>
+  <data name="Current racer pedigree, racing rank, or sex is unavailable." xml:space="preserve"><value>Rodowód, ranga wyścigowa lub płeć obecnego zawodnika są niedostępne.</value></data>
+  <data name="The registered G{0} racer is below the retained G{1} pedigree; lower-generation racing is stopped." xml:space="preserve"><value>Zarejestrowany zawodnik G{0} ma niższy rodowód niż zachowany G{1}; wyścigi niższych pokoleń zatrzymano.</value></data>
+  <data name="Retain G{0}; racing rank {1}/50." xml:space="preserve"><value>Zachowaj G{0}; ranga wyścigowa {1}/50.</value></data>
+  <data name="The current racer exceeds the selected target pedigree; retain it." xml:space="preserve"><value>Obecny zawodnik przekracza wybrany docelowy rodowód; zachowaj go.</value></data>
+  <data name="G{0} {1}: racing rank {2}/40 before retirement." xml:space="preserve"><value>G{0} {1}: ranga wyścigowa {2}/40 przed wycofaniem.</value></data>
+  <data name="Reconcile the existing Proof of Covering before another covering." xml:space="preserve"><value>Uzgodnij obecny Proof of Covering przed kolejnym kryciem.</value></data>
+  <data name="Register G{0} {1}." xml:space="preserve"><value>Zarejestruj G{0} {1}.</value></data>
+  <data name="A usable G{0} pair is already retained. Select owned parents or advance-pedigree permits before another covering." xml:space="preserve"><value>Użyteczna para G{0} jest już zachowana. Wybierz własnych rodziców lub zezwolenia podnoszące rodowód przed kolejnym kryciem.</value></data>
+  <data name="No usable G{0} parent remains to produce a G{1} counterpart. Lower-generation covering is stopped." xml:space="preserve"><value>Nie pozostał użyteczny rodzic G{0} do uzyskania partnera G{1}. Krycie niższych pokoleń zatrzymano.</value></data>
+  <data name="No retained parent can produce G{0} or higher; lower-generation covering is stopped." xml:space="preserve"><value>Żaden zachowany rodzic nie może uzyskać G{0} lub wyższego; krycie niższych pokoleń zatrzymano.</value></data>
+  <data name="Cover retained G{0} parents; preserve their remaining capacity." xml:space="preserve"><value>Pokryj zachowanych rodziców G{0}; zachowaj ich pozostałą zdolność do krycia.</value></data>
+  <data name="Missing an owned G{0} counterpart. No owned pair can produce G{1} or higher; select a permitted covering explicitly. Lower-generation rebuilding is stopped." xml:space="preserve"><value>Brak własnego partnera G{0}. Żadna własna para nie może uzyskać G{1} lub wyższego; wybierz jawnie dozwolone krycie. Odbudowę niższych pokoleń zatrzymano.</value></data>
+  <data name="Cover the retained G{0} parent and matching opposite-sex permit to produce G{1}." xml:space="preserve"><value>Pokryj zachowanego rodzica G{0} z odpowiednim zezwoleniem przeciwnej płci, aby uzyskać G{1}.</value></data>
+  <data name="Buy the opposite-sex G{0} permit within reserves to produce G{1}." xml:space="preserve"><value>Kup zezwolenie G{0} przeciwnej płci w granicach rezerw, aby uzyskać G{1}.</value></data>
+  <data name="Target pedigree G{0} is outside G2-G9." xml:space="preserve"><value>Docelowy rodowód G{0} jest poza zakresem G2-G9.</value></data>
+  <data name="Retirement rank {0} is outside 40-50." xml:space="preserve"><value>Ranga wycofania {0} jest poza zakresem 40-50.</value></data>
+  <data name="Register the exact G{0} fledgling in {1} slot {2}." xml:space="preserve"><value>Zarejestruj dokładne pisklę G{0} w {1}, miejsce {2}.</value></data>
+  <data name="The active racer's sex is unavailable." xml:space="preserve"><value>Płeć aktywnego zawodnika jest niedostępna.</value></data>
+  <data name="The active G{0} racer is above target G{1}." xml:space="preserve"><value>Aktywny zawodnik G{0} jest powyżej celu G{1}.</value></data>
+  <data name="Feed the target racer before declaring it ready." xml:space="preserve"><value>Nakarm docelowego zawodnika przed uznaniem go za gotowego.</value></data>
+  <data name="The active G{0} racer is target-ready." xml:space="preserve"><value>Aktywny zawodnik G{0} jest gotowy do celu.</value></data>
+  <data name="Cover the exact G{0} pair to advance toward G{1}." xml:space="preserve"><value>Pokryj dokładną parę G{0}, aby zbliżyć się do G{1}.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex while the useful racer continues racing." xml:space="preserve"><value>Pokryj dokładną parę G{0}, aby uzyskać brakującą płeć G{1}, gdy użyteczny zawodnik nadal uczestniczy w wyścigach.</value></data>
+  <data name="The active G{0} {1} duplicates an owned usable parent and no productive pair is available." xml:space="preserve"><value>Aktywny G{0} {1} powiela własnego użytecznego rodzica i brak produktywnej pary.</value></data>
+  <data name="Race the useful G{0} {1} candidate to rank {2}." xml:space="preserve"><value>Ścigaj użytecznego kandydata G{0} {1} do rangi {2}.</value></data>
+  <data name="Use the active racer's remaining training sessions before retirement." xml:space="preserve"><value>Wykorzystaj pozostałe sesje treningowe aktywnego zawodnika przed wycofaniem.</value></data>
+  <data name="Retire the active G{0} {1} racer exactly." xml:space="preserve"><value>Wycofaj dokładnego aktywnego zawodnika G{0} {1}.</value></data>
+  <data name="A Proof of Covering is present." xml:space="preserve"><value>Obecny jest Proof of Covering.</value></data>
+  <data name="Register the exact useful G{0} {1} fledgling." xml:space="preserve"><value>Zarejestruj dokładne użyteczne pisklę G{0} {1}.</value></data>
+  <data name="No useful active racer, fledgling, or covering parents are available." xml:space="preserve"><value>Brak użytecznego aktywnego zawodnika, pisklęcia lub rodziców do krycia.</value></data>
+  <data name="G{0} is missing a usable opposite-sex parent and no preceding-pedigree pair can produce it." xml:space="preserve"><value>G{0} nie ma użytecznego rodzica przeciwnej płci i żadna para poprzedniego rodowodu nie może go uzyskać.</value></data>
+  <data name="Cover the exact G{0} pair to produce the missing G{1} sex." xml:space="preserve"><value>Pokryj dokładną parę G{0}, aby uzyskać brakującą płeć G{1}.</value></data>
+  <data name="Resume" xml:space="preserve"><value>Wznów</value></data>
+  <data name="Pause" xml:space="preserve"><value>Wstrzymaj</value></data>
+  <data name="Language" xml:space="preserve"><value>Język</value></data>
+  <data name="Color" xml:space="preserve"><value>Kolor</value></data>
+  <data name="Teal" xml:space="preserve"><value>Turkusowy</value></data>
+  <data name="Blue" xml:space="preserve"><value>Niebieski</value></data>
+  <data name="Pink" xml:space="preserve"><value>Różowy</value></data>
+  <data name="Custom RGB" xml:space="preserve"><value>Własny RGB</value></data>
+  <data name="Loading UI fonts..." xml:space="preserve"><value>Wczytywanie czcionek interfejsu...</value></data>
+  <data name="UI fonts failed to load. See the plugin log." xml:space="preserve"><value>Nie udało się wczytać czcionek interfejsu. Zobacz dziennik wtyczki.</value></data>
+  <data name="Male" xml:space="preserve"><value>Samiec</value></data>
+  <data name="Female" xml:space="preserve"><value>Samica</value></data>
+  <data name="Gil" xml:space="preserve"><value>Gil</value></data>
+  <data name="MGP" xml:space="preserve"><value>MGP</value></data>
+  <data name="Running" xml:space="preserve"><value>Działa</value></data>
+  <data name="None" xml:space="preserve"><value>Brak</value></data>
+  <data name="Sex" xml:space="preserve"><value>Płeć</value></data>
+  <data name="Item" xml:space="preserve"><value>Przedmiot</value></data>
+  <data name="Quantity" xml:space="preserve"><value>Liczba</value></data>
+  <data name="Buy a G1 {0} registration form to raise a missing owned parent." xml:space="preserve"><value>Kup formularz rejestracji G1 {0}, aby wychować brakującego własnego rodzica.</value></data>
+  <data name="The native Select Chocobo list entry is unavailable or disabled." xml:space="preserve"><value>Natywny wpis listy Select Chocobo jest niedostępny lub wyłączony.</value></data>
+  <data name="Breeding supply" xml:space="preserve"><value>Zaopatrzenie hodowlane</value></data>
+  <data name="Offspring ready" xml:space="preserve"><value>Potomstwo gotowe</value></data>
+  <data name="Window appearance" xml:space="preserve">
+    <value>Wygląd okna</value>
+  </data>
+  <data name="Compact visible on main window" xml:space="preserve">
+    <value>Pokaż tryb kompaktowy w oknie głównym</value>
+  </data>
+  <data name="Language visible on main window" xml:space="preserve">
+    <value>Pokaż wybór języka w oknie głównym</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>Przezroczystość</value>
+  </data>
+  <data name="Opacity (%)" xml:space="preserve">
+    <value>Nieprzezroczystość (%)</value>
+  </data>
+  <data name="Auto-fade when unfocused" xml:space="preserve">
+    <value>Automatycznie przygaszaj bez fokusu</value>
+  </data>
+  <data name="Unfocused opacity (%)" xml:space="preserve">
+    <value>Nieprzezroczystość bez fokusu (%)</value>
+  </data>
+  <data name="Unfocused delay (seconds)" xml:space="preserve">
+    <value>Opóźnienie bez fokusu (sekundy)</value>
+  </data>
+</root>
