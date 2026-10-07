@@ -195,7 +195,7 @@ public sealed class MainWindow : Window, IDisposable
             ImGui.SetCursorScreenPos(new Vector2(x, rowTop));
         }
         Next(kofiWidth);
-        if (UiGui.Button("Ko-fi", new Vector2(0, height), MaterialIcon.Heart, UiText.T("Support on Ko-fi")))
+        if (UiGui.Button("Ko-fi", new Vector2(0, 0), MaterialIcon.Heart, UiText.T("Support on Ko-fi")))
             Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
         if (cfg.UiLanguageVisibleOnMainWindow)
         {

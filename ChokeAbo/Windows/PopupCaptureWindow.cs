@@ -48,13 +48,13 @@ public sealed class PopupCaptureWindow : Window
         DrawCaptureButton("Start/Stop Covering Selector", PopupCaptureKind.CoveringSelector);
         DrawCaptureButton("Start/Stop Fledgling Selector", PopupCaptureKind.FledglingSelector);
         DrawCaptureButton("Start/Stop Adoption", PopupCaptureKind.Adoption);
-        if (UiGui.Button("Open Folder", new Vector2(-1f, ChokePresentation.ControlHeight * MaterialTheme.Metrics.Scale), MaterialIcon.Folder))
+        if (UiGui.Button("Open Folder", new Vector2(-1f, 0), MaterialIcon.Folder))
             plugin.PopupCaptureRecorder.OpenFolder();
     }
 
     private void DrawCaptureButton(string label, PopupCaptureKind kind)
     {
-        if (UiGui.Button(label, new Vector2(-1f, ChokePresentation.ControlHeight * MaterialTheme.Metrics.Scale), kind switch { PopupCaptureKind.CoveringSelector => MaterialIcon.Person, PopupCaptureKind.FledglingSelector => MaterialIcon.Egg, PopupCaptureKind.Adoption => MaterialIcon.Home, _ => MaterialIcon.Play }))
+        if (UiGui.Button(label, new Vector2(-1f, 0), kind switch { PopupCaptureKind.CoveringSelector => MaterialIcon.Person, PopupCaptureKind.FledglingSelector => MaterialIcon.Egg, PopupCaptureKind.Adoption => MaterialIcon.Home, _ => MaterialIcon.Play }))
             plugin.TogglePopupCapture(kind);
     }
 }

@@ -29,12 +29,15 @@ internal static class UiGui
     internal static bool Button(string original, Vector2 pixels = default, MaterialIcon icon = MaterialIcon.None, string? display = null)
     {
         var translated = display ?? UiText.T(Visible(original));
+        using var controls = ImGui.GetStyle().FramePadding.Y == 0 || MaterialControls.Context == MaterialControlContext.Dense
+            ? default(MaterialControls.ControlScope) : MaterialControls.Push(MaterialControlContext.Toolbar);
+        using var lineHeight = MaterialText.PushLineHeight(translated);
         var style = ImGui.GetStyle(); var color = style.Colors[(int)ImGuiCol.Text];
         var iconWidth = icon == MaterialIcon.None ? 0 : 28 * MaterialTheme.Metrics.Scale;
         var natural = MaterialText.Measure(translated).X + 2 * style.FramePadding.X + iconWidth;
         var width = MaterialLayout.FitNextItemWidth(pixels.X, pixels.X > 0 ? Math.Max(pixels.X, natural) : natural);
-        var height = pixels.Y == 0 ? ChokePresentation.ControlHeight * MaterialTheme.Metrics.Scale : pixels.Y;
-        if (MaterialText.RequiresShaping(translated)) height = Math.Max(height, MaterialText.Measure(translated).Y + 2 * style.FramePadding.Y);
+        var vertical = MaterialControls.Context == MaterialControlContext.Dense ? ChokePresentation.Compact ? 1 : 2 : ChokePresentation.Compact ? 2 : 4;
+        var height = Math.Max(pixels.Y, Math.Max(ImGui.GetFrameHeight(), icon == MaterialIcon.None ? 0 : (22 + 2 * vertical) * MaterialTheme.Metrics.Scale));
         var background = style.Colors[(int)ImGuiCol.Button];
         ImGui.PushStyleColor(ImGuiCol.Text, Vector4.Zero);
         ImGui.PushStyleColor(ImGuiCol.Button, Vector4.Zero);
