@@ -1,6 +1,7 @@
 using System.Numerics;
 using AethertekUI;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Windowing;
 
 namespace ChokeAbo.Ui;
 
@@ -240,13 +241,44 @@ internal static class UiGui
         }
     }
     internal static void Title(string original, string translated)
+        => TitleWithButtons(original, translated, null);
+
+    internal static void ReserveTitleSpace(Window owner, string visible, float minimumWidth)
+    {
+        var style = ImGui.GetStyle();
+        var fontSize = ImGui.GetFontSize();
+        var collapse = (owner.Flags & (ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.Modal)) == 0
+            && style.WindowMenuButtonPosition != ImGuiDir.None;
+        var controls = AdditionalTitleButtonWidth(owner, fontSize)
+            + ((owner.ShowCloseButton ? 1 : 0) + (collapse ? 1 : 0)) * (fontSize + style.ItemInnerSpacing.X);
+        var required = (MaterialText.Measure(visible).X + controls + style.FramePadding.X * 2 + style.ItemInnerSpacing.X)
+            / ImGui.GetIO().FontGlobalScale;
+        var bounds = owner.SizeConstraints ?? new WindowSizeConstraints();
+        bounds.MinimumSize = new(Math.Max(minimumWidth, required), bounds.MinimumSize.Y);
+        owner.SizeConstraints = bounds;
+    }
+
+    private static float AdditionalTitleButtonWidth(Window? owner, float fontSize)
+    {
+        if (owner is null) return 0;
+        var count = owner.TitleBarButtons.Count(button => !owner.IsClickthrough || button.AvailableClickthrough);
+        if (owner.AllowPinning || owner.AllowClickthrough || owner.AllowBackgroundBlur) count++;
+        return count * (fontSize + ImGui.GetStyle().ItemInnerSpacing.X);
+    }
+
+    internal static void TitleWithButtons(string original, string translated, Window? owner)
     {
         if (original == translated) return;
         var style = ImGui.GetStyle();
         var flags = ImGuiP.GetCurrentWindow().Flags;
         var collapseLeft = (flags & (ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.Modal)) == 0 && style.WindowMenuButtonPosition == ImGuiDir.Left;
         var position = ImGui.GetWindowPos() + new Vector2(style.FramePadding.X + (collapseLeft ? ImGui.GetFontSize() + style.ItemInnerSpacing.X : 0), style.FramePadding.Y);
-        var max = ImGui.GetWindowPos() + new Vector2(ImGui.GetWindowSize().X - 2 * ImGui.GetFrameHeight(), ImGui.GetFrameHeight());
+        var fontSize = ImGui.GetFontSize();
+        var reserved = owner is null ? 2 * ImGui.GetFrameHeight()
+            : style.FramePadding.X * 2 + (owner.ShowCloseButton ? fontSize : 0) + AdditionalTitleButtonWidth(owner, fontSize);
+        if (owner is not null && (flags & ImGuiWindowFlags.NoCollapse) == 0 && style.WindowMenuButtonPosition == ImGuiDir.Right)
+            reserved += fontSize + style.ItemInnerSpacing.X;
+        var max = ImGui.GetWindowPos() + new Vector2(Math.Max(0, ImGui.GetWindowSize().X - reserved), ImGui.GetFrameHeight());
         var dl = ImGui.GetWindowDrawList(); dl.PushClipRect(position, max, false);
         try
         {

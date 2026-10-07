@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Délai sans focus (secondes)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Nettoyer le stock G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Jeunes chocobos</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Certificats de chocobos retraités</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Autorisations de saillie achetées</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Aperçu du nettoyage</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Jeter le stock sélectionné</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Aucun stock admissible.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Jeter est irréversible. Le stock G9, les preuves de saillie et les éléments sélectionnés pour l'élevage sont protégés.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Vérifiez le stock sélectionné avant de le jeter.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Les actions d'élevage doivent être terminées et G9 atteint.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>L'élevage, le personnage ou le stock a changé ; nettoyage arrêté.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>En attente du résultat de la suppression...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Nettoyage du stock terminé.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Nettoyage annulé.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Annuler le nettoyage</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Nettoyage du stock : {0:N0} / {1:N0} supprimés.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Nettoyage du stock en cours ; arrêtez-le avant de commencer l'élevage.</value></data>
 </root>

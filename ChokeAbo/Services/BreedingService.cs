@@ -2,7 +2,7 @@ using Dalamud.Plugin.Services;
 
 namespace ChokeAbo.Services;
 
-public sealed class BreedingService
+public sealed partial class BreedingService
 {
     private readonly Configuration configuration;
     private readonly CharacterStateService characterStateService;
@@ -65,7 +65,7 @@ public sealed class BreedingService
         this.isOtherAutomationRunning = isOtherAutomationRunning;
     }
 
-    public bool IsRunning => GameActionInProgress;
+    public bool IsRunning => StockCleanupRunning || GameActionInProgress;
 
     public bool OwnsFeedServices => ownsFeedServices;
     public OffspringGoal CurrentOffspringGoal => characterStateService.GetCurrent().OffspringGoal;
@@ -74,6 +74,7 @@ public sealed class BreedingService
     {
         get
         {
+            if (StockCleanupRunning) return true;
             var state = characterStateService.GetCurrent();
             return state.ExecutionOwner == BreedingExecutionOwner.Target &&
                    (nativeUiStepActive || state.Phase is BreedingPhase.Planning
@@ -86,6 +87,7 @@ public sealed class BreedingService
     {
         get
         {
+            if (StockCleanupRunning) return StockCleanupStatus;
             var state = characterStateService.GetCurrent();
             return state.Phase switch
             {
@@ -108,6 +110,11 @@ public sealed class BreedingService
 
     public bool StartOrResume()
     {
+        if (StockCleanupRunning)
+        {
+            runtimeStatus = "Stock cleanup is active; stop it before starting breeding.";
+            return false;
+        }
         if (!TryGetCurrentIdentity(out _))
         {
             runtimeStatus = "Log into a character before starting breeding automation.";
@@ -138,6 +145,8 @@ public sealed class BreedingService
             return BuildProtocolBlock(contentId, $"Content ID mismatch: request {request.ContentId}, current {contentId}.");
         if (!configuration.PluginEnabled)
             return BuildProtocolBlock(contentId, "Choke-abo is disabled.");
+        if (StockCleanupRunning)
+            return BuildProtocolBlock(contentId, "Stock cleanup is active; stop it before starting breeding.");
 
         activeContentId = contentId;
         characterStateService.MigrateLegacyStateIfNeeded(DateTime.UtcNow);
@@ -331,7 +340,7 @@ public sealed class BreedingService
             state.OffspringGoal == OffspringGoal.ReachPedigree;
         var racer = chocoboStatsService.ReadActiveRacerSnapshot();
         var gameAction = GameActionInProgress;
-        var shouldBlock = state.ExecutionOwner == BreedingExecutionOwner.Target && state.Phase switch
+        var shouldBlock = StockCleanupRunning || state.ExecutionOwner == BreedingExecutionOwner.Target && state.Phase switch
         {
             BreedingPhase.Racing => false,
             BreedingPhase.TargetReady => state.OffspringGoal != OffspringGoal.ReachPedigree,
@@ -381,6 +390,11 @@ public sealed class BreedingService
 
     public void Update()
     {
+        if (StockCleanupRunning)
+        {
+            UpdateStockCleanup();
+            return;
+        }
         if (!TryGetCurrentIdentity(out var contentId))
             return;
         if (reconcileNativeUiAfterLoad && Plugin.PlayerState.IsLoaded &&
@@ -442,6 +456,7 @@ public sealed class BreedingService
 
     public void Stop()
     {
+        CancelStockCleanup();
         if (characterStateService.GetCurrent().ExecutionOwner == BreedingExecutionOwner.Target)
             PauseTargetCycle(Plugin.PlayerState.ContentId);
         else

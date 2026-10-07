@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Espera sem foco (segundos)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Limpar estoque G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Filhotes</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Registros de chocobos aposentados</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Permissões de reprodução compradas</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Prévia da limpeza</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Descartar estoque selecionado</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Nenhum estoque elegível.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>O descarte é permanente. Estoque G9, comprovantes de cruzamento e materiais selecionados para reprodução são protegidos.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Confira o estoque selecionado antes de descartá-lo.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>As ações de reprodução devem terminar e G9 deve ter sido alcançado.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>A reprodução, o personagem ou o estoque mudou; limpeza interrompida.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Aguardando o resultado do descarte...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Limpeza de estoque concluída.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Limpeza cancelada.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Cancelar limpeza</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Limpeza de estoque: {0:N0} / {1:N0} removidos.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>A limpeza está ativa; interrompa-a antes de iniciar a reprodução.</value></data>
 </root>

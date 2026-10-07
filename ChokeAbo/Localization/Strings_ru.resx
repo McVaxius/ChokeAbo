@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Задержка без фокуса (секунды)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Очистить запасы G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Птенцы</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Регистрации выбывших чокобо</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Купленные разрешения на разведение</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Предпросмотр очистки</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Выбросить выбранные запасы</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Подходящих запасов нет.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Выбрасывание необратимо. Запасы G9, подтверждение спаривания и выбранные материалы для разведения защищены.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Проверьте выбранные запасы перед выбрасыванием.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Действия разведения должны завершиться, а G9 — быть достигнуто.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Разведение, персонаж или запасы изменились; очистка остановлена.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Ожидание результата выбрасывания...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Очистка запасов завершена.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Очистка отменена.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Отменить очистку</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Очистка запасов: удалено {0:N0} / {1:N0}.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Очистка запасов активна; остановите её перед началом разведения.</value></data>
 </root>

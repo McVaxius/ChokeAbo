@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>非フォーカス時の待機時間 (秒)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>G1-G8の在庫を整理</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>幼鳥</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>引退チョコボの登録証</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>購入した交配許可証</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>整理内容を確認</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>選択した在庫を捨てる</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>対象となる在庫がありません。</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>破棄は取り消せません。G9の在庫、交配証明書、選択済みの育成素材は保護されます。</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>破棄する前に選択した在庫を確認してください。</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>育成操作が完了し、G9に到達している必要があります。</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>育成状態、キャラクター、または在庫が変わったため、整理を停止しました。</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>破棄結果を待っています...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>在庫の整理が完了しました。</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>整理をキャンセルしました。</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>整理をキャンセル</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>在庫整理：{1:N0}個中{0:N0}個を削除。</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>在庫整理中です。育成を開始する前に停止してください。</value></data>
 </root>

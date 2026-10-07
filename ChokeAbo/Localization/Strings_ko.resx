@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>포커스를 잃은 후 대기 시간 (초)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>G1-G8 재고 정리</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>어린 초코보</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>은퇴 초코보 등록증</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>구매한 교배 허가증</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>정리 미리 보기</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>선택한 재고 버리기</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>정리 가능한 재고가 없습니다.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>버리기는 되돌릴 수 없습니다. G9 재고, 교배 증명서 및 선택한 육성 재료는 보호됩니다.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>버리기 전에 선택한 재고를 확인하세요.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>육성 작업이 완료되고 G9에 도달해야 합니다.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>육성 상태, 캐릭터 또는 재고가 변경되어 정리를 중지했습니다.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>버리기 결과를 기다리는 중...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>재고 정리가 완료되었습니다.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>정리를 취소했습니다.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>정리 취소</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>재고 정리: {0:N0} / {1:N0}개 제거.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>재고 정리 중입니다. 육성을 시작하기 전에 중지하세요.</value></data>
 </root>

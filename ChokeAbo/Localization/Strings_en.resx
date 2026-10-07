@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Unfocused delay (seconds)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Clean up G1-G8 stock</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Fledglings</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Retired registrations</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Purchased covering permissions</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Preview cleanup</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Discard selected stock</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>No eligible stock.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Review the selected stock before discarding.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Breeding must be settled and G9 reached.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Breeding, character or stock changed; cleanup stopped.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Waiting for discard result...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Stock cleanup completed.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Cleanup cancelled.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Cancel cleanup</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Stock cleanup: {0:N0} / {1:N0} removed.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Stock cleanup is active; stop it before starting breeding.</value></data>
 </root>

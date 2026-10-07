@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Độ trễ khi mất tiêu điểm (giây)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Dọn kho G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Chocobo non</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Giấy đăng ký chocobo đã nghỉ hưu</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Giấy phép phối giống đã mua</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Xem trước việc dọn kho</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Vứt hàng đã chọn</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Không có hàng đủ điều kiện.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Vứt bỏ không thể hoàn tác. Hàng G9, chứng nhận phối giống và vật phẩm đã chọn để nhân giống được bảo vệ.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Kiểm tra hàng đã chọn trước khi vứt bỏ.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Các thao tác nhân giống phải kết thúc và đã đạt G9.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Trạng thái nhân giống, nhân vật hoặc kho đã thay đổi; đã dừng dọn kho.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Đang chờ kết quả vứt bỏ...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Đã dọn kho xong.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Đã hủy dọn kho.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Hủy dọn kho</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Dọn kho: đã loại bỏ {0:N0} / {1:N0}.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Đang dọn kho; hãy dừng trước khi bắt đầu nhân giống.</value></data>
 </root>

@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Odak kaybı gecikmesi (saniye)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>G1-G8 stokunu temizle</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Yavru chocobolar</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Emekli chocobo kayıtları</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Satın alınan çiftleştirme izinleri</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Temizliği önizle</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Seçili stoku at</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Uygun stok yok.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Atma işlemi kalıcıdır. G9 stoku, çiftleştirme kanıtı ve seçilmiş üretim malzemeleri korunur.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Atmadan önce seçili stoku gözden geçirin.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Üretim işlemleri tamamlanmış ve G9'a ulaşılmış olmalıdır.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Üretim, karakter veya stok değişti; temizlik durduruldu.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Atma işleminin sonucu bekleniyor...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Stok temizliği tamamlandı.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Temizlik iptal edildi.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Temizliği iptal et</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Stok temizliği: {0:N0} / {1:N0} kaldırıldı.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Stok temizliği etkin; üretime başlamadan önce durdurun.</value></data>
 </root>

@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Verzögerung ohne Fokus (Sekunden)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>G1-G8-Bestand bereinigen</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Jungtiere</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Registrierungen pensionierter Chocobos</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Gekaufte Deckgenehmigungen</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Bereinigung anzeigen</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Ausgewählten Bestand wegwerfen</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Kein geeigneter Bestand.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Wegwerfen ist endgültig. G9-Bestand, Decknachweise und ausgewählte Zuchtmaterialien bleiben geschützt.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Ausgewählten Bestand vor dem Wegwerfen prüfen.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Zuchtaktionen müssen abgeschlossen und G9 erreicht sein.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Zucht, Charakter oder Bestand haben sich geändert; Bereinigung gestoppt.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Warte auf das Ergebnis des Wegwerfens...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Bestandsbereinigung abgeschlossen.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Bereinigung abgebrochen.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Bereinigung abbrechen</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Bestandsbereinigung: {0:N0} / {1:N0} entfernt.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Bestandsbereinigung läuft; vor Zuchtbeginn stoppen.</value></data>
 </root>

@@ -8,7 +8,7 @@ internal static class PluginInfo
     public const string Visibility = "Public";
     public const string Summary = "Race chocobo stat planning with vendor and trainer automation seams.";
     public const string SupportUrl = "https://ko-fi.com/mcvaxius";
-    public const string DiscordUrl = "https://discord.gg/VsXqydsvpu";
+    public const string DiscordUrl = "https://discord.gg/ac6gjDvR8R";
     public const string DiscordFeedbackNote = "Scroll down to \"The Dumpster Fire\" channel to discuss issues / suggestions for specific plugins.";
     public static readonly string[] Concept = new[]
     {

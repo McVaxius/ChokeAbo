@@ -130,6 +130,7 @@ public sealed class Plugin : IDalamudPlugin
 
     public void Dispose()
     {
+        BreedingService.CancelStockCleanup();
         PopupCaptureRecorder.Dispose();
         breedingIpcProvider.Dispose();
         BreedingService.SuspendTargetCycle(PlayerState.ContentId);

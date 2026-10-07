@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Espera sin foco (segundos)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Limpiar existencias G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Crías</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Registros de chocobos retirados</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Permisos de cría comprados</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Vista previa de limpieza</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Desechar existencias seleccionadas</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>No hay existencias aptas.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Desechar es irreversible. Las existencias G9, las pruebas de cría y los materiales seleccionados para la cría están protegidos.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Revisa las existencias seleccionadas antes de desecharlas.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Las acciones de cría deben finalizar y debe haberse alcanzado G9.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>La cría, el personaje o las existencias cambiaron; limpieza detenida.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Esperando el resultado del descarte...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Limpieza de existencias completada.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Limpieza cancelada.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Cancelar limpieza</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Limpieza de existencias: {0:N0} / {1:N0} eliminados.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>La limpieza está activa; detenla antes de comenzar la cría.</value></data>
 </root>

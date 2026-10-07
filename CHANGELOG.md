@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased - Managed CJK font atlas
+
+- Merge one bundled CJK face per font role, selecting the active language's regional forms. Set both managed atlas dimensions to 4096 on every rebuild; preserve font heights, required glyph ranges, symbol merges and host-language coverage.
+- Current compilation and guarded production callback/rebuild checks pass, together with bounded native glyph checks for the checked text. Managed-host readiness, complete displayed glyph coverage, language/scale host rebuilds and game/GPU acceptance remain unverified.
+
+## Unreleased - Native titlebar shortcuts
+
+- Add Settings, progression Resume/Pause/Stop, Run Full Cycle and manual automation Stop to the native main titlebar, retaining all body controls. Progression Stop rechecks current character ownership and stays distinct from manual automation.
+- Reserve title and button space before window motion and keep custom title text clear of native buttons.
+- Validate the current Debug/x64 build through the unchanged launcher: zero warnings and errors. Focused English installed-host Settings/progression checks pass across both densities/scales and settled collapsed/expanded windows, rechecking synthetic current character/owner admission and invoking each original progression command once. Manual Full Cycle/Stop runtime effects, managed-icon, GPU and game acceptance remain pending.
+
+## Unreleased - Manual lower-generation stock cleanup
+
+- Add a confirmed G1-G8 cleanup preview in Breeding stock, with individually selectable stacks and categories. Fledglings and retired registrations start selected; purchased covering permissions start off. No cleanup preference is saved.
+- Require settled breeding and evidence that G9 has been reached. Protect G9 forms, covering proof, selected parents and pending inputs. Recheck character, territory, ownership, loaded inventory slots, quantities and native item metadata before each dispatch; count removal only after the exact loaded slot is empty. Stop on changed or unobserved state without retries, retaining partial results and manual cancellation.
+
+## Unreleased - Community invite
+
+- Update the existing Discord community action to https://discord.gg/ac6gjDvR8R.
+
 ## 2026-10-06 - Actions shared-library revision
 
 - Pin the existing AethertekUI checkout to published commit 6c193cf06ac67f954c549cafc2033ac0efdd630a so fresh builds receive the Hindi shaping APIs required by this consumer. Preserve existing credentials, build/package paths and release behavior; hosted execution is verified separately against each published commit.

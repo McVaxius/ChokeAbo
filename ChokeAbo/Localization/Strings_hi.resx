@@ -1209,4 +1209,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>फ़ोकस हटने का विलंब (सेकंड)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>G1-G8 का स्टॉक साफ़ करें</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>चोकोबो के बच्चे</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>सेवानिवृत्त चोकोबो के पंजीकरण</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>खरीदे गए प्रजनन अनुमति पत्र</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>सफ़ाई का पूर्वावलोकन</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>चुना हुआ स्टॉक फेंकें</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>कोई पात्र स्टॉक नहीं है।</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>फेंकना स्थायी है। G9 स्टॉक, प्रजनन प्रमाण और चुनी गई प्रजनन सामग्री सुरक्षित हैं।</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>फेंकने से पहले चुने हुए स्टॉक की जाँच करें।</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>प्रजनन क्रियाएँ पूरी होनी चाहिए और G9 तक पहुँचना आवश्यक है।</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>प्रजनन, पात्र या स्टॉक बदल गया; सफ़ाई रोक दी गई।</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>फेंकने के परिणाम की प्रतीक्षा है...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>स्टॉक की सफ़ाई पूरी हुई।</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>सफ़ाई रद्द की गई।</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>सफ़ाई रद्द करें</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>स्टॉक सफ़ाई: {0:N0} / {1:N0} हटाए गए।</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>स्टॉक सफ़ाई चल रही है; प्रजनन शुरू करने से पहले इसे रोकें।</value></data>
 </root>

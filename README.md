@@ -37,6 +37,10 @@ Stage 1 target-pedigree automation is implemented and builds in `Debug x64`. Inv
 - Target feeding spends one confirmed stable session per adaptive round, consumes stocked preferred-grade feed first, and can fall back to Grade 1 gil feed when higher-grade MGP is exhausted.
 - Covering uses a 24-hour eligibility wait. Legacy covering state is migrated once without changing the configuration version.
 
+### Manual stock cleanup
+
+Breeding stock includes **Clean up G1-G8 stock** after G9 is reached and breeding actions have settled. Its preview selects fledglings and retired registrations; purchased covering permissions are optional and initially unchecked. Exclude individual stacks, then confirm with **Discard selected stock**. Discard is permanent. G9 stock, covering proof and selected breeding inputs remain protected. The batch rechecks each exact item before dispatch and stops on changed or unreadable state; its result shows confirmed removal and any partial stop. **Cancel cleanup** stops further dispatches but cannot undo a discard already sent.
+
 ## Dialog capture handoff
 
 Run `/chokeabo dpopup` and capture each workflow manually with multiple eligible forms visible. The window permits one active capture and contains Start/Stop buttons for Retirement, Covering Selector, Fledgling Selector, and Adoption plus Open Folder. It appends UTF-8 sessions to `retirement.md`, `cselector.md`, `fselector.md`, and `adoption.md` in Choke-abo's plugin configuration directory. The recorder is passive: it refuses to start while Choke-abo automation is running and never operates or stops the client.

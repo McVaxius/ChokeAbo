@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>失去焦点后的等待时间 (秒)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>清理G1-G8库存</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>幼鸟</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>退役陆行鸟登记证</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>购买的配种许可</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>预览清理</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>丢弃选中库存</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>没有符合条件的库存。</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>丢弃后无法恢复。G9库存、配种证明和已选中的育种材料会受到保护。</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>丢弃前请检查选中的库存。</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>育种操作必须结束且已达到G9。</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>育种状态、角色或库存已改变；清理已停止。</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>正在等待丢弃结果...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>库存清理完成。</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>已取消清理。</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>取消清理</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>库存清理：已移除{0:N0} / {1:N0}。</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>正在清理库存；开始育种前请先停止清理。</value></data>
 </root>

@@ -419,4 +419,21 @@
   <data name="Unfocused delay (seconds)" xml:space="preserve">
     <value>Jeda saat tidak fokus (detik)</value>
   </data>
+  <data name="Clean up G1-G8 stock" xml:space="preserve"><value>Bersihkan stok G1-G8</value></data>
+  <data name="Fledglings" xml:space="preserve"><value>Anak chocobo</value></data>
+  <data name="Retired registrations" xml:space="preserve"><value>Registrasi chocobo pensiun</value></data>
+  <data name="Purchased covering permissions" xml:space="preserve"><value>Izin perkawinan yang dibeli</value></data>
+  <data name="Preview cleanup" xml:space="preserve"><value>Pratinjau pembersihan</value></data>
+  <data name="Discard selected stock" xml:space="preserve"><value>Buang stok yang dipilih</value></data>
+  <data name="No eligible stock." xml:space="preserve"><value>Tidak ada stok yang memenuhi syarat.</value></data>
+  <data name="Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected." xml:space="preserve"><value>Pembuangan bersifat permanen. Stok G9, bukti perkawinan, dan bahan pembiakan yang dipilih dilindungi.</value></data>
+  <data name="Review the selected stock before discarding." xml:space="preserve"><value>Periksa stok yang dipilih sebelum membuangnya.</value></data>
+  <data name="Breeding must be settled and G9 reached." xml:space="preserve"><value>Tindakan pembiakan harus selesai dan G9 sudah tercapai.</value></data>
+  <data name="Breeding, character or stock changed; cleanup stopped." xml:space="preserve"><value>Pembiakan, karakter, atau stok berubah; pembersihan dihentikan.</value></data>
+  <data name="Waiting for discard result..." xml:space="preserve"><value>Menunggu hasil pembuangan...</value></data>
+  <data name="Stock cleanup completed." xml:space="preserve"><value>Pembersihan stok selesai.</value></data>
+  <data name="Cleanup cancelled." xml:space="preserve"><value>Pembersihan dibatalkan.</value></data>
+  <data name="Cancel cleanup" xml:space="preserve"><value>Batalkan pembersihan</value></data>
+  <data name="Stock cleanup: {0:N0} / {1:N0} removed." xml:space="preserve"><value>Pembersihan stok: {0:N0} / {1:N0} dihapus.</value></data>
+  <data name="Stock cleanup is active; stop it before starting breeding." xml:space="preserve"><value>Pembersihan stok sedang aktif; hentikan sebelum memulai pembiakan.</value></data>
 </root>

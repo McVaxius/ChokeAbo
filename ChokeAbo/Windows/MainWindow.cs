@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Numerics;
 using System.Reflection;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface;
 using Dalamud.Interface.Windowing;
 using ChokeAbo.Services;
 using Lumina.Excel.Sheets;
@@ -21,6 +22,11 @@ public sealed class MainWindow : Window, IDisposable
     private IReadOnlyList<ChocoboInventoryForm> breedingStock = Array.Empty<ChocoboInventoryForm>();
     private DateTime nextProgressionRefreshUtc;
     private ulong progressionContentId;
+    private StockCleanupPreview? stockCleanupPreview;
+    private bool[] stockCleanupSelected = [];
+    private bool cleanupFledglings = true;
+    private bool cleanupRetired = true;
+    private bool cleanupPermissions;
 
     public MainWindow(Plugin plugin, ChocoboStatsService chocoboStatsService)
         : base($"{PluginInfo.DisplayName}##Main")
@@ -35,13 +41,53 @@ public sealed class MainWindow : Window, IDisposable
             MinimumSize = new Vector2(640f, 440f),
             MaximumSize = new Vector2(1500f, 1300f),
         };
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Cog, Priority = 0, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) plugin.ToggleConfigUi(); },
+            ShowTooltip = () => MaterialText.SetTooltip(UiText.T("Settings")),
+        });
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.PlayCircle, Priority = -10, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) RunProgressionCommandFromUi("resume"); },
+            ShowTooltip = () => ShowProgressionTitleTooltip("Resume"),
+        });
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Pause, Priority = -20, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) RunProgressionCommandFromUi("pause"); },
+            ShowTooltip = () => ShowProgressionTitleTooltip("Pause"),
+        });
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.StopCircle, Priority = -30, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) StopProgressionFromUi(); },
+            ShowTooltip = () => ShowProgressionTitleTooltip("Stop"),
+        });
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Play, Priority = -40, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) plugin.StartFullCycle(); },
+            ShowTooltip = () => MaterialText.SetTooltip(UiText.T("Run Full Cycle") + "\n" + UiText.T(plugin.CleanupStatusText)),
+        });
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Stop, Priority = -50, IconOffset = new(2, 1),
+            Click = button => { if (button == ImGuiMouseButton.Left) plugin.StopAutomation(); },
+            ShowTooltip = () => MaterialText.SetTooltip(UiText.T("Stop") + "\n" + UiText.T("Manual training and feed purchases") + "\n" + UiText.T(plugin.CleanupStatusText)),
+        });
     }
 
     public void Dispose()
     {
     }
 
-    public override void PreDraw() => windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+    public override void PreDraw()
+    {
+        UiGui.ReserveTitleSpace(this, $"{PluginInfo.DisplayName} v{typeof(Plugin).Assembly.GetName().Version}", 640);
+        windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+    }
 
     public override void PostDraw() => windowMotion.Restore(this);
 
@@ -57,7 +103,7 @@ public sealed class MainWindow : Window, IDisposable
     {
         var cfg = plugin.Configuration;
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
-        UiGui.Title(PluginInfo.DisplayName, $"{PluginInfo.DisplayName} v{version}");
+        UiGui.TitleWithButtons(PluginInfo.DisplayName, $"{PluginInfo.DisplayName} v{version}", this);
 
         DrawHeader();
 
@@ -161,6 +207,24 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.Separator();
     }
 
+    private void RunProgressionCommandFromUi(string action)
+    {
+        if (Plugin.PlayerState.ContentId != 0)
+            Plugin.CommandManager.ProcessCommand("/vmx chocobo " + action);
+    }
+
+    private void StopProgressionFromUi()
+    {
+        if (Plugin.PlayerState.ContentId == 0) return;
+        if (plugin.CharacterStateService.GetCurrent().ExecutionOwner == BreedingExecutionOwner.Target)
+            RunProgressionCommandFromUi("stop");
+        else plugin.StopAutomation();
+    }
+
+    private void ShowProgressionTitleTooltip(string action)
+        => MaterialText.SetTooltip(UiText.T(action) + "\n" + UiText.T("Chocobo progression") + "\n" + UiText.T(
+            Plugin.PlayerState.ContentId == 0 ? "Log into a character to see chocobo progression." : plugin.BreedingService.StatusText));
+
     private void DrawProgressionOverview(ChocoboTrainingSnapshot snapshot)
     {
         var contentId = Plugin.PlayerState.ContentId;
@@ -208,17 +272,14 @@ public sealed class MainWindow : Window, IDisposable
                 {
                     action.Color(ImGuiCol.Button, MaterialTheme.Current.Colors.Primary); action.Color(ImGuiCol.Text, MaterialTheme.Current.Colors.OnPrimary);
                     if (UiGui.Button("Resume##Progression", new Vector2(wide ? actionWidth : -1, 0), MaterialIcon.Play))
-                        Plugin.CommandManager.ProcessCommand("/vmx chocobo resume");
+                        RunProgressionCommandFromUi("resume");
                 }
                 if (wide) ImGui.SameLine();
                 if (UiGui.Button("Pause##Progression", new Vector2(wide ? actionWidth : -1, 0), MaterialIcon.Pause))
-                    Plugin.CommandManager.ProcessCommand("/vmx chocobo pause");
+                    RunProgressionCommandFromUi("pause");
                 if (wide) ImGui.SameLine();
                 if (UiGui.Button("Stop##Progression", new Vector2(wide ? actionWidth : -1, 0), MaterialIcon.Stop))
-                {
-                    if (state.ExecutionOwner == BreedingExecutionOwner.Target) Plugin.CommandManager.ProcessCommand("/vmx chocobo stop");
-                    else plugin.StopAutomation();
-                }
+                    StopProgressionFromUi();
                 ImGui.Spacing();
                 var originalRoot = ImGui.GetID("");
                 using (var summary = new ChokePanel("##ProgressionSummaryPresentation", padding: ChokePresentation.Compact ? 8 : 12))
@@ -336,7 +397,76 @@ public sealed class MainWindow : Window, IDisposable
                 ImGui.EndTable();
             }
             if (breedingStock.Count == 0) UiGui.TextDisabled("No breeding forms or covering proof in inventory.");
+            DrawStockCleanup();
         }
+    }
+
+    private void DrawStockCleanup()
+    {
+        var service = plugin.BreedingService;
+        ImGui.BeginDisabled(service.StockCleanupRunning);
+        if (UiGui.Button("Clean up G1-G8 stock"))
+        {
+            cleanupFledglings = cleanupRetired = true;
+            cleanupPermissions = false;
+            RefreshStockCleanupPreview();
+            ImGui.OpenPopup("##StockCleanup");
+        }
+        ImGui.EndDisabled();
+        if (service.StockCleanupTotal > 0)
+            MaterialText.Text(UiText.F("Stock cleanup: {0:N0} / {1:N0} removed.", service.StockCleanupRemoved, service.StockCleanupTotal));
+        if (service.StockCleanupStatus != "Idle") UiGui.TextWrapped(service.StockCleanupStatus);
+        if (service.StockCleanupRunning && UiGui.Button("Cancel cleanup")) service.CancelStockCleanup();
+
+        var scale = MaterialTheme.Metrics.Scale;
+        ImGui.SetNextWindowSize(new Vector2(600 * scale, 0));
+        if (!ImGui.BeginPopup("##StockCleanup")) return;
+        try
+        {
+            UiGui.Text("Clean up G1-G8 stock");
+            UiGui.TextWrapped("Discard is permanent. G9 stock, covering proof and selected breeding inputs are protected.");
+            var changed = UiGui.Toggle("Fledglings", ref cleanupFledglings);
+            changed |= UiGui.Toggle("Retired registrations", ref cleanupRetired);
+            changed |= UiGui.Toggle("Purchased covering permissions", ref cleanupPermissions);
+            if (changed || UiGui.Button("Preview cleanup")) RefreshStockCleanupPreview();
+            if (stockCleanupPreview is { } preview)
+            {
+                if (ImGui.BeginChild("##CleanupStockRows", new Vector2(0, Math.Min(300 * scale,
+                    Math.Max(60 * scale, preview.Items.Count * ImGui.GetFrameHeightWithSpacing()))), true))
+                {
+                    for (var index = 0; index < preview.Items.Count; index++)
+                    {
+                        var item = preview.Items[index];
+                        ImGui.PushID(index);
+                        try
+                        {
+                            ImGui.Checkbox("##selected", ref stockCleanupSelected[index]);
+                            ImGui.SameLine();
+                            MaterialText.TextWrapped(item.ItemName + "  × " + item.Quantity.ToString(UiText.Current.Culture));
+                        }
+                        finally { ImGui.PopID(); }
+                    }
+                }
+                ImGui.EndChild();
+                var selected = preview.Items.Where((_, index) => stockCleanupSelected[index]).ToArray();
+                ImGui.BeginDisabled(selected.Length == 0);
+                if (UiGui.Button("Discard selected stock") && service.StartStockCleanup(preview, selected))
+                {
+                    stockCleanupPreview = null;
+                    ImGui.CloseCurrentPopup();
+                }
+                ImGui.EndDisabled();
+            }
+            UiGui.TextWrapped(service.StockCleanupStatus);
+            if (UiGui.Button("Cancel")) { stockCleanupPreview = null; ImGui.CloseCurrentPopup(); }
+        }
+        finally { ImGui.EndPopup(); }
+    }
+
+    private void RefreshStockCleanupPreview()
+    {
+        stockCleanupPreview = plugin.BreedingService.PreviewStockCleanup(cleanupFledglings, cleanupRetired, cleanupPermissions);
+        stockCleanupSelected = stockCleanupPreview?.Items.Select(_ => true).ToArray() ?? [];
     }
 
     private static string DescribePhase(BreedingCharacterState state, TargetCycleStatus status) => state.Phase switch
