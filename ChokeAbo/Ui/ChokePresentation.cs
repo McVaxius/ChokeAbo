@@ -12,6 +12,17 @@ internal enum UiFontRole { Body, BodyStrong, Title, PaneHeading, CompactTitle, C
 
 internal static class ChokePresentation
 {
+    // Dalamud owns the shared texture through render submission; callers borrow its wrapper.
+    internal static Dalamud.Interface.Textures.TextureWraps.IDalamudTextureWrap? OriginalIcon
+        => Plugin.TextureProvider.GetFromManifestResource(typeof(Plugin).Assembly, "ChokeAbo.images.icon.png").GetWrapOrDefault();
+
+    internal static void DrawPluginIcon(ImDrawListPtr drawList, Vector2 min, Vector2 max)
+    {
+        var texture = OriginalIcon;
+        if (texture is not null)
+            MaterialCanvas.DrawImage(drawList, texture.Handle, new Vector2(texture.Width, texture.Height), min, max);
+    }
+
     // Approved regular PNG: main (22,84)-(1141,960), header88; progression (41,262)-(1122,655), stock (41,672)-(1122,857).
     // Compact PNG: main (51,126)-(1106,861), header69; progression (67,273)-(1091,604), stock (67,619)-(1091,773).
     // Preserve native window chrome and additional real workflow detail. Typography: title30/28, pane22/20, body16.
@@ -79,25 +90,7 @@ internal static class ChokePresentation
 
     internal static void Brand(Vector2 origin, float size)
     {
-        var dl = ImGui.GetWindowDrawList(); var ink = MaterialCanvas.Color(MaterialTheme.Current.Colors.Primary);
-        Vector2 P(float x,float y) => origin + new Vector2(x,y)*size;
-        for (var index = 0; index < 24; index++)
-        {
-            var angle = index * MathF.Tau / 24;
-            dl.PathLineTo(P(.45f + MathF.Cos(angle) * .26f, .57f + MathF.Sin(angle) * .28f));
-        }
-        dl.PathFillConvex(ink);
-        dl.AddCircleFilled(P(.46f,.25f),size*.16f,ink,24);
-        dl.AddTriangleFilled(P(.34f,.17f),P(.50f,.02f),P(.47f,.21f),ink);
-        dl.AddTriangleFilled(P(.48f,.13f),P(.62f,.05f),P(.55f,.24f),ink);
-        dl.AddTriangleFilled(P(.33f,.22f),P(.13f,.32f),P(.33f,.35f),ink);
-        dl.AddTriangleFilled(P(.62f,.51f),P(.92f,.25f),P(.80f,.62f),ink);
-        dl.AddTriangleFilled(P(.57f,.59f),P(.88f,.52f),P(.67f,.78f),ink);
-        dl.AddLine(P(.37f,.76f),P(.33f,.93f),ink,Math.Max(1,size*.06f));
-        dl.AddLine(P(.56f,.76f),P(.59f,.93f),ink,Math.Max(1,size*.06f));
-        dl.AddLine(P(.26f,.93f),P(.40f,.93f),ink,Math.Max(1,size*.06f));
-        dl.AddLine(P(.51f,.93f),P(.68f,.93f),ink,Math.Max(1,size*.06f));
-        dl.AddCircleFilled(P(.40f,.24f),size*.025f,MaterialCanvas.Color(MaterialTheme.Current.Colors.OnPrimary),12);
+        DrawPluginIcon(ImGui.GetWindowDrawList(), origin, origin + new Vector2(size));
     }
 
     internal static void Cart(Vector2 origin, float size)

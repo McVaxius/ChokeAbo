@@ -65,6 +65,13 @@ internal sealed class ChokeAppearance : IDisposable
                 foreach (var role in Enum.GetValues<UiFontRole>())
                     shapedText.Renderer.CheckGlyphs(text.RequiredText, ChokePresentation.AtlasHeight(role) * ImGuiHelpers.GlobalScale);
                 fonts.CheckGlyphs(text.RequiredText.Select(MaterialText.NativeGlyphText));
+                var hindiLabel = UiText.Languages.Single(l => l.Code == "hi").Name;
+                var hindiAvailable = true;
+                foreach (var size in Enum.GetValues<UiFontRole>())
+                    hindiAvailable &= shapedText.Renderer.TryCheckGlyphs([hindiLabel], ChokePresentation.AtlasHeight(size) * ImGuiHelpers.GlobalScale, out _);
+                languages.Replace(UiText.Languages.Select(l => new MaterialOption<string>(l.Code, l.Code,
+                    l.Code == "hi" && !hindiAvailable ? "Hindi (unavailable)" : l.Name,
+                    l.Code == "hi" && !hindiAvailable)).ToArray());
                 checkedGeneration = generation;
             }
             catch (Exception ex)
@@ -82,7 +89,14 @@ internal sealed class ChokeAppearance : IDisposable
             if (ImGui.Begin("Choke-abo##FontStatus", ImGuiWindowFlags.AlwaysAutoResize))
             {
                 fontStatusDecorations.Paint();
-                MaterialText.TextWrapped(UiText.T(fonts.LoadException is null && !fontIssueLogged ? "Loading UI fonts..." : "UI fonts failed to load. See the plugin log."));
+                var failed = fonts.LoadException is not null || fontIssueLogged;
+                ImGui.TextWrapped(appliedLanguage == "hi" && failed ? "Hindi UI fonts are unavailable. Use English to continue."
+                    : failed ? "UI fonts failed to load. See the plugin log." : "Loading UI fonts...");
+                if (appliedLanguage == "hi" && failed && ImGui.Button("Use English"))
+                {
+                    plugin.Configuration.UiLanguage = "en";
+                    plugin.Configuration.Save();
+                }
             }
             ImGui.End();
             fontStatusDecorations.Paint();

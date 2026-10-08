@@ -32,6 +32,10 @@ Stage 1 target-pedigree automation is implemented and builds in `Debug x64`. Inv
 
 ## Target-pedigree workflow
 
+Hindi uses installed shaping fonts. The source now leaves other languages usable when the Hindi menu caption is unavailable, showing a disabled ASCII `Hindi (unavailable)` option. Required text for a selected Hindi UI still requires full validation; on failure, the readable status offers **Use English**, saving English only after an explicit press. Native verification and Linux/Wine acceptance remain pending for this change.
+
+Settings owns shared colour, UI language, compact spacing and window transparency/fade; optional Main selectors change the same saved preferences. Main branding and expanded/collapsed titles use the packaged Choke-abo icon in its original colours. Progression Resume/Pause/Stop remains separate from manual Run Full Cycle/Stop, and VERMAXION remains the target-pedigree settings owner.
+
 - VERMAXION remains the settings owner and defaults to Always Race. Its optional Target Pedigree mode supplies pedigree G2-G9, retirement rank 40-50, and preferred feed grade 1-3 over strict V2 JSON IPC.
 - Choke-abo selects exact inventory forms by useful pedigree/sex, remaining capacity, container, and slot. It persists action intent before purchases or feeding and yields racing only when the current plan permits it.
 - Target feeding spends one confirmed stable session per adaptive round, consumes stocked preferred-grade feed first, and can fall back to Grade 1 gil feed when higher-grade MGP is exhausted.

@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Numerics;
-using System.Reflection;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Windowing;
@@ -89,7 +88,11 @@ public sealed class MainWindow : Window, IDisposable
         windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
     }
 
-    public override void PostDraw() => windowMotion.Restore(this);
+    public override void PostDraw()
+    {
+        windowMotion.Restore(this);
+        UiGui.PaintTitleWithImage(this, PluginInfo.DisplayName + " v" + (typeof(Plugin).Assembly.GetName().Version?.ToString() ?? "0.0.0.0"));
+    }
 
     public override void Draw()
     {
@@ -102,8 +105,6 @@ public sealed class MainWindow : Window, IDisposable
     internal void DrawPresentation(ChocoboTrainingSnapshot snapshot, ChocoboTrainingSnapshot projected, FeedPurchasePlan purchasePlan, int plannedSessions)
     {
         var cfg = plugin.Configuration;
-        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
-        UiGui.TitleWithButtons(PluginInfo.DisplayName, $"{PluginInfo.DisplayName} v{version}", this);
 
         DrawHeader();
 
