@@ -25,10 +25,29 @@ public sealed class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         windowMotion.DrawChrome();
-        var cfg = plugin.Configuration;
         UiGui.Title(PluginInfo.DisplayName + " Settings", PluginInfo.DisplayName + " — " + UiText.T("Settings"));
-        plugin.Appearance.DrawWindowAppearanceSettings();
-        ImGui.Separator();
+        var settingsRoot = ImGui.GetID("");
+        using var tabs = MaterialTabs.Begin("ChokeAboSettingsTabs", new[] { UiText.T("Settings"), UiText.T("Window appearance") }, ImGuiTabBarFlags.FittingPolicyScroll);
+        if (!tabs.Visible) return;
+        using (var general = MaterialTabs.Item(UiText.T("Settings") + "###Settings", ImGuiTabItemFlags.NoPushId))
+            if (general.Visible)
+            {
+                ImGuiP.PushOverrideID(settingsRoot);
+                try { DrawGeneralSettings(); }
+                finally { ImGui.PopID(); }
+            }
+        using (var appearance = MaterialTabs.Item(UiText.T("Window appearance") + "###WindowAppearance", ImGuiTabItemFlags.NoPushId))
+            if (appearance.Visible)
+            {
+                ImGuiP.PushOverrideID(settingsRoot);
+                try { plugin.Appearance.DrawWindowAppearanceSettings(); }
+                finally { ImGui.PopID(); }
+            }
+    }
+
+    private void DrawGeneralSettings()
+    {
+        var cfg = plugin.Configuration;
         if (UiGui.SmallButton("Ko-fi##ChokeAboConfig"))
             Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
         UiGui.SameLineIfFits(UiGui.ButtonWidth("Discord"));
