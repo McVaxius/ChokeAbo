@@ -370,6 +370,7 @@ public sealed class MainWindow : Window, IDisposable
             UiGui.TextDisabled("Offspring sex is random. Two coverings do not guarantee a male and a female.");
             using var stockTableStyle = new MaterialStyleScope();
             stockTableStyle.Style(ImGuiStyleVar.CellPadding, new Vector2(ChokePresentation.Compact ? 6 : 10, ChokePresentation.Compact ? 4 : 8) * scale);
+            using var tightRows = ChokePresentation.Compact ? MaterialTable.PushTightRows() : default;
             var padding = 2 * ImGui.GetStyle().CellPadding.X;
             var stockWidth = Math.Max(ImGui.GetContentRegionAvail().X, minimumStockWidth);
             var normalColumn = stockWidth / 7.5f;
@@ -603,6 +604,7 @@ public sealed class MainWindow : Window, IDisposable
 
     private void DrawPlanEditor(Configuration cfg, ChocoboTrainingSnapshot snapshot, ChocoboTrainingSnapshot projected)
     {
+        using var tightRows = plugin.Configuration.UiCompact ? MaterialTable.PushTightRows() : default;
         UiGui.TextUnformatted("Training Plan");
         UiGui.TextWrapped("Choose the number of training sessions and feed grade for each stat.");
 
@@ -670,6 +672,7 @@ public sealed class MainWindow : Window, IDisposable
 
     private void DrawPurchasePlan(ChocoboTrainingSnapshot snapshot, FeedPurchasePlan purchasePlan)
     {
+        using var tightRows = ChokePresentation.Compact ? MaterialTable.PushTightRows() : default;
         UiGui.TextUnformatted("Purchase Plan");
         UiGui.TextWrapped("Exact shopping list for the current plan.");
 
