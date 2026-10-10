@@ -182,20 +182,21 @@ public sealed class MainWindow : Window, IDisposable
         var gap = ImGui.GetStyle().ItemSpacing.X;
         var kofiWidth = UiGui.ButtonWidth("Support on Ko-fi", MaterialIcon.Heart);
         var languageWidth = cfg.UiLanguageVisibleOnMainWindow ? plugin.Appearance.LanguageWidth() : 0;
-        var opacityWidth = UiGui.CheckboxWidth("Transparency");
-        var tools = opacityWidth + kofiWidth + languageWidth + (cfg.UiLanguageVisibleOnMainWindow ? 2 : 1) * gap;
+        var opacityWidth = cfg.UiTransparencyVisibleOnMainWindow ? UiGui.CheckboxWidth("Transparency") : 0;
+        var tools = opacityWidth + kofiWidth + languageWidth + ((cfg.UiLanguageVisibleOnMainWindow ? 1 : 0) + (cfg.UiTransparencyVisibleOnMainWindow ? 1 : 0)) * gap;
         var right = width >= titleGroupWidth + tools + 24 * scale;
         var rowTop = right ? start.Y + 5 * scale : subtitleBottom + 12 * scale;
         var height = ChokePresentation.ControlHeight * scale;
         ImGui.SetCursorScreenPos(new Vector2(right ? start.X + width - tools : start.X, rowTop + Math.Max(0, (height - ImGui.GetFrameHeight()) * .5f)));
-        plugin.Appearance.DrawTransparencyToggle();
+        if (cfg.UiTransparencyVisibleOnMainWindow)
+            plugin.Appearance.DrawTransparencyToggle();
         void Next(float itemWidth)
         {
             var x = ImGui.GetItemRectMax().X + gap;
             if (x + itemWidth > start.X + width) { x = start.X; rowTop += height + ImGui.GetStyle().ItemSpacing.Y; }
             ImGui.SetCursorScreenPos(new Vector2(x, rowTop));
         }
-        Next(kofiWidth);
+        if (cfg.UiTransparencyVisibleOnMainWindow) Next(kofiWidth);
         if (UiGui.Button("Ko-fi", new Vector2(0, 0), MaterialIcon.Heart, UiText.T("Support on Ko-fi")))
             Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
         if (cfg.UiLanguageVisibleOnMainWindow)

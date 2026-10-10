@@ -81,6 +81,7 @@ public sealed class Plugin : IDalamudPlugin
     public Plugin()
     {
         Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
+        if (Configuration.ApplyCompactDefaults()) Configuration.Save();
         Configuration.BreedingStates ??= new();
         CharacterStateService = new CharacterStateService(Configuration);
         InventoryService = new GameInventoryService(DataManager, Log);
