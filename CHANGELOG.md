@@ -1,5 +1,6 @@
 2026-10-09 - Tight compact planning grids (I503/I509)
 
+
 - Apply adjacent table rows and narrow column insets to compact training, purchase-plan and breeding-stock grids. Preserve editor padding, purchasing actions, inventory data and regular-mode spacing.
 
 2026-10-09 - Separate XA Slave log-tools shortcut (I512)
