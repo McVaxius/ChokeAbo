@@ -43,7 +43,7 @@ public sealed class PopupCaptureWindow : Window
     public override void Draw()
     {
         windowMotion.DrawChrome();
-        UiGui.Title("Choke-abo Popup Capture", "Choke-abo — " + UiText.T("Popup Capture"));
+        UiGui.TitleWithButtons("Choke-abo Popup Capture", "Choke-abo — " + UiText.T("Popup Capture"), this);
         DrawCaptureButton("Start/Stop Retirement", PopupCaptureKind.Retirement);
         DrawCaptureButton("Start/Stop Covering Selector", PopupCaptureKind.CoveringSelector);
         DrawCaptureButton("Start/Stop Fledgling Selector", PopupCaptureKind.FledglingSelector);

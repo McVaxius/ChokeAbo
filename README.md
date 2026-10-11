@@ -1,5 +1,7 @@
 # Choke-abo
 
+Native titlebars expose language, compact spacing, transparency and colour shortcuts, including while collapsed. Appearance settings retains the full editors and Main's saved icon-visibility choices.
+
 ---
 
 **Help fund my AI overlords' coffee addiction so they can keep generating more plugins instead of taking over the world**

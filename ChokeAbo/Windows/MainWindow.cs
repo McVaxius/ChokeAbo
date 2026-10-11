@@ -166,44 +166,18 @@ public sealed class MainWindow : Window, IDisposable
         ImGui.SetCursorScreenPos(start + new Vector2(titleOffset, 0));
         using (UiText.Font(cfg.UiCompact ? UiFontRole.CompactTitle : UiFontRole.Title)) MaterialText.Text(PluginInfo.DisplayName);
         var titleRight = ImGui.GetItemRectMax().X;
-        var titleHeight = ImGui.GetItemRectSize().Y;
         var titleGroupWidth = titleRight - start.X;
-        if (cfg.UiCompactVisibleOnMainWindow)
-        {
-            var compact = cfg.UiCompact;
-            ImGui.SetCursorScreenPos(new Vector2(titleRight + 12 * scale, start.Y + Math.Max(0, (titleHeight - ImGui.GetFrameHeight()) * .5f)));
-            if (ImGui.Checkbox("C", ref compact)) { cfg.UiCompact = compact; cfg.Save(); }
-            if (ImGui.IsItemHovered()) UiGui.SetTooltip("Compact mode");
-            titleGroupWidth = ImGui.GetItemRectMax().X - start.X;
-        }
         ImGui.SetCursorScreenPos(start + new Vector2(titleOffset, (cfg.UiCompact ? 34 : 40) * scale));
         UiGui.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, "FFXIV Dalamud Plugin");
         var subtitleBottom = ImGui.GetItemRectMax().Y;
-        var gap = ImGui.GetStyle().ItemSpacing.X;
         var kofiWidth = UiGui.ButtonWidth("Support on Ko-fi", MaterialIcon.Heart);
-        var languageWidth = cfg.UiLanguageVisibleOnMainWindow ? plugin.Appearance.LanguageWidth() : 0;
-        var opacityWidth = cfg.UiTransparencyVisibleOnMainWindow ? UiGui.CheckboxWidth("Transparency") : 0;
-        var tools = opacityWidth + kofiWidth + languageWidth + ((cfg.UiLanguageVisibleOnMainWindow ? 1 : 0) + (cfg.UiTransparencyVisibleOnMainWindow ? 1 : 0)) * gap;
+        var tools = kofiWidth;
         var right = width >= titleGroupWidth + tools + 24 * scale;
         var rowTop = right ? start.Y + 5 * scale : subtitleBottom + 12 * scale;
         var height = ChokePresentation.ControlHeight * scale;
         ImGui.SetCursorScreenPos(new Vector2(right ? start.X + width - tools : start.X, rowTop + Math.Max(0, (height - ImGui.GetFrameHeight()) * .5f)));
-        if (cfg.UiTransparencyVisibleOnMainWindow)
-            plugin.Appearance.DrawTransparencyToggle();
-        void Next(float itemWidth)
-        {
-            var x = ImGui.GetItemRectMax().X + gap;
-            if (x + itemWidth > start.X + width) { x = start.X; rowTop += height + ImGui.GetStyle().ItemSpacing.Y; }
-            ImGui.SetCursorScreenPos(new Vector2(x, rowTop));
-        }
-        if (cfg.UiTransparencyVisibleOnMainWindow) Next(kofiWidth);
         if (UiGui.Button("Ko-fi", new Vector2(0, 0), MaterialIcon.Heart, UiText.T("Support on Ko-fi")))
             Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
-        if (cfg.UiLanguageVisibleOnMainWindow)
-        {
-            Next(languageWidth);
-            plugin.Appearance.DrawLanguageSelector();
-        }
         ImGui.SetCursorScreenPos(new Vector2(start.X, Math.Max(start.Y + (cfg.UiCompact ? 68 : 82) * scale,
             ImGui.GetItemRectMax().Y + 12 * scale)));
         ImGui.Separator();
