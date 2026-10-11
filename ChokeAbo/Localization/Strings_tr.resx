@@ -461,4 +461,12 @@
   <data name="Opens XA Slave&apos;s Utility &gt; XA Mods panel, which contains Dalamud Log Cleaner." xml:space="preserve"><value>Dalamud Log Cleaner&apos;ı içeren XA Slave Utility &gt; XA Mods panelini açar.</value></data>
   <data name="XA Slave log tools could not be opened." xml:space="preserve"><value>XA Slave günlük araçları açılamadı.</value></data>
   <data name="Transparency visible on main window" xml:space="preserve"><value>Ana pencerede saydamlığı göster</value></data>
+  <data name="Show titlebar status" xml:space="preserve"><value>Başlık çubuğunda durumu göster</value></data>
+  <data name="Detailed titlebar status" xml:space="preserve"><value>Ayrıntılı başlık çubuğu durumu</value></data>
+  <data name="Blocked" xml:space="preserve"><value>Engellendi</value></data>
+  <data name="Buying" xml:space="preserve"><value>Satın alınıyor</value></data>
+  <data name="Training" xml:space="preserve"><value>Eğitiliyor</value></data>
+  <data name="Racing" xml:space="preserve"><value>Yarışıyor</value></data>
+  <data name="Paused" xml:space="preserve"><value>Duraklatıldı</value></data>
+  <data name="Pedigree {0}" xml:space="preserve"><value>Soy {0}</value></data>
 </root>

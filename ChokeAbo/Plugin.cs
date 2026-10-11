@@ -9,6 +9,7 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ChokeAbo.Services;
 using ChokeAbo.Windows;
+using ChokeAbo.Ui;
 using System.Linq;
 
 namespace ChokeAbo;
@@ -36,6 +37,37 @@ public sealed class Plugin : IDalamudPlugin
     private const string DutyMainWindowDeniedMessage = "Choke-abo main window closed because you are in a duty.";
     private static readonly TimeSpan DutyToastThrottle = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan CleanupRetryDelay = TimeSpan.FromSeconds(2);
+
+    internal AethertekUI.MaterialTitlebarStatus? TitlebarStatus
+    {
+        get
+        {
+            if (!Configuration.UiShowTitlebarStatus) return null;
+            var phase = PlayerState.ContentId == 0 ? BreedingPhase.Idle : CharacterStateService.GetCurrent().Phase;
+            var blocked = phase == BreedingPhase.Blocked || VendorPurchaseService.IsFailed || StableFeedingService.IsFailed;
+            var state = UiText.T(blocked ? "Blocked" : VendorPurchaseService.IsRunning ? "Buying" : StableFeedingService.IsRunning ? "Training" : phase switch
+            {
+                BreedingPhase.Racing => "Racing",
+                BreedingPhase.Feeding => "Feeding the racer",
+                BreedingPhase.CoveringWait => "Covering in progress",
+                BreedingPhase.AdoptionPendingCapture => "Collecting offspring",
+                BreedingPhase.RegistrationPendingCapture => "Registering offspring",
+                BreedingPhase.RetirementPendingCapture => "Retiring the intermediate racer",
+                BreedingPhase.CoveringPendingCapture => "Preparing covering",
+                BreedingPhase.Paused => "Paused",
+                _ => IsAutomationRunning ? "Running" : Configuration.PluginEnabled ? "Ready" : "Idle",
+            });
+            var concise = state;
+            if (ChocoboStatsService.Snapshot.IsLoaded)
+                concise += " \u00b7 " + UiText.F("Pedigree {0}", ChocoboStatsService.Snapshot.PedigreeLevel);
+            var action = cleanupMode != CleanupMode.None ? CleanupStatusText : VendorPurchaseService.IsRunning || VendorPurchaseService.IsFailed
+                ? VendorPurchaseService.StatusText : StableFeedingService.IsRunning || StableFeedingService.IsFailed ? StableFeedingService.StatusText
+                : PlayerState.ContentId != 0 ? BreedingService.StatusText : "";
+            var details = concise + (string.IsNullOrWhiteSpace(action) ? "" : " \u00b7 " + UiText.T(action));
+            return new(Configuration.UiDetailedTitlebarStatus ? details : concise, concise, details,
+                blocked ? AethertekUI.MaterialTheme.Current.Colors.Error : AethertekUI.MaterialTheme.Current.Colors.OnSurfaceVariant);
+        }
+    }
 
     public Configuration Configuration { get; }
     internal ChocoboStatsService ChocoboStatsService { get; }

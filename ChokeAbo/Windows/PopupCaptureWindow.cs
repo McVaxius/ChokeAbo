@@ -38,7 +38,11 @@ public sealed class PopupCaptureWindow : Window
         windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
     }
 
-    public override void PostDraw() => windowMotion.Restore(this);
+    public override void PostDraw()
+    {
+        windowMotion.Restore(this);
+        UiGui.PaintTitleWithImageAndStatus(this, "Choke-abo \u2014 " + UiText.T("Popup Capture"), status: plugin.TitlebarStatus);
+    }
 
     public override void Draw()
     {

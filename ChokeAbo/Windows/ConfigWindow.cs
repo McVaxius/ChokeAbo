@@ -22,7 +22,11 @@ public sealed class ConfigWindow : Window, IDisposable
     }
     public void Dispose() { }
     public override void PreDraw() => windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
-    public override void PostDraw() => windowMotion.Restore(this);
+    public override void PostDraw()
+    {
+        windowMotion.Restore(this);
+        UiGui.PaintTitleWithImageAndStatus(this, PluginInfo.DisplayName + " \u2014 " + UiText.T("Settings"), status: plugin.TitlebarStatus);
+    }
     public override void Draw()
     {
         windowMotion.DrawChrome();
