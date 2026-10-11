@@ -1610,7 +1610,8 @@ public sealed partial class BreedingService
         var node = confirm->GetTextNodeById(2);
         if (confirm->BlockedParentId != coupling->Id || node == null) return false;
         var text = Dalamud.Game.Text.SeStringHandling.SeString.Parse(node->NodeText.AsSpan()).TextValue;
-        return text == $"Proceed with the covering for {fee:N0} gil?" || text == $"Proceed with the covering for {fee} gil?";
+        return text == FormattableString.Invariant($"Proceed with the covering for {fee:N0} gil?") ||
+            text == FormattableString.Invariant($"Proceed with the covering for {fee} gil?");
     }
 
     private unsafe bool TryReadSelectedCovering(BreedingCharacterState state, out uint fee)

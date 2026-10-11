@@ -412,8 +412,8 @@ public static class GameHelpers
         if (promptNode == null) return false;
         var prompt = Dalamud.Game.Text.SeStringHandling.SeString.Parse(promptNode->NodeText.AsSpan()).TextValue;
         var cost = checked((ulong)price * quantity);
-        return prompt == $"Exchange {cost:N0} MGP for the following item?" ||
-            prompt == $"Exchange {cost} MGP for the following item?";
+        return prompt == FormattableString.Invariant($"Exchange {cost:N0} MGP for the following item?") ||
+            prompt == FormattableString.Invariant($"Exchange {cost} MGP for the following item?");
     }
 
     public static bool IsLifestreamBusy()

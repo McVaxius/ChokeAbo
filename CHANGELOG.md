@@ -1,3 +1,7 @@
+2026-10-11 - Culture-safe game confirmation prices (I538)
+
+- Match supported English MGP purchase and covering-fee confirmation prices using the game's comma grouping, independently of the operating-system number format. Preserve existing item, quantity, parent-dialog and selected-stock checks.
+
 2026-10-11 - Native titlebar status (I536)
 
 - Show breeding, racing, training and purchasing states, current pedigree and blockers in native main, settings and capture titles. Keep concise state and available numeric progress when detailed wording is off; hover retains full details.
