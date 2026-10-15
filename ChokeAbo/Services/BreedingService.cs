@@ -1296,7 +1296,10 @@ public sealed partial class BreedingService
             if (IsRetirementConfirmationVisible())
             {
                 var racer = chocoboStatsService.ReadActiveRacerSnapshot();
-                if (!racer.IsLoaded || racer.Rank < 40 || racer.Pedigree >= current.TargetPedigree ||
+                var retirementStillPlanned = current.ProtocolVersion >= 3
+                    ? PlanCurrentWorkflow(current, racer, ChocoboInventoryModel.Enumerate(inventoryService)).Action == TargetPlanAction.RetireActive
+                    : racer.Pedigree < current.TargetPedigree;
+                if (!racer.IsLoaded || racer.Rank < 40 || !retirementStillPlanned ||
                     racer.Sex == ChocoboSex.Unknown || inventoryService.GetFreeMainInventorySlotCount() == 0)
                 { Block("Retirement requires an intermediate rank40 racer and room for its retained form."); return; }
                 var retiredItem = (racer.Sex == ChocoboSex.Female ? ChocoboInventoryModel.FirstFemaleRetiredItemId : ChocoboInventoryModel.FirstRetiredItemId)

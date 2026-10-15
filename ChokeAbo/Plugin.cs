@@ -158,7 +158,7 @@ public sealed class Plugin : IDalamudPlugin
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261006-98; native duty inspection available through the existing command.");
+        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261015-99; G9 printer retirement rechecks the current plan.");
     }
 
     public void Dispose()

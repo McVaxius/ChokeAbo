@@ -1,3 +1,9 @@
+2026-10-15 - Verify G9 printer-parent retirement
+
+- Recheck the current breeding plan before confirming retirement. Allow a matching rank-40-or-higher G9 parent in explicit offspring production while retaining G9 during ordinary pedigree progression.
+- Preserve the selected trait, inventory-space checks and older IPC retirement boundaries.
+- For explicit G9 counterpart preparation, use a retained G9 parent with a G9 permit when available, and raise the replacement to retirement rank40. Ordinary G9 progression still stops at racing rank50.
+
 2026-10-11 - Culture-safe game confirmation prices (I538)
 
 - Match supported English MGP purchase and covering-fee confirmation prices using the game's comma grouping, independently of the operating-system number format. Preserve existing item, quantity, parent-dialog and selected-stock checks.

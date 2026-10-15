@@ -298,6 +298,9 @@ public static class TargetPedigreePlanner
                 return TargetPedigreePlan.Blocked("Current racer pedigree, racing rank, or sex is unavailable.");
             if (racer.Pedigree < pedigreeFloor)
                 return TargetPedigreePlan.Blocked($"The registered G{racer.Pedigree} racer is below the retained G{pedigreeFloor} pedigree; lower-generation racing is stopped.");
+            if (produceCounterpart && racer.Pedigree == 9)
+                return new(racer.Rank >= 40 ? TargetPlanAction.RetireActive : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
+                    $"Prepare the G9 breeding parent: racing rank {racer.Rank}/40.", null, null, CoveringPurpose.ProduceMissingSex);
             if (racer.Pedigree >= targetPedigree)
                 return racer.Pedigree == targetPedigree
                     ? new(racer.Rank == 50 ? TargetPlanAction.TargetReady : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
@@ -322,8 +325,9 @@ public static class TargetPedigreePlanner
         {
             if (TrySelectPair(usable.Where(form => form.Kind == ChocoboFormKind.Retired).ToArray(), pedigreeFloor, out _, out _))
                 return TargetPedigreePlan.Blocked($"A usable G{pedigreeFloor} pair is already retained. Select owned parents or advance-pedigree permits before another covering.");
-            var preceding = pedigreeFloor - 1;
-            var source = OrderParents(parents.Where(form => form.Pedigree == preceding)).FirstOrDefaultNullable();
+            var preceding = pedigreeFloor == 9 && usable.Any(form => form.Kind == ChocoboFormKind.Retired && form.Pedigree == 9)
+                ? 9 : pedigreeFloor - 1;
+            var source = OrderParents(usable.Where(form => form.Kind == ChocoboFormKind.Retired && form.Pedigree == preceding)).FirstOrDefaultNullable();
             if (!source.HasValue)
                 return TargetPedigreePlan.Blocked($"No usable G{preceding} parent remains to produce a G{pedigreeFloor} counterpart. Lower-generation covering is stopped.");
             return PlanPermit(source.Value, usable, CoveringPurpose.ProduceMissingSex);
