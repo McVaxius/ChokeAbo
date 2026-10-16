@@ -1,3 +1,8 @@
+2026-10-16 - Collect eligible G9 counterpart coverings
+
+- Accept pedigree-9 parents during collection of an already submitted covering. Keep the result capped at pedigree9 and retain the original deadline, exact proof quantity and parent evidence checks.
+- Restore a known owned covering when resuming after a blocked collection or changing future pairing settings. Preserve its original deadline and parents instead of treating the retained proof as unowned.
+
 2026-10-15 - Verify G9 printer-parent retirement
 
 - Recheck the current breeding plan before confirming retirement. Allow a matching rank-40-or-higher G9 parent in explicit offspring production while retaining G9 during ordinary pedigree progression.

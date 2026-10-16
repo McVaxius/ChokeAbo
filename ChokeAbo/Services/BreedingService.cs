@@ -192,15 +192,13 @@ public sealed partial class BreedingService
             return GetTargetCycleStatus(contentId);
         }
 
+        var retainCovering = state.ExecutionOwner == BreedingExecutionOwner.Target &&
+            state.CoveringEligibleAtUtc != DateTime.MinValue &&
+            state.PrimarySelection != null && state.PartnerSelection != null &&
+            inventoryService.GetItemCount(ChocoboInventoryModel.ProofOfCoveringItemId) == 1;
         if (state.ExecutionOwner != BreedingExecutionOwner.Target || inputsChanged)
         {
             // Settings for the next pairing must not erase an already submitted covering.
-            var retainCovering = state.ExecutionOwner == BreedingExecutionOwner.Target &&
-                (state.Phase == BreedingPhase.CoveringWait ||
-                 state.Phase == BreedingPhase.Paused && state.PhaseBeforePause == BreedingPhase.CoveringWait) &&
-                state.CoveringEligibleAtUtc != DateTime.MinValue &&
-                state.PrimarySelection != null && state.PartnerSelection != null &&
-                inventoryService.GetItemCount(ChocoboInventoryModel.ProofOfCoveringItemId) == 1;
             StopOwnedFeedServices();
             characterStateService.TransitionCurrent(retainCovering ? BreedingPhase.CoveringWait : BreedingPhase.Planning, current =>
             {
@@ -272,7 +270,10 @@ public sealed partial class BreedingService
             characterStateService.TransitionCurrent(BreedingPhase.PurchasingFeed, current => current.BlockReason = string.Empty);
         if (request.Resume && state.Phase == BreedingPhase.Blocked &&
             (state.ActionBaseline == null || state.ActionEvidenceAtUtc >= state.ActionRequestedAtUtc))
-            characterStateService.TransitionCurrent(BreedingPhase.Planning, current => current.BlockReason = string.Empty);
+            characterStateService.TransitionCurrent(
+                retainCovering && state.ActionBaseline == null && state.CollectionBaseline == null
+                    ? BreedingPhase.CoveringWait : BreedingPhase.Planning,
+                current => current.BlockReason = string.Empty);
         if (request.Resume && state.ActionBaseline?.ItemId is >= ChocoboInventoryModel.FirstRetiredItemId and <= ChocoboInventoryModel.LastRetiredItemId)
             characterStateService.TransitionCurrent(BreedingPhase.RetirementPendingCapture);
         if (request.Resume && state.RequiredPurchaseItemId != 0 && state.ActionBaseline?.ItemId == state.RequiredPurchaseItemId)
@@ -1557,7 +1558,7 @@ public sealed partial class BreedingService
             proofs.Length != 1 || proofs[0].Quantity != 1 || state.PrimarySelection is not { } parent ||
             !ChocoboInventoryForm.TryDecode(new InventoryItemSnapshot(parent.ItemId, string.Empty, parent.Condition,
                 parent.Quantity, parent.InventoryType, parent.Slot), out var parentForm) || parentForm.Kind != ChocoboFormKind.Retired ||
-            parentForm.Pedigree is < 1 or > 9 || parentForm.Pedigree == 9 && state.OffspringGoal == OffspringGoal.ReachPedigree)
+            parentForm.Pedigree is < 1 or > 9)
         { Block("Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering."); return true; }
         var pedigree = Math.Min(9, parentForm.Pedigree + 1);
         if (Plugin.TargetManager.Target?.BaseId == 1010472 &&
