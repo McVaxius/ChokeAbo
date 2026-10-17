@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>경주 중</value></data>
   <data name="Paused" xml:space="preserve"><value>일시 중지</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>혈통 {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>경주 랭크</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>교배가 완료되었습니다. 새끼를 수령합니다.</value></data>
 </root>

@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>Rennen</value></data>
   <data name="Paused" xml:space="preserve"><value>Pausiert</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>Zuchtstufe {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>Rennrang</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>Die Paarung ist abgeschlossen; das Küken wird abgeholt.</value></data>
 </root>

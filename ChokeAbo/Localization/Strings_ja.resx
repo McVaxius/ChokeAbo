@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>レース中</value></data>
   <data name="Paused" xml:space="preserve"><value>一時停止</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>血統レベル {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>競走ランク</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>交配が完了しました。幼鳥を受け取っています。</value></data>
 </root>

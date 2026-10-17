@@ -556,7 +556,7 @@ public sealed partial class BreedingService
                 StartTargetFeedRound(state);
                 break;
             case TargetPlanAction.RetireActive:
-                TransitionCaptureBoundary(BreedingPhase.RetirementPendingCapture, plan, "retirement.md");
+                TransitionCaptureBoundary(BreedingPhase.RetirementPendingCapture, plan);
                 break;
             case TargetPlanAction.BuyCoveringPermit:
             case TargetPlanAction.BuyRegistrationForm:
@@ -569,16 +569,16 @@ public sealed partial class BreedingService
                 BeginNativeUiStep();
                 break;
             case TargetPlanAction.RegisterFledgling:
-                TransitionCaptureBoundary(BreedingPhase.RegistrationPendingCapture, plan, "fselector.md");
+                TransitionCaptureBoundary(BreedingPhase.RegistrationPendingCapture, plan);
                 break;
             case TargetPlanAction.CoverPair:
-                TransitionCaptureBoundary(BreedingPhase.CoveringPendingCapture, plan, "cselector.md");
+                TransitionCaptureBoundary(BreedingPhase.CoveringPendingCapture, plan);
                 break;
             case TargetPlanAction.WaitForCovering:
                 Block("An unowned Proof of Covering is present; its exact start time cannot be inferred safely.");
                 break;
             case TargetPlanAction.AdoptFledgling:
-                TransitionCaptureBoundary(BreedingPhase.AdoptionPendingCapture, plan, "adoption.md");
+                TransitionCaptureBoundary(BreedingPhase.AdoptionPendingCapture, plan);
                 break;
             default:
                 Block(plan.Reason);
@@ -928,7 +928,7 @@ public sealed partial class BreedingService
 
         characterStateService.TransitionCurrent(BreedingPhase.AdoptionPendingCapture, current =>
         {
-            current.BlockReason = "Covering is eligible; collection requires a verified native UI mapping.";
+            current.BlockReason = "Covering is ready; collecting the offspring.";
         });
         BeginNativeUiStep();
     }
@@ -953,14 +953,14 @@ public sealed partial class BreedingService
         });
     }
 
-    private void TransitionCaptureBoundary(BreedingPhase phase, TargetPedigreePlan plan, string captureFile)
+    private void TransitionCaptureBoundary(BreedingPhase phase, TargetPedigreePlan plan)
     {
         characterStateService.TransitionCurrent(phase, current =>
         {
             current.PrimarySelection = plan.Primary.HasValue ? SelectedItemEvidence.From(plan.Primary.Value) : null;
             current.PartnerSelection = plan.Partner.HasValue ? SelectedItemEvidence.From(plan.Partner.Value) : null;
             current.CoveringPurpose = plan.CoveringPurpose;
-            current.BlockReason = $"{plan.Reason} Native UI selection remains unverified (capture reference: {captureFile}).";
+            current.BlockReason = plan.Reason;
         });
         if (phase is BreedingPhase.RetirementPendingCapture or BreedingPhase.RegistrationPendingCapture or BreedingPhase.CoveringPendingCapture)
             BeginNativeUiStep();

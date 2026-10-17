@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>Đang đua</value></data>
   <data name="Paused" xml:space="preserve"><value>Tạm dừng</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>Phả hệ {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>Hạng đua</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>Phối giống đã xong; đang nhận chocobo con.</value></data>
 </root>

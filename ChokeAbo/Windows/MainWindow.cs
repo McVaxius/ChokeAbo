@@ -272,7 +272,7 @@ public sealed class MainWindow : Window, IDisposable
                         ImGui.TableSetColumnIndex(1); MaterialText.Text(status.Pedigree > 0 ? status.Pedigree.ToString(UiText.Current.Culture) : UiText.T("Unknown"));
                         ImGui.TableSetColumnIndex(2); UiGui.Text("Inherited ability");
                         ImGui.TableSetColumnIndex(3); DrawAbilityValue(snapshot.InheritedAbilityId);
-                        ImGui.TableNextRow(); ImGui.TableSetColumnIndex(0); UiGui.Text("Rank");
+                        ImGui.TableNextRow(); ImGui.TableSetColumnIndex(0); UiGui.Text("Racing rank");
                         ImGui.TableSetColumnIndex(1); MaterialText.Text(status.RacingRank > 0 ? status.RacingRank.ToString(UiText.Current.Culture) : UiText.T("Unknown"));
                         ImGui.TableSetColumnIndex(2); UiGui.Text("Learned ability");
                         ImGui.TableSetColumnIndex(3); DrawAbilityValue(snapshot.LearnedAbilityId);

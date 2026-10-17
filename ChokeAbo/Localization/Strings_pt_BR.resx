@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>Em corrida</value></data>
   <data name="Paused" xml:space="preserve"><value>Pausado</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>Pedigree {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>Rank de corrida</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>Reprodução concluída; coletando o filhote.</value></data>
 </root>

@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>Yarışıyor</value></data>
   <data name="Paused" xml:space="preserve"><value>Duraklatıldı</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>Soy {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>Yarış rütbesi</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>Çiftleşme tamamlandı; yavru teslim alınıyor.</value></data>
 </root>

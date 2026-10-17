@@ -469,4 +469,6 @@
   <data name="Racing" xml:space="preserve"><value>Гонка</value></data>
   <data name="Paused" xml:space="preserve"><value>Пауза</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>Родословная {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>Ранг гонщика</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>Разведение завершено; получение птенца.</value></data>
 </root>

@@ -1257,4 +1257,6 @@
   <data name="Racing" xml:space="preserve"><value>रेस में</value></data>
   <data name="Paused" xml:space="preserve"><value>रुका हुआ</value></data>
   <data name="Pedigree {0}" xml:space="preserve"><value>वंशावली {0}</value></data>
+  <data name="Racing rank" xml:space="preserve"><value>रेसिंग रैंक</value></data>
+  <data name="Covering is ready; collecting the offspring." xml:space="preserve"><value>प्रजनन तैयार है; बच्चे को प्राप्त किया जा रहा है।</value></data>
 </root>
