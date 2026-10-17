@@ -336,10 +336,13 @@ public sealed partial class BreedingService
     public TargetCycleStatus SuspendTargetCycle(ulong contentId)
     {
         if (contentId != Plugin.PlayerState.ContentId) return BuildProtocolBlock(Plugin.PlayerState.ContentId, "Suspend identity mismatch.");
+        if (pauseAfterCollection && characterStateService.GetCurrent().ExecutionOwner == BreedingExecutionOwner.Target)
+            characterStateService.SaveCurrent(current => current.PauseRequested = true);
         pauseAfterCollection = false;
         CloseOwnedNativeInventory();
         targetLeaseUntilUtc = DateTime.MinValue;
         StopOwnedFeedServices();
+        PauseAtSafeBoundaryIfRequested();
         return GetTargetCycleStatus(contentId);
     }
 
@@ -2080,7 +2083,7 @@ public sealed partial class BreedingService
         if (state.CoveringEligibleAtUtc == DateTime.MinValue)
             return "Covering wait has no valid eligibility evidence.";
         if (DateTime.UtcNow >= state.CoveringEligibleAtUtc)
-            return "Covering is eligible; adoption is awaiting exact capture evidence.";
+            return "Covering is ready for offspring collection.";
 
         return $"Covering wait until {state.CoveringEligibleAtUtc:u}.";
     }

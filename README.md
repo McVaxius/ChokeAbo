@@ -24,7 +24,7 @@ Regular and compact windows share the saved colour and language choice. The inte
 
 ## Current Status
 
-Stage 1 target-pedigree automation is implemented and builds in `Debug x64`. Inventory decoding, deterministic planning, per-character lifecycle persistence, adaptive feeding, V1/V2 IPC, and the passive dialog recorder are present. Exact retirement, covering, fledgling-selection, and adoption actions remain safely blocked until the four recorder captures provide their real addon mappings; this has not been accepted live in game.
+Target-pedigree progression performs retirement, owned-parent or permit covering, offspring collection and registration through verified native interactions. It confirms game and inventory changes before advancing and preserves pending evidence across reloads. VERMAXION owns progression goals, spending reserves and feeding policy through V3 IPC; older IPC remains available for compatible workflows. G9 colour and inherited-ability production are implemented; their final production and interface acceptance is still in progress.
 
 - Solution: `Z:\ChokeAbo\ChokeAbo.sln`
 - Project: `Z:\ChokeAbo\ChokeAbo\ChokeAbo.csproj`

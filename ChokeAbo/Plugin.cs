@@ -52,7 +52,8 @@ public sealed class Plugin : IDalamudPlugin
                 BreedingPhase.CoveringWait => "Covering in progress",
                 BreedingPhase.AdoptionPendingCapture => "Collecting offspring",
                 BreedingPhase.RegistrationPendingCapture => "Registering offspring",
-                BreedingPhase.RetirementPendingCapture => "Retiring the intermediate racer",
+                BreedingPhase.RetirementPendingCapture => CharacterStateService.GetCurrent().OffspringGoal == OffspringGoal.ReachPedigree
+                    ? "Retiring the intermediate racer" : "Retiring the G9 breeding parent",
                 BreedingPhase.CoveringPendingCapture => "Preparing covering",
                 BreedingPhase.Paused => "Paused",
                 _ => IsAutomationRunning ? "Running" : Configuration.PluginEnabled ? "Ready" : "Idle",
@@ -158,7 +159,7 @@ public sealed class Plugin : IDalamudPlugin
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261017-103; native breeding actions show their actual next step and racing rank is labelled explicitly.");
+        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261017-104; interrupted collection-only work persists its pause and original evidence.");
     }
 
     public void Dispose()

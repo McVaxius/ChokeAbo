@@ -262,7 +262,7 @@ public sealed class MainWindow : Window, IDisposable
                 {
                     using var summaryStyle = new MaterialStyleScope();
                     summaryStyle.Style(ImGuiStyleVar.CellPadding, new Vector2(ChokePresentation.Compact ? 8 : 10, ChokePresentation.Compact ? 5 : 7) * scale);
-                    if (summary.Visible && ImGui.BeginTable("##ProgressionSummary", 4, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV))
+                    if (summary.Visible && ImGui.BeginTable("##ProgressionSummary", 4, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV | ImGuiTableFlags.PadOuterX))
                     {
                         ImGui.TableSetupColumn("##left-label", ImGuiTableColumnFlags.WidthStretch, .19f);
                         ImGui.TableSetupColumn("##left-value", ImGuiTableColumnFlags.WidthStretch, .31f);
@@ -291,10 +291,9 @@ public sealed class MainWindow : Window, IDisposable
                         ImGui.TableNextRow(); ImGui.TableSetColumnIndex(0); UiGui.Text("Phase");
                         ImGui.TableSetColumnIndex(1); UiGui.Text(DescribePhase(state, status));
                         ImGui.TableSetColumnIndex(2); UiGui.Text("Covering ready in"); ImGui.TableSetColumnIndex(3);
-                        var coveringAt = state.CoveringEligibleAtUtc;
-                        if ((state.Phase == BreedingPhase.CoveringWait || state.Phase == BreedingPhase.Paused && state.PhaseBeforePause == BreedingPhase.CoveringWait) && coveringAt != DateTime.MinValue)
+                        if (status.NextCoveringEligibilityUtc is { } coveringAt)
                         {
-                            var remaining = coveringAt.ToUniversalTime() - now;
+                            var remaining = coveringAt.UtcDateTime - now;
                             MaterialText.Text(remaining > TimeSpan.Zero ? remaining.ToString(@"hh\:mm\:ss", UiText.Current.Culture) : UiText.T("Ready"));
                             if (ImGui.IsItemHovered()) UiGui.SetTooltip(coveringAt.ToLocalTime().ToString("g", UiText.Current.Culture));
                         }
@@ -314,7 +313,12 @@ public sealed class MainWindow : Window, IDisposable
                         if (state.OffspringGoal == OffspringGoal.AbilityOffspring) DrawAbility("Desired inherited ability", state.DesiredInheritedAbilityId);
                         else foreach (var colourId in state.AcceptableColourIds)
                             if (Plugin.DataManager.GetExcelSheet<Stain>().TryGetRow(colourId, out var acceptableColour))
-                            { DrawColourSwatch(acceptableColour.Color); ImGui.SameLine(); MaterialText.Text(acceptableColour.Name.ExtractText()); }
+                            {
+                                ImGui.PushID((int)colourId);
+                                DrawColourSwatch(acceptableColour.Color);
+                                ImGui.PopID();
+                                ImGui.SameLine(); MaterialText.Text(acceptableColour.Name.ExtractText());
+                            }
                     }
                     UiGui.Text(UiText.F("Breeding mode: {0}", UiText.T(state.BreedingMode == BreedingMode.OwnedParents ? "Owned parents" : "NPC covering permits")));
                     if (state.BreedingMode == BreedingMode.NpcPermits) UiGui.TextDisabled(state.OffspringGoal != OffspringGoal.ReachPedigree ? "Permit objective: produce G9 offspring"
@@ -526,7 +530,7 @@ public sealed class MainWindow : Window, IDisposable
             return;
         }
 
-        if (ImGui.BeginTable("ChokeAboOverviewSummary", 2, ImGuiTableFlags.SizingStretchProp))
+        if (ImGui.BeginTable("ChokeAboOverviewSummary", 2, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.PadOuterX))
         {
             ImGui.TableNextRow();
             ImGui.TableSetColumnIndex(0);
@@ -560,7 +564,7 @@ public sealed class MainWindow : Window, IDisposable
         var nowWidth = MathF.Ceiling(Math.Max(88 * MaterialTheme.Metrics.Scale, MaterialText.Measure(UiText.T("Now")).X));
         var afterWidth = MathF.Ceiling(Math.Max(88 * MaterialTheme.Metrics.Scale, MaterialText.Measure(UiText.T("After")).X));
         var projectionWidth = Math.Max(ImGui.GetContentRegionAvail().X, MaterialText.Measure(UiText.T("Stat")).X + starsWidth + nowWidth + afterWidth + 8 * ImGui.GetStyle().CellPadding.X + 5 * MaterialTheme.Metrics.Scale);
-        if (ImGui.BeginTable("ChokeAboCurrentAndProjected", 4, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV, new Vector2(projectionWidth, 0)))
+        if (ImGui.BeginTable("ChokeAboCurrentAndProjected", 4, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV | ImGuiTableFlags.PadOuterX, new Vector2(projectionWidth, 0)))
         {
             ImGui.TableSetupColumn("Stat");
             ImGui.TableSetupColumn("Stars", ImGuiTableColumnFlags.WidthFixed, starsWidth);
@@ -587,7 +591,7 @@ public sealed class MainWindow : Window, IDisposable
         var cellPadding = 2 * ImGui.GetStyle().CellPadding.X;
         var quantityWidth = MathF.Ceiling(Math.Max(80 * MaterialTheme.Metrics.Scale, MaterialText.Measure("-00000").X + 2 * ImGui.GetStyle().FramePadding.X)) + cellPadding;
         float GradeWidth(string label) => Math.Max(60 * MaterialTheme.Metrics.Scale, MaterialText.Measure(UiText.T(label)).X + cellPadding);
-        if (ImGui.BeginTable("ChokeAboPlanTable", 5, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV, new Vector2(Math.Max(ImGui.GetContentRegionAvail().X, PlanMinimumWidth()), 0)))
+        if (ImGui.BeginTable("ChokeAboPlanTable", 5, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV | ImGuiTableFlags.PadOuterX, new Vector2(Math.Max(ImGui.GetContentRegionAvail().X, PlanMinimumWidth()), 0)))
         {
             ImGui.TableSetupColumn("Stat", ImGuiTableColumnFlags.WidthStretch);
             ImGui.TableSetupColumn("Qty", ImGuiTableColumnFlags.WidthFixed, quantityWidth);
@@ -670,7 +674,7 @@ public sealed class MainWindow : Window, IDisposable
         var totalWidth = PurchaseWidth("Total", 86, purchasePlan.Entries.Select(entry => entry.TotalCost.ToString("N0", UiText.Current.Culture)));
         var tableWidth = Math.Max(ImGui.GetContentRegionAvail().X, Math.Max(160 * MaterialTheme.Metrics.Scale, MaterialText.Measure(UiText.T("Feed")).X)
             + plannedWidth + onHandWidth + currencyWidth + totalWidth + 10 * ImGui.GetStyle().CellPadding.X + 6 * MaterialTheme.Metrics.Scale);
-        if (ImGui.BeginTable("ChokeAboPurchasePlanTable", 5, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV, new Vector2(tableWidth, 0)))
+        if (ImGui.BeginTable("ChokeAboPurchasePlanTable", 5, ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.BordersInnerV | ImGuiTableFlags.PadOuterX, new Vector2(tableWidth, 0)))
         {
             ImGui.TableSetupColumn("Feed");
             ImGui.TableSetupColumn("Plan", ImGuiTableColumnFlags.WidthFixed, plannedWidth);

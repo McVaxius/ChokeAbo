@@ -31,10 +31,8 @@ public sealed class PopupCaptureWindow : Window
         var scale = MaterialTheme.Metrics.Scale;
         var widest = new[] { "Start/Stop Retirement", "Start/Stop Covering Selector", "Start/Stop Fledgling Selector", "Start/Stop Adoption", "Open Folder" }
             .Max(label => UiGui.ButtonWidth(label, MaterialIcon.Play)) + 2 * ImGui.GetStyle().WindowPadding.X;
-        var titleWidth = MaterialText.Measure("Choke-abo — " + UiText.T("Popup Capture")).X + ImGui.GetFontSize()
-            + ImGui.GetStyle().ItemInnerSpacing.X + 2 * ImGui.GetFrameHeight() + 2 * ImGui.GetStyle().FramePadding.X;
-        widest = Math.Max(widest, titleWidth);
         SizeConstraints = new WindowSizeConstraints { MinimumSize = new Vector2(Math.Max(340, widest / scale), 340), MaximumSize = new Vector2(1500, 1000) };
+        UiGui.ReserveTitleSpace(this, "Choke-abo — " + UiText.T("Popup Capture"), Math.Max(340, widest / scale));
         windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
     }
 

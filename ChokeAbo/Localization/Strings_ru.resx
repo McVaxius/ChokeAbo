@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader недоступен для взаимодействия.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Нужное взаимодействие с торговцем Lifestream/vnavmesh недоступно.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Ожидание скрещивания без действительного подтверждения готовности.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Скрещивание готово; получение ждёт точных записанных данных.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>Разведение завершено; птенца можно забрать.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>Ожидание скрещивания до {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>Недействительные настройки производства потомства.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Получено {0}/{1} подходящих потомков G9; сохранены без регистрации.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Сверьте текущее скрещивание перед следующим потомком.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Для производства нужен запас G9; гонки младших поколений остановлены.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>У гонщика G9 нет подтверждённого нужного признака. Сохраните его и выберите подходящий запас.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Растите подходящего родителя G9 до вывода: ранг {0}/40. Потомков не регистрируйте.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Вырастите племенного родителя G9 до выхода на пенсию: гоночный ранг {0}/40. Подходящее потомство остаётся незарегистрированным.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Скрестите подходящий запас G9 с сохранённым родителем G9 противоположного пола.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Нет пригодного выведенного родителя G9 с нужным признаком. Сохраните потомство и пополните запас G9.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Вырастите неподходящего потомка G9 как недостающего партнёра; подходящих сохраняйте.</value></data>

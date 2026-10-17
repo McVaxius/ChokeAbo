@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader nicht für Interaktion verfügbar.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Benötigte Lifestream/vnavmesh-Händlerinteraktion nicht verfügbar.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Paarungswartezeit ohne gültigen Berechtigungsnachweis.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Paarung bereit; Abholung wartet auf genaue Erfassungsbelege.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>Die Paarung ist abgeschlossen; das Küken kann abgeholt werden.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>Paarungswartezeit bis {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>Ungültige Nachwuchsproduktionseinstellungen.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>{0}/{1} passende G9-Nachkommen erzeugt; unregistriert behalten.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Bestehende Paarung vor weiterer Nachwuchsproduktion abgleichen.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Nachwuchsproduktion benötigt G9-Zuchtbestand; niedrigere Generationen stoppen Rennen.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Registrierter G9-Rennchocobo ohne bestätigtes Zielmerkmal. Behalten und passenden Zuchtbestand wählen.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Passenden G9-Elternteil bis Pensionierung trainieren: Rennrang {0}/40. Passenden Nachwuchs unregistriert behalten.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Trainiere das G9-Elterntier bis zur Pensionierung: Rennrang {0}/40. Passender Nachwuchs bleibt unregistriert.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Passenden G9-Bestand mit behaltenem G9-Elternteil anderen Geschlechts paaren.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Kein nutzbarer pensionierter G9-Elternteil mit bestätigtem Zielmerkmal. Nachwuchs behalten und G9-Bestand auffüllen.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Nicht passenden G9-Nachwuchs als fehlenden eigenen Partner aufziehen; passende Ergebnisse behalten.</value></data>

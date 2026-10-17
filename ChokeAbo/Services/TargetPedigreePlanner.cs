@@ -251,7 +251,7 @@ public static class TargetPedigreePlanner
                 form.Pedigree == 9 && form.HasPositiveCapacity && form.Sex != racer.Sex && matches(form) == true)))
                 return TargetPedigreePlan.Blocked("The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock.");
             return new(racer.Rank >= 40 ? TargetPlanAction.RetireActive : racer.NeedsFeeding ? TargetPlanAction.FeedActive : TargetPlanAction.Race,
-                $"Raise the matching G9 parent to retirement: racing rank {racer.Rank}/40. Matching offspring stay unregistered.",
+                $"Raise the G9 breeding parent to retirement: racing rank {racer.Rank}/40. Matching offspring stay unregistered.",
                 null, null, CoveringPurpose.None);
         }
         var parents = OrderParents(forms.Where(form => form.Kind == ChocoboFormKind.Retired &&

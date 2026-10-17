@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader tidak tersedia untuk interaksi.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Interaksi penjual Lifestream/vnavmesh yang diperlukan tidak tersedia.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Waktu tunggu perkawinan tidak memiliki bukti kesiapan yang valid.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Perkawinan siap; adopsi menunggu bukti tangkapan yang tepat.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>Pembiakan selesai; anak chocobo siap diambil.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>Menunggu perkawinan hingga {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>Pengaturan produksi anak tidak valid.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Menghasilkan {0}/{1} anak G9 yang sesuai; disimpan tanpa didaftarkan.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Cocokkan perkawinan yang ada sebelum menghasilkan anak lain.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Produksi anak memerlukan stok induk G9; balapan generasi lebih rendah dihentikan.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Chocobo balap G9 terdaftar belum memiliki sifat yang diminta dan terkonfirmasi. Simpan dan pilih stok induk yang sesuai.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Besarkan induk G9 yang sesuai hingga pensiun: peringkat balapan {0}/40. Anak yang sesuai tetap tidak didaftarkan.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Besarkan induk pembiak G9 hingga pensiun: peringkat balapan {0}/40. Anak yang sesuai tetap tidak didaftarkan.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Kawinkan stok G9 yang sesuai dengan induk G9 lawan jenis yang disimpan.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Tidak ada induk G9 pensiun yang dapat digunakan dengan sifat yang diminta dan terkonfirmasi. Simpan anak dan isi kembali stok G9 yang sesuai.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Besarkan anak G9 yang tidak sesuai ini sebagai pasangan milik sendiri yang belum ada; simpan hasil yang sesuai.</value></data>

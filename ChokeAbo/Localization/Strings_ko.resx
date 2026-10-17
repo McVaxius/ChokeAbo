@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader와 상호작용할 수 없습니다.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>필요한 Lifestream/vnavmesh 상인 상호작용을 사용할 수 없습니다.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>교배 대기에 유효한 수령 조건 증거가 없습니다.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>교배 완료; 수령을 위한 정확한 기록 증거 대기.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>교배가 완료되었습니다. 새끼를 수령할 수 있습니다.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>교배 대기 종료: {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>자손 생산 설정이 유효하지 않습니다.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>조건에 맞는 G9 자손 {0}/{1} 생산; 미등록 상태로 보관.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>새 자손 생산 전에 기존 교배를 대조하세요.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>자손 생산은 G9 교배 개체가 필요하며 낮은 혈통 경주는 중지됩니다.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>등록 G9 경주 개체의 요청 특성이 확인되지 않았습니다. 보관하고 적합한 교배 개체를 선택하세요.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>조건에 맞는 G9 부모를 은퇴까지 육성: 경주 등급 {0}/40. 일치 자손은 미등록 보관.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>번식용 G9 부모를 은퇴까지 육성: 경주 등급 {0}/40. 조건에 맞는 자손은 미등록 상태로 보관합니다.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>일치하는 G9 개체와 보유한 반대 성별 G9 부모를 교배하세요.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>요청 특성이 확인된 사용 가능 은퇴 G9 부모가 없습니다. 자손을 보관하고 적합한 G9 개체를 보충하세요.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>불일치 G9 자손을 부족한 소유 짝으로 육성하고 일치 자손은 보관하세요.</value></data>

@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Traderを操作できません。</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>必要なLifestream/vnavmeshの商店操作が使用できません。</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>交配待ちに有効な引取条件の証拠がありません。</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>交配は引き取り可能です。正確な記録証拠待ち。</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>交配が完了しました。幼鳥を受け取れます。</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>交配待ち終了：{0:u}。</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>子の生産設定が無効です。</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>条件一致G9の子を{0}/{1}羽生産。未登録のまま保持。</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>次の子を作る前に既存の交配結果を照合してください。</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>子の生産にはG9交配ストックが必要です。低血統の出走は停止します。</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>登録G9レーサーの希望特性を確認できません。保持し、適切な交配ストックを選んでください。</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>条件一致G9親を引退まで育成：ランク{0}/40。一致する子は未登録で保持。</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>繁殖用のG9親を引退まで育成：レースランク{0}/40。条件に一致する子は未登録で保持。</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>一致G9ストックと保持した異性G9親を交配してください。</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>希望特性を確認済みの使用可能な引退G9親がありません。子を保持して適切なG9を補充してください。</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>不一致のG9の子を不足する自前の相手として育て、一致する子は保持してください。</value></data>

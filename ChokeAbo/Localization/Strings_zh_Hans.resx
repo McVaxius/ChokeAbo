@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader 无法交互。</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>所需 Lifestream/vnavmesh 商店交互不可用。</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>交配等待缺少有效领取资格证据。</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>交配已可领取；等待准确记录证据。</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>繁育已完成；可以领取幼鸟。</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>交配等待至 {0:u}。</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>后代繁育设置无效。</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>已繁育 {0}/{1} 只符合条件的 G9 后代，保留未登记。</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>繁育下一只后代前请核对现有交配。</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>后代繁育需要 G9 库存；低世代参赛已停止。</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>已登记 G9 赛鸟未确认具备所需特征。请保留并选择合适繁育库存。</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>培养匹配 G9 亲鸟至退役：竞赛等级 {0}/40。匹配后代保持未登记。</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>培养用于繁殖的 G9 亲鸟至退役：竞赛等级 {0}/40。匹配后代保持未登记。</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>将匹配 G9 库存与保留的异性 G9 亲鸟交配。</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>没有已确认所需特征的可用退役 G9 亲鸟。请保留后代并补充合适 G9 库存。</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>将不匹配 G9 后代培养为缺少的自有配偶，保留匹配后代。</value></data>

@@ -973,8 +973,8 @@
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve">
     <value>प्रजनन प्रतीक्षा का कोई मान्य पात्रता प्रमाण नहीं है।</value>
   </data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve">
-    <value>प्रजनन पात्र है; गोद लेना सटीक कैप्चर प्रमाण की प्रतीक्षा में है।</value>
+  <data name="Covering is ready for offspring collection." xml:space="preserve">
+    <value>प्रजनन पूरा हो गया है; बच्चे को प्राप्त किया जा सकता है।</value>
   </data>
   <data name="Covering wait until {0:u}." xml:space="preserve">
     <value>{0:u} तक प्रजनन प्रतीक्षा।</value>
@@ -994,8 +994,8 @@
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve">
     <value>पंजीकृत G9 रेसर में माँगी गई विशेषता की पुष्टि नहीं हुई है। उसे रखें और उपयुक्त प्रजनन चोकोबो चुनें।</value>
   </data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve">
-    <value>मेल खाते G9 माता-पिता को सेवानिवृत्ति तक बढ़ाएँ: रेसिंग रैंक {0}/40। मेल खाती संतानें बिना पंजीकरण के रहेंगी।</value>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve">
+    <value>प्रजनन के लिए G9 अभिभावक को सेवानिवृत्ति तक तैयार करें: रेसिंग रैंक {0}/40। मेल खाने वाली संतानों को अपंजीकृत रखा जाता है।</value>
   </data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve">
     <value>मेल खाते G9 चोकोबो का उसके रखे गए विपरीत-लिंग G9 साथी से प्रजनन करें।</value>

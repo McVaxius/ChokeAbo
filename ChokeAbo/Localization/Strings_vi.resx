@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>Tack &amp; Feed Trader không khả dụng để tương tác.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Không có tương tác người bán Lifestream/vnavmesh bắt buộc.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Chờ phối giống không có bằng chứng sẵn sàng hợp lệ.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Phối giống đã sẵn sàng; nhận nuôi đang chờ bằng chứng bản chụp chính xác.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>Phối giống đã xong; có thể nhận chocobo con.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>Chờ phối giống đến {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>Cài đặt sản xuất chocobo con không hợp lệ.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Đã tạo {0}/{1} chocobo con G9 phù hợp; giữ lại chưa đăng ký.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Đối chiếu lần phối giống hiện tại trước khi tạo chocobo con khác.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Sản xuất chocobo con cần đàn giống G9; đã dừng đua các đời thấp hơn.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>Chocobo đua G9 đã đăng ký chưa có đặc tính yêu cầu được xác nhận. Giữ nó và chọn đàn giống phù hợp.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Nuôi bố mẹ G9 phù hợp đến nghỉ hưu: hạng đua {0}/40. Chocobo con phù hợp vẫn chưa đăng ký.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Nuôi chim bố mẹ G9 dùng để nhân giống đến khi nghỉ hưu: hạng đua {0}/40. Chocobo con phù hợp vẫn chưa được đăng ký.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Phối đàn giống G9 phù hợp với bố mẹ G9 khác giới được giữ lại.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>Không có bố mẹ G9 nghỉ hưu khả dụng có đặc tính yêu cầu đã xác nhận. Giữ chocobo con và bổ sung đàn giống G9 phù hợp.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Nuôi chocobo con G9 không phù hợp này làm cá thể đối ứng sở hữu còn thiếu; giữ những con phù hợp.</value></data>

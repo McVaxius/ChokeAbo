@@ -325,14 +325,14 @@
   <data name="The Tack &amp; Feed Trader is unavailable for interaction." xml:space="preserve"><value>The Tack &amp; Feed Trader is unavailable for interaction.</value></data>
   <data name="Required Lifestream/vnavmesh vendor interaction is unavailable." xml:space="preserve"><value>Required Lifestream/vnavmesh vendor interaction is unavailable.</value></data>
   <data name="Covering wait has no valid eligibility evidence." xml:space="preserve"><value>Covering wait has no valid eligibility evidence.</value></data>
-  <data name="Covering is eligible; adoption is awaiting exact capture evidence." xml:space="preserve"><value>Covering is eligible; adoption is awaiting exact capture evidence.</value></data>
+  <data name="Covering is ready for offspring collection." xml:space="preserve"><value>Covering is ready for offspring collection.</value></data>
   <data name="Covering wait until {0:u}." xml:space="preserve"><value>Covering wait until {0:u}.</value></data>
   <data name="Invalid offspring production settings." xml:space="preserve"><value>Invalid offspring production settings.</value></data>
   <data name="Produced {0}/{1} matching G9 offspring; retained unregistered." xml:space="preserve"><value>Produced {0}/{1} matching G9 offspring; retained unregistered.</value></data>
   <data name="Reconcile the existing covering before producing another offspring." xml:space="preserve"><value>Reconcile the existing covering before producing another offspring.</value></data>
   <data name="Offspring production requires G9 breeding stock; lower-generation racing is stopped." xml:space="preserve"><value>Offspring production requires G9 breeding stock; lower-generation racing is stopped.</value></data>
   <data name="The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock." xml:space="preserve"><value>The registered G9 racer does not have a confirmed requested trait. Retain it and select suitable breeding stock.</value></data>
-  <data name="Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Raise the matching G9 parent to retirement: racing rank {0}/40. Matching offspring stay unregistered.</value></data>
+  <data name="Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered." xml:space="preserve"><value>Raise the G9 breeding parent to retirement: racing rank {0}/40. Matching offspring stay unregistered.</value></data>
   <data name="Cover matching G9 stock with its retained opposite-sex G9 parent." xml:space="preserve"><value>Cover matching G9 stock with its retained opposite-sex G9 parent.</value></data>
   <data name="No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock." xml:space="preserve"><value>No usable retired G9 parent has a confirmed requested trait. Retain offspring and replenish suitable G9 stock.</value></data>
   <data name="Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs." xml:space="preserve"><value>Raise this non-matching G9 offspring as the missing owned counterpart; retain matching outputs.</value></data>

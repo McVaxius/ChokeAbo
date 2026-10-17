@@ -2,8 +2,13 @@
 
 - Add a dedicated V3 collection operation that verifies the existing eligible covering, records the actual offspring and matching count together, and pauses before another covering. Reaching the requested matching quantity still completes the production batch.
 - Preserve eligibility for paused or interrupted owned collections, retain older IPC response rules, and keep ordinary Pause/Stop immediate.
+- Persist the existing pause when collection-only work is suspended for reload, preserving its receipt evidence. Show retained covering readiness in paused, blocked and interrupted collection states.
 - Keep the overview focused on progression settings, feeding and breeding; the daily racing budget belongs to VERMAXION's selected Lazyparasite test workflow.
-- Label racing rank explicitly and show the real next breeding action instead of obsolete capture-reference warnings for already verified native interactions.
+- Label racing rank explicitly and show the real next breeding action instead of obsolete capture-reference warnings for already verified native interactions. An elapsed covering wait now says the offspring is ready for collection.
+- Describe G9 breeding-parent preparation accurately when raising a non-matching counterpart, with the same guidance in every supported language.
+- Give each selected target-colour swatch its own widget identity in the progression overview.
+- Keep the Popup Capture title readable at its minimum width alongside the appearance controls.
+- Preserve shaped Hindi label overhangs inside the progression and feeding tables.
 
 2026-10-16 - Collect eligible G9 counterpart coverings
 
