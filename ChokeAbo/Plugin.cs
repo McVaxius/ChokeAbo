@@ -158,7 +158,7 @@ public sealed class Plugin : IDalamudPlugin
         Framework.Update += OnFrameworkUpdate;
         SetupDtrBar();
         UpdateDtrBar();
-        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261016-101; owned covering Resume preserves its original deadline and parent evidence.");
+        Log.Information("[Choke-abo] Build marker chocobo-progression-v3-20261017-102; collect-and-pause preserves confirmed matching counts and stops before another covering.");
     }
 
     public void Dispose()

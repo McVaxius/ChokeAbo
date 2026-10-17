@@ -17,7 +17,7 @@
   <data name="Compact mode" xml:space="preserve"><value>Mode compact</value></data>
   <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>Connectez un personnage pour voir la progression chocobo.</value></data>
   <data name="Chocobo progression" xml:space="preserve"><value>Progression chocobo</value></data>
-  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION gère la progression et les courses quotidiennes autorisées. Choke-abo assure l'alimentation et l'élevage.</value></data>
+  <data name="VERMAXION owns progression settings. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION gère les paramètres de progression. Choke-abo assure l’alimentation et l’élevage.</value></data>
   <data name="Open VERMAXION settings" xml:space="preserve"><value>Ouvrir les paramètres VERMAXION</value></data>
   <data name="Stop" xml:space="preserve"><value>Arrêter</value></data>
   <data name="Pedigree" xml:space="preserve"><value>Génération</value></data>

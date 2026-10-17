@@ -1,3 +1,9 @@
+2026-10-17 - Collect one covering and pause
+
+- Add a dedicated V3 collection operation that verifies the existing eligible covering, records the actual offspring and matching count together, and pauses before another covering. Reaching the requested matching quantity still completes the production batch.
+- Preserve eligibility for paused or interrupted owned collections, retain older IPC response rules, and keep ordinary Pause/Stop immediate.
+- Keep the overview focused on progression settings, feeding and breeding; the daily racing budget belongs to VERMAXION's selected Lazyparasite test workflow.
+
 2026-10-16 - Collect eligible G9 counterpart coverings
 
 - Accept pedigree-9 parents during collection of an already submitted covering. Keep the result capped at pedigree9 and retain the original deadline, exact proof quantity and parent evidence checks.
@@ -181,7 +187,7 @@
 - Use stocked preferred-grade feed first, check reserves immediately before purchase/confirmation, and support Fall back, Skip (default), and Stop. Skipping bypasses the current racer/rank feeding round; Stop requires explicit Resume.
 - Add `/chokeabo inspect [addon]` using the existing recorder to capture bounded current racer, inventory, visible windows, agent ownership, values, nodes and registered events without operating the UI or adding a new report.
 - Load current racer data before planning and distinguish an empty racer from unloaded data. Register an exact fledgling form through native item selection, word-list naming and the owned confirmation; require form consumption plus matching current pedigree/sex. Cancel inventory sessions through their native owner and reconcile interrupted registration or feeding against unchanged item/session state.
-- Gate initial feeding on the native racing unlock, approach the registrar's training course through observed menu entries, and hand its queue to VERMAXION. V3 carries the current race-admission allowance so tutorial admission also respects Stop and the daily limit.
+- Gate initial feeding on the native racing unlock, approach the registrar's training course through observed menu entries, and hand its queue to VERMAXION. V3 carries race admission so the tutorial respects Stop and, only during selected Lazyparasite testing, the test budget.
 - Reassess feeding/racing when returning to the registrar sets the native racing-unlocked flag; stop looking for the initial tutorial-only menu after that state change.
 - Refresh unloaded racer data through the observed native Chocobo tab event, reuse an already open Gold Saucer window, and preserve specific refresh errors.
 - Release the owned Feathertrader shop through its native shop handler and shop/inventory agents, including a stranded post-purchase interaction. Wait for the native transaction to settle and OccupiedInEvent to clear before registration. Treat OccupiedInEvent as unavailable for travel.

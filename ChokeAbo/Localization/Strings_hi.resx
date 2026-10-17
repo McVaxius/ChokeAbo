@@ -51,9 +51,7 @@
   <data name="Chocobo progression" xml:space="preserve">
     <value>चोकोबो प्रगति</value>
   </data>
-  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve">
-    <value>प्रगति सेटिंग्स और दैनिक रेस सीमा VERMAXION नियंत्रित करता है। Choke-abo चारा खिलाने और प्रजनन का काम करता है।</value>
-  </data>
+  <data name="VERMAXION owns progression settings. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION प्रगति की सेटिंग नियंत्रित करता है। Choke-abo खिलाने और प्रजनन का काम करता है।</value></data>
   <data name="Open VERMAXION settings" xml:space="preserve">
     <value>VERMAXION सेटिंग्स खोलें</value>
   </data>

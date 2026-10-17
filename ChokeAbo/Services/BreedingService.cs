@@ -19,6 +19,7 @@ public sealed partial class BreedingService
     private string runtimeStatus = "Idle";
     private DateTime targetLeaseUntilUtc;
     private bool nativeUiStepActive;
+    private bool pauseAfterCollection;
     private DateTime nativeUiStepStarted;
     private DateTime nativeInteractionAt;
     private bool nativeContextOpened;
@@ -137,7 +138,7 @@ public sealed partial class BreedingService
         return false;
     }
 
-    public TargetCycleStatus EnsureTargetCycle(TargetCycleEnsureRequest request)
+    public TargetCycleStatus EnsureTargetCycle(TargetCycleEnsureRequest request, bool collectAndPause = false)
     {
         if (!TryGetCurrentIdentity(out var contentId))
             return BuildProtocolBlock(0, "No logged-in Content ID is available.");
@@ -154,6 +155,9 @@ public sealed partial class BreedingService
         if (state.ProtocolVersion >= 3 && request.Version < 3)
             return BuildProtocolBlock(contentId, "This progression requires V3; older callers cannot remove its spending limits.");
         if (request.Version == 3 && state.Phase == BreedingPhase.Paused && !request.Resume)
+            return GetTargetCycleStatus(contentId);
+        if (collectAndPause && !request.Resume && state.Phase == BreedingPhase.TargetReady &&
+            state.CollectionBaseline == null && state.CoveringEligibleAtUtc == DateTime.MinValue)
             return GetTargetCycleStatus(contentId);
         if (request.StartNewBatch && (request.OffspringGoal == OffspringGoal.ReachPedigree || !request.Resume ||
             nativeUiStepActive || state.CollectionBaseline != null || state.ActionBaseline != null ||
@@ -192,10 +196,17 @@ public sealed partial class BreedingService
             return GetTargetCycleStatus(contentId);
         }
 
-        var retainCovering = state.ExecutionOwner == BreedingExecutionOwner.Target &&
-            state.CoveringEligibleAtUtc != DateTime.MinValue &&
-            state.PrimarySelection != null && state.PartnerSelection != null &&
-            inventoryService.GetItemCount(ChocoboInventoryModel.ProofOfCoveringItemId) == 1;
+        var retainCovering = HasRetainedCovering(state);
+        if (collectAndPause && (request.Version != 3 || request.StartNewBatch ||
+            state.ExecutionOwner != BreedingExecutionOwner.Target || state.CoveringEligibleAtUtc == DateTime.MinValue ||
+            DateTime.UtcNow < state.CoveringEligibleAtUtc || state.PrimarySelection == null || state.PartnerSelection == null ||
+            (!retainCovering && state.CollectionBaseline == null) || state.ActionBaseline != null ||
+            state.Phase is BreedingPhase.Feeding or BreedingPhase.PurchasingFeed or BreedingPhase.PurchasingSupplies ||
+            Plugin.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.BoundByDuty] ||
+            Plugin.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.InDutyQueue]))
+            return BuildProtocolBlock(contentId, "Collection requires the existing eligible covering, its retained-parent pedigree and exactly one Proof of Covering.");
+        pauseAfterCollection = collectAndPause;
+        raceAdmissionAllowed &= !collectAndPause;
         if (state.ExecutionOwner != BreedingExecutionOwner.Target || inputsChanged)
         {
             // Settings for the next pairing must not erase an already submitted covering.
@@ -315,6 +326,7 @@ public sealed partial class BreedingService
         if (state.ExecutionOwner != BreedingExecutionOwner.Target)
             return GetTargetCycleStatus(contentId);
 
+        pauseAfterCollection = false;
         CloseOwnedNativeInventory();
         characterStateService.SaveCurrent(current => current.PauseRequested = true);
         PauseAtSafeBoundaryIfRequested();
@@ -324,6 +336,7 @@ public sealed partial class BreedingService
     public TargetCycleStatus SuspendTargetCycle(ulong contentId)
     {
         if (contentId != Plugin.PlayerState.ContentId) return BuildProtocolBlock(Plugin.PlayerState.ContentId, "Suspend identity mismatch.");
+        pauseAfterCollection = false;
         CloseOwnedNativeInventory();
         targetLeaseUntilUtc = DateTime.MinValue;
         StopOwnedFeedServices();
@@ -358,7 +371,10 @@ public sealed partial class BreedingService
             targetReady,
             gameAction,
             reason,
-            state.Phase == BreedingPhase.CoveringWait && state.CoveringEligibleAtUtc != DateTime.MinValue
+            state.Phase is BreedingPhase.CoveringWait or BreedingPhase.AdoptionPendingCapture or BreedingPhase.Paused or BreedingPhase.Blocked &&
+                (HasRetainedCovering(state) || state.ExecutionOwner == BreedingExecutionOwner.Target &&
+                    state.CoveringEligibleAtUtc != DateTime.MinValue && state.PrimarySelection != null && state.PartnerSelection != null &&
+                    state.CollectionBaseline != null)
                 ? new DateTimeOffset(state.CoveringEligibleAtUtc.ToUniversalTime())
                 : null,
             racer.IsLoaded ? racer.Pedigree : 0,
@@ -374,6 +390,12 @@ public sealed partial class BreedingService
             state.OffspringGoal != OffspringGoal.ReachPedigree && state.Phase == BreedingPhase.TargetReady &&
             ProducedOffspring(state) >= RequestedOffspring(state));
     }
+
+    private bool HasRetainedCovering(BreedingCharacterState state)
+        => state.ExecutionOwner == BreedingExecutionOwner.Target &&
+           state.CoveringEligibleAtUtc != DateTime.MinValue &&
+           state.PrimarySelection != null && state.PartnerSelection != null &&
+           inventoryService.GetItemCount(ChocoboInventoryModel.ProofOfCoveringItemId) == 1;
 
     public bool ShouldBlockRacing()
     {
@@ -410,6 +432,7 @@ public sealed partial class BreedingService
 
         if (activeContentId != 0 && activeContentId != contentId)
         {
+            pauseAfterCollection = false;
             StopOwnedFeedServices();
             feedActionStartedThisLoad = false;
         }
@@ -1528,8 +1551,13 @@ public sealed partial class BreedingService
                 }
                 log.Information($"[ChokeAbo][Native] Collection verified: proof consumed; G{baseline.Pedigree} form {resultId} increased by one.");
                 InspectNativeState?.Invoke();
+                var pauseCollection = pauseAfterCollection;
+                pauseAfterCollection = false;
+                var matchingAfterCollection = ProducedOffspring(state) + (productionMatch == true ? 1 : 0);
+                var collectionPhase = state.OffspringGoal != OffspringGoal.ReachPedigree &&
+                    matchingAfterCollection >= RequestedOffspring(state) ? BreedingPhase.TargetReady : BreedingPhase.Paused;
                 StopOwnedFeedServices();
-                characterStateService.TransitionCurrent(BreedingPhase.Planning, current =>
+                characterStateService.TransitionCurrent(pauseCollection ? collectionPhase : BreedingPhase.Planning, current =>
                 {
                     // Save the count and consume the evidence together; a reload cannot count this collection twice.
                     if (productionMatch.HasValue)
@@ -1542,7 +1570,10 @@ public sealed partial class BreedingService
                     current.ActionBaseline = null;
                     current.ActionEvidenceAtUtc = DateTime.UtcNow;
                     current.CoveringEligibleAtUtc = DateTime.MinValue;
-                    current.BlockReason = string.Empty;
+                    if (pauseCollection) current.PhaseBeforePause = BreedingPhase.Planning;
+                    current.BlockReason = !pauseCollection ? string.Empty : collectionPhase == BreedingPhase.Paused
+                        ? "Paused by VERMAXION at a safe boundary."
+                        : $"Produced {ProducedOffspring(current)}/{RequestedOffspring(current)} matching G9 offspring; retained unregistered.";
                 });
                 if (productionMatch.HasValue)
                     log.Information($"[ChokeAbo][Production] Collected G9 form {resultId}; match={productionMatch.Value}; produced={ProducedOffspring(state)}/{RequestedOffspring(state)}; retained unregistered.");

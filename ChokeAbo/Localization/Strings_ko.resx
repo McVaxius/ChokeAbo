@@ -17,7 +17,7 @@
   <data name="Compact mode" xml:space="preserve"><value>컴팩트 모드</value></data>
   <data name="Log into a character to see chocobo progression." xml:space="preserve"><value>캐릭터로 로그인하면 초코보 육성 진행 상황을 볼 수 있습니다.</value></data>
   <data name="Chocobo progression" xml:space="preserve"><value>초코보 육성</value></data>
-  <data name="VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION이 육성 설정과 일일 경주 허용량을 관리하며 Choke-abo가 먹이 주기와 교배를 수행합니다.</value></data>
+  <data name="VERMAXION owns progression settings. Choke-abo carries out feeding and breeding." xml:space="preserve"><value>VERMAXION이 진행 설정을 관리합니다. Choke-abo가 먹이 주기와 교배를 수행합니다.</value></data>
   <data name="Open VERMAXION settings" xml:space="preserve"><value>VERMAXION 설정 열기</value></data>
   <data name="Stop" xml:space="preserve"><value>중지</value></data>
   <data name="Pedigree" xml:space="preserve"><value>혈통</value></data>

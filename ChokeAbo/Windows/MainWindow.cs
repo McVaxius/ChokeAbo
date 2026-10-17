@@ -233,7 +233,7 @@ public sealed class MainWindow : Window, IDisposable
                 using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading)) UiGui.Text("Chocobo progression");
                 ImGui.SetCursorScreenPos(origin + new Vector2(58, 32) * scale);
                 ImGui.PushTextWrapPos(inlineSettings ? ImGui.GetCursorPosX() + headerWidth - 58 * scale - settingsWidth - 15 * scale : 0);
-                MaterialText.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, UiText.T("VERMAXION owns progression settings and the daily racing allowance. Choke-abo carries out feeding and breeding."));
+                MaterialText.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, UiText.T("VERMAXION owns progression settings. Choke-abo carries out feeding and breeding."));
                 ImGui.PopTextWrapPos();
                 var headerBottom = ImGui.GetCursorScreenPos().Y;
                 if (inlineSettings) ImGui.SetCursorScreenPos(origin + new Vector2(headerWidth - settingsWidth, 10 * scale));

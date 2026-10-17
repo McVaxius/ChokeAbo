@@ -320,6 +320,8 @@ public sealed class BreedingIpcProvider : IDisposable
         RegisterV3(pluginInterface, "EnsureWorkflow", json => EnsureWorkflow(json, false));
         RegisterV3(pluginInterface, "ResumeWorkflow", json => EnsureWorkflow(json, true));
         RegisterV3(pluginInterface, "StartWorkflow", json => EnsureWorkflow(json, true, true));
+        RegisterV3(pluginInterface, "EnsureCollectionAndPause", json => EnsureWorkflow(json, false, collectAndPause: true));
+        RegisterV3(pluginInterface, "ResumeCollectionAndPause", json => EnsureWorkflow(json, true, collectAndPause: true));
         RegisterV3(pluginInterface, "GetTargetCycleStatus", json => IdentityV3(json, false));
         RegisterV3(pluginInterface, "PauseTargetCycle", json => IdentityV3(json, true));
         RegisterV3(pluginInterface, "SuspendTargetCycle", json => Serialize(
@@ -343,9 +345,9 @@ public sealed class BreedingIpcProvider : IDisposable
                 : service.EnsureTargetCycle(request with { Resume = resume })
             : InvalidStatus(error)) with { Version = 3 });
 
-    private string EnsureWorkflow(string json, bool resume, bool startNewBatch = false)
+    private string EnsureWorkflow(string json, bool resume, bool startNewBatch = false, bool collectAndPause = false)
         => Serialize((TargetCycleProtocol.TryParseWorkflow(json, out var request, out var error)
-            ? service.EnsureTargetCycle(request with { Resume = resume, StartNewBatch = startNewBatch }) : InvalidStatus(error)) with { Version = 3 });
+            ? service.EnsureTargetCycle(request with { Resume = resume, StartNewBatch = startNewBatch }, collectAndPause) : InvalidStatus(error)) with { Version = 3 });
 
     private string IdentityV3(string json, bool pause)
         => Serialize((TargetCycleProtocol.TryParseIdentity(json, out var request, out var error, 3)
@@ -377,7 +379,8 @@ public sealed class BreedingIpcProvider : IDisposable
             : Serialize(InvalidStatus(error));
 
     private static string Serialize(TargetCycleStatus status)
-        => JsonSerializer.Serialize(status, JsonOptions);
+        => JsonSerializer.Serialize(status.Version < 3 && status.Phase != "CoveringWait"
+            ? status with { NextCoveringEligibilityUtc = null } : status, JsonOptions);
 
     private static TargetCycleStatus InvalidStatus(string reason)
         => new(
