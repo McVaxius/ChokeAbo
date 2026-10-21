@@ -36,7 +36,9 @@ internal static class ChokePresentation
     internal static float ControlHeight => Compact ? 48 : 52;
     internal static Vector4 Rgb(uint rgb) => new(((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, 1);
 
-    internal static MaterialTheme Theme(uint accent)
+    internal static MaterialTheme Theme(uint accent) => Theme(accent, new MaterialColorSettings());
+
+    internal static MaterialTheme Theme(uint accent, MaterialColorSettings colorSettings)
     {
         accent &= 0xFFFFFF;
         var selected = Rgb(accent);
@@ -70,7 +72,7 @@ internal static class ChokePresentation
             Tertiary = Relative(0xC5CBD1), OnTertiary = background, TertiaryContainer = Relative(0x35424D), OnTertiaryContainer = foreground,
             InverseSurface = foreground, InverseOnSurface = background, InversePrimary = Relative(0x926348),
         };
-        return new(colors, MaterialDensity.Standard) { SurfaceOpacity = 1 };
+        return new(colorSettings.Apply(colors), MaterialDensity.Standard) { SurfaceOpacity = 1 };
     }
 
     internal static MaterialControlMetrics Controls(float height = 0)

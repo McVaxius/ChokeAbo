@@ -1,3 +1,8 @@
+2026-10-20 - Independent UI colours
+
+- Add Auto and Picker colour choices in the native Colour popup and Appearance settings. Auto preserves the existing theme; Picker saves independent Background, Controls and Text choices through the existing configuration.
+- Retain picker colours when returning to Auto, existing language and opacity controls, native window identities and game colour swatches.
+
 2026-10-17 - Collect one covering and pause
 
 - Add a dedicated V3 collection operation that verifies the existing eligible covering, records the actual offspring and matching count together, and pauses before another covering. Reaching the requested matching quantity still completes the production batch.

@@ -26,6 +26,9 @@ internal sealed class ChokeAppearance : IDisposable
     private string appliedLanguage = "";
     private uint appliedAccent;
     private Vector3 accentDraft;
+    private MaterialColorSettings colorDraft = new();
+    private MaterialColorSettings? appliedColors;
+    private MaterialColorSettings? appliedSavedColors;
     private int checkedGeneration = -1;
     private bool fontIssueLogged;
 
@@ -42,10 +45,17 @@ internal sealed class ChokeAppearance : IDisposable
             checkedGeneration = -1;
             fontIssueLogged = false;
         }
-        if (theme is null || appliedAccent != (plugin.Configuration.UiAccentRgb & 0xFFFFFF))
+        var savedColors = plugin.Configuration.UiColors ?? new MaterialColorSettings();
+        if (savedColors != appliedSavedColors)
+        {
+            colorDraft = savedColors;
+            appliedSavedColors = savedColors;
+        }
+        if (theme is null || appliedAccent != (plugin.Configuration.UiAccentRgb & 0xFFFFFF) || colorDraft != appliedColors)
         {
             appliedAccent = plugin.Configuration.UiAccentRgb & 0xFFFFFF;
-            theme = ChokePresentation.Theme(appliedAccent);
+            appliedColors = colorDraft;
+            theme = ChokePresentation.Theme(appliedAccent, colorDraft);
             var rgb = ChokePresentation.Rgb(appliedAccent);
             accentDraft = new(rgb.X, rgb.Y, rgb.Z);
         }
@@ -123,15 +133,13 @@ internal sealed class ChokeAppearance : IDisposable
 
     internal void DrawSelector()
     {
-        var language = appliedLanguage;
         using var controls = MaterialControls.Push(ChokePresentation.Controls());
-        var changed = MaterialAppearanceSelector.Draw("appearance", ref accentDraft, ref language, languages,
-            new(UiText.T("Color"), UiText.T("Language"), UiText.T("Teal"), UiText.T("Blue"), UiText.T("Pink"), UiText.T("Custom RGB")), 140);
-        if (changed.AccentChanged)
-            plugin.Configuration.UiAccentRgb = ((uint)Math.Clamp((int)MathF.Round(accentDraft.X * 255), 0, 255) << 16)
-                | ((uint)Math.Clamp((int)MathF.Round(accentDraft.Y * 255), 0, 255) << 8) | (uint)Math.Clamp((int)MathF.Round(accentDraft.Z * 255), 0, 255);
-        if (changed.LanguageChanged) plugin.Configuration.UiLanguage = language;
-        if (changed.AccentChanged || changed.LanguageChanged) plugin.Configuration.Save();
+        DrawTitleBarColour();
+        ImGui.Spacing();
+        var language = appliedLanguage;
+        if (!MaterialAppearanceSelector.DrawLanguage("appearance", ref language, languages, 140)) return;
+        plugin.Configuration.UiLanguage = language;
+        plugin.Configuration.Save();
     }
 
     internal float LanguageWidth()
@@ -168,7 +176,9 @@ internal sealed class ChokeAppearance : IDisposable
         text = new(appliedLanguage, PushFont);
         fonts = new(Plugin.PluginInterface.UiBuilder.FontAtlas, text.GlyphRanges(), appliedLanguage);
         appliedAccent = plugin.Configuration.UiAccentRgb & 0xFFFFFF;
-        theme = ChokePresentation.Theme(appliedAccent);
+        colorDraft = plugin.Configuration.UiColors ?? new MaterialColorSettings();
+        appliedSavedColors = appliedColors = colorDraft;
+        theme = ChokePresentation.Theme(appliedAccent, colorDraft);
         var rgb = ChokePresentation.Rgb(appliedAccent);
         accentDraft = new(rgb.X, rgb.Y, rgb.Z);
     }
@@ -242,11 +252,15 @@ internal sealed class ChokeAppearance : IDisposable
 
     private void DrawTitleBarColour()
     {
-        if (!MaterialAppearanceSelector.DrawPalette("appearance", ref accentDraft,
-                new(UiText.T("Color"), UiText.T("Language"), UiText.T("Teal"), UiText.T("Blue"), UiText.T("Pink"), UiText.T("Custom RGB")))) return;
-        plugin.Configuration.UiAccentRgb = ((uint)Math.Clamp((int)MathF.Round(accentDraft.X * 255), 0, 255) << 16)
-            | ((uint)Math.Clamp((int)MathF.Round(accentDraft.Y * 255), 0, 255) << 8)
-            | (uint)Math.Clamp((int)MathF.Round(accentDraft.Z * 255), 0, 255);
+        if (!MaterialAppearanceSelector.DrawColors("appearance", ref colorDraft, ref accentDraft,
+                new(UiText.T("Color"), UiText.T("Language"), UiText.T("Teal"), UiText.T("Blue"), UiText.T("Pink"), UiText.T("Custom RGB")),
+                new(UiText.T("Auto"), UiText.T("Picker"), UiText.T("Default"), UiText.T("Background, controls and text follow your theme."),
+                    UiText.T("Theme colour"), UiText.T("Choose each colour independently."), UiText.T("Background"), UiText.T("Controls"),
+                    UiText.T("Text"), UiText.T("Aa  Preview text"), UiText.T("Control"),
+                    UiText.T("Switch to Picker to set each colour yourself."), UiText.T("Switch back to Auto to use the automatic theme.")),
+                plugin.Configuration.UiCompact ? 298 : 316)) return;
+        plugin.Configuration.UiColors = colorDraft;
+        plugin.Configuration.UiAccentRgb = MaterialColorSettings.ToRgb(accentDraft);
         plugin.Configuration.Save();
     }
 
