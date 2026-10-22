@@ -1,3 +1,9 @@
+2026-10-22 - Align inspection and shaped progress captions
+
+- Use the production inherited-ability decoder in inspection output and remove obsolete candidate/disabled wording from both inspection commands.
+- Render shaped offspring-progress captions through the existing text renderer so Hindi displays correctly inside the native progress bar.
+- Validation: current-source offline window checks passed in all fifteen languages, including complete progress-caption glyphs. The native test reload retained pause and all four collections.
+
 2026-10-20 - Independent UI colours
 
 - Add Auto and Picker colour choices in the native Colour popup and Appearance settings. Auto preserves the existing theme; Picker saves independent Background, Controls and Text choices through the existing configuration.

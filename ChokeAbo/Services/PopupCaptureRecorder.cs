@@ -146,7 +146,7 @@ public sealed unsafe class PopupCaptureRecorder : IDisposable
                     var abilityName = Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboRaceAbility>().TryGetRow(abilityId, out var ability)
                         ? ability.Name.ExtractText() : string.Empty;
                     var colourName = Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Stain>().GetRow(colourId).Name.ExtractText();
-                    log.Information($"[ChokeAbo][FormDetail] mappingItem={pending.ItemId}; candidateAbilityEncoding=(Materia[4]<<4)|MateriaGrades[4]; candidateAbilityId={abilityId}; candidateAbilityName={abilityName}; abilityDisplayMatches={!string.IsNullOrWhiteSpace(abilityName) && abilityText.EndsWith($": {abilityName}", StringComparison.Ordinal)}; colourField=Stains[0]; colourId={colourId}; colourName={colourName}; colourDisplayMatches={!string.IsNullOrWhiteSpace(colourName) && colourText.EndsWith($": {colourName}", StringComparison.Ordinal)}; productionMatchingEnabled=false");
+                    log.Information($"[ChokeAbo][FormDetail] mappingItem={pending.ItemId}; inheritedAbilityEncoding=(Materia[4]<<4)|MateriaGrades[4]; inheritedAbilityId={abilityId}; inheritedAbilityName={abilityName}; abilityDisplayMatches={!string.IsNullOrWhiteSpace(abilityName) && abilityText.EndsWith($": {abilityName}", StringComparison.Ordinal)}; colourField=Stains[0]; colourId={colourId}; colourName={colourName}; colourDisplayMatches={!string.IsNullOrWhiteSpace(colourName) && colourText.EndsWith($": {colourName}", StringComparison.Ordinal)}");
                 }
                 stage->TooltipManager.HideTooltip(formTooltipParentId);
                 inspectingForm = null;
@@ -257,13 +257,12 @@ public sealed unsafe class PopupCaptureRecorder : IDisposable
             if (container == null || form.Slot < 0 || form.Slot >= container->Size) continue;
             var slot = container->GetInventorySlot(form.Slot);
             if (slot == null || slot->ItemId != form.ItemId || slot->Quantity <= 0) continue;
-            // Record declared native fields only. Their form-specific encoding is not yet a matching rule.
+            // Record native fields alongside the same decoded traits used by production matching.
             log.Information($"[ChokeAbo][Inspect] formItem={form.ItemId}; container={form.Container}; slot={form.Slot}; spiritbond={slot->SpiritbondOrCollectability}; glamour={slot->GlamourId}; stains={string.Join(",", slot->Stains.ToArray())}; materia={string.Join(",", slot->Materia.ToArray())}; materiaGrades={string.Join(",", slot->MateriaGrades.ToArray())}; rawFormFields=true");
-            var candidateAbilityId = ((uint)slot->Materia[4] << 4) | slot->MateriaGrades[4];
-            if (Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboRaceAbility>().TryGetRow(candidateAbilityId, out var candidateAbility))
-                log.Information($"[ChokeAbo][Inspect] abilityItem={form.ItemId}; container={form.Container}; slot={form.Slot}; candidateAbilityEncoding=(Materia[4]<<4)|MateriaGrades[4]; candidateAbilityId={candidateAbilityId}; candidateAbilityName={candidateAbility.Name.ExtractText()}; productionMatchingEnabled=false");
+            if (ChocoboInventoryModel.TryReadInheritedAbility(form, out var abilityId))
+                log.Information($"[ChokeAbo][Inspect] abilityItem={form.ItemId}; container={form.Container}; slot={form.Slot}; inheritedAbilityId={abilityId}; inheritedAbilityName={Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboRaceAbility>().GetRow(abilityId).Name.ExtractText()}");
             if (ChocoboInventoryModel.TryReadColour(form, out var colourId))
-                log.Information($"[ChokeAbo][Inspect] colourItem={form.ItemId}; container={form.Container}; slot={form.Slot}; colourId={colourId}; colourName={Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Stain>().GetRow(colourId).Name.ExtractText()}; productionMatchingEnabled=false");
+                log.Information($"[ChokeAbo][Inspect] colourItem={form.ItemId}; container={form.Container}; slot={form.Slot}; colourId={colourId}; colourName={Plugin.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Stain>().GetRow(colourId).Name.ExtractText()}");
         }
         ref var loaded = ref manager->AtkUnitManager.AllLoadedUnitsList;
         var visible = new List<string>();

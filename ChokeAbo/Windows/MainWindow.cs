@@ -308,8 +308,29 @@ public sealed class MainWindow : Window, IDisposable
                     if (state.OffspringGoal != OffspringGoal.ReachPedigree)
                     {
                         UiGui.Text(UiText.F("Matching G9 offspring: {0:N0} / {1:N0}", status.MatchingOffspringProduced, status.MatchingOffspringRequested));
-                        ImGui.ProgressBar(status.MatchingOffspringRequested > 0 ? Math.Clamp((float)status.MatchingOffspringProduced / status.MatchingOffspringRequested, 0, 1) : 0,
-                            new Vector2(-1, 0), UiText.T("Matching offspring retained unregistered"));
+                        var progress = status.MatchingOffspringRequested > 0
+                            ? Math.Clamp((float)status.MatchingOffspringProduced / status.MatchingOffspringRequested, 0, 1) : 0;
+                        var progressCaption = UiText.T("Matching offspring retained unregistered");
+                        var shapedProgressCaption = MaterialText.RequiresShaping(progressCaption);
+                        using (MaterialText.PushLineHeight(progressCaption))
+                        {
+                            ImGui.ProgressBar(progress, new Vector2(-1, 0), shapedProgressCaption ? string.Empty : progressCaption);
+                            if (shapedProgressCaption && ImGui.IsItemVisible())
+                            {
+                                var min = ImGui.GetItemRectMin();
+                                var max = ImGui.GetItemRectMax();
+                                var captionSize = MaterialText.Measure(progressCaption);
+                                var captionPadding = ImGui.GetStyle().FramePadding.X;
+                                var captionPosition = new Vector2(
+                                    Math.Clamp(min.X + (max.X - min.X) * progress + ImGui.GetStyle().ItemSpacing.X,
+                                        min.X + captionPadding, Math.Max(min.X + captionPadding, max.X - captionSize.X - captionPadding)),
+                                    min.Y + (max.Y - min.Y - captionSize.Y) * .5f);
+                                var drawList = ImGui.GetWindowDrawList();
+                                drawList.PushClipRect(min, max, true);
+                                try { MaterialText.AddText(drawList, captionPosition, ImGui.GetColorU32(ImGuiCol.Text), progressCaption); }
+                                finally { drawList.PopClipRect(); }
+                            }
+                        }
                         if (state.OffspringGoal == OffspringGoal.AbilityOffspring) DrawAbility("Desired inherited ability", state.DesiredInheritedAbilityId);
                         else foreach (var colourId in state.AcceptableColourIds)
                             if (Plugin.DataManager.GetExcelSheet<Stain>().TryGetRow(colourId, out var acceptableColour))
