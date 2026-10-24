@@ -22,7 +22,9 @@ internal ref struct ChokePanel
         layers = ImGui.ImDrawListSplitter();
         layers.Split(draw, 2); layers.SetCurrentChannel(draw, 1);
         style = new();
-        style.Style(ImGuiStyleVar.CellPadding, new Vector2(padding ?? (ChokePresentation.Compact ? 12 : 16)) * MaterialTheme.Metrics.Scale);
+        var inset = padding ?? (ChokePresentation.Compact ? 12 : 16);
+        if (MaterialTheme.Current.IsLcars) inset = Math.Max(16, inset);
+        style.Style(ImGuiStyleVar.CellPadding, new Vector2(inset) * MaterialTheme.Metrics.Scale);
         Visible = ImGui.BeginTable(id, 1, ImGuiTableFlags.SizingStretchSame | ImGuiTableFlags.PadOuterX, new Vector2(width, 0));
         if (Visible) { ImGui.TableNextRow(); ImGui.TableSetColumnIndex(0); }
         ImGuiP.PushOverrideID(root);

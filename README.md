@@ -2,6 +2,8 @@
 
 Native titlebars expose language, compact spacing, transparency and colour shortcuts, including while collapsed. Appearance settings retains the full editors and Main's saved icon-visibility choices.
 
+Colour offers Auto, Picker and LCARS. LCARS adds segmented rails, framed progression and stock panels, outlined actions and blue switches while retaining the real racing stats, saved Picker colours and existing automation gates. Optional UI sounds start muted; the titlebar speaker and Appearance setting share one saved preference. Preview sound is available when sounds are enabled.
+
 ---
 
 **Help fund my AI overlords' coffee addiction so they can keep generating more plugins instead of taking over the world**

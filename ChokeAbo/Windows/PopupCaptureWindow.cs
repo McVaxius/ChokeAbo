@@ -45,6 +45,8 @@ public sealed class PopupCaptureWindow : Window
     public override void Draw()
     {
         windowMotion.DrawChrome();
+        if (MaterialTheme.Current.IsLcars)
+            using (UiText.Font(UiFontRole.Title)) MaterialLcars.Header(UiText.T("Popup Capture"));
         UiGui.TitleWithButtons("Choke-abo Popup Capture", "Choke-abo — " + UiText.T("Popup Capture"), this);
         DrawCaptureButton("Start/Stop Retirement", PopupCaptureKind.Retirement);
         DrawCaptureButton("Start/Stop Covering Selector", PopupCaptureKind.CoveringSelector);

@@ -11,6 +11,7 @@ public class Configuration : IPluginConfiguration
     public int Version { get; set; } = 1;
     public string UiLanguage { get; set; } = "en";
     public AethertekUI.MaterialColorSettings UiColors { get; set; } = new();
+    public bool UiLcarsSoundsMuted { get; set; } = true;
     public uint UiAccentRgb { get; set; } = Ui.ChokePresentation.ReferenceAccent;
     public bool UiCompact { get; set; } = true;
     public bool UiShowTitlebarStatus { get; set; } = true;

@@ -30,6 +30,8 @@ public sealed class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         windowMotion.DrawChrome();
+        if (MaterialTheme.Current.IsLcars)
+            using (UiText.Font(UiFontRole.Title)) MaterialLcars.Header(PluginInfo.DisplayName + " — " + UiText.T("Settings"));
         UiGui.TitleWithButtons(PluginInfo.DisplayName + " Settings", PluginInfo.DisplayName + " — " + UiText.T("Settings"), this);
         var settingsRoot = ImGui.GetID("");
         using var tabs = MaterialTabs.Begin("ChokeAboSettingsTabs", new[] { UiText.T("Settings"), UiText.T("Window appearance") }, ImGuiTabBarFlags.FittingPolicyScroll);

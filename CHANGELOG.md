@@ -1,3 +1,10 @@
+2026-10-23 - LCARS appearance (unreleased)
+
+- Add LCARS after Auto and Picker using the existing saved appearance settings. Retain the automatic palette, manual RGB choices, progression/stock data and five real racing stats.
+- Use shared segmented headers, panel frames, outlined native actions and blue switches across Main, Settings and Popup Capture, preserving control IDs and existing confirmation/command gates.
+- Add optional default-muted UI tones with one saved setting shared by Settings and the titlebar speaker. Own and dispose only this plugin's UI playback.
+- Translate the eleven new captions across fifteen catalogs and pin the published compatible UI library in existing workflows. Keep version 2.0.0.17.
+
 2026-10-22 - Align inspection and shaped progress captions
 
 - Use the production inherited-ability decoder in inspection output and remove obsolete candidate/disabled wording from both inspection commands.

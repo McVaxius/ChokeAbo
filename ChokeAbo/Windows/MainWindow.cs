@@ -158,6 +158,14 @@ public sealed class MainWindow : Window, IDisposable
     private void DrawHeader()
     {
         var cfg = plugin.Configuration; var scale = MaterialTheme.Metrics.Scale;
+        if (MaterialTheme.Current.IsLcars)
+        {
+            using (UiText.Font(cfg.UiCompact ? UiFontRole.CompactTitle : UiFontRole.Title)) MaterialLcars.Header(PluginInfo.DisplayName);
+            UiGui.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, "FFXIV Dalamud Plugin");
+            if (UiGui.Button("Ko-fi", new Vector2(0, 0), MaterialIcon.Heart, UiText.T("Support on Ko-fi")))
+                Process.Start(new ProcessStartInfo { FileName = PluginInfo.SupportUrl, UseShellExecute = true });
+            return;
+        }
         var start = ImGui.GetCursorScreenPos();
         var window = ImGuiP.GetCurrentWindow();
         var width = Math.Min(ImGui.GetContentRegionAvail().X, window.InnerRect.Max.X - window.InnerRect.Min.X - 2 * window.WindowPadding.X);
@@ -230,7 +238,9 @@ public sealed class MainWindow : Window, IDisposable
                 var inlineSettings = headerWidth >= settingsWidth + 440 * scale;
                 ChokePresentation.Brand(origin, 48 * scale);
                 ImGui.SetCursorScreenPos(origin + new Vector2(58 * scale, 0));
-                using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading)) UiGui.Text("Chocobo progression");
+                using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading))
+                    if (MaterialTheme.Current.IsLcars) MaterialLcars.PanelHeading(UiText.T("Chocobo progression"));
+                    else UiGui.Text("Chocobo progression");
                 ImGui.SetCursorScreenPos(origin + new Vector2(58, 32) * scale);
                 ImGui.PushTextWrapPos(inlineSettings ? ImGui.GetCursorPosX() + headerWidth - 58 * scale - settingsWidth - 15 * scale : 0);
                 MaterialText.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, UiText.T("VERMAXION owns progression settings. Choke-abo carries out feeding and breeding."));
@@ -366,7 +376,9 @@ public sealed class MainWindow : Window, IDisposable
             if (!stock.Visible) return;
             MaterialIcons.Draw(MaterialIcon.Database, ImGui.GetCursorScreenPos(), 30 * scale, MaterialTheme.Current.Colors.Primary);
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + 42 * scale);
-            using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading)) UiGui.Text("Breeding stock");
+            using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading))
+                if (MaterialTheme.Current.IsLcars) MaterialLcars.PanelHeading(UiText.T("Breeding stock"), 1);
+                else UiGui.Text("Breeding stock");
             UiGui.TextDisabled("Offspring sex is random. Two coverings do not guarantee a male and a female.");
             using var stockTableStyle = new MaterialStyleScope();
             stockTableStyle.Style(ImGuiStyleVar.CellPadding, new Vector2(ChokePresentation.Compact ? 6 : 10, ChokePresentation.Compact ? 4 : 8) * scale);
