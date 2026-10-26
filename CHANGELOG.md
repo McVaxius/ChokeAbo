@@ -1,3 +1,9 @@
+2026-10-26 - 2.0.0.19 - Approved material styles and colour controls
+
+- Add Glassmorphism, Spatial and Cyberpunk across Main, Settings, Popup Capture and supporting surfaces, retaining Auto, Picker and LCARS.
+- Add independent palettes and resets, LCARS Background/three-bar colours, and Glass animation, speed and separately resettable wave colours through the existing settings. Translate the controls in all fifteen catalogs.
+- Preserve native actions, IDs, flags, fonts, density, opacity and progression/feeding/shopping/capture behavior. Update the existing CI library pin to the published revision used by the integration.
+
 2026-10-23 - LCARS appearance (unreleased)
 
 - Add LCARS after Auto and Picker using the existing saved appearance settings. Retain the automatic palette, manual RGB choices, progression/stock data and five real racing stats.

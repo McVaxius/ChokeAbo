@@ -12,6 +12,7 @@ public sealed class ConfigWindow : Window, IDisposable
 {
     private readonly AethertekUI.Dalamud.MaterialSupportLog supportLog = new();
     private readonly MaterialWindowMotion windowMotion = new();
+    private bool materialBackdropPending;
     private static readonly string[] DtrModes = { "Text only", "Icon + text", "Icon only" };
     private readonly Plugin plugin;
     public ConfigWindow(Plugin plugin) : base($"{PluginInfo.DisplayName} Settings##Config")
@@ -21,29 +22,36 @@ public sealed class ConfigWindow : Window, IDisposable
         SizeConstraints = new WindowSizeConstraints { MinimumSize = new Vector2(620f, 460f), MaximumSize = new Vector2(1500f, 1300f) };
     }
     public void Dispose() { }
-    public override void PreDraw() => windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+    public override void PreDraw()
+    {
+        windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+        materialBackdropPending = UiGui.PrepareMaterialBackdrop();
+    }
     public override void PostDraw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.Restore(this);
         UiGui.PaintTitleWithImageAndStatus(this, PluginInfo.DisplayName + " \u2014 " + UiText.T("Settings"), status: plugin.TitlebarStatus);
     }
     public override void Draw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.DrawChrome();
+        MaterialSkin.Backdrop();
         if (MaterialTheme.Current.IsLcars)
             using (UiText.Font(UiFontRole.Title)) MaterialLcars.Header(PluginInfo.DisplayName + " — " + UiText.T("Settings"));
         UiGui.TitleWithButtons(PluginInfo.DisplayName + " Settings", PluginInfo.DisplayName + " — " + UiText.T("Settings"), this);
         var settingsRoot = ImGui.GetID("");
         using var tabs = MaterialTabs.Begin("ChokeAboSettingsTabs", new[] { UiText.T("Settings"), UiText.T("Window appearance") }, ImGuiTabBarFlags.FittingPolicyScroll);
         if (!tabs.Visible) return;
-        using (var general = MaterialTabs.Item(UiText.T("Settings") + "###Settings", ImGuiTabItemFlags.NoPushId))
+        using (var general = UiGui.TabItem(UiText.T("Settings") + "###Settings", ImGuiTabItemFlags.NoPushId))
             if (general.Visible)
             {
                 ImGuiP.PushOverrideID(settingsRoot);
                 try { DrawGeneralSettings(); }
                 finally { ImGui.PopID(); }
             }
-        using (var appearance = MaterialTabs.Item(UiText.T("Window appearance") + "###WindowAppearance", ImGuiTabItemFlags.NoPushId))
+        using (var appearance = UiGui.TabItem(UiText.T("Window appearance") + "###WindowAppearance", ImGuiTabItemFlags.NoPushId))
             if (appearance.Visible)
             {
                 ImGuiP.PushOverrideID(settingsRoot);

@@ -2,7 +2,9 @@
 
 Native titlebars expose language, compact spacing, transparency and colour shortcuts, including while collapsed. Appearance settings retains the full editors and Main's saved icon-visibility choices.
 
-Colour offers Auto, Picker and LCARS. LCARS adds segmented rails, framed progression and stock panels, outlined actions and blue switches while retaining the real racing stats, saved Picker colours and existing automation gates. Optional UI sounds start muted; the titlebar speaker and Appearance setting share one saved preference. Preview sound is available when sounds are enabled.
+Colour offers Auto, Picker, LCARS, Glassmorphism, Spatial and Cyberpunk. Each new material retains an independent Background, Controls and Text palette; LCARS has Background and three bar colours. Individual and current-palette resets preserve other palettes. Existing progression, manual feeding, stock and capture actions keep their native gates. Optional LCARS sounds remain muted by default and share their saved preference.
+
+Glass animation starts enabled, with speed from 0.1 to 10x (default 1x) and three editable wave colours. Pausing motion keeps the wave editors available. Palette resets retain the waves; the separate wave reset retains the palette. Preferences remain in the existing appearance configuration.
 
 ---
 

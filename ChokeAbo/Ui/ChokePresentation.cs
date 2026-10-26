@@ -31,6 +31,8 @@ internal static class ChokePresentation
     internal static readonly string[] FontFiles = ["segoeui.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf"];
     internal static float AtlasHeight(UiFontRole role) => FontSizes[(int)role] * 4 / 3;
     internal static bool Compact => MaterialTheme.Current.Density == MaterialDensity.Compact;
+    internal static bool IsMaterial => MaterialTheme.Current.IsGlassmorphism
+        || MaterialTheme.Current.IsSpatial || MaterialTheme.Current.IsCyberpunk;
     internal static float HeaderHeight => Compact ? 68 : 82;
     internal static float Gap => Compact ? 10 : 15;
     internal static float ControlHeight => Compact ? 48 : 52;
@@ -86,6 +88,7 @@ internal static class ChokePresentation
     internal static void Surface(Vector2 min, Vector2 max)
     {
         if (MaterialTheme.Current.IsLcars) { MaterialLcars.PanelFrame(min, max); return; }
+        if (IsMaterial) { MaterialSkin.PanelFrame(min, max); return; }
         var c = MaterialTheme.Current.Colors;
         MaterialCanvas.Surface(min, max, c.SurfaceContainerHigh, c.Surface, 4 * MaterialTheme.Metrics.Scale);
         ImGui.GetWindowDrawList().AddRect(min, max, MaterialCanvas.Color(c.OutlineVariant), 4 * MaterialTheme.Metrics.Scale);

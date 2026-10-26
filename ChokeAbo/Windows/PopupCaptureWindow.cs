@@ -11,6 +11,7 @@ namespace ChokeAbo.Windows;
 public sealed class PopupCaptureWindow : Window
 {
     private readonly MaterialWindowMotion windowMotion = new();
+    private bool materialBackdropPending;
     private readonly Plugin plugin;
 
     public PopupCaptureWindow(Plugin plugin)
@@ -34,17 +35,21 @@ public sealed class PopupCaptureWindow : Window
         SizeConstraints = new WindowSizeConstraints { MinimumSize = new Vector2(Math.Max(340, widest / scale), 340), MaximumSize = new Vector2(1500, 1000) };
         UiGui.ReserveTitleSpace(this, "Choke-abo — " + UiText.T("Popup Capture"), Math.Max(340, widest / scale));
         windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+        materialBackdropPending = UiGui.PrepareMaterialBackdrop();
     }
 
     public override void PostDraw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.Restore(this);
         UiGui.PaintTitleWithImageAndStatus(this, "Choke-abo \u2014 " + UiText.T("Popup Capture"), status: plugin.TitlebarStatus);
     }
 
     public override void Draw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.DrawChrome();
+        MaterialSkin.Backdrop();
         if (MaterialTheme.Current.IsLcars)
             using (UiText.Font(UiFontRole.Title)) MaterialLcars.Header(UiText.T("Popup Capture"));
         UiGui.TitleWithButtons("Choke-abo Popup Capture", "Choke-abo — " + UiText.T("Popup Capture"), this);

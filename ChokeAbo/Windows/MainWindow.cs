@@ -15,6 +15,7 @@ namespace ChokeAbo.Windows;
 public sealed class MainWindow : Window, IDisposable
 {
     private readonly MaterialWindowMotion windowMotion = new();
+    private bool materialBackdropPending;
     private readonly Plugin plugin;
     private readonly ChocoboStatsService chocoboStatsService;
     private TargetCycleStatus? progressionStatus;
@@ -86,17 +87,21 @@ public sealed class MainWindow : Window, IDisposable
     {
         UiGui.ReserveTitleSpace(this, $"{PluginInfo.DisplayName} v{typeof(Plugin).Assembly.GetName().Version}", 640);
         windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
+        materialBackdropPending = UiGui.PrepareMaterialBackdrop();
     }
 
     public override void PostDraw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.Restore(this);
         UiGui.PaintTitleWithImageAndStatus(this, PluginInfo.DisplayName + " v" + (typeof(Plugin).Assembly.GetName().Version?.ToString() ?? "0.0.0.0"), status: plugin.TitlebarStatus);
     }
 
     public override void Draw()
     {
+        UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.DrawChrome();
+        MaterialSkin.Backdrop();
         var cfg = plugin.Configuration;
         DrawPresentation(chocoboStatsService.Snapshot, chocoboStatsService.BuildProjection(cfg),
             chocoboStatsService.BuildPurchasePlan(cfg), ChocoboStatsService.GetPlannedTrainingCount(cfg));
@@ -239,9 +244,13 @@ public sealed class MainWindow : Window, IDisposable
                 ChokePresentation.Brand(origin, 48 * scale);
                 ImGui.SetCursorScreenPos(origin + new Vector2(58 * scale, 0));
                 using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading))
-                    if (MaterialTheme.Current.IsLcars) MaterialLcars.PanelHeading(UiText.T("Chocobo progression"));
+                    if (MaterialTheme.Current.IsLcars || MaterialTheme.Current.IsCyberpunk)
+                        MaterialSkin.Heading(MaterialTheme.Current.IsCyberpunk ? UiText.T("Chocobo progression").ToUpper(UiText.Current.Culture) : UiText.T("Chocobo progression"));
                     else UiGui.Text("Chocobo progression");
-                ImGui.SetCursorScreenPos(origin + new Vector2(58, 32) * scale);
+                var subtitleTop = origin.Y + 32 * scale;
+                if (MaterialTheme.Current.IsCyberpunk)
+                    subtitleTop = Math.Max(subtitleTop, ImGui.GetItemRectMax().Y + ImGui.GetStyle().ItemSpacing.Y);
+                ImGui.SetCursorScreenPos(new Vector2(origin.X + 58 * scale, subtitleTop));
                 ImGui.PushTextWrapPos(inlineSettings ? ImGui.GetCursorPosX() + headerWidth - 58 * scale - settingsWidth - 15 * scale : 0);
                 MaterialText.TextColored(MaterialTheme.Current.Colors.OnSurfaceVariant, UiText.T("VERMAXION owns progression settings. Choke-abo carries out feeding and breeding."));
                 ImGui.PopTextWrapPos();
@@ -377,7 +386,8 @@ public sealed class MainWindow : Window, IDisposable
             MaterialIcons.Draw(MaterialIcon.Database, ImGui.GetCursorScreenPos(), 30 * scale, MaterialTheme.Current.Colors.Primary);
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + 42 * scale);
             using (UiText.Font(ChokePresentation.Compact ? UiFontRole.CompactPaneHeading : UiFontRole.PaneHeading))
-                if (MaterialTheme.Current.IsLcars) MaterialLcars.PanelHeading(UiText.T("Breeding stock"), 1);
+                if (MaterialTheme.Current.IsLcars || MaterialTheme.Current.IsCyberpunk)
+                    MaterialSkin.Heading(MaterialTheme.Current.IsCyberpunk ? UiText.T("Breeding stock").ToUpper(UiText.Current.Culture) : UiText.T("Breeding stock"), 1);
                 else UiGui.Text("Breeding stock");
             UiGui.TextDisabled("Offspring sex is random. Two coverings do not guarantee a male and a female.");
             using var stockTableStyle = new MaterialStyleScope();
@@ -434,7 +444,7 @@ public sealed class MainWindow : Window, IDisposable
 
         var scale = MaterialTheme.Metrics.Scale;
         ImGui.SetNextWindowSize(new Vector2(600 * scale, 0));
-        if (!ImGui.BeginPopup("##StockCleanup")) return;
+        if (!UiGui.BeginPopup("##StockCleanup")) return;
         try
         {
             UiGui.Text("Clean up G1-G8 stock");
@@ -445,7 +455,7 @@ public sealed class MainWindow : Window, IDisposable
             if (changed || UiGui.Button("Preview cleanup")) RefreshStockCleanupPreview();
             if (stockCleanupPreview is { } preview)
             {
-                if (ImGui.BeginChild("##CleanupStockRows", new Vector2(0, Math.Min(300 * scale,
+                if (UiGui.BeginChild("##CleanupStockRows", new Vector2(0, Math.Min(300 * scale,
                     Math.Max(60 * scale, preview.Items.Count * ImGui.GetFrameHeightWithSpacing()))), true))
                 {
                     for (var index = 0; index < preview.Items.Count; index++)

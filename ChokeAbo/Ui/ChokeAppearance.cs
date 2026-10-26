@@ -108,22 +108,33 @@ internal sealed class ChokeAppearance : IDisposable
             if (!fontIssueLogged && fonts.LoadException is { } error) { Plugin.Log.Error(error, "[ChokeAbo] Required UI fonts failed to load."); fontIssueLogged = true; }
             ImGui.SetNextWindowSize(new Vector2(460 * ImGuiHelpers.GlobalScale, 0));
             fontStatusMotion.PreDraw("Choke-abo##FontStatus", null, null, reducedMotion: false, prepareDecorations: fontStatusDecorations.Prepare);
-            if (ImGui.Begin("Choke-abo##FontStatus", ImGuiWindowFlags.AlwaysAutoResize))
+            bool statusVisible;
+            using (var backdrop = MaterialSkin.BackdropStyle())
+                statusVisible = ImGui.Begin("Choke-abo##FontStatus", ImGuiWindowFlags.AlwaysAutoResize);
+            try
             {
-                fontStatusDecorations.Paint();
-                var failed = fonts.LoadException is not null || fontIssueLogged;
-                ImGui.TextWrapped(appliedLanguage == "hi" && failed ? "Hindi UI fonts are unavailable. Use English to continue."
-                    : failed ? "UI fonts failed to load. See the plugin log." : "Loading UI fonts...");
-                if (appliedLanguage == "hi" && failed && ImGui.Button("Use English"))
+                if (statusVisible)
                 {
-                    plugin.Configuration.UiLanguage = "en";
-                    plugin.Configuration.Save();
+                    fontStatusDecorations.Paint();
+                    MaterialSkin.Backdrop();
+                    var failed = fonts.LoadException is not null || fontIssueLogged;
+                    ImGui.TextWrapped(appliedLanguage == "hi" && failed ? "Hindi UI fonts are unavailable. Use English to continue."
+                        : failed ? "UI fonts failed to load. See the plugin log." : "Loading UI fonts...");
+                    if (appliedLanguage == "hi" && failed && (ChokePresentation.IsMaterial
+                            ? UiGui.Button("Use English", display: "Use English") : ImGui.Button("Use English")))
+                    {
+                        plugin.Configuration.UiLanguage = "en";
+                        plugin.Configuration.Save();
+                    }
                 }
             }
-            ImGui.End();
-            fontStatusDecorations.Paint();
-            fontStatusMotion.PostDraw();
-            ApplyWindowOpacity("Choke-abo##FontStatus");
+            finally
+            {
+                ImGui.End();
+                fontStatusDecorations.Paint();
+                fontStatusMotion.PostDraw();
+                ApplyWindowOpacity("Choke-abo##FontStatus");
+            }
             return;
         }
         using var style = new MaterialStyleScope();
@@ -329,7 +340,15 @@ internal sealed class ChokeAppearance : IDisposable
                     UiText.T("Theme colour"), UiText.T("Choose each colour independently."), UiText.T("Background"), UiText.T("Controls"),
                     UiText.T("Text"), UiText.T("Aa  Preview text"), UiText.T("Control"),
                     UiText.T("Switch to Picker to set each colour yourself."), UiText.T("Switch back to Auto to use the automatic theme."))
-                    { Lcars = UiText.T("LCARS"), LcarsHelp = UiText.T("LCARS panels, bars and controls") },
+                {
+                    Lcars = UiText.T("LCARS"), LcarsHelp = UiText.T("LCARS panels, bars and controls"),
+                    Glassmorphism = UiText.T("Glassmorphism"), Spatial = UiText.T("Spatial"), Cyberpunk = UiText.T("Cyberpunk"),
+                    LcarsBar1 = UiText.T("LCARS bar 1"), LcarsBar2 = UiText.T("LCARS bar 2"), LcarsBar3 = UiText.T("LCARS bar 3"),
+                    Reset = UiText.T("Reset"), ResetColors = UiText.T("Reset colours"), Animation = UiText.T("Animation"),
+                    AnimationSpeed = UiText.T("Animation speed (0.1–10x; default 1x)"), WaveColors = UiText.T("Wave colours"),
+                    GlassWave1 = UiText.T("Wave colour 1"), GlassWave2 = UiText.T("Wave colour 2"), GlassWave3 = UiText.T("Wave colour 3"),
+                    ResetWaveColors = UiText.T("Reset wave colours"),
+                }, new MaterialColorSettings(), MaterialColorSettings.Rgb(ChokePresentation.ReferenceAccent),
                 plugin.Configuration.UiCompact ? 298 : 316)) return;
         plugin.Configuration.UiColors = colorDraft;
         plugin.Configuration.UiAccentRgb = MaterialColorSettings.ToRgb(accentDraft);
@@ -344,8 +363,9 @@ internal sealed class ChokeAppearance : IDisposable
         MaterialText.Text(UiText.T("Opacity (%)"));
         ImGui.SetNextItemWidth(MaterialLayout.FitNextItemWidth(160 * MaterialTheme.Metrics.Scale, 80 * MaterialTheme.Metrics.Scale));
         var normalOpacity = plugin.Configuration.UiWindowOpacityPercent;
-        if (ImGui.InputInt("##UiWindowOpacityPercent", ref normalOpacity))
-        { plugin.Configuration.UiWindowOpacityPercent = normalOpacity; plugin.Configuration.Save(); }
+        using (var field = MaterialSkin.NativeFieldStyle())
+            if (ImGui.InputInt("##UiWindowOpacityPercent", ref normalOpacity))
+            { plugin.Configuration.UiWindowOpacityPercent = normalOpacity; plugin.Configuration.Save(); }
         var autoFade = plugin.Configuration.UiAutoFade;
         if (UiGui.Checkbox("Auto-fade when unfocused", ref autoFade))
         { plugin.Configuration.UiAutoFade = autoFade; plugin.Configuration.Save(); }
@@ -353,13 +373,15 @@ internal sealed class ChokeAppearance : IDisposable
         MaterialText.Text(UiText.T("Unfocused opacity (%)"));
         ImGui.SetNextItemWidth(MaterialLayout.FitNextItemWidth(160 * MaterialTheme.Metrics.Scale, 80 * MaterialTheme.Metrics.Scale));
         var fadedOpacity = plugin.Configuration.UiFadedOpacityPercent;
-        if (ImGui.InputInt("##UiFadedOpacityPercent", ref fadedOpacity))
-        { plugin.Configuration.UiFadedOpacityPercent = fadedOpacity; plugin.Configuration.Save(); }
+        using (var field = MaterialSkin.NativeFieldStyle())
+            if (ImGui.InputInt("##UiFadedOpacityPercent", ref fadedOpacity))
+            { plugin.Configuration.UiFadedOpacityPercent = fadedOpacity; plugin.Configuration.Save(); }
         MaterialText.Text(UiText.T("Unfocused delay (seconds)"));
         ImGui.SetNextItemWidth(MaterialLayout.FitNextItemWidth(160 * MaterialTheme.Metrics.Scale, 80 * MaterialTheme.Metrics.Scale));
         var delay = plugin.Configuration.UiUnfocusedDelaySeconds;
-        if (ImGui.InputInt("##UiUnfocusedDelaySeconds", ref delay))
-        { plugin.Configuration.UiUnfocusedDelaySeconds = delay; plugin.Configuration.Save(); }
+        using (var field = MaterialSkin.NativeFieldStyle())
+            if (ImGui.InputInt("##UiUnfocusedDelaySeconds", ref delay))
+            { plugin.Configuration.UiUnfocusedDelaySeconds = delay; plugin.Configuration.Save(); }
         ImGui.EndDisabled();
     }
 }
