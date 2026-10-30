@@ -8,9 +8,9 @@ namespace ChokeAbo.Ui;
 // The native widget keeps its original label/ID; visible text is measured and painted in the selected language.
 internal static class UiGui
 {
-    internal static bool PrepareMaterialBackdrop()
+    internal static bool PrepareMaterialBackdrop(bool backgroundEnabled)
     {
-        if (!ChokePresentation.IsMaterial) return false;
+        if (!ChokePresentation.IsMaterial && !backgroundEnabled) return false;
         ImGui.PushStyleColor(ImGuiCol.WindowBg, Vector4.Zero);
         return true;
     }
@@ -160,6 +160,7 @@ internal static class UiGui
     internal static bool SmallButton(string original) => Button(original);
     internal static bool Toggle(string original, ref bool value)
     {
+        if (MaterialTheme.Current.IsNative) return Checkbox(original, ref value);
         var scale = MaterialTheme.Metrics.Scale; var style = ImGui.GetStyle(); var colors = MaterialTheme.Current.Colors;
         var translated = UiText.T(Visible(original));
         var track = new Vector2(56, 30) * scale; var gap = 12 * scale;
@@ -179,7 +180,11 @@ internal static class UiGui
             draw.AddRectFilled(min, max, MaterialCanvas.Color(colors.SurfaceContainerHighest), 4 * scale);
             draw.AddRect(min, max, MaterialCanvas.Color(MaterialLcars.Lilac), 4 * scale);
         }
-        else ChokePresentation.Surface(min, max);
+        else
+        {
+            using var foreground = MaterialSkin.PushBackgroundRenderer(null, false, 0);
+            ChokePresentation.Surface(min, max);
+        }
         if (ImGui.IsItemFocused()) draw.AddRect(min, max, MaterialCanvas.Color(colors.Primary), 4 * scale, ImDrawFlags.None, 2 * scale);
         var inset = Math.Max(8 * scale, (max.X - min.X - track.X - gap - MaterialText.Measure(translated).X) * .5f);
         var y = min.Y + (max.Y - min.Y - track.Y) * .5f;

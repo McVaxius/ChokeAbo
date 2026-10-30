@@ -237,6 +237,7 @@ public sealed class Plugin : IDalamudPlugin
 
     private void OnCommand(string command, string arguments)
     {
+        if (Appearance.TryApplyCommand(arguments)) return;
         var a = arguments.Trim();
         if (a.Equals("inspect forms", StringComparison.OrdinalIgnoreCase))
         {

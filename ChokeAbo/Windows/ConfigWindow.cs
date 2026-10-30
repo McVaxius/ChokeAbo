@@ -12,6 +12,7 @@ public sealed class ConfigWindow : Window, IDisposable
 {
     private readonly AethertekUI.Dalamud.MaterialSupportLog supportLog = new();
     private readonly MaterialWindowMotion windowMotion = new();
+    private readonly MaterialWindowLock movementLock = new();
     private bool materialBackdropPending;
     private static readonly string[] DtrModes = { "Text only", "Icon + text", "Icon only" };
     private readonly Plugin plugin;
@@ -24,11 +25,13 @@ public sealed class ConfigWindow : Window, IDisposable
     public void Dispose() { }
     public override void PreDraw()
     {
-        windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
-        materialBackdropPending = UiGui.PrepareMaterialBackdrop();
+        windowMotion.Prepare(this, reducedMotion: !plugin.Configuration.UiStylingEnabled, roundedCorners: plugin.Configuration.UiStylingEnabled);
+        materialBackdropPending = UiGui.PrepareMaterialBackdrop(plugin.Appearance.BackgroundEnabled);
+        movementLock.Apply(this, plugin.Configuration.UiWindowsLocked);
     }
     public override void PostDraw()
     {
+        movementLock.Restore(this);
         UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.Restore(this);
         UiGui.PaintTitleWithImageAndStatus(this, PluginInfo.DisplayName + " \u2014 " + UiText.T("Settings"), status: plugin.TitlebarStatus);
@@ -36,8 +39,10 @@ public sealed class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
-        windowMotion.DrawChrome();
+        plugin.Appearance.PrepareBackgroundOpacity(WindowName, ImGui.IsWindowAppearing());
         MaterialSkin.Backdrop();
+        using var structuralBackgrounds = MaterialSkin.StructuralBackgroundStyle();
+        windowMotion.DrawChrome();
         if (MaterialTheme.Current.IsLcars)
             using (UiText.Font(UiFontRole.Title)) MaterialLcars.Header(PluginInfo.DisplayName + " — " + UiText.T("Settings"));
         UiGui.TitleWithButtons(PluginInfo.DisplayName + " Settings", PluginInfo.DisplayName + " — " + UiText.T("Settings"), this);

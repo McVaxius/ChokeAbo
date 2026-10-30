@@ -15,6 +15,7 @@ namespace ChokeAbo.Windows;
 public sealed class MainWindow : Window, IDisposable
 {
     private readonly MaterialWindowMotion windowMotion = new();
+    private readonly MaterialWindowLock movementLock = new();
     private bool materialBackdropPending;
     private readonly Plugin plugin;
     private readonly ChocoboStatsService chocoboStatsService;
@@ -86,12 +87,14 @@ public sealed class MainWindow : Window, IDisposable
     public override void PreDraw()
     {
         UiGui.ReserveTitleSpace(this, $"{PluginInfo.DisplayName} v{typeof(Plugin).Assembly.GetName().Version}", 640);
-        windowMotion.Prepare(this, reducedMotion: false, roundedCorners: true);
-        materialBackdropPending = UiGui.PrepareMaterialBackdrop();
+        windowMotion.Prepare(this, reducedMotion: !plugin.Configuration.UiStylingEnabled, roundedCorners: plugin.Configuration.UiStylingEnabled);
+        materialBackdropPending = UiGui.PrepareMaterialBackdrop(plugin.Appearance.BackgroundEnabled);
+        movementLock.Apply(this, plugin.Configuration.UiWindowsLocked);
     }
 
     public override void PostDraw()
     {
+        movementLock.Restore(this);
         UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
         windowMotion.Restore(this);
         UiGui.PaintTitleWithImageAndStatus(this, PluginInfo.DisplayName + " v" + (typeof(Plugin).Assembly.GetName().Version?.ToString() ?? "0.0.0.0"), status: plugin.TitlebarStatus);
@@ -100,8 +103,10 @@ public sealed class MainWindow : Window, IDisposable
     public override void Draw()
     {
         UiGui.RestoreMaterialBackdrop(ref materialBackdropPending);
-        windowMotion.DrawChrome();
+        plugin.Appearance.PrepareBackgroundOpacity(WindowName, ImGui.IsWindowAppearing());
         MaterialSkin.Backdrop();
+        using var structuralBackgrounds = MaterialSkin.StructuralBackgroundStyle();
+        windowMotion.DrawChrome();
         var cfg = plugin.Configuration;
         DrawPresentation(chocoboStatsService.Snapshot, chocoboStatsService.BuildProjection(cfg),
             chocoboStatsService.BuildPurchasePlan(cfg), ChocoboStatsService.GetPlannedTrainingCount(cfg));

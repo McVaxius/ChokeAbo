@@ -90,7 +90,7 @@ internal static class ChokePresentation
         if (MaterialTheme.Current.IsLcars) { MaterialLcars.PanelFrame(min, max); return; }
         if (IsMaterial) { MaterialSkin.PanelFrame(min, max); return; }
         var c = MaterialTheme.Current.Colors;
-        MaterialCanvas.Surface(min, max, c.SurfaceContainerHigh, c.Surface, 4 * MaterialTheme.Metrics.Scale);
+        MaterialCanvas.Surface(min, max, MaterialSkin.BackgroundFill(c.SurfaceContainerHigh), MaterialSkin.BackgroundFill(c.Surface), 4 * MaterialTheme.Metrics.Scale);
         ImGui.GetWindowDrawList().AddRect(min, max, MaterialCanvas.Color(c.OutlineVariant), 4 * MaterialTheme.Metrics.Scale);
     }
 

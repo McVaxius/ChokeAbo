@@ -1,3 +1,10 @@
+2026-10-29 - 2.0.0.20 - Shared glass backgrounds and window controls
+
+- Add actual glass Background rendering, Waves/Lights/Image choices, image browsing and screenshot pause in Colour and Transparency. Preserve palettes, languages, opacity/fade and native actions.
+- Add native/styled UI and window movement/resize locks in Settings and native titles, with `/chokeabo style`, `style on`, `style off`, `lock` and `unlock`.
+- Release the image picker on unload and derive popup opacity from its actual owner, including when reopening a window. Retain foreground switch fills under glass and the existing native checkbox when styling is off.
+- Include the shared renderer dependencies and Glasswork MIT notice. Host GPU and screenshot acceptance remain separate from local compilation.
+
 2026-10-26 - 2.0.0.19 - Approved material styles and colour controls
 
 - Add Glassmorphism, Spatial and Cyberpunk across Main, Settings, Popup Capture and supporting surfaces, retaining Auto, Picker and LCARS.
