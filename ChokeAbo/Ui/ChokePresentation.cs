@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Numerics;
 using AethertekUI;
+using AethertekUI.Dalamud;
 using Dalamud.Bindings.ImGui;
 
 namespace ChokeAbo.Ui;
@@ -28,7 +29,15 @@ internal static class ChokePresentation
     // Preserve native window chrome and additional real workflow detail. Typography: title30/28, pane22/20, body16.
     internal const uint ReferenceAccent = 0xFFBC41;
     internal static readonly float[] FontSizes = [16, 16, 30, 22, 28, 20];
-    internal static readonly string[] FontFiles = ["segoeui.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf", "seguisb.ttf"];
+    internal static readonly MaterialFontWeight[] FontWeights =
+    [
+        MaterialFontWeight.Regular,
+        MaterialFontWeight.Semibold,
+        MaterialFontWeight.Semibold,
+        MaterialFontWeight.Semibold,
+        MaterialFontWeight.Semibold,
+        MaterialFontWeight.Semibold,
+    ];
     internal static float AtlasHeight(UiFontRole role) => FontSizes[(int)role] * 4 / 3;
     internal static bool Compact => MaterialTheme.Current.Density == MaterialDensity.Compact;
     internal static bool IsMaterial => MaterialTheme.Current.IsGlassmorphism

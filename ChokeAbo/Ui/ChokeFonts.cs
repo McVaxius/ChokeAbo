@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
-using Dalamud;
+using AethertekUI.Dalamud;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.ManagedFontAtlas;
 
@@ -13,28 +12,15 @@ internal sealed class ChokeFonts : IDisposable
     private readonly IFontHandle[] handles;
     private int generation;
     internal int Generation => System.Threading.Volatile.Read(ref generation);
-    internal ChokeFonts(IFontAtlas atlas, ushort[] ranges,string language)
+    internal ChokeFonts(IFontAtlas atlas, ushort[] ranges, string language, string assetRoot)
     {
-        handles=ChokePresentation.FontSizes.Select((size,index)=>atlas.NewDelegateFontHandle(toolkit=>toolkit.OnPreBuild(build=>
-        {
-            build.NewImAtlas.TexDesiredWidth=4096;
-            build.NewImAtlas.TexDesiredHeight=4096;
-            size=ChokePresentation.AtlasHeight((UiFontRole)index);
-            var config=new SafeFontConfig { SizePx=size, GlyphRanges=ranges };
-            build.Font=build.AddFontFromFile(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts),ChokePresentation.FontFiles[index]),config);
-            build.AddFontFromFile(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "seguisym.ttf"),
-                new SafeFontConfig { SizePx=size, MergeFont=build.Font, GlyphRanges=ranges });
-            // The language selector always displays all nine native names. Host-managed merges cover these too.
-            build.AddDalamudAssetFont(DalamudAsset.NotoSansCjkRegular,new SafeFontConfig
-            {
-                SizePx=size, MergeFont=build.Font, GlyphRanges=ranges,
-                // Verified bundled TTC faces: JP=0, KR=1, SC=2, TC=3.
-                // Bundled faces share glyph coverage; select the active locale's regional forms.
-                FontNo=language switch { "ko"=>1, "zh-Hans" or "zh-CN"=>2, "zh-Hant" or "zh-TW"=>3, _=>0 },
-            });
-            build.AttachExtraGlyphsForDalamudLanguage(new SafeFontConfig { SizePx=size, MergeFont=build.Font });
-            build.AddGameSymbol(new SafeFontConfig { SizePx=size,MergeFont=build.Font });
-        }))).ToArray();
+        handles = ChokePresentation.FontSizes.Select((_, index) => MaterialFontAtlas.CreateFont(
+            atlas,
+            ChokePresentation.FontWeights[index],
+            ChokePresentation.AtlasHeight((UiFontRole)index),
+            ranges,
+            language,
+            assetRoot)).ToArray();
         foreach(var handle in handles) handle.ImFontChanged+=FontChanged;
     }
     private void FontChanged(IFontHandle handle,ILockedImFont font) => System.Threading.Interlocked.Increment(ref generation);
