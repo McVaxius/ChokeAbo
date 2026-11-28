@@ -10,15 +10,16 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
 using Dalamud.Interface;
 using Dalamud.Interface.ImGuiFileDialog;
+using Dalamud.Interface.ManagedFontAtlas;
 
 namespace ChokeAbo.Ui;
 
 internal sealed class ChokeAppearance : IDisposable
 {
     private readonly Plugin plugin;
-    private readonly MaterialTextHost shapedText;
+    private MaterialTextHost? shapedText;
     private UiText text;
-    private ChokeFonts fonts;
+    private ChokeFonts? fonts;
     private MaterialTheme theme;
     private readonly Dictionary<Dalamud.Interface.Windowing.Window, AethertekUI.Dalamud.MaterialAppearanceTitleBar> appearanceTitleBars = new();
     private readonly MaterialWindowFold fontStatusMotion = new();
@@ -48,9 +49,9 @@ internal sealed class ChokeAppearance : IDisposable
         if (language != appliedLanguage)
         {
             fonts?.Dispose();
-            text?.Dispose();
+            fonts = null;
+            text.Dispose();
             text = new(language, PushFont);
-            fonts = new(Plugin.PluginInterface.UiBuilder.FontAtlas, text.GlyphRanges(), language, Plugin.PluginInterface.AssemblyLocation.DirectoryName!);
             appliedLanguage = language;
             checkedGeneration = -1;
             fontIssueLogged = false;
@@ -91,18 +92,15 @@ internal sealed class ChokeAppearance : IDisposable
         Apply();
         if (!windows.Windows.Any(window => window.IsOpen))
         {
-            backgroundGlass?.EndFrame(false);
-            if (fonts.Ready && checkedGeneration == fonts.Generation)
-            {
-                using var pickerText = text.Enter();
-                using var pickerShaping = shapedText.Push();
-                using var pickerTheme = MaterialTheme.Push(theme, ImGuiHelpers.GlobalScale,
-                    plugin.Configuration.UiStylingEnabled ? MaterialStyleMode.ColorsOnly : MaterialStyleMode.Native);
-                using var pickerBody = fonts.Push(UiFontRole.Body);
-                using var pickerBackground = MaterialSkin.PushBackgroundRenderer(null, false, 0);
-                imagePicker.Draw();
-            }
+            ReleaseWindowResources();
             return;
+        }
+        shapedText ??= new(Plugin.TextureProvider);
+        if (fonts is null)
+        {
+            var atlas = Plugin.PluginInterface.UiBuilder.CreateFontAtlas(FontAtlasAutoRebuildMode.OnNewFrame, true,
+                "ChokeAbo UI");
+            fonts = new(atlas, text.GlyphRanges(), appliedLanguage, Plugin.PluginInterface.AssemblyLocation.DirectoryName!);
         }
         using var resources = text.Enter();
         using var shaping = shapedText.Push();
@@ -133,7 +131,7 @@ internal sealed class ChokeAppearance : IDisposable
         using var chrome = plugin.Configuration.UiStylingEnabled ? MaterialWindowChrome.Push() : default;
         if (!fonts.Ready || checkedGeneration != fonts.Generation)
         {
-            backgroundGlass?.EndFrame(false);
+            DisposeBackgroundGlass();
             if (!fontIssueLogged && fonts.LoadException is { } error) { Plugin.Log.Error(error, "[ChokeAbo] Required UI fonts failed to load."); fontIssueLogged = true; }
             ImGui.SetNextWindowSize(new Vector2(460 * ImGuiHelpers.GlobalScale, 0));
             fontStatusMotion.PreDraw("Choke-abo##FontStatus", null, null, reducedMotion: !plugin.Configuration.UiStylingEnabled,
@@ -171,9 +169,16 @@ internal sealed class ChokeAppearance : IDisposable
         var blur = plugin.Configuration.UiStylingEnabled && colorDraft.HasBackgroundBlur(colorDraft.Mode);
         var image = plugin.Configuration.UiStylingEnabled && colorDraft.Mode == MaterialColorMode.Glassmorphism &&
             colorDraft.GlassBackground == MaterialGlassBackground.Image;
-        if (blur || image) backgroundGlass ??= new(Plugin.PluginInterface, Plugin.Log);
-        backgroundGlass?.ConfigureImage(Plugin.TextureProvider, image, plugin.Configuration.UiColors?.GlassImagePath);
-        backgroundGlass?.BeginFrame();
+        if (blur || image)
+        {
+            backgroundGlass ??= new(Plugin.PluginInterface, Plugin.Log);
+            backgroundGlass.BeginFrame(blur, image);
+            backgroundGlass.ConfigureImage(Plugin.TextureProvider, image, colorDraft.GlassImagePath);
+        }
+        else
+        {
+            DisposeBackgroundGlass();
+        }
         var restoreBackground = blur || image
             ? windows.Windows.Where(window => (window.Flags & ImGuiWindowFlags.NoBackground) == 0).ToArray()
             : Array.Empty<Window>();
@@ -257,10 +262,8 @@ internal sealed class ChokeAppearance : IDisposable
     internal ChokeAppearance(Plugin plugin)
     {
         this.plugin = plugin;
-        shapedText = new(Plugin.TextureProvider);
         appliedLanguage = UiText.Languages.Any(l => l.Code == plugin.Configuration.UiLanguage) ? plugin.Configuration.UiLanguage : "en";
         text = new(appliedLanguage, PushFont);
-        fonts = new(Plugin.PluginInterface.UiBuilder.FontAtlas, text.GlyphRanges(), appliedLanguage, Plugin.PluginInterface.AssemblyLocation.DirectoryName!);
         appliedAccent = plugin.Configuration.UiAccentRgb & 0xFFFFFF;
         colorDraft = plugin.Configuration.UiColors ?? new MaterialColorSettings();
         appliedSavedColors = appliedColors = colorDraft;
@@ -271,13 +274,34 @@ internal sealed class ChokeAppearance : IDisposable
         accentDraft = new(rgb.X, rgb.Y, rgb.Z);
         Plugin.PluginInterface.UiBuilder.ResizeBuffers += ReleaseBackgroundResources;
     }
-    private IDisposable PushFont(UiFontRole role) => fonts.Push(role);
+    private IDisposable PushFont(UiFontRole role) => fonts!.Push(role);
     // These two callers render game-owned DTR text, outside the ImGui shaping host.
     internal string Label(string english) => text.Language == "hi" ? english : text.Label(english);
     internal string Format(string english, params object?[] args) => text.Language == "hi"
         ? string.Format(System.Globalization.CultureInfo.InvariantCulture, english, args) : text.Format(english, args);
 
     private void ReleaseBackgroundResources() => backgroundGlass?.ReleaseResources();
+
+    private void DisposeBackgroundGlass()
+    {
+        backgroundGlass?.Dispose();
+        backgroundGlass = null;
+    }
+
+    private void ReleaseWindowResources()
+    {
+        if (fonts is null && shapedText is null) return;
+        imagePicker.Reset();
+        DisposeBackgroundGlass();
+        uiSoundPlayer?.Dispose();
+        uiSoundPlayer = null;
+        fonts?.Dispose();
+        fonts = null;
+        shapedText?.Dispose();
+        shapedText = null;
+        checkedGeneration = -1;
+        fontIssueLogged = false;
+    }
 
     private bool LcarsActive => plugin.Configuration.UiStylingEnabled && plugin.Configuration.UiColors?.Mode == MaterialColorMode.Lcars;
 
@@ -357,9 +381,8 @@ internal sealed class ChokeAppearance : IDisposable
     public void Dispose()
     {
         Plugin.PluginInterface.UiBuilder.ResizeBuffers -= ReleaseBackgroundResources;
-        imagePicker.Reset();
-        backgroundGlass?.Dispose();
-        uiSoundPlayer?.Dispose(); fonts?.Dispose(); text?.Dispose(); shapedText.Dispose();
+        ReleaseWindowResources();
+        text.Dispose();
     }
 
     private void ApplyWindowOpacity(string windowName)
